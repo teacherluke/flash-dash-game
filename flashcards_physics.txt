@@ -1,0 +1,1001 @@
+const physicsFlashcards = [
+    // 1
+    {
+        question: "What is the unit of force?",
+        answer: "Newton",
+        wrong1: "Joule",
+        wrong2: "Pascal",
+        wrong3: "Watt",
+        explanation: "Force is measured in Newtons.",
+        example: "A 1kg object weighs about 10 Newtons."
+    },
+    // 2
+    {
+        question: "What is the unit of energy?",
+        answer: "Joule",
+        wrong1: "Newton",
+        wrong2: "Watt",
+        wrong3: "Ampere",
+        explanation: "All energy is measured in Joules.",
+        example: "1 kilojoule = 1000 Joules."
+    },
+    // 3
+    {
+        question: "What is the unit of power?",
+        answer: "Watt",
+        wrong1: "Joule",
+        wrong2: "Pascal",
+        wrong3: "Volt",
+        explanation: "Power is energy per second.",
+        example: "1 Watt = 1 Joule per second."
+    },
+    // 4
+    {
+        question: "What is the unit of pressure?",
+        answer: "Pascal",
+        wrong1: "Newton",
+        wrong2: "Joule",
+        wrong3: "Ohm",
+        explanation: "Pressure is force per area.",
+        example: "1 Pascal = 1 Newton per square meter."
+    },
+    // 5
+    {
+        question: "What is the formula for speed?",
+        answer: "distance divided by time",
+        wrong1: "distance times time",
+        wrong2: "time divided by distance",
+        wrong3: "mass divided by time",
+        explanation: "Speed is how fast something moves.",
+        example: "100 meters in 10 seconds = 10 m/s."
+    },
+    // 6
+    {
+        question: "What is the formula for velocity?",
+        answer: "displacement divided by time",
+        wrong1: "distance divided by time",
+        wrong2: "force divided by time",
+        wrong3: "mass divided by time",
+        explanation: "Velocity is speed with direction.",
+        example: "5 meters per second north."
+    },
+    // 7
+    {
+        question: "What is the formula for acceleration?",
+        answer: "change in velocity divided by time",
+        wrong1: "velocity times time",
+        wrong2: "distance divided by time",
+        wrong3: "force divided by mass",
+        explanation: "Acceleration is how much velocity changes.",
+        example: "0 to 20 m/s in 5 seconds = 4 m/s²."
+    },
+    // 8
+    {
+        question: "Newton's First Law is called the law of?",
+        answer: "inertia",
+        wrong1: "acceleration",
+        wrong2: "action-reaction",
+        wrong3: "gravitation",
+        explanation: "Objects keep moving or stay still unless forced.",
+        example: "A book stays on a table until moved."
+    },
+    // 9
+    {
+        question: "What is Newton's Second Law formula?",
+        answer: "F = ma",
+        wrong1: "F = m/a",
+        wrong2: "F = m+a",
+        wrong3: "F = a/m",
+        explanation: "Force equals mass times acceleration.",
+        example: "5kg at 2m/s² = 10 Newtons."
+    },
+    // 10
+    {
+        question: "Newton's Third Law says every action has?",
+        answer: "equal and opposite reaction",
+        wrong1: "greater reaction",
+        wrong2: "smaller reaction",
+        wrong3: "no reaction",
+        explanation: "Forces come in pairs.",
+        example: "A rocket pushes down, gas pushes up."
+    },
+    // 11
+    {
+        question: "What is the formula for weight?",
+        answer: "W = mg",
+        wrong1: "W = m/g",
+        wrong2: "W = m+g",
+        wrong3: "W = g/m",
+        explanation: "Weight is mass times gravity.",
+        example: "60kg x 10N/kg = 600N."
+    },
+    // 12
+    {
+        question: "Gravity on Earth is about?",
+        answer: "10 N/kg",
+        wrong1: "9 N/kg",
+        wrong2: "11 N/kg",
+        wrong3: "8 N/kg",
+        explanation: "Standard school value for gravity.",
+        example: "1kg weighs 10 Newtons."
+    },
+    // 13
+    {
+        question: "What is the formula for a moment?",
+        answer: "force x distance from pivot",
+        wrong1: "force / distance",
+        wrong2: "mass x distance",
+        wrong3: "force x mass",
+        explanation: "Moment is the turning effect of a force.",
+        example: "20N at 3m = 60Nm."
+    },
+    // 14
+    {
+        question: "When an object balances, moments are?",
+        answer: "clockwise = anticlockwise",
+        wrong1: "clockwise more",
+        wrong2: "anticlockwise more",
+        wrong3: "not related",
+        explanation: "Balanced objects have equal moments.",
+        example: "A level seesaw."
+    },
+    // 15
+    {
+        question: "What is the pressure formula?",
+        answer: "force divided by area",
+        wrong1: "force times area",
+        wrong2: "area divided by force",
+        wrong3: "mass divided by area",
+        explanation: "Pressure depends on force and area.",
+        example: "100N on 2m² = 50 Pa."
+    },
+    // 16
+    {
+        question: "Liquid pressure depends on?",
+        answer: "density, gravity, depth",
+        wrong1: "color, temperature, volume",
+        wrong2: "mass, weight, speed",
+        wrong3: "time, distance, force",
+        explanation: "Deeper water has higher pressure.",
+        example: "Deep sea has very high pressure."
+    },
+    // 17
+    {
+        question: "What is the unit of density?",
+        answer: "kg/m³",
+        wrong1: "kg/m²",
+        wrong2: "g/m³",
+        wrong3: "N/m³",
+        explanation: "Density is mass per volume.",
+        example: "Water is 1000 kg/m³."
+    },
+    // 18
+    {
+        question: "What is the density formula?",
+        answer: "mass divided by volume",
+        wrong1: "mass times volume",
+        wrong2: "volume divided by mass",
+        wrong3: "mass plus volume",
+        explanation: "Density = m/V.",
+        example: "500kg in 0.5m³ = 1000 kg/m³."
+    },
+    // 19
+    {
+        question: "What is the formula for work done?",
+        answer: "force x distance",
+        wrong1: "force / distance",
+        wrong2: "mass x distance",
+        wrong3: "force / time",
+        explanation: "Work is energy transferred by force.",
+        example: "20N pushing 5m = 100J."
+    },
+    // 20
+    {
+        question: "Gravitational potential energy formula?",
+        answer: "mgh",
+        wrong1: "mg/h",
+        wrong2: "mh/g",
+        wrong3: "1/2 mv²",
+        explanation: "Energy from height.",
+        example: "2kg up 3m = 60J."
+    },
+    // 21
+    {
+        question: "Kinetic energy formula?",
+        answer: "1/2 mv²",
+        wrong1: "mv²",
+        wrong2: "mgh",
+        wrong3: "1/2 mv",
+        explanation: "Energy of moving objects.",
+        example: "2kg at 4m/s = 16J."
+    },
+    // 22
+    {
+        question: "Power is energy divided by?",
+        answer: "time",
+        wrong1: "distance",
+        wrong2: "force",
+        wrong3: "mass",
+        explanation: "Power = energy per second.",
+        example: "200J in 10s = 20W."
+    },
+    // 23
+    {
+        question: "Efficiency is useful energy divided by?",
+        answer: "total input energy",
+        wrong1: "wasted energy",
+        wrong2: "power",
+        wrong3: "time",
+        explanation: "Efficiency shows how good a device is.",
+        example: "80J out of 100J = 80%."
+    },
+    // 24
+    {
+        question: "Energy in a stretched spring is?",
+        answer: "elastic potential energy",
+        wrong1: "kinetic energy",
+        wrong2: "chemical energy",
+        wrong3: "thermal energy",
+        explanation: "Stored when stretched or compressed.",
+        example: "A stretched rubber band."
+    },
+    // 25
+    {
+        question: "Energy in food and batteries is?",
+        answer: "chemical energy",
+        wrong1: "nuclear energy",
+        wrong2: "kinetic energy",
+        wrong3: "sound energy",
+        explanation: "Released in chemical reactions.",
+        example: "A battery powers a light."
+    },
+    // 26
+    {
+        question: "An electric heater converts electricity to?",
+        answer: "thermal energy",
+        wrong1: "light energy",
+        wrong2: "sound energy",
+        wrong3: "kinetic energy",
+        explanation: "Heaters make heat.",
+        example: "A room heater warms the air."
+    },
+    // 27
+    {
+        question: "Heat transfer through solids is called?",
+        answer: "conduction",
+        wrong1: "convection",
+        wrong2: "radiation",
+        wrong3: "evaporation",
+        explanation: "Heat moves through particles touching.",
+        example: "A metal spoon gets hot in tea."
+    },
+    // 28
+    {
+        question: "Heat transfer in fluids is called?",
+        answer: "convection",
+        wrong1: "conduction",
+        wrong2: "radiation",
+        wrong3: "insulation",
+        explanation: "Warm fluid rises, cool sinks.",
+        example: "Hot air rises from a radiator."
+    },
+    // 29
+    {
+        question: "Heat transfer without particles is?",
+        answer: "radiation",
+        wrong1: "conduction",
+        wrong2: "convection",
+        wrong3: "condensation",
+        explanation: "Can travel through space.",
+        example: "Sun heat reaches Earth."
+    },
+    // 30
+    {
+        question: "Best thermal conductors are?",
+        answer: "metals",
+        wrong1: "plastics",
+        wrong2: "wood",
+        wrong3: "air",
+        explanation: "Metals transfer heat quickly.",
+        example: "Copper and aluminium."
+    },
+    // 31
+    {
+        question: "Poor heat conductors are called?",
+        answer: "insulators",
+        wrong1: "conductors",
+        wrong2: "radiators",
+        wrong3: "resistors",
+        explanation: "Insulators trap heat.",
+        example: "Wool, foam, plastic."
+    },
+    // 32
+    {
+        question: "Specific heat capacity is energy to heat?",
+        answer: "1kg by 1 degree",
+        wrong1: "1kg by 10 degrees",
+        wrong2: "10kg by 1 degree",
+        wrong3: "1kg by 100 degrees",
+        explanation: "How hard a material is to heat.",
+        example: "Water is hard to heat."
+    },
+    // 33
+    {
+        question: "Energy for temperature change is?",
+        answer: "mcΔT",
+        wrong1: "mgh",
+        wrong2: "1/2 mv²",
+        wrong3: "Fd",
+        explanation: "Mass x specific heat x temp change.",
+        example: "Heating water uses lots of energy."
+    },
+    // 34
+    {
+        question: "Energy for state change is called?",
+        answer: "latent heat",
+        wrong1: "thermal heat",
+        wrong2: "specific heat",
+        wrong3: "kinetic heat",
+        explanation: "No temperature change during melting/boiling.",
+        example: "Ice melts at 0°C."
+    },
+    // 35
+    {
+        question: "Latent heat formula is?",
+        answer: "mL",
+        wrong1: "mcΔT",
+        wrong2: "mgh",
+        wrong3: "Fd",
+        explanation: "Mass x latent heat.",
+        example: "Melting ice uses latent heat."
+    },
+    // 36
+    {
+        question: "Temperature during melting is?",
+        answer: "constant",
+        wrong1: "rising",
+        wrong2: "falling",
+        wrong3: "unstable",
+        explanation: "Energy breaks bonds, not heat up.",
+        example: "Ice stays 0°C while melting."
+    },
+    // 37
+    {
+        question: "Evaporation happens where?",
+        answer: "surface of liquid",
+        wrong1: "bottom of liquid",
+        wrong2: "all through liquid",
+        wrong3: "in solid only",
+        explanation: "Slow change to gas.",
+        example: "A puddle dries up."
+    },
+    // 38
+    {
+        question: "Boiling happens where?",
+        answer: "all through liquid",
+        wrong1: "surface only",
+        wrong2: "top only",
+        wrong3: "in gas only",
+        explanation: "Fast change to gas.",
+        example: "Water bubbles when boiling."
+    },
+    // 39
+    {
+        question: "What is the unit of electric current?",
+        answer: "Ampere",
+        wrong1: "Volt",
+        wrong2: "Ohm",
+        wrong3: "Watt",
+        explanation: "Current is flow of charge.",
+        example: "Measured in Amps."
+    },
+    // 40
+    {
+        question: "What is the unit of voltage?",
+        answer: "Volt",
+        wrong1: "Ampere",
+        wrong2: "Ohm",
+        wrong3: "Joule",
+        explanation: "Voltage is push of electricity.",
+        example: "Batteries have voltage."
+    },
+    // 41
+    {
+        question: "What is the unit of resistance?",
+        answer: "Ohm",
+        wrong1: "Volt",
+        wrong2: "Ampere",
+        wrong3: "Newton",
+        explanation: "Resistance slows current.",
+        example: "Measured in Ohms."
+    },
+    // 42
+    {
+        question: "Ohm's Law formula?",
+        answer: "V = IR",
+        wrong1: "I = VR",
+        wrong2: "R = VI",
+        wrong3: "V = I+R",
+        explanation: "Voltage = current x resistance.",
+        example: "2A x 3Ohm = 6V."
+    },
+    // 43
+    {
+        question: "In a series circuit, current is?",
+        answer: "the same everywhere",
+        wrong1: "split",
+        wrong2: "zero",
+        wrong3: "highest at battery",
+        explanation: "One path, same current.",
+        example: "All bulbs have same current."
+    },
+    // 44
+    {
+        question: "In a parallel circuit, current is?",
+        answer: "split between branches",
+        wrong1: "same everywhere",
+        wrong2: "zero",
+        wrong3: "highest at battery",
+        explanation: "Multiple paths, current splits.",
+        example: "Bulbs can have different currents."
+    },
+    // 45
+    {
+        question: "In a series circuit, voltage is?",
+        answer: "shared between components",
+        wrong1: "same everywhere",
+        wrong2: "zero",
+        wrong3: "full at battery",
+        explanation: "Voltage splits across parts.",
+        example: "Two bulbs share battery voltage."
+    },
+    // 46
+    {
+        question: "In a parallel circuit, voltage is?",
+        answer: "same across all branches",
+        wrong1: "shared",
+        wrong2: "split",
+        wrong3: "zero",
+        explanation: "Each branch gets full voltage.",
+        example: "All bulbs get full battery voltage."
+    },
+    // 47
+    {
+        question: "A fuse protects against?",
+        answer: "too much current",
+        wrong1: "too much voltage",
+        wrong2: "too much resistance",
+        wrong3: "low battery",
+        explanation: "Melts and breaks circuit if too hot.",
+        example: "Fuses in plugs and cars."
+    },
+    // 48
+    {
+        question: "A magnet has two poles called?",
+        answer: "North and South",
+        wrong1: "East and West",
+        wrong2: "Left and Right",
+        wrong3: "Up and Down",
+        explanation: "All magnets have two poles.",
+        example: "Bar magnet N and S."
+    },
+    // 49
+    {
+        question: "Like magnetic poles do what?",
+        answer: "repel",
+        wrong1: "attract",
+        wrong2: "stick",
+        wrong3: "ignore",
+        explanation: "N repels N, S repels S.",
+        example: "Two north poles push apart."
+    },
+    // 50
+    {
+        question: "Unlike magnetic poles do what?",
+        answer: "attract",
+        wrong1: "repel",
+        wrong2: "push",
+        wrong3: "ignore",
+        explanation: "N attracts S.",
+        example: "North and south stick together."
+    },
+    // 51
+    {
+        question: "A wave transfers?",
+        answer: "energy",
+        wrong1: "mass",
+        wrong2: "matter",
+        wrong3: "volume",
+        explanation: "Waves move energy not particles.",
+        example: "Light and sound are waves."
+    },
+    // 52
+    {
+        question: "The highest point of a wave is?",
+        answer: "crest",
+        wrong1: "trough",
+        wrong2: "amplitude",
+        wrong3: "wavelength",
+        explanation: "Top of the wave.",
+        example: "Top of a water wave."
+    },
+    // 53
+    {
+        question: "The lowest point of a wave is?",
+        answer: "trough",
+        wrong1: "crest",
+        wrong2: "amplitude",
+        wrong3: "wavelength",
+        explanation: "Bottom of the wave.",
+        example: "Bottom of a water wave."
+    },
+    // 54
+    {
+        question: "Wave amplitude measures?",
+        answer: "height from middle",
+        wrong1: "length of wave",
+        wrong2: "number of waves",
+        wrong3: "speed of wave",
+        explanation: "Loudness or brightness.",
+        example: "Big amplitude = loud sound."
+    },
+    // 55
+    {
+        question: "Wavelength is distance between?",
+        answer: "two crests",
+        wrong1: "crest and trough",
+        wrong2: "start and end",
+        wrong3: "top and bottom",
+        explanation: "Length of one full wave.",
+        example: "Measured in meters."
+    },
+    // 56
+    {
+        question: "Frequency is number of waves per?",
+        answer: "second",
+        wrong1: "minute",
+        wrong2: "hour",
+        wrong3: "meter",
+        explanation: "Unit is Hertz.",
+        example: "10 Hz = 10 waves per second."
+    },
+    // 57
+    {
+        question: "Wave speed formula?",
+        answer: "frequency x wavelength",
+        wrong1: "frequency / wavelength",
+        wrong2: "wavelength / frequency",
+        wrong3: "amplitude x frequency",
+        explanation: "Speed = f x λ.",
+        example: "5Hz x 2m = 10 m/s."
+    },
+    // 58
+    {
+        question: "Sound waves are?",
+        answer: "longitudinal",
+        wrong1: "transverse",
+        wrong2: "electromagnetic",
+        wrong3: "light",
+        explanation: "Particles move back and forth.",
+        example: "Sound needs air to travel."
+    },
+    // 59
+    {
+        question: "Light waves are?",
+        answer: "transverse",
+        wrong1: "longitudinal",
+        wrong2: "mechanical",
+        wrong3: "sound",
+        explanation: "Oscillate up and down.",
+        example: "Light travels in straight lines."
+    },
+    // 60
+    {
+        question: "Sound cannot travel through?",
+        answer: "vacuum",
+        wrong1: "air",
+        wrong2: "water",
+        wrong3: "solid",
+        explanation: "No particles = no sound.",
+        example: "Space is silent."
+    },
+    // 61
+    {
+        question: "Light travels in?",
+        answer: "straight lines",
+        wrong1: "curves",
+        wrong2: "circles",
+        wrong3: "waves up and down",
+        explanation: "Called rectilinear propagation.",
+        example: "Shadows prove this."
+    },
+    // 62
+    {
+        question: "Law of reflection: angle of incidence =?",
+        answer: "angle of reflection",
+        wrong1: "angle of refraction",
+        wrong2: "90 degrees",
+        wrong3: "0 degrees",
+        explanation: "Bounces off at same angle.",
+        example: "Mirror reflection."
+    },
+    // 63
+    {
+        question: "Refraction is when light?",
+        answer: "bends entering new material",
+        wrong1: "reflects",
+        wrong2: "disappears",
+        wrong3: "speeds up",
+        explanation: "Changes speed and direction.",
+        example: "Straw looks bent in water."
+    },
+    // 64
+    {
+        question: "White light is made of?",
+        answer: "all colors",
+        wrong1: "red only",
+        wrong2: "blue only",
+        wrong3: "green only",
+        explanation: "Splits into rainbow.",
+        example: "Prism makes spectrum."
+    },
+    // 65
+    {
+        question: "The colors of light are called?",
+        answer: "spectrum",
+        wrong1: "rain",
+        wrong2: "pigment",
+        wrong3: "filter",
+        explanation: "ROYGBIV.",
+        example: "Red, orange, yellow..."
+    },
+    // 66
+    {
+        question: "Which light wave has longest wavelength?",
+        answer: "red",
+        wrong1: "blue",
+        wrong2: "green",
+        wrong3: "violet",
+        explanation: "Red is longest visible light.",
+        example: "Red light bends least."
+    },
+    // 67
+    {
+        question: "Which light wave has shortest wavelength?",
+        answer: "violet",
+        wrong1: "red",
+        wrong2: "blue",
+        wrong3: "green",
+        explanation: "Violet is shortest visible.",
+        example: "Violet bends most."
+    },
+    // 68
+    {
+        question: "Nuclear fusion happens where?",
+        answer: "Sun and stars",
+        wrong1: "nuclear power stations",
+        wrong2: "cars",
+        wrong3: "batteries",
+        explanation: "Hydrogen joins to make helium.",
+        example: "Sun makes heat and light."
+    },
+    // 69
+    {
+        question: "Nuclear fission happens where?",
+        answer: "power stations",
+        wrong1: "Sun",
+        wrong2: "stars",
+        wrong3: "phones",
+        explanation: "Atoms split to make energy.",
+        example: "Nuclear power plants."
+    },
+    // 70
+    {
+        question: "Renewable energy can be?",
+        answer: "used again",
+        wrong1: "used up",
+        wrong2: "gone forever",
+        wrong3: "toxic",
+        explanation: "Will not run out.",
+        example: "Solar, wind, hydro."
+    },
+    // 71
+    {
+        question: "Non-renewable energy will?",
+        answer: "run out",
+        wrong1: "last forever",
+        wrong2: "renew",
+        wrong3: "grow",
+        explanation: "Limited supply.",
+        example: "Coal, oil, gas."
+    },
+    // 72
+    {
+        question: "Solar panels use energy from?",
+        answer: "Sun",
+        wrong1: "wind",
+        wrong2: "water",
+        wrong3: "coal",
+        explanation: "Light energy to electricity.",
+        example: "Roof solar panels."
+    },
+    // 73
+    {
+        question: "Wind turbines convert wind to?",
+        answer: "electricity",
+        wrong1: "heat",
+        wrong2: "sound",
+        wrong3: "light",
+        explanation: "Kinetic to electrical.",
+        example: "Wind farms make power."
+    },
+    // 74
+    {
+        question: "Hydroelectric power uses?",
+        answer: "falling water",
+        wrong1: "wind",
+        wrong2: "sun",
+        wrong3: "coal",
+        explanation: "Water turns turbines.",
+        example: "Dams make hydro power."
+    },
+    // 75
+    {
+        question: "A transformer changes?",
+        answer: "voltage",
+        wrong1: "current only",
+        wrong2: "resistance",
+        wrong3: "power",
+        explanation: "Steps up or down voltage.",
+        example: "Mains to phone charger."
+    },
+    // 76
+    {
+        question: "The center of an atom is?",
+        answer: "nucleus",
+        wrong1: "electron",
+        wrong2: "proton",
+        wrong3: "neutron",
+        explanation: "Contains protons and neutrons.",
+        example: "Core of the atom."
+    },
+    // 77
+    {
+        question: "Which particle has positive charge?",
+        answer: "proton",
+        wrong1: "electron",
+        wrong2: "neutron",
+        wrong3: "nucleus",
+        explanation: "Positive charge in nucleus.",
+        example: "Protons = positive."
+    },
+    // 78
+    {
+        question: "Which particle has negative charge?",
+        answer: "electron",
+        wrong1: "proton",
+        wrong2: "neutron",
+        wrong3: "nucleus",
+        explanation: "Orbits the nucleus.",
+        example: "Electrons = negative."
+    },
+    // 79
+    {
+        question: "Which particle has no charge?",
+        answer: "neutron",
+        wrong1: "proton",
+        wrong2: "electron",
+        wrong3: "ion",
+        explanation: "Neutral charge.",
+        example: "Neutrons = no charge."
+    },
+    // 80
+    {
+        question: "Density of ice is?",
+        answer: "less than water",
+        wrong1: "more than water",
+        wrong2: "same as water",
+        wrong3: "zero",
+        explanation: "Ice floats on water.",
+        example: "Ice cubes float in a drink."
+    },
+    // 81
+    {
+        question: "A lever is which type of machine?",
+        answer: "simple machine",
+        wrong1: "complex machine",
+        wrong2: "electric machine",
+        wrong3: "heat machine",
+        explanation: "Makes work easier.",
+        example: "Crowbar, seesaw, bottle opener."
+    },
+    // 82
+    {
+        question: "A pulley is used to?",
+        answer: "change direction of force",
+        wrong1: "increase speed",
+        wrong2: "make heat",
+        wrong3: "store energy",
+        explanation: "Lift loads easily.",
+        example: "Flag pole pulley."
+    },
+    // 83
+    {
+        question: "An object floats if its density is?",
+        answer: "less than liquid",
+        wrong1: "more than liquid",
+        wrong2: "same as liquid",
+        wrong3: "zero",
+        explanation: "Less dense floats.",
+        example: "Wood floats on water."
+    },
+    // 84
+    {
+        question: "An object sinks if density is?",
+        answer: "more than liquid",
+        wrong1: "less than liquid",
+        wrong2: "same as liquid",
+        wrong3: "zero",
+        explanation: "Denser objects sink.",
+        example: "Stone sinks in water."
+    },
+    // 85
+    {
+        question: "Air resistance is a type of?",
+        answer: "friction",
+        wrong1: "gravity",
+        wrong2: "magnetism",
+        wrong3: "push",
+        explanation: "Slows moving objects.",
+        example: "Parachute uses air resistance."
+    },
+    // 86
+    {
+        question: "Friction always acts?",
+        answer: "against motion",
+        wrong1: "with motion",
+        wrong2: "upwards",
+        wrong3: "downwards",
+        explanation: "Opposes movement.",
+        example: "Slows a sliding box."
+    },
+    // 87
+    {
+        question: "A vacuum is empty of?",
+        answer: "particles",
+        wrong1: "energy",
+        wrong2: "light",
+        wrong3: "heat",
+        explanation: "No air or matter.",
+        example: "Space is a vacuum."
+    },
+    // 88
+    {
+        question: "Time is measured in?",
+        answer: "seconds",
+        wrong1: "meters",
+        wrong2: "kilograms",
+        wrong3: "Newtons",
+        explanation: "SI unit of time.",
+        example: "60 seconds = 1 minute."
+    },
+    // 89
+    {
+        question: "Mass is measured in?",
+        answer: "kilograms",
+        wrong1: "meters",
+        wrong2: "seconds",
+        wrong3: "Newtons",
+        explanation: "SI unit of mass.",
+        example: "1kg = 1000 grams."
+    },
+    // 90
+    {
+        question: "Distance is measured in?",
+        answer: "meters",
+        wrong1: "kilograms",
+        wrong2: "seconds",
+        wrong3: "Newtons",
+        explanation: "SI unit of distance.",
+        example: "1000 meters = 1 kilometer."
+    },
+    // 91
+    {
+        question: "A scalar quantity has?",
+        answer: "magnitude only",
+        wrong1: "direction only",
+        wrong2: "both",
+        wrong3: "neither",
+        explanation: "Size but no direction.",
+        example: "Speed, mass, energy."
+    },
+    // 92
+    {
+        question: "A vector quantity has?",
+        answer: "magnitude and direction",
+        wrong1: "magnitude only",
+        wrong2: "direction only",
+        wrong3: "neither",
+        explanation: "Size and direction.",
+        example: "Velocity, force, acceleration."
+    },
+    // 93
+    {
+        question: "Resultant force is?",
+        answer: "single force replacing all",
+        wrong1: "sum of all forces",
+        wrong2: "biggest force",
+        wrong3: "smallest force",
+        explanation: "Overall force on object.",
+        example: "Forces balance = zero resultant."
+    },
+    // 94
+    {
+        question: "If resultant force is zero, object?",
+        answer: "does not accelerate",
+        wrong1: "speeds up",
+        wrong2: "slows down",
+        wrong3: "changes direction",
+        explanation: "Constant speed or stationary.",
+        example: "Car moving at steady speed."
+    },
+    // 95
+    {
+        question: "If resultant force is not zero, object?",
+        answer: "accelerates",
+        wrong1: "stops",
+        wrong2: "stays still",
+        wrong3: "no change",
+        explanation: "Speeds up, slows down, or turns.",
+        example: "Car speeding up."
+    },
+    // 96
+    {
+        question: "A thermometer measures?",
+        answer: "temperature",
+        wrong1: "heat energy",
+        wrong2: "mass",
+        wrong3: "weight",
+        explanation: "How hot or cold.",
+        example: "Human body temp = 37°C."
+    },
+    // 97
+    {
+        question: "Freezing point of water is?",
+        answer: "0°C",
+        wrong1: "100°C",
+        wrong2: "25°C",
+        wrong3: "37°C",
+        explanation: "Water turns to ice.",
+        example: "Ice forms at 0 degrees."
+    },
+    // 98
+    {
+        question: "Boiling point of water is?",
+        answer: "100°C",
+        wrong1: "0°C",
+        wrong2: "25°C",
+        wrong3: "37°C",
+        explanation: "Water turns to steam.",
+        example: "Kettle boils at 100°C."
+    },
+    // 99
+    question: "A convex lens is?",
+        answer: "thicker in middle",
+        wrong1: "thinner in middle",
+        wrong2: "flat",
+        wrong3: "curved inward",
+        explanation: "Converges light rays.",
+        example: "Magnifying glass."
+    },
+    // 100
+    {
+        question: "A concave lens is?",
+        answer: "thinner in middle",
+        wrong1: "thicker in middle",
+        wrong2: "flat",
+        wrong3: "curved outward",
+        explanation: "Spreads light rays.",
+        example: "Used in some glasses."
+    }
+];

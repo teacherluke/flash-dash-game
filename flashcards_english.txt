@@ -1,0 +1,1002 @@
+const englishFlashcards = [
+    // 1
+    {
+        question: "What is a noun?",
+        answer: "A naming word",
+        wrong1: "An action word",
+        wrong2: "A describing word",
+        wrong3: "A replacing word",
+        explanation: "Names people, places, things or ideas.",
+        example: "teacher, London, table, happiness"
+    },
+    // 2
+    {
+        question: "What is a verb?",
+        answer: "An action or state word",
+        wrong1: "A naming word",
+        wrong2: "A describing word",
+        wrong3: "A joining word",
+        explanation: "Shows an action, feeling or being.",
+        example: "run, eat, is, sleep"
+    },
+    // 3
+    {
+        question: "What is an adjective?",
+        answer: "A describing word for a noun",
+        wrong1: "An action word",
+        wrong2: "A naming word",
+        wrong3: "A time word",
+        explanation: "Describes qualities of a noun.",
+        example: "big, happy, red, tall"
+    },
+    // 4
+    {
+        question: "What is an adverb?",
+        answer: "A word that describes a verb",
+        wrong1: "A naming word",
+        wrong2: "A joining word",
+        wrong3: "A place name",
+        explanation: "Tells how, when, where or how often.",
+        example: "quickly, often, here, yesterday"
+    },
+    // 5
+    {
+        question: "What is a pronoun?",
+        answer: "A word that replaces a noun",
+        wrong1: "A describing word",
+        wrong2: "An action word",
+        wrong3: "A joining word",
+        explanation: "Stops repeating the same noun.",
+        example: "he, she, it, they, we"
+    },
+    // 6
+    {
+        question: "What is a conjunction?",
+        answer: "A joining word",
+        wrong1: "A naming word",
+        wrong2: "A describing word",
+        wrong3: "An action word",
+        explanation: "Joins words, phrases or sentences.",
+        example: "and, but, because, so"
+    },
+    // 7
+    {
+        question: "What is a preposition?",
+        answer: "Shows position or time",
+        wrong1: "Describes a verb",
+        wrong2: "Replaces a noun",
+        wrong3: "Joins two sentences",
+        explanation: "Links noun to other words in a sentence.",
+        example: "in, on, under, before, near"
+    },
+    // 8
+    {
+        question: "What is a sentence?",
+        answer: "A group of words with full meaning",
+        wrong1: "Any two words together",
+        wrong2: "Only one word",
+        wrong3: "A list of nouns",
+        explanation: "Has a subject, verb and makes complete sense.",
+        example: "The cat sat on the mat."
+    },
+    // 9
+    {
+        question: "What is a phrase?",
+        answer: "A group of words without a verb",
+        wrong1: "A full sentence",
+        wrong2: "Always ends with full stop",
+        wrong3: "Must have a subject",
+        explanation: "Makes partial meaning, no subject-verb pair.",
+        example: "under the old wooden table"
+    },
+    // 10
+    {
+        question: "What is a clause?",
+        answer: "A group of words with a subject and verb",
+        wrong1: "Only one single word",
+        wrong2: "Has no verb",
+        wrong3: "Always a question",
+        explanation: "Can be part of a sentence.",
+        example: "when the rain stopped"
+    },
+    // 11
+    {
+        question: "What is a proper noun?",
+        answer: "Specific name with capital letter",
+        wrong1: "Any everyday object",
+        wrong2: "A describing noun",
+        wrong3: "A plural noun",
+        explanation: "Names one unique person, place or thing.",
+        example: "Emma, Paris, Monday, Nike"
+    },
+    // 12
+    {
+        question: "What is a common noun?",
+        answer: "General everyday naming word",
+        wrong1: "Always capitalised",
+        wrong2: "Only place names",
+        wrong3: "Only people names",
+        explanation: "Names ordinary objects or things.",
+        example: "book, chair, dog, city"
+    },
+    // 13
+    {
+        question: "What is a collective noun?",
+        answer: "Name for a group of things",
+        wrong1: "Single person name",
+        wrong2: "A describing noun",
+        wrong3: "A time noun",
+        explanation: "One word for a collection.",
+        example: "flock of birds, herd of cows"
+    },
+    // 14
+    {
+        question: "What is an abstract noun?",
+        answer: "An idea, feeling or quality",
+        wrong1: "Something you can touch",
+        wrong2: "A group name",
+        wrong3: "A place name",
+        explanation: "No physical form.",
+        example: "love, honesty, anger, freedom"
+    },
+    // 15
+    {
+        question: "Plural of child?",
+        answer: "children",
+        wrong1: "childs",
+        wrong2: "childes",
+        wrong3: "childrens",
+        explanation: "Irregular plural noun.",
+        example: "One child, two children"
+    },
+    // 16
+    {
+        question: "Plural of man?",
+        answer: "men",
+        wrong1: "mans",
+        wrong2: "manses",
+        wrong3: "mens",
+        explanation: "Irregular vowel change plural.",
+        example: "One man, three men"
+    },
+    // 17
+    {
+        question: "Plural of woman?",
+        answer: "women",
+        wrong1: "womans",
+        wrong2: "womanses",
+        wrong3: "womens",
+        explanation: "Irregular plural form.",
+        example: "One woman, many women"
+    },
+    // 18
+    {
+        question: "Plural of tooth?",
+        answer: "teeth",
+        wrong1: "tooths",
+        wrong2: "toothes",
+        wrong3: "toothies",
+        explanation: "Vowel change irregular plural.",
+        example: "One tooth, twenty teeth"
+    },
+    // 19
+    {
+        question: "Plural of foot?",
+        answer: "feet",
+        wrong1: "foots",
+        wrong2: "footes",
+        wrong3: "footies",
+        explanation: "Irregular plural noun.",
+        example: "One foot, two feet"
+    },
+    // 20
+    {
+        question: "Plural of mouse?",
+        answer: "mice",
+        wrong1: "mouses",
+        wrong2: "mousees",
+        wrong3: "mousies",
+        explanation: "Irregular animal plural.",
+        example: "One mouse, five mice"
+    },
+    // 21
+    {
+        question: "What is a synonym?",
+        answer: "Word with the same meaning",
+        wrong1: "Word with opposite meaning",
+        wrong2: "Word that sounds the same",
+        wrong3: "Word spelled the same",
+        explanation: "Can replace another word.",
+        example: "happy = glad"
+    },
+    // 22
+    {
+        question: "What is an antonym?",
+        answer: "Word with opposite meaning",
+        wrong1: "Word with same meaning",
+        wrong2: "Word that sounds identical",
+        wrong3: "Word spelled identically",
+        explanation: "Reverse meaning.",
+        example: "hot = cold"
+    },
+    // 23
+    {
+        question: "What is a homophone?",
+        answer: "Same sound, different spelling",
+        wrong1: "Same spelling different sound",
+        wrong2: "Same meaning different word",
+        wrong3: "Opposite meaning",
+        explanation: "Sound alike but written differently.",
+        example: "see / sea"
+    },
+    // 24
+    {
+        question: "What is a homograph?",
+        answer: "Same spelling, different meaning",
+        wrong1: "Same sound different spelling",
+        wrong2: "Same meaning different word",
+        wrong3: "Opposite meaning",
+        explanation: "Spelled same, used differently.",
+        example: "bat (animal) / bat (stick)"
+    },
+    // 25
+    {
+        question: "What punctuation ends a statement?",
+        answer: "Full stop",
+        wrong1: "Question mark",
+        wrong2: "Exclamation mark",
+        wrong3: "Comma",
+        explanation: "Used at the end of a normal sentence.",
+        example: "I walk to school every day."
+    },
+    // 26
+    {
+        question: "What punctuation ends a question?",
+        answer: "Question mark",
+        wrong1: "Full stop",
+        wrong2: "Comma",
+        wrong3: "Apostrophe",
+        explanation: "Shows the sentence asks something.",
+        example: "Where are you going?"
+    },
+    // 27
+    {
+        question: "What punctuation shows strong feeling?",
+        answer: "Exclamation mark",
+        wrong1: "Full stop",
+        wrong2: "Comma",
+        wrong3: "Colon",
+        explanation: "Used for surprise, anger or excitement.",
+        example: "Watch out!"
+    },
+    // 28
+    {
+        question: "What does a comma do?",
+        answer: "Pauses and separates ideas",
+        wrong1: "Ends a sentence",
+        wrong2: "Shows ownership",
+        wrong3: "Joins two words",
+        explanation: "Breaks up long sentences and lists.",
+        example: "I bought apples, bananas and oranges."
+    },
+    // 29
+    {
+        question: "What is an apostrophe used for?",
+        answer: "Contraction or possession",
+        wrong1: "Listing items",
+        wrong2: "Ending questions",
+        wrong3: "Starting a sentence",
+        explanation: "Shortens words or shows something belongs.",
+        example: "don't, Tom's book"
+    },
+    // 30
+    {
+        question: "When do we use a capital letter?",
+        answer: "Start of sentence and proper nouns",
+        wrong1: "Only for verbs",
+        wrong2: "Only for small words",
+        wrong3: "Every fifth word",
+        explanation: "Sentences, names, places, days, months.",
+        example: "Monday, Bali, Harry"
+    },
+    // 31
+    {
+        question: "What is a contraction?",
+        answer: "Two words shortened with apostrophe",
+        wrong1: "A long formal word",
+        wrong2: "A plural noun",
+        wrong3: "A describing adjective",
+        explanation: "Combines two words into one.",
+        example: "do not → don't"
+    },
+    // 32
+    {
+        question: "What tense is used for actions now?",
+        answer: "Present tense",
+        wrong1: "Past tense",
+        wrong2: "Future tense",
+        wrong3: "Perfect tense",
+        explanation: "Happening right now or always true.",
+        example: "I eat breakfast daily"
+    },
+    // 33
+    {
+        question: "What tense is used for finished actions?",
+        answer: "Past tense",
+        wrong1: "Present tense",
+        wrong2: "Future tense",
+        wrong3: "Continuous tense",
+        explanation: "Already happened.",
+        example: "I walked home yesterday"
+    },
+    // 34
+    {
+        question: "What tense is used for actions to come?",
+        answer: "Future tense",
+        wrong1: "Past tense",
+        wrong2: "Present tense",
+        wrong3: "Simple tense",
+        explanation: "Will happen later.",
+        example: "I will travel tomorrow"
+    },
+    // 35
+    {
+        question: "What is present continuous tense?",
+        answer: "Action happening right now",
+        wrong1: "Finished action",
+        wrong2: "Action planned for next year",
+        wrong3: "Always true fact",
+        explanation: "Verb + ing.",
+        example: "She is reading a book"
+    },
+    // 36
+    {
+        question: "What is past continuous tense?",
+        answer: "Action in progress at a past time",
+        wrong1: "Single quick past action",
+        wrong2: "Future planned action",
+        wrong3: "Daily routine action",
+        explanation: "Was / were + verb-ing.",
+        example: "We were playing at 5pm"
+    },
+    // 37
+    {
+        question: "What is a statement sentence?",
+        answer: "Tells information",
+        wrong1: "Asks a question",
+        wrong2: "Gives an order",
+        wrong3: "Shows strong emotion",
+        explanation: "Regular factual sentence.",
+        example: "The sky is blue."
+    },
+    // 38
+    {
+        question: "What is a question sentence?",
+        answer: "Asks for information",
+        wrong1: "Gives a command",
+        wrong2: "States a fact",
+        wrong3: "Expresses feeling",
+        explanation: "Ends with question mark.",
+        example: "What time is it?"
+    },
+    // 39
+    {
+        question: "What is a command sentence?",
+        answer: "Gives an order or instruction",
+        wrong1: "Asks a question",
+        wrong2: "Tells a fact",
+        wrong3: "Shows excitement",
+        explanation: "Tells someone to do something.",
+        example: "Close the door."
+    },
+    // 40
+    {
+        question: "What is an exclamation sentence?",
+        answer: "Shows strong emotion",
+        wrong1: "Gives instruction",
+        wrong2: "Asks politely",
+        wrong3: "States a rule",
+        explanation: "Ends with exclamation mark.",
+        example: "What a beautiful day!"
+    },
+    // 41
+    {
+        question: "What is alliteration?",
+        answer: "Repeating same starting sound",
+        wrong1: "Repeating ending sound",
+        wrong2: "Comparing two things",
+        wrong3: "Giving human traits to objects",
+        explanation: "Same initial consonant sound.",
+        example: "Peter Piper picked a pepper"
+    },
+    // 42
+    {
+        question: "What is a simile?",
+        answer: "Compares using like or as",
+        wrong1: "Direct comparison without like or as",
+        wrong2: "Giving objects human qualities",
+        wrong3: "Repeating vowel sounds",
+        explanation: "Uses like or as to compare.",
+        example: "as brave as a lion"
+    },
+    // 43
+    {
+        question: "What is a metaphor?",
+        answer: "Direct comparison without like or as",
+        wrong1: "Comparison using like or as",
+        wrong2: "Human traits to non-human things",
+        wrong3: "Repeating first letter sound",
+        explanation: "Says one thing is another.",
+        example: "Time is a river"
+    },
+    // 44
+    {
+        question: "What is personification?",
+        answer: "Giving human traits to objects",
+        wrong1: "Comparing with like or as",
+        wrong2: "Direct comparison of two things",
+        wrong3: "Repeating starting sounds",
+        explanation: "Objects act or feel like humans.",
+        example: "The wind whispered softly"
+    },
+    // 45
+    {
+        question: "What is onomatopoeia?",
+        answer: "Words that sound like their meaning",
+        wrong1: "Repeating first letters",
+        wrong2: "Comparing two things",
+        wrong3: "Giving human traits",
+        explanation: "Sound matches the word.",
+        example: "bang, crash, buzz"
+    },
+    // 46
+    {
+        question: "What is a biography?",
+        answer: "Story of someone's life written by another",
+        wrong1: "Own life story",
+        wrong2: "Made-up fantasy story",
+        wrong3: "Poem about nature",
+        explanation: "Author writes about another person's life.",
+        example: "Book about Albert Einstein's life"
+    },
+    // 47
+    {
+        question: "What is an autobiography?",
+        answer: "Story of your own life",
+        wrong1: "Life story written by someone else",
+        wrong2: "Fictional short story",
+        wrong3: "Information report",
+        explanation: "Person writes about their own life.",
+        example: "My life story by Luke"
+    },
+    // 48
+    {
+        question: "Fiction text means?",
+        answer: "Made-up imaginary story",
+        wrong1: "Factual true information",
+        wrong2: "Only poems",
+        wrong3: "Only instruction guides",
+        explanation: "Not real, created by writer.",
+        example: "Fantasy novels, fairy tales"
+    },
+    // 49
+    {
+        question: "Non-fiction text means?",
+        answer: "Factual real information",
+        wrong1: "Imaginary made-up story",
+        wrong2: "Only poetry",
+        wrong3: "Only play scripts",
+        explanation: "Based on truth and facts.",
+        example: "textbooks, news articles"
+    },
+    // 50
+    {
+        question: "What is a diary entry?",
+        answer: "Personal daily private writing",
+        wrong1: "Formal news report",
+        wrong2: "Fictional adventure story",
+        wrong3: "Instruction manual",
+        explanation: "Written in first person, personal feelings.",
+        example: "Writing about your day at night"
+    },
+    // 51
+    {
+        question: "What is a formal letter?",
+        answer: "Official serious letter",
+        wrong1: "Casual note to a friend",
+        wrong2: "Poem in letter shape",
+        wrong3: "Short text message",
+        explanation: "To companies, teachers, officials.",
+        example: "Job application letter"
+    },
+    // 52
+    {
+        question: "What is an informal letter?",
+        answer: "Casual friendly letter",
+        wrong1: "Official business letter",
+        wrong2: "School report",
+        wrong3: "News article",
+        explanation: "To family or friends.",
+        example: "Letter to your cousin"
+    },
+    // 53
+    {
+        question: "First person writing uses?",
+        answer: "I, we, my",
+        wrong1: "you, your",
+        wrong2: "he, she, they",
+        wrong3: "it, its",
+        explanation: "Writer speaks about themselves.",
+        example: "I walked to the shop"
+    },
+    // 54
+    {
+        question: "Second person writing uses?",
+        answer: "you, your",
+        wrong1: "I, we",
+        wrong2: "he, she",
+        wrong3: "they, them",
+        explanation: "Speaking directly to the reader.",
+        example: "You must read carefully"
+    },
+    // 55
+    {
+        question: "Third person writing uses?",
+        answer: "he, she, it, they",
+        wrong1: "I, me",
+        wrong2: "you, yours",
+        wrong3: "we, us",
+        explanation: "Talking about other people.",
+        example: "She played football well"
+    },
+    // 56
+    {
+        question: "What is a prefix?",
+        answer: "Letters added to start of a word",
+        wrong1: "Letters added to end",
+        wrong2: "Middle letters changed",
+        wrong3: "Full word swapped",
+        explanation: "Changes word meaning.",
+        example: "unhappy, impossible"
+    },
+    // 57
+    {
+        question: "What is a suffix?",
+        answer: "Letters added to end of a word",
+        wrong1: "Letters added to start",
+        wrong2: "Reversing a word",
+        wrong3: "Making a plural only",
+        explanation: "Forms new words or changes tense.",
+        example: "running, careful"
+    },
+    // 58
+    {
+        question: "Prefix un- means?",
+        answer: "not",
+        wrong1: "again",
+        wrong2: "wrong",
+        wrong3: "before",
+        explanation: "Adds negative meaning.",
+        example: "unable = not able"
+    },
+    // 59
+    {
+        question: "Prefix re- means?",
+        answer: "again",
+        wrong1: "not",
+        wrong2: "wrong",
+        wrong3: "under",
+        explanation: "Do the action once more.",
+        example: "rewrite = write again"
+    },
+    // 60
+    {
+        question: "Prefix mis- means?",
+        answer: "wrongly",
+        wrong1: "not",
+        wrong2: "again",
+        wrong3: "between",
+        explanation: "Incorrect action.",
+        example: "misspell = spell wrongly"
+    },
+    // 61
+    {
+        question: "What is a paragraph?",
+        answer: "Group of sentences on one idea",
+        wrong1: "One single sentence only",
+        wrong2: "A list of random words",
+        wrong3: "Only dialogue lines",
+        explanation: "New paragraph = new idea.",
+        example: "Start new line for new topic"
+    },
+    // 62
+    {
+        question: "What is dialogue?",
+        answer: "Words spoken by characters",
+        wrong1: "Narrative description",
+        wrong2: "Formal report text",
+        wrong3: "Poem without rhyme",
+        explanation: "Speech inside speech marks.",
+        example: "I am tired, said Tom"
+    },
+    // 63
+    {
+        question: "Speech marks are used for?",
+        answer: "Direct speech",
+        wrong1: "Listing items",
+        wrong2: "Showing possession",
+        wrong3: "Ending sentences",
+        explanation: "Show exact spoken words.",
+        example: "Let's go home."
+    },
+    // 64
+    {
+        question: "What is a main verb?",
+        answer: "The key action word in a sentence",
+        wrong1: "A describing word",
+        wrong2: "A joining word",
+        wrong3: "A time word",
+        explanation: "Carries the main meaning of action.",
+        example: "She eats fruit daily"
+    },
+    // 65
+    {
+        question: "What is an auxiliary verb?",
+        answer: "Helping verb",
+        wrong1: "Main action verb",
+        wrong2: "Naming word",
+        wrong3: "Place word",
+        explanation: "Helps form tense or question.",
+        example: "have, has, do, will"
+    },
+    // 66
+    {
+        question: "What is a modal verb?",
+        answer: "Shows possibility or permission",
+        wrong1: "Only describes time",
+        wrong2: "Only names objects",
+        wrong3: "Only joins sentences",
+        explanation: "Can, could, may, must, should.",
+        example: "You must finish your work"
+    },
+    // 67
+    {
+        question: "Homophone of there?",
+        answer: "their",
+        wrong1: "theyre",
+        wrong2: "thare",
+        wrong3: "ther",
+        explanation: "Same sound, different spelling and meaning.",
+        example: "over there / their books"
+    },
+    // 68
+    {
+        question: "Homophone of wear?",
+        answer: "where",
+        wrong1: "waree",
+        wrong2: "wher",
+        wrong3: "weare",
+        explanation: "Sound identical, different spelling.",
+        example: "wear clothes / where are you"
+    },
+    // 69
+    {
+        question: "What is a collective noun for stars?",
+        answer: "constellation",
+        wrong1: "flock",
+        wrong2: "herd",
+        wrong3: "bunch",
+        explanation: "Group of stars named together.",
+        example: "a constellation of stars"
+    },
+    // 70
+    {
+        question: "Collective noun for flowers?",
+        answer: "bunch",
+        wrong1: "herd",
+        wrong2: "flock",
+        wrong3: "swarm",
+        explanation: "Group of picked flowers.",
+        example: "a bunch of roses"
+    },
+    // 71
+    {
+        question: "Which word is a synonym of brave?",
+        answer: "courageous",
+        wrong1: "scared",
+        wrong2: "lazy",
+        wrong3: "quiet",
+        explanation: "Same meaning as brave.",
+        example: "brave = courageous"
+    },
+    // 72
+    {
+        question: "Which word is antonym of loud?",
+        answer: "quiet",
+        wrong1: "noisy",
+        wrong2: "happy",
+        wrong3: "fast",
+        explanation: "Opposite meaning.",
+        example: "loud and quiet"
+    },
+    // 73
+    {
+        question: "What is imperative verb?",
+        answer: "Command form of verb",
+        wrong1: "Past tense verb",
+        wrong2: "Future tense verb",
+        wrong3: "Describing verb",
+        explanation: "Used for orders and instructions.",
+        example: "Stop, Go, Sit"
+    },
+    // 74
+    {
+        question: "What is a subordinate clause?",
+        answer: "Depends on main clause",
+        wrong1: "Makes full sense alone",
+        wrong2: "Only one word",
+        wrong3: "Always at start only",
+        explanation: "Cannot be a sentence alone.",
+        example: "while I waited"
+    },
+    // 75
+    {
+        question: "What is a compound sentence?",
+        answer: "Two simple sentences joined",
+        wrong1: "One idea only",
+        wrong2: "Three or more ideas linked",
+        wrong3: "No verbs at all",
+        explanation: "Joined by and, but, so.",
+        example: "I ran home but I was late"
+    },
+    // 76
+    {
+        question: "What is a complex sentence?",
+        answer: "Main clause plus subordinate clause",
+        wrong1: "Two equal simple sentences",
+        wrong2: "Only nouns listed",
+        wrong3: "No punctuation needed",
+        explanation: "One main idea plus extra detail.",
+        example: "When it rained, we stayed inside"
+    },
+    // 77
+    {
+        question: "What is rhyme?",
+        answer: "Words with same ending sound",
+        wrong1: "Same starting sound",
+        wrong2: "Same spelling only",
+        wrong3: "Opposite meaning",
+        explanation: "Common in poems.",
+        example: "cat / hat"
+    },
+    // 78
+    {
+        question: "What is stanza in poetry?",
+        answer: "A paragraph in a poem",
+        wrong1: "One single line only",
+        wrong2: "Rhyming word pair",
+        wrong3: "Title of poem",
+        explanation: "Group of lines in poetry.",
+        example: "Four lines making one stanza"
+    },
+    // 79
+    {
+        question: "What is plot in a story?",
+        answer: "The sequence of events",
+        wrong1: "The main place",
+        wrong2: "The main character",
+        wrong3: "The ending only",
+        explanation: "What happens in order.",
+        example: "Beginning, middle, end events"
+    },
+    // 80
+    {
+        question: "What is setting in a story?",
+        answer: "Time and place",
+        wrong1: "Main character",
+        wrong2: "Story events",
+        wrong3: "Moral lesson",
+        explanation: "Where and when the story happens.",
+        example: "Paris in winter 1920"
+    },
+    // 81
+    {
+        question: "What are characters in a story?",
+        answer: "People or creatures in the story",
+        wrong1: "The place and time",
+        wrong2: "The lesson learnt",
+        wrong3: "The rhyming words",
+        explanation: "The actors of the story.",
+        example: "hero, villain, friend"
+    },
+    // 82
+    {
+        question: "What is moral of a story?",
+        answer: "Lesson you learn",
+        wrong1: "Main event",
+        wrong2: "Story location",
+        wrong3: "Character name",
+        explanation: "Message the writer gives.",
+        example: "Always be honest"
+    },
+    // 83
+    {
+        question: "What is cause and effect?",
+        answer: "One event makes another happen",
+        wrong1: "Two random events",
+        wrong2: "Only describing feelings",
+        wrong3: "Listing places",
+        explanation: "Cause = why, Effect = result.",
+        example: "Rain fell, ground became wet"
+    },
+    // 84
+    {
+        question: "Irregular verb eat past tense?",
+        answer: "ate",
+        wrong1: "eated",
+        wrong2: "eat",
+        wrong3: "eating",
+        explanation: "Does not add ed.",
+        example: "Yesterday I ate rice"
+    },
+    // 85
+    {
+        question: "Irregular verb go past tense?",
+        answer: "went",
+        wrong1: "goed",
+        wrong2: "goned",
+        wrong3: "go",
+        explanation: "Irregular past form.",
+        example: "We went to the park"
+    },
+    // 86
+    {
+        question: "Irregular verb see past tense?",
+        answer: "saw",
+        wrong1: "seed",
+        wrong2: "seened",
+        wrong3: "see",
+        explanation: "Changes word completely.",
+        example: "I saw a bird"
+    },
+    // 87
+    {
+        question: "Irregular verb take past tense?",
+        answer: "took",
+        wrong1: "taked",
+        wrong2: "taken",
+        wrong3: "take",
+        explanation: "Irregular simple past.",
+        example: "She took my pen"
+    },
+    // 88
+    {
+        question: "What is a determiner?",
+        answer: "Word before a noun to show which one",
+        wrong1: "Action word",
+        wrong2: "Describing word",
+        wrong3: "Joining word",
+        explanation: "a, an, the, this, that.",
+        example: "the dog, an apple"
+    },
+    // 89
+    {
+        question: "Use 'an' before words starting with?",
+        answer: "vowel sound",
+        wrong1: "consonant letter only",
+        wrong2: "any letter",
+        wrong3: "sounds like b",
+        explanation: "a e i o u vowel sound.",
+        example: "an egg, an hour"
+    },
+    // 90
+    {
+        question: "Use 'a' before words starting with?",
+        answer: "consonant sound",
+        wrong1: "vowel sound",
+        wrong2: "only vowel letters",
+        wrong3: "only plural words",
+        explanation: "Non-vowel starting sound.",
+        example: "a cat, a book"
+    },
+    // 91
+    {
+        question: "What is comparative adjective?",
+        answer: "Compares two things",
+        wrong1: "Describes one thing only",
+        wrong2: "Shows highest degree",
+        wrong3: "Names a group",
+        explanation: "Usually ends with er.",
+        example: "taller, faster"
+    },
+    // 92
+    {
+        question: "What is superlative adjective?",
+        answer: "Highest degree of quality",
+        wrong1: "Compares two things",
+        wrong2: "Describes no comparison",
+        wrong3: "Only for place names",
+        explanation: "Usually ends with est.",
+        example: "tallest, fastest"
+    },
+    // 93
+    {
+        question: "Comparative of good?",
+        answer: "better",
+        wrong1: "gooder",
+        wrong2: "more good",
+        wrong3: "goodest",
+        explanation: "Irregular comparative.",
+        example: "good, better"
+    },
+    // 94
+    {
+        question: "Superlative of good?",
+        answer: "best",
+        wrong1: "goodest",
+        wrong2: "betterest",
+        wrong3: "most good",
+        explanation: "Irregular superlative.",
+        example: "good, better, best"
+    },
+    // 95
+    {
+        question: "Comparative of bad?",
+        answer: "worse",
+        wrong1: "badder",
+        wrong2: "more bad",
+        wrong3: "badest",
+        explanation: "Irregular comparison.",
+        example: "bad, worse"
+    },
+    // 96
+    {
+        question: "Superlative of bad?",
+        answer: "worst",
+        wrong1: "baddest",
+        wrong2: "worsest",
+        wrong3: "most bad",
+        explanation: "Irregular superlative form.",
+        example: "bad, worse, worst"
+    },
+    // 97
+    {
+        question: "What is a main idea?",
+        answer: "Most important point in text",
+        wrong1: "Small extra detail",
+        wrong2: "Last sentence only",
+        wrong3: "Random fact",
+        explanation: "Key message of the writing.",
+        example: "The main idea of a story"
+    },
+    // 98
+    {
+        question: "What is a supporting detail?",
+        answer: "Extra information about main idea",
+        wrong1: "Most important point",
+        wrong2: "Title of text",
+        wrong3: "Author's name",
+        explanation: "Adds facts to explain main idea.",
+        example: "Examples and descriptions"
+    },
+    // 99
+    {
+        question: "What is a summary?",
+        answer: "Short version of main points",
+        wrong1: "Full copy of text",
+        wrong2: "Only the ending",
+        wrong3: "Every single detail",
+        explanation: "Briefly tells what the text is about.",
+        example: "Short retelling of a story"
+    },
+    // 100
+    {
+        question: "What is a topic sentence?",
+        answer: "Sentence that tells paragraph idea",
+        wrong1: "Last sentence of paragraph",
+        wrong2: "Random question",
+        wrong3: "Only a detail",
+        explanation: "Usually first sentence of a paragraph.",
+        example: "Dogs are great pets for many reasons"
+    }
+];

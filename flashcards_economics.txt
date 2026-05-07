@@ -1,0 +1,998 @@
+const economicsFlashcards = [
+    // 1
+    {
+        question: "What is the study of how people use limited resources?",
+        answer: "Economics",
+        wrong1: "Biology",
+        wrong2: "Physics",
+        wrong3: "History",
+        explanation: "Economics focuses on scarcity and choice.",
+        example: "Choosing to buy food or save money"
+    },
+    // 2
+    {
+        question: "What means limited supply of resources?",
+        answer: "Scarcity",
+        wrong1: "Abundance",
+        wrong2: "Wealth",
+        wrong3: "Profit",
+        explanation: "All resources are scarce to some degree.",
+        example: "Limited time, money, or oil"
+    },
+    // 3
+    {
+        question: "The most desirable alternative given up is called?",
+        answer: "Opportunity cost",
+        wrong1: "Cash cost",
+        wrong2: "Fixed cost",
+        wrong3: "Total cost",
+        explanation: "The next best thing you give up.",
+        example: "Skipping a movie to study"
+    },
+    // 4
+    {
+        question: "What are the 4 factors of production?",
+        answer: "Land, labor, capital, entrepreneurship",
+        wrong1: "Water, fire, air, earth",
+        wrong2: "Gold, silver, copper, iron",
+        wrong3: "Food, shelter, clothes, money",
+        explanation: "All resources used to make goods and services.",
+        example: "Farm, worker, machine, business owner"
+    },
+    // 5
+    {
+        question: "Which factor is natural resources?",
+        answer: "Land",
+        wrong1: "Labor",
+        wrong2: "Capital",
+        wrong3: "Entrepreneurship",
+        explanation: "Resources from nature.",
+        example: "Oil, water, trees, farmland"
+    },
+    // 6
+    {
+        question: "Which factor is human work and effort?",
+        answer: "Labor",
+        wrong1: "Land",
+        wrong2: "Capital",
+        wrong3: "Profit",
+        explanation: "Physical and mental work.",
+        example: "Teacher, doctor, factory worker"
+    },
+    // 7
+    {
+        question: "Man-made tools used to produce goods?",
+        answer: "Capital",
+        wrong1: "Land",
+        wrong2: "Labor",
+        wrong3: "Service",
+        explanation: "Also called capital goods.",
+        example: "Machines, computers, trucks"
+    },
+    // 8
+    {
+        question: "Person who starts and runs a business?",
+        answer: "Entrepreneur",
+        wrong1: "Worker",
+        wrong2: "Consumer",
+        wrong3: "Banker",
+        explanation: "Takes risks to create products.",
+        example: "Owner of a new café"
+    },
+    // 9
+    {
+        question: "What is a tangible item you can buy?",
+        answer: "Good",
+        wrong1: "Service",
+        wrong2: "Tax",
+        wrong3: "Debt",
+        explanation: "Physical product.",
+        example: "Phone, shirt, food"
+    },
+    // 10
+    {
+        question: "Action done for you by others?",
+        answer: "Service",
+        wrong1: "Good",
+        wrong2: "Export",
+        wrong3: "Import",
+        explanation: "Non-tangible economic activity.",
+        example: "Haircut, teaching, cleaning"
+    },
+    // 11
+    {
+        question: "Person who buys and uses goods/services?",
+        answer: "Consumer",
+        wrong1: "Producer",
+        wrong2: "Seller",
+        wrong3: "Exporter",
+        explanation: "Uses products to satisfy needs.",
+        example: "Someone buying milk"
+    },
+    // 12
+    {
+        question: "Person or business that makes goods?",
+        answer: "Producer",
+        wrong1: "Consumer",
+        wrong2: "Customer",
+        wrong3: "Borrower",
+        explanation: "Supplies the market.",
+        example: "Bakery making bread"
+    },
+    // 13
+    {
+        question: "What is demand?",
+        answer: "Desire to buy + ability to pay",
+        wrong1: "Amount available to sell",
+        wrong2: "Government control",
+        wrong3: "Total production",
+        explanation: "How much people want to buy.",
+        example: "High demand for new phones"
+    },
+    // 14
+    {
+        question: "What is supply?",
+        answer: "Amount of goods available for sale",
+        wrong1: "Desire to buy",
+        wrong2: "Total spending",
+        wrong3: "Consumer wants",
+        explanation: "How much producers will sell.",
+        example: "Store has 50 toys"
+    },
+    // 15
+    {
+        question: "When demand equals supply, it is called?",
+        answer: "Equilibrium",
+        wrong1: "Shortage",
+        wrong2: "Surplus",
+        wrong3: "Recession",
+        explanation: "Market balance point.",
+        example: "No leftover goods, no shortages"
+    },
+    // 16
+    {
+        question: "When demand > supply, what occurs?",
+        answer: "Shortage",
+        wrong1: "Surplus",
+        wrong2: "Equilibrium",
+        wrong3: "Inflation",
+        explanation: "Not enough goods for buyers.",
+        example: "Toys sold out at Christmas"
+    },
+    // 17
+    {
+        question: "When supply > demand, what occurs?",
+        answer: "Surplus",
+        wrong1: "Shortage",
+        wrong2: "Inflation",
+        wrong3: "Deficit",
+        explanation: "Too many goods left unsold.",
+        example: "Store discounts leftover clothes"
+    },
+    // 18
+    {
+        question: "As price rises, quantity demand falls. What law?",
+        answer: "Law of Demand",
+        wrong1: "Law of Supply",
+        wrong2: "Law of Gravity",
+        wrong3: "Law of Profit",
+        explanation: "People buy less at higher prices.",
+        example: "Fewer chocolates at high price"
+    },
+    // 19
+    {
+        question: "As price rises, quantity supply rises. What law?",
+        answer: "Law of Supply",
+        wrong1: "Law of Demand",
+        wrong2: "Law of Scarcity",
+        wrong3: "Law of Trade",
+        explanation: "Sellers make more at higher prices.",
+        example: "Farmers grow more if prices rise"
+    },
+    // 20
+    {
+        question: "What is a price where no surplus/shortage?",
+        answer: "Market price",
+        wrong1: "High price",
+        wrong2: "Low price",
+        wrong3: "Fixed price",
+        explanation: "Balanced price from supply and demand.",
+        example: "Normal price of a drink"
+    },
+    // 21
+    {
+        question: "What measures responsiveness to price change?",
+        answer: "Elasticity",
+        wrong1: "Scarcity",
+        wrong2: "Profit",
+        wrong3: "Debt",
+        explanation: "How much demand changes with price.",
+        example: "Luxury goods are elastic"
+    },
+    // 22
+    {
+        question: "Demand that does NOT change with price?",
+        answer: "Inelastic",
+        wrong1: "Elastic",
+        wrong2: "Flexible",
+        wrong3: "Variable",
+        explanation: "Necessary goods.",
+        example: "Life-saving medicine"
+    },
+    // 23
+    {
+        question: "Money earned by a business after costs?",
+        answer: "Profit",
+        wrong1: "Loss",
+        wrong2: "Revenue",
+        wrong3: "Debt",
+        explanation: "Revenue minus total costs.",
+        example: "Sell for $100, cost $60 → profit $40"
+    },
+    // 24
+    {
+        question: "Total money from sales?",
+        answer: "Revenue",
+        wrong1: "Profit",
+        wrong2: "Loss",
+        wrong3: "Capital",
+        explanation: "Price × quantity sold.",
+        example: "10 items × $10 = $100 revenue"
+    },
+    // 25
+    {
+        question: "Costs that do not change?",
+        answer: "Fixed cost",
+        wrong1: "Variable cost",
+        wrong2: "Total cost",
+        wrong3: "Marginal cost",
+        explanation: "Same every month.",
+        example: "Rent, insurance"
+    },
+    // 26
+    {
+        question: "Costs that change with production?",
+        answer: "Variable cost",
+        wrong1: "Fixed cost",
+        wrong2: "Sunk cost",
+        wrong3: "Hidden cost",
+        explanation: "More production = higher cost.",
+        example: "Materials, electricity"
+    },
+    // 27
+    {
+        question: "Fixed + variable costs = ?",
+        answer: "Total cost",
+        wrong1: "Profit",
+        wrong2: "Revenue",
+        wrong3: "Marginal cost",
+        explanation: "All expenses combined.",
+        example: "Rent + materials = total cost"
+    },
+    // 28
+    {
+        question: "Cost of producing one extra unit?",
+        answer: "Marginal cost",
+        wrong1: "Total cost",
+        wrong2: "Fixed cost",
+        wrong3: "Average cost",
+        explanation: "Cost of the next item.",
+        example: "Making one more cake"
+    },
+    // 29
+    {
+        question: "What is a market?",
+        answer: "Where buyers and sellers exchange goods",
+        wrong1: "Government office",
+        wrong2: "Factory only",
+        wrong3: "Bank only",
+        explanation: "Can be physical or online.",
+        example: "Supermarket, Amazon"
+    },
+    // 30
+    {
+        question: "Economic system controlled by the government?",
+        answer: "Command economy",
+        wrong1: "Market economy",
+        wrong2: "Mixed economy",
+        wrong3: "Traditional economy",
+        explanation: "Government decides production.",
+        example: "North Korea"
+    },
+    // 31
+    {
+        question: "System run by supply and demand?",
+        answer: "Market economy",
+        wrong1: "Command economy",
+        wrong2: "Traditional economy",
+        wrong3: "Controlled economy",
+        explanation: "Free market, no government control.",
+        example: "USA (mostly)"
+    },
+    // 32
+    {
+        question: "System based on customs and beliefs?",
+        answer: "Traditional economy",
+        wrong1: "Market economy",
+        wrong2: "Command economy",
+        wrong3: "Capitalist economy",
+        explanation: "Hunting, farming, family roles.",
+        example: "Tribal communities"
+    },
+    // 33
+    {
+        question: "System with private and government control?",
+        answer: "Mixed economy",
+        wrong1: "Command economy",
+        wrong2: "Pure market",
+        wrong3: "Traditional",
+        explanation: "Most countries use this.",
+        example: "UK, Canada, Australia"
+    },
+    // 34
+    question: "Private ownership, competition, profit motive?",
+    answer: "Capitalism",
+    wrong1: "Socialism",
+    wrong2: "Communism",
+    wrong3: "Feudalism",
+    explanation: "Free enterprise system.",
+    example: "USA, private businesses"
+    },
+    // 35
+    {
+        question: "Goal: equal wealth, government ownership?",
+        answer: "Socialism",
+        wrong1: "Capitalism",
+        wrong2: "Feudalism",
+        wrong3: "Monopoly",
+        explanation: "Shared resources and wealth.",
+        example: "Some European countries"
+    },
+    // 36
+    {
+        question: "One seller controls a whole market?",
+        answer: "Monopoly",
+        wrong1: "Competition",
+        wrong2: "Oligopoly",
+        wrong3: "Perfect competition",
+        explanation: "No other sellers.",
+        example: "Local water company"
+    },
+    // 37
+    {
+        question: "A few large businesses control the market?",
+        answer: "Oligopoly",
+        wrong1: "Monopoly",
+        wrong2: "Competition",
+        wrong3: "Monopolistic",
+        explanation: "Similar products, few sellers.",
+        example: "Airlines, soft drinks"
+    },
+    // 38
+    {
+        question: "Many businesses, similar but different products?",
+        answer: "Monopolistic competition",
+        wrong1: "Perfect competition",
+        wrong2: "Monopoly",
+        wrong3: "Oligopoly",
+        explanation: "Branding matters.",
+        example: "Restaurants, clothing stores"
+    },
+    // 39
+    {
+        question: "Many sellers, identical products, no control?",
+        answer: "Perfect competition",
+        wrong1: "Monopoly",
+        wrong2: "Oligopoly",
+        wrong3: "Mixed market",
+        explanation: "No price control.",
+        example: "Agricultural goods"
+    },
+    // 40
+    {
+        question: "What is GDP?",
+        answer: "Total value of all goods in a country",
+        wrong1: "Total debt",
+        wrong2: "Total taxes",
+        wrong3: "Total exports",
+        explanation: "Gross Domestic Product.",
+        example: "Measures a country’s economy size"
+    },
+    // 41
+    {
+        question: "General rise in prices over time?",
+        answer: "Inflation",
+        wrong1: "Deflation",
+        wrong2: "Recession",
+        wrong3: "Depression",
+        explanation: "Money loses value.",
+        example: "$1 candy becomes $1.20"
+    },
+    // 42
+    {
+        question: "General fall in prices over time?",
+        answer: "Deflation",
+        wrong1: "Inflation",
+        wrong2: "Stagnation",
+        wrong3: "Expansion",
+        explanation: "Rare and often dangerous.",
+        example: "Prices drop, economy slows"
+    },
+    // 43
+    {
+        question: "Slow economic growth, high unemployment?",
+        answer: "Recession",
+        wrong1: "Boom",
+        wrong2: "Peak",
+        wrong3: "Growth",
+        explanation: "Economic decline for 6+ months.",
+        example: "Businesses close, jobs lost"
+    },
+    // 44
+    {
+        question: "Very long, deep recession?",
+        answer: "Depression",
+        wrong1: "Boom",
+        wrong2: "Recovery",
+        wrong3: "Peak",
+        explanation: "Severe unemployment and poverty.",
+        example: "Great Depression 1930s"
+    },
+    // 45
+    {
+        question: "People able and willing to work but no job?",
+        answer: "Unemployment",
+        wrong1: "Employment",
+        wrong2: "Retirement",
+        wrong3: "Underemployment",
+        explanation: "Measured as a percentage.",
+        example: "100 people want work, 5 can’t find it"
+    },
+    // 46
+    {
+        question: "Government income from citizens?",
+        answer: "Tax",
+        wrong1: "Loan",
+        wrong2: "Grant",
+        wrong3: "Profit",
+        explanation: "Pays for public services.",
+        example: "Income tax, sales tax"
+    },
+    // 47
+    {
+        question: "Tax on earnings from work?",
+        answer: "Income tax",
+        wrong1: "Sales tax",
+        wrong2: "Property tax",
+        wrong3: "Tariff",
+        explanation: "Paid to government yearly.",
+        example: "Tax on your salary"
+    },
+    // 48
+    {
+        question: "Tax on goods you buy?",
+        answer: "Sales tax",
+        wrong1: "Income tax",
+        wrong2: "Corporate tax",
+        wrong3: "Tariff",
+        explanation: "Added at checkout.",
+        example: "$10 shirt + $1 tax"
+    },
+    // 49
+    question: "Government spending > government income?",
+    answer: "Budget deficit",
+    wrong1: "Budget surplus",
+    wrong2: "Balanced budget",
+    wrong3: "National debt",
+    explanation: "Spending more than earned.",
+    example: "Spend $100, tax $80 = deficit"
+    },
+    // 50
+    {
+        question: "Government income > spending?",
+        answer: "Budget surplus",
+        wrong1: "Deficit",
+        wrong2: "Debt",
+        wrong3: "Loss",
+        explanation: "Extra money left.",
+        example: "Tax $100, spend $80 = surplus"
+    },
+    // 51
+    {
+        question: "Total money a country owes?",
+        answer: "National debt",
+        wrong1: "Deficit",
+        wrong2: "Surplus",
+        wrong3: "GDP",
+        explanation: "Accumulated deficits.",
+        example: "Country owes other nations"
+    },
+    // 52
+    {
+        question: "Government uses taxes and spending to stabilize economy?",
+        answer: "Fiscal policy",
+        wrong1: "Monetary policy",
+        wrong2: "Trade policy",
+        wrong3: "Foreign policy",
+        explanation: "Controlled by government.",
+        example: "Lower taxes to boost economy"
+    },
+    // 53
+    {
+        question: "Controlling money supply and interest rates?",
+        answer: "Monetary policy",
+        wrong1: "Fiscal policy",
+        wrong2: "Tax policy",
+        wrong3: "Trade policy",
+        explanation: "Controlled by central bank.",
+        example: "Raise or lower interest rates"
+    },
+    // 54
+    {
+        question: "What is a central bank?",
+        answer: "Bank for banks and government",
+        wrong1: "Regular bank for people",
+        wrong2: "Online bank",
+        wrong3: "Credit union",
+        explanation: "Controls national money.",
+        example: "Federal Reserve (USA), RBA (Australia)"
+    },
+    // 55
+    {
+        question: "Buying goods from other countries?",
+        answer: "Import",
+        wrong1: "Export",
+        wrong2: "Trade",
+        wrong3: "Tariff",
+        explanation: "Goods coming IN.",
+        example: "USA buying oil from Saudi"
+    },
+    // 56
+    {
+        question: "Selling goods to other countries?",
+        answer: "Export",
+        wrong1: "Import",
+        wrong2: "Tariff",
+        wrong3: "Quota",
+        explanation: "Goods going OUT.",
+        example: "Japan selling cars overseas"
+    },
+    // 57
+    {
+        question: "Tax on imported goods?",
+        answer: "Tariff",
+        wrong1: "Quota",
+        wrong2: "Embargo",
+        wrong3: "Subsidy",
+        explanation: "Makes imports more expensive.",
+        example: "Tax on foreign cars"
+    },
+    // 58
+    {
+        question: "Limit on number of imports allowed?",
+        answer: "Quota",
+        wrong1: "Tariff",
+        wrong2: "Embargo",
+        wrong3: "Tax",
+        explanation: "Quantity limit.",
+        example: "Only 1000 foreign TVs allowed"
+    },
+    // 59
+    {
+        question: "Ban on trade with a country?",
+        answer: "Embargo",
+        wrong1: "Tariff",
+        wrong2: "Quota",
+        wrong3: "Subsidy",
+        explanation: "No trade at all.",
+        example: "Political ban on trade"
+    },
+    // 60
+    {
+        question: "Government payment to help a business?",
+        answer: "Subsidy",
+        wrong1: "Tax",
+        wrong2: "Tariff",
+        wrong3: "Fine",
+        explanation: "Helps producers stay competitive.",
+        example: "Help for farmers"
+    },
+    // 61
+    {
+        question: "Value of one currency for another?",
+        answer: "Exchange rate",
+        wrong1: "Interest rate",
+        wrong2: "Tax rate",
+        wrong3: "Profit rate",
+        explanation: "How much your money is worth abroad.",
+        example: "1 USD = 0.90 EUR"
+    },
+    // 62
+    {
+        question: "Free exchange of goods between countries?",
+        answer: "Free trade",
+        wrong1: "Protectionism",
+        wrong2: "Embargo",
+        wrong3: "Quota",
+        explanation: "No tariffs or limits.",
+        example: "Trading blocs like EU"
+    },
+    // 63
+    {
+        question: "Protecting local businesses from foreign competition?",
+        answer: "Protectionism",
+        wrong1: "Free trade",
+        wrong2: "Globalization",
+        wrong3: "Liberalism",
+        explanation: "Uses tariffs and quotas.",
+        example: "Taxing imports to help local factories"
+    },
+    // 64
+    {
+        question: "Growth of interconnected world economy?",
+        answer: "Globalization",
+        wrong1: "Isolation",
+        wrong2: "Localization",
+        wrong3: "Protectionism",
+        explanation: "Worldwide trade and culture.",
+        example: "International brands everywhere"
+    },
+    // 65
+    {
+        question: "Things you must have to survive?",
+        answer: "Needs",
+        wrong1: "Wants",
+        wrong2: "Luxuries",
+        wrong3: "Gifts",
+        explanation: "Basic survival items.",
+        example: "Food, water, shelter"
+    },
+    // 66
+    {
+        question: "Things you would like but don’t need?",
+        answer: "Wants",
+        wrong1: "Needs",
+        wrong2: "Necessities",
+        wrong3: "Requirements",
+        explanation: "Not essential for life.",
+        example: "New phone, games, jewelry"
+    },
+    // 67
+    {
+        question: "What is specialization?",
+        answer: "Focus on one skill or product",
+        wrong1: "Make many different products",
+        wrong2: "No skills used",
+        wrong3: "Random production",
+        explanation: "Better quality and efficiency.",
+        example: "Baker only makes bread"
+    },
+    // 68
+    {
+        question: "Division of labor means?",
+        answer: "Work split into small tasks",
+        wrong1: "One person does all work",
+        wrong2: "No workers needed",
+        wrong3: "Machines replace all jobs",
+        explanation: "Faster production.",
+        example: "Factory assembly line"
+    },
+    // 69
+    question: "Productivity means?",
+    answer: "Output per worker",
+    wrong1: "Total workers",
+    wrong2: "Total costs",
+    wrong3: "Total time",
+    explanation: "How much is produced efficiently.",
+    example: "Making 100 items per hour"
+    },
+    // 70
+    {
+        question: "Wealth from money and assets?",
+        answer: "Capital",
+        wrong1: "Debt",
+        wrong2: "Loss",
+        wrong3: "Tax",
+        explanation: "Used to create more wealth.",
+        example: "Savings, property, machines"
+    },
+    // 71
+    {
+        question: "Borrowed money you must repay?",
+        answer: "Debt",
+        wrong1: "Asset",
+        wrong2: "Wealth",
+        wrong3: "Profit",
+        explanation: "Money owed.",
+        example: "Loan, credit card bill"
+    },
+    // 72
+    {
+        question: "Things you own that have value?",
+        answer: "Assets",
+        wrong1: "Liabilities",
+        wrong2: "Debts",
+        wrong3: "Expenses",
+        explanation: "Positive value.",
+        example: "House, car, savings"
+    },
+    // 73
+    {
+        question: "Legal business owned by one person?",
+        answer: "Sole proprietorship",
+        wrong1: "Partnership",
+        wrong2: "Corporation",
+        wrong3: "Franchise",
+        explanation: "One owner, full control.",
+        example: "Small local shop"
+    },
+    // 74
+    {
+        question: "Business owned by two or more people?",
+        answer: "Partnership",
+        wrong1: "Sole prop",
+        wrong2: "Corporation",
+        wrong3: "Non-profit",
+        explanation: "Shared profits and risks.",
+        example: "Two friends opening a café"
+    },
+    // 75
+    {
+        question: "Legal entity separate from owners?",
+        answer: "Corporation",
+        wrong1: "Sole prop",
+        wrong2: "Partnership",
+        wrong3: "Franchise",
+        explanation: "Owners have limited liability.",
+        example: "Apple, McDonald’s"
+    },
+    // 76
+    {
+        question: "Business that sells rights to use its brand?",
+        answer: "Franchise",
+        wrong1: "Corporation",
+        wrong2: "Partnership",
+        wrong3: "Charity",
+        explanation: "Famous brand + local owner.",
+        example: "KFC, Subway"
+    },
+    // 77
+    {
+        question: "Business goal is to help people, not profit?",
+        answer: "Non-profit",
+        wrong1: "For-profit",
+        wrong2: "Corporation",
+        wrong3: "Partnership",
+        explanation: "Charities and foundations.",
+        example: "Red Cross"
+    },
+    // 78
+    {
+        question: "Money paid for using someone else’s money?",
+        answer: "Interest",
+        wrong1: "Principal",
+        wrong2: "Tax",
+        wrong3: "Fee",
+        explanation: "Cost of borrowing.",
+        example: "Loan interest"
+    },
+    // 79
+    {
+        question: "Original amount of money borrowed or saved?",
+        answer: "Principal",
+        wrong1: "Interest",
+        wrong2: "Profit",
+        wrong3: "Revenue",
+        explanation: "Base amount before interest.",
+        example: "$1000 loan principal"
+    },
+    // 80
+    {
+        question: "Saving money regularly for future?",
+        answer: "Investing / Saving",
+        wrong1: "Spending",
+        wrong2: "Borrowing",
+        wrong3: "Wasting",
+        explanation: "Secures financial future.",
+        example: "Putting money in a bank"
+    },
+    // 81
+    {
+        question: "Using money to buy something now?",
+        answer: "Consumption",
+        wrong1: "Saving",
+        wrong2: "Investing",
+        wrong3: "Producing",
+        explanation: "Using goods and services.",
+        example: "Buying food to eat"
+    },
+    // 82
+    {
+        question: "Ability to read and understand money?",
+        answer: "Financial literacy",
+        wrong1: "Math skill",
+        wrong2: "Reading skill",
+        wrong3: "Business skill",
+        explanation: "Knowing how to manage money.",
+        example: "Budgeting, saving, avoiding debt"
+    },
+    // 83
+    {
+        question: "Plan for income and spending?",
+        answer: "Budget",
+        wrong1: "Loan",
+        wrong2: "Credit",
+        wrong3: "Debt",
+        explanation: "Controls personal finance.",
+        example: "Monthly budget for food and bills"
+    },
+    // 84
+    question: "Risk of losing money on an investment?",
+    answer: "Risk",
+    wrong1: "Profit",
+    wrong2: "Gain",
+    wrong3: "Safety",
+    explanation: "Higher profit = higher risk.",
+    example: "Buying stocks is risky"
+    },
+    // 85
+    {
+        question: "Partial ownership in a company?",
+        answer: "Stock / Share",
+        wrong1: "Bond",
+        wrong2: "Loan",
+        wrong3: "Debt",
+        explanation: "Own a small part of the business.",
+        example: "Apple stock"
+    },
+    // 86
+    {
+        question: "Loan to a government or company?",
+        answer: "Bond",
+        wrong1: "Stock",
+        wrong2: "Share",
+        wrong3: "Equity",
+        explanation: "Safer than stocks.",
+        example: "Government bond"
+    },
+    // 87
+    {
+        question: "Market where stocks are bought and sold?",
+        answer: "Stock market",
+        wrong1: "Supermarket",
+        wrong2: "Farmer market",
+        wrong3: "Currency market",
+        explanation: "Public trading platform.",
+        example: "New York Stock Exchange"
+    },
+    // 88
+    {
+        question: "Minimum wage is?",
+        answer: "Lowest legal pay per hour",
+        wrong1: "Highest salary",
+        wrong2: "Average wage",
+        wrong3: "Voluntary pay",
+        explanation: "Government law.",
+        example: "$15 per hour minimum"
+    },
+    // 89
+    {
+        question: "Labor union purpose?",
+        answer: "Protect workers’ rights",
+        wrong1: "Help employers only",
+        wrong2: "Close factories",
+        wrong3: "Raise prices",
+        explanation: "Negotiates pay and conditions.",
+        example: "Teachers’ union"
+    },
+    // 90
+    {
+        question: "When workers stop working to protest?",
+        answer: "Strike",
+        wrong1: "Lockout",
+        wrong2: "Negotiation",
+        wrong3: "Contract",
+        explanation: "For better pay or conditions.",
+        example: "Factory workers on strike"
+    },
+    // 91
+    {
+        question: "External cost affecting others?",
+        answer: "Negative externality",
+        wrong1: "Positive externality",
+        wrong2: "Profit",
+        wrong3: "Benefit",
+        explanation: "Harm to third parties.",
+        example: "Factory pollution"
+    },
+    // 92
+    {
+        question: "External benefit helping others?",
+        answer: "Positive externality",
+        wrong1: "Negative externality",
+        wrong2: "Cost",
+        wrong3: "Loss",
+        explanation: "Help to third parties.",
+        example: "Vaccinations helping community"
+    },
+    // 93
+    {
+        question: "Goods for public use, paid by taxes?",
+        answer: "Public goods",
+        wrong1: "Private goods",
+        wrong2: "Luxury goods",
+        wrong3: "Consumer goods",
+        explanation: "Everyone can use.",
+        example: "Roads, parks, police"
+    },
+    // 94
+    {
+        question: "Goods owned and used by one person?",
+        answer: "Private goods",
+        wrong1: "Public goods",
+        wrong2: "Free goods",
+        wrong3: "Common goods",
+        explanation: "You pay to own.",
+        example: "Phone, clothes, car"
+    },
+    // 95
+    {
+        question: "Economic rule: more choices = better?",
+        answer: "Consumer sovereignty",
+        wrong1: "Government control",
+        wrong2: "Producer power",
+        wrong3: "Price control",
+        explanation: "Consumers decide what is made.",
+        example: "Popular products get made more"
+    },
+    // 96
+    {
+        question: "Standard of living means?",
+        answer: "Quality of life in a country",
+        wrong1: "Total money",
+        wrong2: "Number of people",
+        wrong3: "Number of factories",
+        explanation: "Health, education, wealth.",
+        example: "Access to food and healthcare"
+    },
+    // 97
+    {
+        question: "Difference between rich and poor?",
+        answer: "Income inequality",
+        wrong1: "Equality",
+        wrong2: "Balance",
+        wrong3: "Fairness",
+        explanation: "Wealth gap.",
+        example: "Top 1% owns lots of wealth"
+    },
+    // 98
+    {
+        question: "Helping poor countries develop economically?",
+        answer: "Economic aid",
+        wrong1: "Tariff",
+        wrong2: "Embargo",
+        wrong3: "Quota",
+        explanation: "Money or resources given.",
+        example: "Donations for schools or farms"
+    },
+    // 99
+    {
+        question: "Sustainable economy means?",
+        answer: "Meets present needs without harming future",
+        wrong1: "Use all resources now",
+        wrong2: "No production",
+        wrong3: "Maximum pollution",
+        explanation: "Eco-friendly and long-term.",
+        example: "Renewable energy"
+    },
+    // 100
+    {
+        question: "The study of the whole economy?",
+        answer: "Macroeconomics",
+        wrong1: "Microeconomics",
+        wrong2: "Personal finance",
+        wrong3: "Business management",
+        explanation: "GDP, inflation, unemployment.",
+        example: "Countrywide economic trends"
+    }
+];

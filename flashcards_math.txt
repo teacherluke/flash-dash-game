@@ -1,0 +1,1002 @@
+const mathsFlashcards = [
+    // 1
+    {
+        question: "What is the derivative of x²?",
+        answer: "2x",
+        wrong1: "x",
+        wrong2: "3x",
+        wrong3: "x³",
+        explanation: "Derivative of xⁿ = n·x^(n−1). For x²: 2x¹ = 2x",
+        example: "f(x)=x² → f'(x)=2x"
+    },
+    // 2
+    {
+        question: "What is π to 3 decimal places?",
+        answer: "3.142",
+        wrong1: "3.132",
+        wrong2: "3.152",
+        wrong3: "3.145",
+        explanation: "Pi = circumference ÷ diameter, rounded to 3dp",
+        example: "2 × π × 5 ≈ 31.42"
+    },
+    // 3
+    {
+        question: "Solve 2x + 5 = 15",
+        answer: "x = 5",
+        wrong1: "x = 4",
+        wrong2: "x = 6",
+        wrong3: "x = 10",
+        explanation: "Subtract 5, then divide by 2",
+        example: "2(5)+5=15"
+    },
+    // 4
+    {
+        question: "Area of a circle formula?",
+        answer: "πr²",
+        wrong1: "2πr",
+        wrong2: "πr",
+        wrong3: "2πr²",
+        explanation: "Area = pi × radius squared",
+        example: "r=4 → 16π"
+    },
+    // 5
+    {
+        question: "Pythagoras’ theorem formula?",
+        answer: "a² + b² = c²",
+        wrong1: "a² − b² = c²",
+        wrong2: "a² + c² = b²",
+        wrong3: "a + b = c",
+        explanation: "Right triangle: hypotenuse squared = sum of other two squares",
+        example: "3²+4²=5²"
+    },
+    // 6
+    {
+        question: "Limit as x→0 of sin(x)/x?",
+        answer: "1",
+        wrong1: "0",
+        wrong2: "∞",
+        wrong3: "-1",
+        explanation: "Standard calculus limit equals 1",
+        example: "sin(0.1)/0.1 ≈ 0.998"
+    },
+    // 7
+    {
+        question: "Compound interest formula?",
+        answer: "A = P(1 + r/n)^(nt)",
+        wrong1: "A = P(1+rt)",
+        wrong2: "A = P(1−r/n)^(nt)",
+        wrong3: "A = P + Prt",
+        explanation: "P=principal, r=rate, n=compounds/year, t=years",
+        example: "$1000 5% 2yr → 1102.50"
+    },
+    // 8
+    {
+        question: "log₂8 = ?",
+        answer: "3",
+        wrong1: "2",
+        wrong2: "4",
+        wrong3: "6",
+        explanation: "2³=8 so log base 2 of 8 = 3",
+        example: "log₁₀100=2"
+    },
+    // 9
+    {
+        question: "Discriminant of ax²+bx+c=0?",
+        answer: "b² − 4ac",
+        wrong1: "b² + 4ac",
+        wrong2: "a² − 4bc",
+        wrong3: "b² − 2ac",
+        explanation: "Determines number/type of quadratic roots",
+        example: "x²−5x+6 → D=1"
+    },
+    // 10
+    {
+        question: "Sum of interior angles in a triangle?",
+        answer: "180°",
+        wrong1: "90°",
+        wrong2: "270°",
+        wrong3: "360°",
+        explanation: "All triangles have total interior angle sum 180°",
+        example: "60+60+60=180"
+    },
+    // 11
+    {
+        question: "Derivative of eˣ?",
+        answer: "eˣ",
+        wrong1: "xeˣ",
+        wrong2: "e",
+        wrong3: "ln(x)",
+        explanation: "eˣ is its own derivative",
+        example: "d/dx [e²ˣ] = 2e²ˣ"
+    },
+    // 12
+    {
+        question: "Integral of 1/x dx?",
+        answer: "ln|x| + C",
+        wrong1: "1/x² + C",
+        wrong2: "x + C",
+        wrong3: "log₁₀(x)",
+        explanation: "Antiderivative of reciprocal is natural log",
+        example: "∫₁^e 1/x dx = 1"
+    },
+    // 13
+    {
+        question: "nth term arithmetic sequence formula?",
+        answer: "aₙ = a₁ + (n−1)d",
+        wrong1: "aₙ = a₁ + nd",
+        wrong2: "aₙ = a₁ × d^(n−1)",
+        wrong3: "aₙ = (a₁+d)n",
+        explanation: "a₁=first term, d=common difference",
+        example: "3,7,11 → 5th term=19"
+    },
+    // 14
+    {
+        question: "Probability of rolling a 6 on a fair die?",
+        answer: "1/6",
+        wrong1: "1/5",
+        wrong2: "1/4",
+        wrong3: "1/8",
+        explanation: "1 favourable out of 6 total outcomes",
+        example: "Even number = 3/6 = 1/2"
+    },
+    // 15
+    {
+        question: "Mean of 2,4,6,8,10?",
+        answer: "6",
+        wrong1: "5",
+        wrong2: "7",
+        wrong3: "8",
+        explanation: "Sum ÷ number of values",
+        example: "30 ÷ 5 = 6"
+    },
+    // 16
+    {
+        question: "Gradient of y = 3x + 5?",
+        answer: "3",
+        wrong1: "5",
+        wrong2: "-3",
+        wrong3: "3/5",
+        explanation: "y=mx+c → m=gradient",
+        example: "y=−2x+7 gradient = −2"
+    },
+    // 17
+    {
+        question: "Solve x² − 9 = 0",
+        answer: "x = 3 or x = −3",
+        wrong1: "x=3 only",
+        wrong2: "x=9",
+        wrong3: "x=±9",
+        explanation: "Difference of squares: (x−3)(x+3)",
+        example: "x²−16=0 → ±4"
+    },
+    // 18
+    {
+        question: "Volume of a sphere formula?",
+        answer: "(4/3)πr³",
+        wrong1: "(2/3)πr³",
+        wrong2: "πr³",
+        wrong3: "4πr²",
+        explanation: "Standard 3D volume for sphere",
+        example: "r=3 → 36π"
+    },
+    // 19
+    {
+        question: "sin(90°) exact value?",
+        answer: "1",
+        wrong1: "0",
+        wrong2: "0.5",
+        wrong3: "√3/2",
+        explanation: "Unit circle maximum at 90°",
+        example: "sin0°=0, sin180°=0"
+    },
+    // 20
+    {
+        question: "cos(0°) exact value?",
+        answer: "1",
+        wrong1: "0",
+        wrong2: "−1",
+        wrong3: "0.5",
+        explanation: "Start of unit circle on positive x-axis",
+        example: "cos180°=−1"
+    },
+    // 21
+    {
+        question: "tan(45°) exact value?",
+        answer: "1",
+        wrong1: "0",
+        wrong2: "√3",
+        wrong3: "undefined",
+        explanation: "sin45 ÷ cos45 = 1",
+        example: "tan30=1/√3"
+    },
+    // 22
+    {
+        question: "Sum of first n natural numbers formula?",
+        answer: "n(n+1)/2",
+        wrong1: "n(n−1)/2",
+        wrong2: "n²/2",
+        wrong3: "(n+1)/2",
+        explanation: "Arithmetic series sum shortcut",
+        example: "1 to 10 = 55"
+    },
+    // 23
+    {
+        question: "Mode of 2,3,3,4,5,5,5?",
+        answer: "5",
+        wrong1: "3",
+        wrong2: "4",
+        wrong3: "2",
+        explanation: "Mode = most frequent value",
+        example: "1,2,2,3 → mode=2"
+    },
+    // 24
+    {
+        question: "Median of 1,3,5,7,9?",
+        answer: "5",
+        wrong1: "3",
+        wrong2: "7",
+        wrong3: "6",
+        explanation: "Middle value when ordered",
+        example: "2,4,6,8 median = 5"
+    },
+    // 25
+    {
+        question: "Range of 2,5,8,11,14?",
+        answer: "12",
+        wrong1: "10",
+        wrong2: "14",
+        wrong3: "8",
+        explanation: "Range = max − min",
+        example: "14−2=12"
+    },
+    // 26
+    {
+        question: "Area of trapezium formula?",
+        answer: "½(a+b)h",
+        wrong1: "abh",
+        wrong2: "½ah",
+        wrong3: "(a+b)h",
+        explanation: "Average of two parallel sides × height",
+        example: "a=4,b=6,h=3 → 15"
+    },
+    // 27
+    {
+        question: "Total surface area of cylinder?",
+        answer: "2πr(r+h)",
+        wrong1: "2πrh",
+        wrong2: "πr²h",
+        wrong3: "2πr²",
+        explanation: "2 circular ends + curved surface",
+        example: "r=2,h=5 → 28π"
+    },
+    // 28
+    {
+        question: "nth term of 2,5,8,11...?",
+        answer: "3n − 1",
+        wrong1: "3n+1",
+        wrong2: "2n+1",
+        wrong3: "4n−2",
+        explanation: "Common difference 3, adjust constant",
+        example: "n=10 → 29"
+    },
+    // 29
+    {
+        question: "Inverse of f(x)=2x+3?",
+        answer: "f⁻¹(x) = (x−3)/2",
+        wrong1: "(x+3)/2",
+        wrong2: "2x−3",
+        wrong3: "3−2x",
+        explanation: "Swap x and y then rearrange",
+        example: "f(5)=13 → f⁻¹(13)=5"
+    },
+    // 30
+    {
+        question: "log₁₀1000 = ?",
+        answer: "3",
+        wrong1: "2",
+        wrong2: "4",
+        wrong3: "10",
+        explanation: "10³=1000",
+        example: "log₁₀100=2"
+    },
+    // 31
+    {
+        question: "Binomial expansion (a+b)ⁿ general formula?",
+        answer: "Σ ⁿCᵣ a^(n−r) bʳ",
+        wrong1: "Σ ⁿCᵣ aʳ b^(n−r)",
+        wrong2: "Σ n·a^(n−r)bʳ",
+        wrong3: "(a+b)^n = aⁿ+bⁿ",
+        explanation: "Uses combinations for each term",
+        example: "(a+b)² = a²+2ab+b²"
+    },
+    // 32
+    {
+        question: "Geometric sequence nth term formula?",
+        answer: "aₙ = ar^(n−1)",
+        wrong1: "aₙ = arⁿ",
+        wrong2: "aₙ = a+(n−1)r",
+        wrong3: "aₙ = a/r^(n−1)",
+        explanation: "a=first term, r=common ratio",
+        example: "2,6,18 → 5th term=162"
+    },
+    // 33
+    {
+        question: "Sum of interior angles n-sided polygon?",
+        answer: "(n−2)×180°",
+        wrong1: "n×180°",
+        wrong2: "(n−1)×180°",
+        wrong3: "(n−2)×90°",
+        explanation: "IGCSE core polygon rule",
+        example: "Pentagon = 540°"
+    },
+    // 34
+    {
+        question: "Speed formula?",
+        answer: "speed = distance ÷ time",
+        wrong1: "distance × time",
+        wrong2: "time ÷ distance",
+        wrong3: "mass ÷ time",
+        explanation: "Rate of distance travelled",
+        example: "120km in 2hr = 60km/h"
+    },
+    // 35
+    {
+        question: "Volume of a cone formula?",
+        answer: "⅓πr²h",
+        wrong1: "πr²h",
+        wrong2: "⅔πr²h",
+        wrong3: "2πrh",
+        explanation: "One third base area × height",
+        example: "r=3,h=6 → 18π"
+    },
+    // 36
+    {
+        question: "Volume of a cuboid formula?",
+        answer: "length × width × height",
+        wrong1: "l+w+h",
+        wrong2: "2(lw+lh+wh)",
+        wrong3: "½lwh",
+        explanation: "3D rectangular solid volume",
+        example: "4×5×6 = 120"
+    },
+    // 37
+    {
+        question: "Simple interest formula?",
+        answer: "I = (P×R×T)/100",
+        wrong1: "I = P(1+R/100)^T",
+        wrong2: "I = P×R+T",
+        wrong3: "I = (P+R)×T",
+        explanation: "No compounding, flat interest",
+        example: "$500 4% 3yr = $60"
+    },
+    // 38
+    {
+        question: "Expand (x+3)(x−2)",
+        answer: "x² + x − 6",
+        wrong1: "x²−x−6",
+        wrong2: "x²+x+6",
+        wrong3: "x²−5x+6",
+        explanation: "Use FOIL expansion",
+        example: "(x+1)(x+2)=x²+3x+2"
+    },
+    // 39
+    {
+        question: "Simplify 3a + 5b − 2a + b",
+        answer: "a + 6b",
+        wrong1: "5a+6b",
+        wrong2: "a+5b",
+        wrong3: "5a+4b",
+        explanation: "Collect like algebraic terms",
+        example: "7x−3x+2y = 4x+2y"
+    },
+    // 40
+    {
+        question: "Corresponding angles in parallel lines are?",
+        answer: "Equal",
+        wrong1: "Supplementary",
+        wrong2: "Complementary",
+        wrong3: "Alternate",
+        explanation: "Same position at each intersection",
+        example: "Both angles = 70°"
+    },
+    // 41
+    {
+        question: "Alternate angles in parallel lines are?",
+        answer: "Equal",
+        wrong1: "Add to 90°",
+        wrong2: "Add to 180°",
+        wrong3: "Different",
+        explanation: "Z-shaped angle pair",
+        example: "Alternate angles match exactly"
+    },
+    // 42
+    {
+        question: "Sum of exterior angles any polygon?",
+        answer: "360°",
+        wrong1: "180°",
+        wrong2: "270°",
+        wrong3: "Depends on sides",
+        explanation: "Always 360° for convex polygons",
+        example: "Square exterior each 90°"
+    },
+    // 43
+    {
+        question: "Solve 3(x−4)=15",
+        answer: "x=9",
+        wrong1: "x=7",
+        wrong2: "x=8",
+        wrong3: "x=11",
+        explanation: "Expand then rearrange linear equation",
+        example: "3(9−4)=15"
+    },
+    // 44
+    {
+        question: "Percentage increase formula?",
+        answer: "(New−Original)/Original × 100",
+        wrong1: "(Original−New)/New ×100",
+        wrong2: "New/Original ×100",
+        wrong3: "(New+Original)/Original ×100",
+        explanation: "Standard IGCSE percentage change",
+        example: "50→60 = 20% increase"
+    },
+    // 45
+    {
+        question: "Percentage decrease formula?",
+        answer: "(Original−New)/Original ×100",
+        wrong1: "(New−Original)/Original ×100",
+        wrong2: "Original/New ×100",
+        wrong3: "(Original+New)/New ×100",
+        explanation: "Used for discount/loss",
+        example: "80→60 = 25% decrease"
+    },
+    // 46
+    {
+        question: "Total surface area cuboid formula?",
+        answer: "2(lw + lh + wh)",
+        wrong1: "lwh",
+        wrong2: "2l+2w+2h",
+        wrong3: "lw+lh+wh",
+        explanation: "Sum of all 6 rectangular faces",
+        example: "l=2,w=3,h=4 → 52"
+    },
+    // 47
+    {
+        question: "Volume of a pyramid formula?",
+        answer: "⅓ × base area × height",
+        wrong1: "base area × height",
+        wrong2: "½ × base area × height",
+        wrong3: "⅔ × base area × height",
+        explanation: "IGCSE/IBDP standard formula",
+        example: "base=10, height=6 → 20"
+    },
+    // 48
+    {
+        question: "cos60° exact value?",
+        answer: "1/2",
+        wrong1: "√3/2",
+        wrong2: "√2/2",
+        wrong3: "1",
+        explanation: "Standard special angle value",
+        example: "sin30° also = 1/2"
+    },
+    // 49
+    {
+        question: "sin60° exact value?",
+        answer: "√3/2",
+        wrong1: "1/2",
+        wrong2: "√2/2",
+        wrong3: "1",
+        explanation: "Equilateral triangle ratio",
+        example: "cos30° = √3/2"
+    },
+    // 50
+    {
+        question: "tan60° exact value?",
+        answer: "√3",
+        wrong1: "1/√3",
+        wrong2: "1",
+        wrong3: "√2",
+        explanation: "sin60 ÷ cos60",
+        example: "tan30 = 1/√3"
+    },
+    // 51
+    {
+        question: "tan 30° exact value?",
+        answer: "1/√3",
+        wrong1: "√3",
+        wrong2: "1",
+        wrong3: "√3/2",
+        explanation: "tan30 = sin30 ÷ cos30",
+        example: "1 ÷ 1.732 ≈ 0.577"
+    },
+    // 52
+    {
+        question: "What are vertically opposite angles?",
+        answer: "Equal",
+        wrong1: "Sum to 90°",
+        wrong2: "Sum to 180°",
+        wrong3: "Always different",
+        explanation: "Opposite angles formed by intersecting lines are equal",
+        example: "Two crossing lines create two pairs of equal opposite angles"
+    },
+    // 53
+    {
+        question: "What do co-interior angles sum to?",
+        answer: "180°",
+        wrong1: "90°",
+        wrong2: "270°",
+        wrong3: "360°",
+        explanation: "Co-interior angles between parallel lines are supplementary",
+        example: "110° and 70° are co-interior"
+    },
+    // 54
+    {
+        question: "Solve 4y - 7 = 29",
+        answer: "y = 9",
+        wrong1: "y = 8",
+        wrong2: "y = 10",
+        wrong3: "y = 6",
+        explanation: "Add 7, then divide by 4",
+        example: "4(9) - 7 = 29"
+    },
+    // 55
+    {
+        question: "Expand and simplify 2(x - 3) + 5x",
+        answer: "7x - 6",
+        wrong1: "7x + 6",
+        wrong2: "3x - 6",
+        wrong3: "5x - 6",
+        explanation: "Expand bracket then collect like terms",
+        example: "2x - 6 + 5x = 7x - 6"
+    },
+    // 56
+    {
+        question: "Factorise x² + 5x + 6",
+        answer: "(x + 2)(x + 3)",
+        wrong1: "(x+1)(x+6)",
+        wrong2: "(x-2)(x-3)",
+        wrong3: "(x+2)(x-3)",
+        explanation: "Find two numbers that multiply to 6 and add to 5",
+        example: "2 × 3 = 6, 2 + 3 = 5"
+    },
+    // 57
+    {
+        question: "Factorise x² - 7x + 12",
+        answer: "(x - 3)(x - 4)",
+        wrong1: "(x+3)(x+4)",
+        wrong2: "(x-2)(x-6)",
+        wrong3: "(x+3)(x-4)",
+        explanation: "Two negative numbers multiply positive, add negative",
+        example: "-3 × -4 = 12, -3 + -4 = -7"
+    },
+    // 58
+    {
+        question: "Simplify a³ × a⁵",
+        answer: "a⁸",
+        wrong1: "a¹⁵",
+        wrong2: "a²",
+        wrong3: "a⁷",
+        explanation: "Index law: multiply bases, add powers",
+        example: "a^m × a^n = a^(m+n)"
+    },
+    // 59
+    {
+        question: "Simplify a⁹ ÷ a³",
+        answer: "a⁶",
+        wrong1: "a³",
+        wrong2: "a¹²",
+        wrong3: "a²",
+        explanation: "Index law: divide bases, subtract powers",
+        example: "a^m ÷ a^n = a^(m-n)"
+    },
+    // 60
+    {
+        question: "Simplify (a⁴)²",
+        answer: "a⁸",
+        wrong1: "a⁶",
+        wrong2: "a²",
+        wrong3: "a¹⁶",
+        explanation: "Index law: power of a power, multiply indices",
+        example: "(a^m)^n = a^(m×n)"
+    },
+    // 61
+    {
+        question: "What is a⁰ equal to?",
+        answer: "1",
+        wrong1: "0",
+        wrong2: "a",
+        wrong3: "-1",
+        explanation: "Any non-zero number to the power 0 = 1",
+        example: "5⁰ = 1, 12⁰ = 1"
+    },
+    // 62
+    {
+        question: "What is a⁻¹ equal to?",
+        answer: "1/a",
+        wrong1: "a",
+        wrong2: "0",
+        wrong3: "-a",
+        explanation: "Negative index = reciprocal",
+        example: "2⁻¹ = 1/2"
+    },
+    // 63
+    {
+        question: "Round 3.847 to 2 decimal places",
+        answer: "3.85",
+        wrong1: "3.84",
+        wrong2: "3.86",
+        wrong3: "3.80",
+        explanation: "Look at 3rd decimal digit to round up",
+        example: "7 rounds up the 4 to 5"
+    },
+    // 64
+    {
+        question: "Round 5.234 to 2 significant figures",
+        answer: "5.2",
+        wrong1: "5.3",
+        wrong2: "5.23",
+        wrong3: "5.0",
+        explanation: "First two significant digits, round using next digit",
+        example: "5.234 → 5.2 (2sf)"
+    },
+    // 65
+    {
+        question: "Standard form of 45000?",
+        answer: "4.5 × 10⁴",
+        wrong1: "45 × 10³",
+        wrong2: "4.5 × 10⁵",
+        wrong3: "0.45 × 10⁴",
+        explanation: "Standard form: 1 ≤ A < 10 × 10^n",
+        example: "45000 = 4.5 × 10⁴"
+    },
+    // 66
+    {
+        question: "Standard form of 0.00032?",
+        answer: "3.2 × 10⁻⁴",
+        wrong1: "3.2 × 10⁴",
+        wrong2: "32 × 10⁻⁵",
+        wrong3: "3.2 × 10⁻³",
+        explanation: "Small decimal uses negative index",
+        example: "0.00032 = 3.2 × 10⁻⁴"
+    },
+    // 67
+    {
+        question: "Find the midpoint of (2,4) and (6,8)",
+        answer: "(4,6)",
+        wrong1: "(3,5)",
+        wrong2: "(5,7)",
+        wrong3: "(4,5)",
+        explanation: "Midpoint = average x, average y",
+        example: "Mx=(2+6)/2, My=(4+8)/2"
+    },
+    // 68
+    {
+        question: "Distance formula between two points (x₁,y₁) (x₂,y₂)?",
+        answer: "√[(x₂−x₁)² + (y₂−y₁)²]",
+        wrong1: "√[(x₂−x₁)² − (y₂−y₁)²]",
+        wrong2: "(x₂−x₁)+(y₂−y₁)",
+        wrong3: "√[(x₂+x₁)² + (y₂+y₁)²]",
+        explanation: "Derived from Pythagoras",
+        example: "(0,0) to (3,4) distance = 5"
+    },
+    // 69
+    {
+        question: "Equation of a straight line general form?",
+        answer: "y = mx + c",
+        wrong1: "x = my + c",
+        wrong2: "y = c - mx",
+        wrong3: "y = m + cx",
+        explanation: "m=gradient, c=y-intercept",
+        example: "y=2x+3 has gradient 2, intercept 3"
+    },
+    // 70
+    {
+        question: "Parallel lines have what gradient?",
+        answer: "Equal gradient",
+        wrong1: "Negative gradients",
+        wrong2: "Reciprocal gradients",
+        wrong3: "Gradients sum to 1",
+        explanation: "Parallel lines never meet, same slope",
+        example: "y=3x+2 and y=3x-5 are parallel"
+    },
+    // 71
+    {
+        question: "Perpendicular lines gradients multiply to?",
+        answer: "-1",
+        wrong1: "1",
+        wrong2: "0",
+        wrong3: "-2",
+        explanation: "Negative reciprocal rule",
+        example: "m=2 ⊥ m=-1/2"
+    },
+    // 72
+    {
+        question: "What is cumulative frequency?",
+        answer: "Running total of frequencies",
+        wrong1: "Highest frequency value",
+        wrong2: "Difference between frequencies",
+        wrong3: "Average of frequencies",
+        explanation: "Adds frequencies step by step",
+        example: "10,15,20 cumulative = 10,25,45"
+    },
+    // 73
+    {
+        question: "Quartiles divide data into how many parts?",
+        answer: "4 equal parts",
+        wrong1: "2 parts",
+        wrong2: "3 parts",
+        wrong3: "5 parts",
+        explanation: "Q1, Q2, Q3 split ordered data into quarters",
+        example: "Q2 = median"
+    },
+    // 74
+    {
+        question: "Interquartile range formula?",
+        answer: "Q3 − Q1",
+        wrong1: "Q1 − Q3",
+        wrong2: "Q3 + Q1",
+        wrong3: "Q2 − Q1",
+        explanation: "IQR measures spread, ignores outliers",
+        example: "Q3=70, Q1=30 → IQR=40"
+    },
+    // 75
+    {
+        question: "Probability of two independent events both happening?",
+        answer: "Multiply their probabilities",
+        wrong1: "Add their probabilities",
+        wrong2: "Subtract probabilities",
+        wrong3: "Average probabilities",
+        explanation: "Independent: one does not affect the other",
+        example: "P(A)=1/2, P(B)=1/3 → 1/6"
+    },
+    // 76
+    {
+        question: "Probability of either A or B mutually exclusive?",
+        answer: "Add their probabilities",
+        wrong1: "Multiply probabilities",
+        wrong2: "Subtract probabilities",
+        wrong3: "Divide probabilities",
+        explanation: "Mutually exclusive cannot happen at same time",
+        example: "P(A)=1/4, P(B)=1/4 → 1/2"
+    },
+    // 77
+    {
+        question: "Surface area of a square pyramid?",
+        answer: "Base area + 4 × triangular face area",
+        wrong1: "Base area + 2 × triangular area",
+        wrong2: "4 × base area",
+        wrong3: "⅓ × base area × height",
+        explanation: "Total surface = base plus four identical triangles",
+        example: "Base 5×5, triangle 15 each face"
+    },
+    // 78
+    {
+        question: "Define similar shapes",
+        answer: "Same shape, equal angles, sides in ratio",
+        wrong1: "Same size only",
+        wrong2: "Same shape and same size",
+        wrong3: "Equal perimeter only",
+        explanation: "Similar = same angles, proportional sides",
+        example: "All equilateral triangles are similar"
+    },
+    // 79
+    {
+        question: "Define congruent shapes",
+        answer: "Same shape and identical size",
+        wrong1: "Same shape different size",
+        wrong2: "Same area different shape",
+        wrong3: "Same perimeter different angles",
+        explanation: "Congruent can be rotated/reflected",
+        example: "Two identical right triangles"
+    },
+    // 80
+    {
+        question: "Enlargement scale factor 2 means?",
+        answer: "All sides doubled",
+        wrong1: "All sides halved",
+        wrong2: "Angles doubled",
+        wrong3: "Area doubled",
+        explanation: "Scale factor affects linear lengths",
+        example: "4cm side becomes 8cm"
+    },
+    // 81
+    {
+        question: "Area scale factor is always?",
+        answer: "Linear scale factor squared",
+        wrong1: "Same as linear scale factor",
+        wrong2: "Linear scale factor cubed",
+        wrong3: "Half the linear scale factor",
+        explanation: "Area ratio = k²",
+        example: "k=2 → area ×4"
+    },
+    // 82
+    {
+        question: "Volume scale factor is always?",
+        answer: "Linear scale factor cubed",
+        wrong1: "Linear scale factor squared",
+        wrong2: "Same as linear scale factor",
+        wrong3: "Double linear scale factor",
+        explanation: "Volume ratio = k³",
+        example: "k=2 → volume ×8"
+    },
+    // 83
+    {
+        question: "Solve simultaneous equations: x + y = 7, x − y = 3",
+        answer: "x=5, y=2",
+        wrong1: "x=4, y=3",
+        wrong2: "x=6, y=1",
+        wrong3: "x=5, y=3",
+        explanation: "Add equations to eliminate y",
+        example: "5+2=7, 5-2=3"
+    },
+    // 84
+    {
+        question: "What is a recurring decimal 0.666... as a fraction?",
+        answer: "2/3",
+        wrong1: "3/4",
+        wrong2: "4/5",
+        wrong3: "5/6",
+        explanation: "0.6 recurring = 2/3 exact fraction",
+        example: "1/3 = 0.333..."
+    },
+    // 85
+    {
+        question: "Simplify √48",
+        answer: "4√3",
+        wrong1: "3√4",
+        wrong2: "2√12",
+        wrong3: "6√2",
+        explanation: "Break into √16 × √3 = 4√3",
+        example: "Surd simplification using square factors"
+    },
+    // 86
+    {
+        question: "Rationalise 1/√2",
+        answer: "√2/2",
+        wrong1: "1/2",
+        wrong2: "√2",
+        wrong3: "2/√2",
+        explanation: "Multiply top and bottom by √2",
+        example: "1/√2 × √2/√2 = √2/2"
+    },
+    // 87
+    {
+        question: "Formula for sum of geometric series?",
+        answer: "Sₙ = a(1−rⁿ)/(1−r)",
+        wrong1: "Sₙ = a(rⁿ−1)/(1+r)",
+        wrong2: "Sₙ = n/2(2a+(n−1)d)",
+        wrong3: "Sₙ = arⁿ",
+        explanation: "Used for finite geometric sum",
+        example: "a=2, r=3, n=3 sum = 26"
+    },
+    // 88
+    {
+        question: "What is a stationary point on a curve?",
+        answer: "Where gradient = 0",
+        wrong1: "Where gradient = 1",
+        wrong2: "Where curve crosses x-axis",
+        wrong3: "Where curve crosses y-axis",
+        explanation: "dy/dx = 0 at max/min points",
+        example: "Vertex of parabola is stationary"
+    },
+    // 89
+    {
+        question: "How to find turning point of quadratic completing the square?",
+        answer: "Read (p,q) from (x−p)² + q",
+        wrong1: "Read (q,p) from (x−p)² + q",
+        wrong2: "Use b²-4ac",
+        wrong3: "Set y=0 and solve",
+        explanation: "Completed square form gives vertex directly",
+        example: "(x-2)²+3 → turning point (2,3)"
+    },
+    // 90
+    {
+        question: "Solution of inequality 2x + 4 < 14",
+        answer: "x < 5",
+        wrong1: "x > 5",
+        wrong2: "x < 9",
+        wrong3: "x > 9",
+        explanation: "Solve like linear equation, keep inequality direction",
+        example: "2(4)+4=12 <14"
+    },
+    // 91
+    {
+        question: "Bearings are always measured how?",
+        answer: "Clockwise from north, 3 digits",
+        wrong1: "Anti-clockwise from north",
+        wrong2: "Clockwise from east",
+        wrong3: "Anti-clockwise from east",
+        explanation: "3-figure bearing standard IGCSE",
+        example: "Due east = 090°"
+    },
+    // 92
+    {
+        question: "Exact value of cos 45°?",
+        answer: "√2/2",
+        wrong1: "1/2",
+        wrong2: "√3/2",
+        wrong3: "1",
+        explanation: "Isosceles right triangle ratio",
+        example: "sin45 also = √2/2"
+    },
+    // 93
+    {
+        question: "What is the range of a function?",
+        answer: "Set of possible y-values",
+        wrong1: "Set of possible x-values",
+        wrong2: "Maximum x value",
+        wrong3: "Difference between max and min x",
+        explanation: "Range = output values",
+        example: "y=x² range is y ≥ 0"
+    },
+    // 94
+    {
+        question: "What is the domain of a function?",
+        answer: "Set of possible x-values",
+        wrong1: "Set of possible y-values",
+        wrong2: "Minimum y value",
+        wrong3: "Average x value",
+        explanation: "Domain = input values",
+        example: "y=1/x domain x ≠ 0"
+    },
+    // 95
+    {
+        question: "Calculate simple interest on $2000 at 5% for 4 years",
+        answer: "$400",
+        wrong1: "$200",
+        wrong2: "$500",
+        wrong3: "$450",
+        explanation: "I = (P×R×T)/100",
+        example: "(2000×5×4)/100 = 400"
+    },
+    // 96
+    {
+        question: "A car travels 180 km in 2.5 hours, average speed?",
+        answer: "72 km/h",
+        wrong1: "65 km/h",
+        wrong2: "75 km/h",
+        wrong3: "80 km/h",
+        explanation: "Speed = distance ÷ time",
+        example: "180 ÷ 2.5 = 72"
+    },
+    // 97
+    {
+        question: "What is the modal class in grouped data?",
+        answer: "Class interval with highest frequency",
+        wrong1: "Middle class interval",
+        wrong2: "Class with lowest frequency",
+        wrong3: "Average of all classes",
+        explanation: "Modal class = most common group",
+        example: "10-20 with freq 15 is modal class"
+    },
+    // 98
+    {
+        question: "Sum of angles in a quadrilateral?",
+        answer: "360°",
+        wrong1: "180°",
+        wrong2: "270°",
+        wrong3: "540°",
+        explanation: "Quadrilateral = 2 triangles, 2×180=360",
+        example: "Square four right angles 90×4=360"
+    },
+    // 99
+    {
+        question: "Formula for arc length of a sector?",
+        answer: "θ/360 × 2πr",
+        wrong1: "θ/360 × πr²",
+        wrong2: "θ × 2πr",
+        wrong3: "θ/180 × πr",
+        explanation: "Fraction of full circumference",
+        example: "60° arc = 1/6 of full circle"
+    },
+    // 100
+    {
+        question: "Formula for area of a sector?",
+        answer: "θ/360 × πr²",
+        wrong1: "θ/360 × 2πr",
+        wrong2: "θ × πr²",
+        wrong3: "θ/180 × πr",
+        explanation: "Fraction of full circle area",
+        example: "90° sector = 1/4 circle area"
+    }
+];

@@ -1,0 +1,1006 @@
+
+
+```javascript
+const biologyFlashcards = [
+    // 1
+    {
+        question: "What is the basic unit of life?",
+        answer: "Cell",
+        wrong1: "Tissue",
+        wrong2: "Organ",
+        wrong3: "Atom",
+        explanation: "All living things are made of cells.",
+        example: "Skin cell, plant cell"
+    },
+    // 2
+    {
+        question: "Which cell has a cell wall?",
+        answer: "Plant cell",
+        wrong1: "Animal cell",
+        wrong2: "Nerve cell",
+        wrong3: "Blood cell",
+        explanation: "Cell wall supports and protects the plant.",
+        example: "Leaf cell"
+    },
+    // 3
+    {
+        question: "What controls a cell's activities?",
+        answer: "Nucleus",
+        wrong1: "Cytoplasm",
+        wrong2: "Membrane",
+        wrong3: "Mitochondria",
+        explanation: "Stores DNA and controls cell growth.",
+        example: "Brain of the cell"
+    },
+    // 4
+    {
+        question: "Where does photosynthesis happen?",
+        answer: "Chloroplast",
+        wrong1: "Nucleus",
+        wrong2: "Mitochondria",
+        wrong3: "Vacuole",
+        explanation: "Contains chlorophyll to capture sunlight.",
+        example: "Inside leaf cells"
+    },
+    // 5
+    {
+        question: "What gives plant cells green color?",
+        answer: "Chlorophyll",
+        wrong1: "Cytoplasm",
+        wrong2: "Cell sap",
+        wrong3: "Membrane",
+        explanation: "Green pigment inside chloroplasts.",
+        example: "Makes leaves green"
+    },
+    // 6
+    {
+        question: "What part of the cell releases energy?",
+        answer: "Mitochondria",
+        wrong1: "Nucleus",
+        wrong2: "Cell wall",
+        wrong3: "Chloroplast",
+        explanation: "Powerhouse of the cell, does respiration.",
+        example: "Gives energy for growth"
+    },
+    // 7
+    {
+        question: "What holds cell sap in plant cells?",
+        answer: "Vacuole",
+        wrong1: "Nucleus",
+        wrong2: "Membrane",
+        wrong3: "Mitochondria",
+        explanation: "Stores water, food and waste.",
+        example: "Large in plant cells"
+    },
+    // 8
+    {
+        question: "What is a group of cells called?",
+        answer: "Tissue",
+        wrong1: "Organ",
+        wrong2: "Organ system",
+        wrong3: "Organism",
+        explanation: "Same cells working together.",
+        example: "Muscle tissue"
+    },
+    // 9
+    {
+        question: "What is a group of tissues called?",
+        answer: "Organ",
+        wrong1: "Cell",
+        wrong2: "Organ system",
+        wrong3: "Membrane",
+        explanation: "Different tissues working for one job.",
+        example: "Heart, lung, leaf"
+    },
+    // 10
+    {
+        question: "Multiple organs working together make?",
+        answer: "Organ system",
+        wrong1: "Tissue",
+        wrong2: "Single cell",
+        wrong3: "Chloroplast",
+        explanation: "Group of organs for a body function.",
+        example: "Digestive system"
+    },
+    // 11
+    {
+        question: "Process plants make their own food?",
+        answer: "Photosynthesis",
+        wrong1: "Respiration",
+        wrong2: "Digestion",
+        wrong3: "Excretion",
+        explanation: "Uses sunlight, water and CO2.",
+        example: "Plants make glucose"
+    },
+    // 12
+    {
+        question: "What gas do plants take in for photosynthesis?",
+        answer: "Carbon dioxide",
+        wrong1: "Oxygen",
+        wrong2: "Nitrogen",
+        wrong3: "Hydrogen",
+        explanation: "Taken in through stomata.",
+        example: "CO2 from air"
+    },
+    // 13
+    {
+        question: "Gas released by plants in photosynthesis?",
+        answer: "Oxygen",
+        wrong1: "Carbon dioxide",
+        wrong2: "Nitrogen",
+        wrong3: "Methane",
+        explanation: "Waste product for plants.",
+        example: "O2 we breathe in"
+    },
+    // 14
+    {
+        question: "What tiny pores let gases in leaves?",
+        answer: "Stomata",
+        wrong1: "Xylem",
+        wrong2: "Phloem",
+        wrong3: "Root hair",
+        explanation: "Small holes on leaf surface.",
+        example: "Open and close for gas exchange"
+    },
+    // 15
+    {
+        question: "What does xylem transport?",
+        answer: "Water and minerals up plant",
+        wrong1: "Food down plant",
+        wrong2: "Air to leaves",
+        wrong3: "Sunlight to roots",
+        explanation: "One-way upward flow.",
+        example: "From roots to stem and leaves"
+    },
+    // 16
+    {
+        question: "What does phloem transport?",
+        answer: "Food all around plant",
+        wrong1: "Water upward",
+        wrong2: "Minerals only",
+        wrong3: "Carbon dioxide",
+        explanation: "Carries glucose to all parts.",
+        example: "From leaves to roots and fruit"
+    },
+    // 17
+    {
+        question: "Plant part that absorbs water?",
+        answer: "Roots",
+        wrong1: "Stem",
+        wrong2: "Leaf",
+        wrong3: "Flower",
+        explanation: "Root hairs take in water and minerals.",
+        example: "Underground plant part"
+    },
+    // 18
+    {
+        question: "Function of a plant stem?",
+        answer: "Support and transport",
+        wrong1: "Make food",
+        wrong2: "Absorb water",
+        wrong3: "Make seeds",
+        explanation: "Holds leaves up, carries water/food.",
+        example: "Tree trunk and stalks"
+    },
+    // 19
+    {
+        question: "Main job of a leaf?",
+        answer: "Make food by photosynthesis",
+        wrong1: "Absorb water",
+        wrong2: "Store food only",
+        wrong3: "Reproduce",
+        explanation: "Flat shape catches sunlight.",
+        example: "Green leaves make glucose"
+    },
+    // 20
+    {
+        question: "Job of a flower?",
+        answer: "Sexual reproduction",
+        wrong1: "Make food",
+        wrong2: "Absorb water",
+        wrong3: "Store energy",
+        explanation: "Makes pollen and seeds.",
+        example: "Rose, sunflower"
+    },
+    // 21
+    {
+        question: "Male part of a flower?",
+        answer: "Stamen",
+        wrong1: "Pistil",
+        wrong2: "Petal",
+        wrong3: "Sepal",
+        explanation: "Made of anther and filament.",
+        example: "Produces pollen"
+    },
+    // 22
+    {
+        question: "Female part of a flower?",
+        answer: "Pistil",
+        wrong1: "Stamen",
+        wrong2: "Petal",
+        wrong3: "Anther",
+        explanation: "Made of stigma, style, ovary.",
+        example: "Makes ovules and seeds"
+    },
+    // 23
+    {
+        question: "What is pollination?",
+        answer: "Pollen moving to stigma",
+        wrong1: "Seed growing into plant",
+        wrong2: "Water moving up stem",
+        wrong3: "Leaves making food",
+        explanation: "Can be insect or wind pollinated.",
+        example: "Bee carrying pollen"
+    },
+    // 24
+    {
+        question: "What is fertilization in plants?",
+        answer: "Pollen joins ovule",
+        wrong1: "Pollen lands on petal",
+        wrong2: "Water enters root",
+        wrong3: "Leaves absorb sunlight",
+        explanation: "Forms a seed inside fruit.",
+        example: "After pollination happens"
+    },
+    // 25
+    {
+        question: "What grows from a seed?",
+        answer: "Seedling",
+        wrong1: "Flower",
+        wrong2: "Fruit",
+        wrong3: "Stomata",
+        explanation: "Young small plant.",
+        example: "Sprouting bean seed"
+    },
+    // 26
+    {
+        question: "Needed for seed germination?",
+        answer: "Water, oxygen, warmth",
+        wrong1: "Sunlight, soil, wind",
+        wrong2: "Carbon dioxide, cold, sand",
+        wrong3: "Food, light, rain",
+        explanation: "No sunlight needed at first.",
+        example: "Seed sprouts underground"
+    },
+    // 27
+    {
+        question: "Animal that eats plants only?",
+        answer: "Herbivore",
+        wrong1: "Carnivore",
+        wrong2: "Omnivore",
+        wrong3: "Decomposer",
+        explanation: "Leaves, grass, fruit diet.",
+        example: "Rabbit, cow, deer"
+    },
+    // 28
+    {
+        question: "Animal that eats meat only?",
+        answer: "Carnivore",
+        wrong1: "Herbivore",
+        wrong2: "Omnivore",
+        wrong3: "Producer",
+        explanation: "Hunts other animals.",
+        example: "Lion, eagle, snake"
+    },
+    // 29
+    {
+        question: "Animal eating plants and meat?",
+        answer: "Omnivore",
+        wrong1: "Herbivore",
+        wrong2: "Carnivore",
+        wrong3: "Scavenger",
+        explanation: "Mixed diet.",
+        example: "Human, bear, pig"
+    },
+    // 30
+    {
+        question: "Organism that makes its own food?",
+        answer: "Producer",
+        wrong1: "Consumer",
+        wrong2: "Decomposer",
+        wrong3: "Predator",
+        explanation: "Plants use photosynthesis.",
+        example: "Grass, tree, flower"
+    },
+    // 31
+    {
+        question: "Organism that eats other organisms?",
+        answer: "Consumer",
+        wrong1: "Producer",
+        wrong2: "Decomposer",
+        wrong3: "Plant",
+        explanation: "Cannot make own food.",
+        example: "All animals"
+    },
+    // 32
+    {
+        question: "Breaks down dead plants and animals?",
+        answer: "Decomposer",
+        wrong1: "Producer",
+        wrong2: "Predator",
+        wrong3: "Herbivore",
+        explanation: "Returns nutrients to soil.",
+        example: "Fungi, bacteria, worm"
+    },
+    // 33
+    {
+        question: "What is a food chain?",
+        answer: "Path of energy between organisms",
+        wrong1: "List of all plants",
+        wrong2: "Group of same animals",
+        wrong3: "Plant life cycle",
+        explanation: "Shows who eats whom.",
+        example: "Grass → Rabbit → Fox"
+    },
+    // 34
+    {
+        question: "Many connected food chains make?",
+        answer: "Food web",
+        wrong1: "Food line",
+        wrong2: "Ecosystem",
+        wrong3: "Habitat",
+        explanation: "Complex feeding relationships.",
+        example: "Multiple animals eating different prey"
+    },
+    // 35
+    {
+        question: "Where an organism lives?",
+        answer: "Habitat",
+        wrong1: "Ecosystem",
+        wrong2: "Community",
+        wrong3: "Population",
+        explanation: "Natural home.",
+        example: "Desert, forest, ocean"
+    },
+    // 36
+    {
+        question: "All living and non-living in one area?",
+        answer: "Ecosystem",
+        wrong1: "Habitat",
+        wrong2: "Population",
+        wrong3: "Cell",
+        explanation: "Plants, animals, water, air, soil.",
+        example: "Rainforest ecosystem"
+    },
+    // 37
+    {
+        question: "Same species living in one area?",
+        answer: "Population",
+        wrong1: "Community",
+        wrong2: "Ecosystem",
+        wrong3: "Habitat",
+        explanation: "Group of one type of organism.",
+        example: "All zebras in a savanna"
+    },
+    // 38
+    {
+        question: "Different populations living together?",
+        answer: "Community",
+        wrong1: "Population",
+        wrong2: "Organ system",
+        wrong3: "Cell group",
+        explanation: "All living things in a place.",
+        example: "Zebras, lions, grass together"
+    },
+    // 39
+    {
+        question: "Adaptation meaning?",
+        answer: "Feature to survive environment",
+        wrong1: "Random body change",
+        wrong2: "Fast growth",
+        wrong3: "Making food",
+        explanation: "Helps live in climate or avoid predators.",
+        example: "Cactus stores water"
+    },
+    // 40
+    {
+        question: "What is camouflage?",
+        answer: "Blending into surroundings",
+        wrong1: "Running fast",
+        wrong2: "Hibernating",
+        wrong3: "Migrating",
+        explanation: "Hide from predators or prey.",
+        example: "Chameleon changing color"
+    },
+    // 41
+    {
+        question: "Human organ for breathing?",
+        answer: "Lungs",
+        wrong1: "Heart",
+        wrong2: "Stomach",
+        wrong3: "Brain",
+        explanation: "Takes in oxygen, releases CO2.",
+        example: "Inside chest cavity"
+    },
+    // 42
+    {
+        question: "Human organ that pumps blood?",
+        answer: "Heart",
+        wrong1: "Lungs",
+        wrong2: "Liver",
+        wrong3: "Kidney",
+        explanation: "Circulates blood around body.",
+        example: "Beats every second"
+    },
+    // 43
+    {
+        question: "Control center of human body?",
+        answer: "Brain",
+        wrong1: "Heart",
+        wrong2: "Spine",
+        wrong3: "Lung",
+        explanation: "Controls movement, senses, thinking.",
+        example: "Inside the skull"
+    },
+    // 44
+    {
+        question: "Digestion starts in which part?",
+        answer: "Mouth",
+        wrong1: "Stomach",
+        wrong2: "Small intestine",
+        wrong3: "Liver",
+        explanation: "Chewing and saliva break food down.",
+        example: "Teeth and saliva start digestion"
+    },
+    // 45
+    {
+        question: "Where food is churned with acid?",
+        answer: "Stomach",
+        wrong1: "Mouth",
+        wrong2: "Large intestine",
+        wrong3: "Esophagus",
+        explanation: "Breaks food into liquid.",
+        example: "Acid inside stomach"
+    },
+    // 46
+    {
+        question: "Where nutrients enter the blood?",
+        answer: "Small intestine",
+        wrong1: "Stomach",
+        wrong2: "Large intestine",
+        wrong3: "Esophagus",
+        explanation: "Absorbs vitamins and minerals.",
+        example: "Long coiled tube"
+    },
+    // 47
+    {
+        question: "Job of large intestine?",
+        answer: "Absorb water",
+        wrong1: "Digest protein",
+        wrong2: "Pump blood",
+        wrong3: "Take in oxygen",
+        explanation: "Removes water from waste.",
+        example: "Turns waste into faeces"
+    },
+    // 48
+    {
+        question: "Main function of skeleton?",
+        answer: "Support, protection, movement",
+        wrong1: "Make blood only",
+        wrong2: "Digest food",
+        wrong3: "Breathe air",
+        explanation: "Holds body shape, protects organs.",
+        example: "Skull protects brain"
+    },
+    // 49
+    {
+        question: "Muscles pull on what to move body?",
+        answer: "Bones",
+        wrong1: "Skin",
+        wrong2: "Organs",
+        wrong3: "Nerves",
+        explanation: "Muscles contract and pull bones.",
+        example: "Arm muscle pulls arm bone"
+    },
+    // 50
+    {
+        question: "What is respiration?",
+        answer: "Release energy from food",
+        wrong1: "Making food in plants",
+        wrong2: "Digesting water",
+        wrong3: "Releasing waste",
+        explanation: "Uses oxygen to break down glucose.",
+        example: "Happens in all living cells"
+    },
+    // 51
+    {
+        question: "Waste removal from body called?",
+        answer: "Excretion",
+        wrong1: "Digestion",
+        wrong2: "Respiration",
+        wrong3: "Circulation",
+        explanation: "Removes harmful waste chemicals.",
+        example: "Kidneys filter waste"
+    },
+    // 52
+    {
+        question: "Which organs filter blood and make urine?",
+        answer: "Kidneys",
+        wrong1: "Lungs",
+        wrong2: "Heart",
+        wrong3: "Stomach",
+        explanation: "Cleans waste from blood.",
+        example: "Two kidneys in lower back"
+    },
+    // 53
+    {
+        question: "Carry oxygen around human body?",
+        answer: "Red blood cells",
+        wrong1: "White blood cells",
+        wrong2: "Platelets",
+        wrong3: "Nerve cells",
+        explanation: "Carry O2 to all cells.",
+        example: "Most common blood cell"
+    },
+    // 54
+    {
+        question: "Fight infection in the body?",
+        answer: "White blood cells",
+        wrong1: "Red blood cells",
+        wrong2: "Platelets",
+        wrong3: "Skin cells",
+        explanation: "Kill bacteria and germs.",
+        example: "Defend against sickness"
+    },
+    // 55
+    {
+        question: "Help blood clot when hurt?",
+        answer: "Platelets",
+        wrong1: "Red cells",
+        wrong2: "White cells",
+        wrong3: "Muscle cells",
+        explanation: "Stop bleeding and form scabs.",
+        example: "Clot on a cut"
+    },
+    // 56
+    {
+        question: "Carry messages around body?",
+        answer: "Nerve cells",
+        wrong1: "Blood cells",
+        wrong2: "Skin cells",
+        wrong3: "Bone cells",
+        explanation: "Send electrical signals.",
+        example: "Brain to hand messages"
+    },
+    // 57
+    {
+        question: "Main artery leaving the heart?",
+        answer: "Aorta",
+        wrong1: "Vein",
+        wrong2: "Capillary",
+        wrong3: "Windpipe",
+        explanation: "Largest blood vessel.",
+        example: "Carries oxygen blood to body"
+    },
+    // 58
+    {
+        question: "Tiny smallest blood vessels?",
+        answer: "Capillaries",
+        wrong1: "Arteries",
+        wrong2: "Veins",
+        wrong3: "Nerves",
+        explanation: "Substances pass in and out of cells here.",
+        example: "Connect arteries and veins"
+    },
+    // 59
+    {
+        question: "Which vessels carry blood to the heart?",
+        answer: "Veins",
+        wrong1: "Arteries",
+        wrong2: "Capillaries",
+        wrong3: "Lymph tubes",
+        explanation: "Usually carry deoxygenated blood.",
+        example: "Blood flows back to heart"
+    },
+    // 60
+    {
+        question: "Which vessels carry blood away from heart?",
+        answer: "Arteries",
+        wrong1: "Veins",
+        wrong2: "Capillaries",
+        wrong3: "Stomata",
+        explanation: "Thick strong walls.",
+        example: "Pumped blood under high pressure"
+    },
+    // 61
+    {
+        question: "What is a microorganism?",
+        answer: "Very small living thing",
+        wrong1: "Large plant",
+        wrong2: "Big animal",
+        wrong3: "Rock with life",
+        explanation: "Only seen with microscope.",
+        example: "Bacteria, virus, fungi"
+    },
+    // 62
+    {
+        question: "Single celled living organism?",
+        answer: "Bacteria",
+        wrong1: "Tree",
+        wrong2: "Insect",
+        wrong3: "Fish",
+        explanation: "Tiny simple cells everywhere.",
+        example: "Good and bad bacteria"
+    },
+    // 63
+    {
+        question: "Cannot live alone, needs host cell?",
+        answer: "Virus",
+        wrong1: "Bacteria",
+        wrong2: "Fungi",
+        wrong3: "Protozoa",
+        explanation: "Invades cells to multiply.",
+        example: "Cold, flu virus"
+    },
+    // 64
+    {
+        question: "Example of useful fungi?",
+        answer: "Mushroom, yeast",
+        wrong1: "Flu virus",
+        wrong2: "Disease bacteria",
+        wrong3: "Algae",
+        explanation: "Yeast makes bread rise.",
+        example: "Baking yeast"
+    },
+    // 65
+    {
+        question: "What causes infectious disease?",
+        answer: "Pathogens",
+        wrong1: "Healthy cells",
+        wrong2: "Clean water",
+        wrong3: "Sunlight",
+        explanation: "Harmful microbes entering body.",
+        example: "Bacteria and viruses"
+    },
+    // 66
+    {
+        question: "Skin main job in human body?",
+        answer: "Protect from germs",
+        wrong1: "Pump blood",
+        wrong2: "Digest food",
+        wrong3: "Make oxygen",
+        explanation: "Outer barrier against infection.",
+        example: "Covers entire body"
+    },
+    // 67
+    {
+        question: "What is immunity?",
+        answer: "Body's ability to fight disease",
+        wrong1: "Fast digestion",
+        wrong2: "Strong bones",
+        wrong3: "Big lungs",
+        explanation: "White cells remember germs.",
+        example: "Not getting sick again"
+    },
+    // 68
+    {
+        question: "Vaccination does what?",
+        answer: "Build immunity safely",
+        wrong1: "Causes disease",
+        wrong2: "Kills all bacteria instantly",
+        wrong3: "Makes you tired forever",
+        explanation: "Teaches body to fight real germs.",
+        example: "Flu vaccine"
+    },
+    // 69
+    {
+        question: "Balanced diet means?",
+        answer: "All food groups in right amounts",
+        wrong1: "Only vegetables",
+        wrong2: "Only meat",
+        wrong3: "Only sugar",
+        explanation: "Carbs, protein, fat, vitamins, minerals.",
+        example: "Healthy everyday meals"
+    },
+    // 70
+    {
+        question: "Main energy source in diet?",
+        answer: "Carbohydrates",
+        wrong1: "Protein",
+        wrong2: "Fat",
+        wrong3: "Vitamins",
+        explanation: "Fuel for body activity.",
+        example: "Rice, bread, pasta"
+    },
+    // 71
+    {
+        question: "Nutrient for growth and repair?",
+        answer: "Protein",
+        wrong1: "Carbs",
+        wrong2: "Fat",
+        wrong3: "Fibre",
+        explanation: "Builds muscles and cells.",
+        example: "Egg, fish, meat, beans"
+    },
+    // 72
+    {
+        question: "Stored energy and protection?",
+        answer: "Fats",
+        wrong1: "Protein",
+        wrong2: "Carbs",
+        wrong3: "Water",
+        explanation: "Long term energy store.",
+        example: "Oil, nuts, butter"
+    },
+    // 73
+    {
+        question: "Help body work properly, prevent illness?",
+        answer: "Vitamins",
+        wrong1: "Carbs",
+        wrong2: "Protein",
+        wrong3: "Sugar",
+        explanation: "Small amounts needed daily.",
+        example: "Fruit and vegetables"
+    },
+    // 74
+    {
+        question: "What is fibre good for?",
+        answer: "Healthy digestion",
+        wrong1: "Fast energy",
+        wrong2: "Muscle growth",
+        wrong3: "Making blood",
+        explanation: "Prevents constipation.",
+        example: "Whole grains, vegetables"
+    },
+    // 75
+    {
+        question: "Chemical reactions inside living things?",
+        answer: "Metabolism",
+        wrong1: "Photosynthesis",
+        wrong2: "Pollination",
+        wrong3: "Germination",
+        explanation: "All life processes chemical changes.",
+        example: "Breaking down food for energy"
+    },
+    // 76
+    {
+        question: "Maintain stable body conditions?",
+        answer: "Homeostasis",
+        wrong1: "Respiration",
+        wrong2: "Digestion",
+        wrong3: "Fermentation",
+        explanation: "Keep temperature, water balance steady.",
+        example: "Sweating to cool down"
+    },
+    // 77
+    {
+        question: "Plants without flowers called?",
+        answer: "Non-flowering plants",
+        wrong1: "Herbaceous",
+        wrong2: "Deciduous",
+        wrong3: "Evergreen",
+        explanation: "Reproduce with spores.",
+        example: "Fern, moss"
+    },
+    // 78
+    {
+        question: "Loses leaves in winter?",
+        answer: "Deciduous",
+        wrong1: "Evergreen",
+        wrong2: "Cactus",
+        wrong3: "Fern",
+        explanation: "Saves energy in cold season.",
+        example: "Oak tree"
+    },
+    // 79
+    {
+        question: "Keeps leaves all year?",
+        answer: "Evergreen",
+        wrong1: "Deciduous",
+        wrong2: "Moss",
+        wrong3: "Bean plant",
+        explanation: "Always has green foliage.",
+        example: "Pine tree"
+    },
+    // 80
+    {
+        question: "Animals with backbone?",
+        answer: "Vertebrates",
+        wrong1: "Invertebrates",
+        wrong2: "Insects only",
+        wrong3: "Worms",
+        explanation: "Spine inside body.",
+        example: "Human, dog, bird, fish"
+    },
+    // 81
+    {
+        question: "Animals without backbone?",
+        answer: "Invertebrates",
+        wrong1: "Vertebrates",
+        wrong2: "Mammals",
+        wrong3: "Reptiles",
+        explanation: "Soft body or exoskeleton.",
+        example: "Ant, spider, worm"
+    },
+    // 82
+    {
+        question: "Warm blooded, hair, live birth?",
+        answer: "Mammal",
+        wrong1: "Bird",
+        wrong2: "Reptile",
+        wrong3: "Amphibian",
+        explanation: "Feed young milk.",
+        example: "Cat, elephant, human"
+    },
+    // 83
+    {
+        question: "Feathers, wings, lay hard eggs?",
+        answer: "Bird",
+        wrong1: "Mammal",
+        wrong2: "Fish",
+        wrong3: "Amphibian",
+        explanation: "Most can fly.",
+        example: "Sparrow, eagle"
+    },
+    // 84
+    {
+        question: "Cold blooded, scales, lay soft eggs?",
+        answer: "Reptile",
+        wrong1: "Bird",
+        wrong2: "Mammal",
+        wrong3: "Fish",
+        explanation: "Dry scaly skin.",
+        example: "Snake, lizard"
+    },
+    // 85
+    {
+        question: "Live in water, gills, fins?",
+        answer: "Fish",
+        wrong1: "Amphibian",
+        wrong2: "Reptile",
+        wrong3: "Bird",
+        explanation: "Breathe underwater with gills.",
+        example: "Goldfish, shark"
+    },
+    // 86
+    {
+        question: "Live on land and water, moist skin?",
+        answer: "Amphibian",
+        wrong1: "Fish",
+        wrong2: "Reptile",
+        wrong3: "Mammal",
+        explanation: "Start life in water.",
+        example: "Frog, toad"
+    },
+    // 87
+    {
+        question: "Insects have how many legs?",
+        answer: "6",
+        wrong1: "4",
+        wrong2: "8",
+        wrong3: "10",
+        explanation: "Three body parts: head, thorax, abdomen.",
+        example: "Bee, butterfly"
+    },
+    // 88
+    {
+        question: "Spiders have how many legs?",
+        answer: "8",
+        wrong1: "6",
+        wrong2: "4",
+        wrong3: "12",
+        explanation: "Arachnid, not insect.",
+        example: "Tarantula"
+    },
+    // 89
+    {
+        question: "What is hibernation?",
+        answer: "Sleeping through cold winter",
+        wrong1: "Moving to warm land",
+        wrong2: "Changing color",
+        wrong3: "Growing fast",
+        explanation: "Low energy to survive cold.",
+        example: "Bear hibernating"
+    },
+    // 90
+    {
+        question: "What is migration?",
+        answer: "Moving long distance seasonally",
+        wrong1: "Sleeping all winter",
+        wrong2: "Camouflaging",
+        wrong3: "Growing thicker fur",
+        explanation: "Find warmer weather or food.",
+        example: "Birds flying south"
+    },
+    // 91
+    {
+        question: "Tropism meaning?",
+        answer: "Plant growth toward stimulus",
+        wrong1: "Plant dying slowly",
+        wrong2: "Seed spreading",
+        wrong3: "Flower opening",
+        explanation: "Grow toward light, water or gravity.",
+        example: "Shoot grows toward sunlight"
+    },
+    // 92
+    {
+        question: "Plant growing toward light?",
+        answer: "Phototropism",
+        wrong1: "Geotropism",
+        wrong2: "Hydrotropism",
+        wrong3: "Thigmotropism",
+        explanation: "Stem bends to light source.",
+        example: "Plant leaning to window"
+    },
+    // 93
+    {
+        question: "Roots growing down with gravity?",
+        answer: "Geotropism",
+        wrong1: "Phototropism",
+        wrong2: "Hydrotropism",
+        wrong3: "Chemotropism",
+        explanation: "Roots down, shoots up.",
+        example: "Upside down seed still grows right"
+    },
+    // 94
+    {
+        question: "Seed dispersal meaning?",
+        answer: "Spreading seeds away from parent",
+        wrong1: "Seed sprouting",
+        wrong2: "Flower opening",
+        wrong3: "Pollination",
+        explanation: "Avoid competition for space.",
+        example: "Wind, water, animal, explosion"
+    },
+    // 95
+    {
+        question: "Dandelion seeds disperse by?",
+        answer: "Wind",
+        wrong1: "Water",
+        wrong2: "Animals",
+        wrong3: "Explosion",
+        explanation: "Light fluffy seeds float away.",
+        example: "Blowing dandelion clock"
+    },
+    // 96
+    {
+        question: "Coconut seeds disperse by?",
+        answer: "Water",
+        wrong1: "Wind",
+        wrong2: "Animal",
+        wrong3: "Burial",
+        explanation: "Float across oceans.",
+        example: "Coconut drifting on sea"
+    },
+    // 97
+    {
+        question: "Burr seeds stick to animal fur is?",
+        answer: "Animal dispersal",
+        wrong1: "Wind dispersal",
+        wrong2: "Water dispersal",
+        wrong3: "Explosion dispersal",
+        explanation: "Seeds carried to new places.",
+        example: "Sticky burr on dog fur"
+    },
+    // 98
+    {
+        question: "Legume pods burst open is?",
+        answer: "Explosion dispersal",
+        wrong1: "Wind",
+        wrong2: "Water",
+        wrong3: "Animal",
+        explanation: "Pods split and shoot seeds out.",
+        example: "Pea pod popping open"
+    },
+    // 99
+    {
+        question: "Genetics study of?",
+        answer: "Inherited traits",
+        wrong1: "Plant growth",
+        wrong2: "Animal behaviour",
+        wrong3: "Microbes",
+        explanation: "Features passed from parents.",
+        example: "Eye color, height"
+    },
+    // 100
+    {
+        question: "Features passed from parents to child?",
+        answer: "Inherited characteristics",
+        wrong1: "Learned behaviour",
+        wrong2: "Random changes",
+        wrong3: "Environment traits",
+        explanation: "Controlled by genes and DNA.",
+        example: "Hair color, face shape"
+    }
+];
+```

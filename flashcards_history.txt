@@ -1,0 +1,1002 @@
+const historyFlashcards = [
+    // 1
+    {
+        question: "What period means 'Old Stone Age'?",
+        answer: "Paleolithic",
+        wrong1: "Neolithic",
+        wrong2: "Bronze Age",
+        wrong3: "Iron Age",
+        explanation: "Early humans used simple stone tools.",
+        example: "Hunter-gatherers, cavemen"
+    },
+    // 2
+    {
+        question: "What period means 'New Stone Age'?",
+        answer: "Neolithic",
+        wrong1: "Paleolithic",
+        wrong2: "Ice Age",
+        wrong3: "Middle Ages",
+        explanation: "Farming, permanent homes began.",
+        example: "Growing crops, raising animals"
+    },
+    // 3
+    {
+        question: "First metal used by humans?",
+        answer: "Copper",
+        wrong1: "Iron",
+        wrong2: "Steel",
+        wrong3: "Gold",
+        explanation: "Soft metal used for tools and jewelry.",
+        example: "Early metalworking"
+    },
+    // 4
+    {
+        question: "Age when strong metal tools and weapons were made?",
+        answer: "Iron Age",
+        wrong1: "Stone Age",
+        wrong2: "Bronze Age",
+        wrong3: "Copper Age",
+        explanation: "Iron replaced bronze for better tools.",
+        example: "Iron swords, plows"
+    },
+    // 5
+    {
+        question: "First river valley civilization?",
+        answer: "Mesopotamia",
+        wrong1: "Ancient Egypt",
+        wrong2: "Ancient China",
+        wrong3: "Indus Valley",
+        explanation: "Between Tigris and Euphrates rivers.",
+        example: "Land between two rivers"
+    },
+    // 6
+    {
+        question: "Writing system of Mesopotamia?",
+        answer: "Cuneiform",
+        wrong1: "Hieroglyphs",
+        wrong2: "Pictograms",
+        wrong3: "Alphabet",
+        explanation: "Wedge-shaped marks on clay tablets.",
+        example: "First written language"
+    },
+    // 7
+    {
+        question: "River where Ancient Egypt began?",
+        answer: "Nile",
+        wrong1: "Tigris",
+        wrong2: "Euphrates",
+        wrong3: "Indus",
+        explanation: "Longest river in Africa.",
+        example: "Annual flooding helped farming"
+    },
+    // 8
+    {
+        question: "Writing system of Ancient Egypt?",
+        answer: "Hieroglyphs",
+        wrong1: "Cuneiform",
+        wrong2: "Latin",
+        wrong3: "Greek",
+        explanation: "Picture writing on walls and papyrus.",
+        example: "Egyptian temple carvings"
+    },
+    // 9
+    {
+        question: "Ruler of Ancient Egypt?",
+        answer: "Pharaoh",
+        wrong1: "King",
+        wrong2: "Emperor",
+        wrong3: "Sultan",
+        explanation: "Considered a god on Earth.",
+        example: "Tutankhamun, Cleopatra"
+    },
+    // 10
+    {
+        question: "Stone tombs for pharaohs in Egypt?",
+        answer: "Pyramids",
+        wrong1: "Temples",
+        wrong2: "Castles",
+        wrong3: "Catacombs",
+        explanation: "Great Pyramids of Giza.",
+        example: "Burial places for kings"
+    },
+    // 11
+    {
+        question: "Process of preserving bodies in Egypt?",
+        answer: "Mummification",
+        wrong1: "Burning",
+        wrong2: "Freezing",
+        wrong3: "Burial",
+        explanation: "Removed organs, wrapped in linen.",
+        example: "Mummies found in pyramids"
+    },
+    // 12
+    {
+        question: "First written law code in history?",
+        answer: "Hammurabi's Code",
+        wrong1: "Ten Commandments",
+        wrong2: "Magna Carta",
+        wrong3: "Constitution",
+        explanation: "Eye for an eye justice system.",
+        example: "Laws of Babylon"
+    },
+    // 13
+    {
+        question: "Ancient civilization in modern India/Pakistan?",
+        answer: "Indus Valley",
+        wrong1: "Mayan",
+        wrong2: "Aztec",
+        wrong3: "Greek",
+        explanation: "Planned cities with sewage systems.",
+        example: "Harappa, Mohenjo-daro"
+    },
+    // 14
+    {
+        question: "Longest river in China?",
+        answer: "Yangtze",
+        wrong1: "Yellow River",
+        wrong2: "Nile",
+        wrong3: "Amazon",
+        explanation: "Important for farming and transport.",
+        example: "Southern China main river"
+    },
+    // 15
+    {
+        question: "China's river called 'Cradle of Civilization'?",
+        answer: "Yellow River",
+        wrong1: "Yangtze",
+        wrong2: "Ganges",
+        wrong3: "Nile",
+        explanation: "Early Chinese farming began here.",
+        example: "Northern China ancient home"
+    },
+    // 16
+    {
+        question: "Country where democracy began?",
+        answer: "Ancient Greece",
+        wrong1: "Rome",
+        wrong2: "Egypt",
+        wrong3: "China",
+        explanation: "Rule by the people.",
+        example: "Athens city-state"
+    },
+    // 17
+    {
+        question: "City-state known for democracy in Greece?",
+        answer: "Athens",
+        wrong1: "Sparta",
+        wrong2: "Olympia",
+        wrong3: "Corinth",
+        explanation: "First democracy in the world.",
+        example: "Citizens voted on laws"
+    },
+    // 18
+    {
+        question: "Greek city-state focused on military?",
+        answer: "Sparta",
+        wrong1: "Athens",
+        wrong2: "Thebes",
+        wrong3: "Troy",
+        explanation: "Boys trained as soldiers from age 7.",
+        example: "Strong warrior society"
+    },
+    // 19
+    {
+        question: "Wars between Athens and Sparta?",
+        answer: "Peloponnesian War",
+        wrong1: "Persian Wars",
+        wrong2: "Trojan War",
+        wrong3: "Punic Wars",
+        explanation: "Fight for control of Greece.",
+        example: "Sparta defeated Athens"
+    },
+    // 20
+    {
+        question: "Games started in Ancient Greece?",
+        answer: "Olympic Games",
+        wrong1: "World Cup",
+        wrong2: "Commonwealth Games",
+        wrong3: "Euro Championship",
+        explanation: "Honored the god Zeus.",
+        example: "First Olympics 776 BC"
+    },
+    // 21
+    {
+        question: "King who conquered Persia and Egypt?",
+        answer: "Alexander the Great",
+        wrong1: "Julius Caesar",
+        wrong2: "Hannibal",
+        wrong3: "Cleopatra",
+        explanation: "Spread Greek culture across the world.",
+        example: "Macedonian king"
+    },
+    // 22
+    {
+        question: "Capital city of Ancient Rome?",
+        answer: "Rome",
+        wrong1: "Athens",
+        wrong2: "Carthage",
+        wrong3: "Alexandria",
+        explanation: "Built on seven hills.",
+        example: "Center of Roman Empire"
+    },
+    // 23
+    {
+        question: "Government where people vote for leaders?",
+        answer: "Republic",
+        wrong1: "Monarchy",
+        wrong2: "Dictatorship",
+        wrong3: "Empire",
+        explanation: "Rome began as a republic.",
+        example: "Senate made laws"
+    },
+    // 24
+    {
+        question: "Wars between Rome and Carthage?",
+        answer: "Punic Wars",
+        wrong1: "Gallic Wars",
+        wrong2: "Persian Wars",
+        wrong3: "Civil Wars",
+        explanation: "Three wars total.",
+        example: "Rome vs Carthage"
+    },
+    // 25
+    {
+        question: "Carthaginian general who crossed Alps?",
+        answer: "Hannibal",
+        wrong1: "Caesar",
+        wrong2: "Alexander",
+        wrong3: "Spartacus",
+        explanation: "Used war elephants in battle.",
+        example: "Fought against Rome"
+    },
+    // 26
+    {
+        question: "Roman leader assassinated in 44 BC?",
+        answer: "Julius Caesar",
+        wrong1: "Augustus",
+        wrong2: "Nero",
+        wrong3: "Constantine",
+        explanation: "Stabbed by senators.",
+        example: "Ides of March"
+    },
+    // 27
+    {
+        question: "First Roman Emperor?",
+        answer: "Augustus",
+        wrong1: "Julius Caesar",
+        wrong2: "Nero",
+        wrong3: "Hadrian",
+        explanation: "Began Pax Romana.",
+        example: "Rule after civil war"
+    },
+    // 28
+    {
+        question: "200 years of peace in Rome?",
+        answer: "Pax Romana",
+        wrong1: "Golden Age",
+        wrong2: "Dark Ages",
+        wrong3: "Renaissance",
+        explanation: "Peace and prosperity across empire.",
+        example: "Time of law and trade"
+    },
+    // 29
+    {
+        question: "Roman emperor who legalized Christianity?",
+        answer: "Constantine",
+        wrong1: "Nero",
+        wrong2: "Hadrian",
+        wrong3: "Caligula",
+        explanation: "Edict of Milan 313 AD.",
+        example: "Made Christian faith legal"
+    },
+    // 30
+    {
+        question: "Language of Ancient Rome?",
+        answer: "Latin",
+        wrong1: "Greek",
+        wrong2: "French",
+        wrong3: "Spanish",
+        explanation: "Basis of many modern languages.",
+        example: "Root of English words"
+    },
+    // 31
+    {
+        question: "Period after fall of Rome called?",
+        answer: "Middle Ages",
+        wrong1: "Ancient Times",
+        wrong2: "Renaissance",
+        wrong3: "Modern Age",
+        explanation: "Also known as Medieval Times.",
+        example: "500 AD – 1500 AD"
+    },
+    // 32
+    {
+        question: "System of land, loyalty, and service?",
+        answer: "Feudalism",
+        wrong1: "Capitalism",
+        wrong2: "Socialism",
+        wrong3: "Democracy",
+        explanation: "King → Lord → Knight → Peasant.",
+        example: "Medieval social system"
+    },
+    // 33
+    {
+        question: "Worker who farmed land for lord?",
+        answer: "Serf",
+        wrong1: "Knight",
+        wrong2: "Noble",
+        wrong3: "Monk",
+        explanation: "Tied to the land, not free.",
+        example: "Medieval peasant farmer"
+    },
+    // 34
+    {
+        question: "Warrior who served a lord in Middle Ages?",
+        answer: "Knight",
+        wrong1: "Serf",
+        wrong2: "Monk",
+        wrong3: "Bishop",
+        explanation: "Followed code of chivalry.",
+        example: "Armored horseback warrior"
+    },
+    // 35
+    {
+        question: "Code of conduct for knights?",
+        answer: "Chivalry",
+        wrong1: "Feudalism",
+        wrong2: "Manorialism",
+        wrong3: "Canon Law",
+        explanation: "Honesty, bravery, respect for women.",
+        example: "Knight's moral rules"
+    },
+    // 36
+    {
+        question: "Most powerful church in Middle Ages?",
+        answer: "Roman Catholic Church",
+        wrong1: "Eastern Orthodox",
+        wrong2: "Protestant",
+        wrong3: "Buddhist",
+        explanation: "Controlled religion, education, law.",
+        example: "Pope as leader"
+    },
+    // 37
+    {
+        question: "Head of the Catholic Church?",
+        answer: "Pope",
+        wrong1: "King",
+        wrong2: "Bishop",
+        wrong3: "Priest",
+        explanation: "Spiritual leader of Christians.",
+        example: "Lives in Vatican City"
+    },
+    // 38
+    {
+        question: "Holy wars between Christians and Muslims?",
+        answer: "Crusades",
+        wrong1: "Hundred Years' War",
+        wrong2: "Viking Raids",
+        wrong3: "Civil War",
+        explanation: "Fight for control of Holy Land.",
+        example: "Jerusalem was main target"
+    },
+    // 39
+    {
+        question: "Disease that killed 1/3 of Europe?",
+        answer: "Black Death",
+        wrong1: "Smallpox",
+        wrong2: "Flu",
+        wrong3: "Cholera",
+        explanation: "Bubonic plague 1347–1351.",
+        example: "Spread by fleas on rats"
+    },
+    // 40
+    {
+        question: "War between England and France?",
+        answer: "Hundred Years' War",
+        wrong1: "Crusades",
+        wrong2: "Civil War",
+        wrong3: "Seven Years' War",
+        explanation: "Actually lasted 116 years.",
+        example: "Longbow and cannon used"
+    },
+    // 41
+    {
+        question: "French girl who led army against England?",
+        answer: "Joan of Arc",
+        wrong1: "Queen Elizabeth",
+        wrong2: "Mary Tudor",
+        wrong3: "Eleanor of Aquitaine",
+        explanation: "Captured and burned at stake.",
+        example: "National heroine of France"
+    },
+    // 42
+    {
+        question: "Rebellion of peasants against England?",
+        answer: "Peasants' Revolt",
+        wrong1: "Norman Conquest",
+        wrong2: "Civil War",
+        wrong3: "Barons' War",
+        explanation: "Protested high taxes and unfair laws.",
+        example: "Led by Wat Tyler"
+    },
+    // 43
+    {
+        question: "Document limiting king's power 1215?",
+        answer: "Magna Carta",
+        wrong1: "Constitution",
+        wrong2: "Bill of Rights",
+        wrong3: "Declaration",
+        explanation: "King must follow law like everyone else.",
+        example: "Foundation of modern rights"
+    },
+    // 44
+    {
+        question: "Rebuilding of art and learning in Europe?",
+        answer: "Renaissance",
+        wrong1: "Middle Ages",
+        wrong2: "Dark Ages",
+        wrong3: "Industrial Revolution",
+        explanation: "Rebirth of Greek and Roman ideas.",
+        example: "14th–17th centuries"
+    },
+    // 45
+    {
+        question: "Country where Renaissance began?",
+        answer: "Italy",
+        wrong1: "France",
+        wrong2: "England",
+        wrong3: "Germany",
+        explanation: "Wealthy city-states like Florence.",
+        example: "Art, science, invention boom"
+    },
+    // 46
+    {
+        question: "Famous Renaissance painter of Mona Lisa?",
+        answer: "Leonardo da Vinci",
+        wrong1: "Michelangelo",
+        wrong2: "Raphael",
+        wrong3: "Donatello",
+        explanation: "Scientist, inventor, artist.",
+        example: "Universal genius"
+    },
+    // 47
+    {
+        question: "Artist who painted Sistine Chapel ceiling?",
+        answer: "Michelangelo",
+        wrong1: "Da Vinci",
+        wrong2: "Van Gogh",
+        wrong3: "Picasso",
+        explanation: "Sculptor and painter.",
+        example: "David statue, Creation of Adam"
+    },
+    // 48
+    {
+        question: "Inventor of printing press?",
+        answer: "Johannes Gutenberg",
+        wrong1: "Leonardo da Vinci",
+        wrong2: "Galileo",
+        wrong3: "Newton",
+        explanation: "Changed spread of knowledge forever.",
+        example: "Printed Bible first"
+    },
+    // 49
+    {
+        question: "Movement to reform Catholic Church?",
+        answer: "Reformation",
+        wrong1: "Renaissance",
+        wrong2: "Crusades",
+        wrong3: "Inquisition",
+        explanation: "Led to Protestant churches.",
+        example: "16th century change"
+    },
+    // 50
+    {
+        question: "Monk who started Reformation?",
+        answer: "Martin Luther",
+        wrong1: "Henry VIII",
+        wrong2: "John Calvin",
+        wrong3: "Pope Leo X",
+        explanation: "95 Theses against indulgences.",
+        example: "Started Lutheran Church"
+    },
+    // 51
+    {
+        question: "King who started Church of England?",
+        answer: "Henry VIII",
+        wrong1: "Martin Luther",
+        wrong2: "Elizabeth I",
+        wrong3: "Charles I",
+        explanation: "Wanted divorce from Catherine of Aragon.",
+        example: "Created Anglican Church"
+    },
+    // 52
+    {
+        question: "Age when Europeans explored world?",
+        answer: "Age of Exploration",
+        wrong1: "Renaissance",
+        wrong2: "Middle Ages",
+        wrong3: "Iron Age",
+        explanation: "Found new lands and trade routes.",
+        example: "Columbus, Magellan"
+    },
+    // 53
+    {
+        question: "Sailor who reached Americas 1492?",
+        answer: "Christopher Columbus",
+        wrong1: "Magellan",
+        wrong2: "Drake",
+        wrong3: "Cook",
+        explanation: "Sailed for Spain.",
+        example: "Found West Indies"
+    },
+    // 54
+    {
+        question: "First to sail around the world?",
+        answer: "Ferdinand Magellan",
+        wrong1: "Columbus",
+        wrong2: "Drake",
+        wrong3: "Vespucci",
+        explanation: "Proved Earth is round.",
+        example: "Crew completed journey"
+    },
+    // 55
+    {
+        question: "Exchange of goods between Old and New World?",
+        answer: "Columbian Exchange",
+        wrong1: "Trade Route",
+        wrong2: "Silk Road",
+        wrong3: "Triangular Trade",
+        explanation: "Plants, animals, disease shared.",
+        example: "Potatoes, tomatoes, horses"
+    },
+    // 56
+    {
+        question: "Trade route between Europe, Africa, Americas?",
+        answer: "Triangular Trade",
+        wrong1: "Silk Road",
+        wrong2: "Spice Route",
+        wrong3: "Trans-Saharan",
+        explanation: "Goods and enslaved people traded.",
+        example: "Three-sided trade path"
+    },
+    // 57
+    {
+        question: "Forced voyage of enslaved Africans?",
+        answer: "Middle Passage",
+        wrong1: "Silk Road",
+        wrong2: "Royal Route",
+        wrong3: "Trade Lane",
+        explanation: "Terrible conditions on ships.",
+        example: "Africa to Americas"
+    },
+    // 58
+    {
+        question: "Empire in modern Mexico?",
+        answer: "Aztec",
+        wrong1: "Maya",
+        wrong2: "Inca",
+        wrong3: "Olmec",
+        explanation: "Capital Tenochtitlan.",
+        example: "Conquered by Cortés"
+    },
+    // 59
+    {
+        question: "Empire in Andes Mountains, South America?",
+        answer: "Inca",
+        wrong1: "Aztec",
+        wrong2: "Maya",
+        wrong3: "Zulu",
+        explanation: "Roads, quipu, no writing.",
+        example: "Conquered by Pizarro"
+    },
+    // 60
+    {
+        question: "Civilization with calendar and pyramids?",
+        answer: "Maya",
+        wrong1: "Aztec",
+        wrong2: "Inca",
+        wrong3: "Egyptian",
+        explanation: "Central America, complex math.",
+        example: "Collapsed mysteriously"
+    },
+    // 61
+    {
+        question: "Scientific study of sky and stars?",
+        answer: "Astronomy",
+        wrong1: "Biology",
+        wrong2: "Chemistry",
+        wrong3: "Geology",
+        explanation: "Heliocentric theory developed.",
+        example: "Copernicus, Galileo"
+    },
+    // 62
+    {
+        question: "Scientist who said Sun is center of solar system?",
+        answer: "Nicolaus Copernicus",
+        wrong1: "Galileo",
+        wrong2: "Newton",
+        wrong3: "Aristotle",
+        explanation: "Heliocentric model.",
+        example: "Challenged old Earth-centered view"
+    },
+    // 63
+    {
+        question: "Scientist with telescope, supported Copernicus?",
+        answer: "Galileo Galilei",
+        wrong1: "Newton",
+        wrong2: "Darwin",
+        wrong3: "Einstein",
+        explanation: "Tried by Church for his ideas.",
+        example: "Father of modern physics"
+    },
+    // 64
+    {
+        question: "Scientist of gravity and motion?",
+        answer: "Isaac Newton",
+        wrong1: "Galileo",
+        wrong2: "Copernicus",
+        wrong3: "Darwin",
+        explanation: "Laws of motion and gravity.",
+        example: "Apple falling theory"
+    },
+    // 65
+    {
+        question: "Age of reason and logical thinking?",
+        answer: "Enlightenment",
+        wrong1: "Renaissance",
+        wrong2: "Reformation",
+        wrong3: "Dark Ages",
+        explanation: "Ideas of liberty, rights, democracy.",
+        example: "18th century thinkers"
+    },
+    // 66
+    {
+        question: "Enlightenment thinker of natural rights?",
+        answer: "John Locke",
+        wrong1: "Rousseau",
+        wrong2: "Montesquieu",
+        wrong3: "Voltaire",
+        explanation: "Life, liberty, property.",
+        example: "Influenced American Revolution"
+    },
+    // 67
+    {
+        question: "War for American independence?",
+        answer: "American Revolution",
+        wrong1: "Civil War",
+        wrong2: "War of 1812",
+        wrong3: "Revolutionary War",
+        explanation: "Colonies vs Britain.",
+        example: "1775–1783"
+    },
+    // 68
+    {
+        question: "Document declaring US independence 1776?",
+        answer: "Declaration of Independence",
+        wrong1: "Constitution",
+        wrong2: "Bill of Rights",
+        wrong3: "Magna Carta",
+        explanation: "Written mainly by Thomas Jefferson.",
+        example: "All men are created equal"
+    },
+    // 69
+    {
+        question: "First President of the United States?",
+        answer: "George Washington",
+        wrong1: "Thomas Jefferson",
+        wrong2: "Abraham Lincoln",
+        wrong3: "Benjamin Franklin",
+        explanation: "Commander of Continental Army.",
+        example: "Father of his country"
+    },
+    // 70
+    {
+        question: "War that overthrew French king?",
+        answer: "French Revolution",
+        wrong1: "American Revolution",
+        wrong2: "Napoleonic Wars",
+        wrong3: "Hundred Years' War",
+        explanation: "Liberty, equality, fraternity.",
+        example: "Storming of Bastille 1789"
+    },
+    // 71
+    {
+        question: "Prison stormed to start French Revolution?",
+        answer: "Bastille",
+        wrong1: "Tower of London",
+        wrong2: "Versailles",
+        wrong3: "Notre Dame",
+        explanation: "Symbol of tyranny.",
+        example: "July 14 national holiday"
+    },
+    // 72
+    {
+        question: "Execution device used in French Revolution?",
+        answer: "Guillotine",
+        wrong1: "Sword",
+        wrong2: "Axe",
+        wrong3: "Hanging",
+        explanation: "Quick and 'humane' death.",
+        example: "King Louis XVI executed"
+    },
+    // 73
+    {
+        question: "French general who became emperor?",
+        answer: "Napoleon Bonaparte",
+        wrong1: "Louis XVI",
+        wrong2: "Robespierre",
+        wrong3: "Charles de Gaulle",
+        explanation: "Conquered most of Europe.",
+        example: "Napoleonic Code of laws"
+    },
+    // 74
+    {
+        question: "Battle where Napoleon was defeated?",
+        answer: "Waterloo",
+        wrong1: "Trafalgar",
+        wrong2: "Austerlitz",
+        wrong3: "Leipzig",
+        explanation: "Exiled to Saint Helena.",
+        example: "End of Napoleon's rule"
+    },
+    // 75
+    {
+        question: "Change from farming to machine work?",
+        answer: "Industrial Revolution",
+        wrong1: "Agricultural Revolution",
+        wrong2: "Scientific Revolution",
+        wrong3: "Digital Revolution",
+        explanation: "Factories, steam power, cities.",
+        example: "Began in Britain"
+    },
+    // 76
+    {
+        question: "Inventor of steam engine?",
+        answer: "James Watt",
+        wrong1: "Thomas Edison",
+        wrong2: "Alexander Graham Bell",
+        wrong3: "Eli Whitney",
+        explanation: "Powered trains, ships, factories.",
+        example: "Key invention of industry"
+    },
+    // 77
+    {
+        question: "War to end slavery in US?",
+        answer: "American Civil War",
+        wrong1: "Revolutionary War",
+        wrong2: "War of 1812",
+        wrong3: "Mexican War",
+        explanation: "North vs South 1861–1865.",
+        example: "Union victory"
+    },
+    // 78
+    {
+        question: "US President who ended slavery?",
+        answer: "Abraham Lincoln",
+        wrong1: "George Washington",
+        wrong2: "Thomas Jefferson",
+        wrong3: "Theodore Roosevelt",
+        explanation: "Emancipation Proclamation.",
+        example: "Assassinated 1865"
+    },
+    // 79
+    {
+        question: "Document freeing slaves in US?",
+        answer: "Emancipation Proclamation",
+        wrong1: "Declaration",
+        wrong2: "Constitution",
+        wrong3: "Bill of Rights",
+        explanation: "Freed slaves in Confederate states.",
+        example: "1863"
+    },
+    // 80
+    {
+        question: "Unification of Italy?",
+        answer: "Italian Unification",
+        wrong1: "Reunification",
+        wrong2: "Federation",
+        wrong3: "Alliance",
+        explanation: "Led by Garibaldi and Cavour.",
+        example: "1861 kingdom formed"
+    },
+    // 81
+    {
+        question: "Unification of Germany?",
+        answer: "German Unification",
+        wrong1: "Anschluss",
+        wrong2: "Federation",
+        wrong3: "Union",
+        explanation: "Led by Otto von Bismarck.",
+        example: "1871 empire created"
+    },
+    // 82
+    {
+        question: "European countries taking over Africa/Asia?",
+        answer: "Imperialism",
+        wrong1: "Nationalism",
+        wrong2: "Socialism",
+        wrong3: "Capitalism",
+        explanation: "Power, resources, trade.",
+        example: "Scramble for Africa"
+    },
+    // 83
+    {
+        question: "Meeting to divide Africa between Europeans?",
+        answer: "Berlin Conference",
+        wrong1: "Treaty of Versailles",
+        wrong2: "Congress of Vienna",
+        wrong3: "Yalta Conference",
+        explanation: "No African leaders invited.",
+        example: "1884–1885"
+    },
+    // 84
+    {
+        question: "Pride and loyalty to one's country?",
+        answer: "Nationalism",
+        wrong1: "Imperialism",
+        wrong2: "Socialism",
+        wrong3: "Communism",
+        explanation: "Major cause of WWI and WWII.",
+        example: "Love for nation"
+    },
+    // 85
+    {
+        question: "First World War years?",
+        answer: "1914–1918",
+        wrong1: "1939–1945",
+        wrong2: "1901–1905",
+        wrong3: "1920–1924",
+        explanation: "The Great War.",
+        example: "Allies vs Central Powers"
+    },
+    // 86
+    {
+        question: "Event that started WWI?",
+        answer: "Assassination of Franz Ferdinand",
+        wrong1: "Invasion of Poland",
+        wrong2: "Bombing of Pearl Harbor",
+        wrong3: "Sink of Lusitania",
+        explanation: "Shot in Sarajevo by Gavrilo Princip.",
+        example: "Austria-Hungary vs Serbia"
+    },
+    // 87
+    {
+        question: "War fought in ditches and holes?",
+        answer: "Trench Warfare",
+        wrong1: "Naval War",
+        wrong2: "Air War",
+        wrong3: "Guerilla War",
+        explanation: "Mud, disease, stalemate.",
+        example: "Western Front in WWI"
+    },
+    // 88
+    {
+        question: "Treaty ending WWI?",
+        answer: "Treaty of Versailles",
+        wrong1: "Treaty of Paris",
+        wrong2: "Lausanne Treaty",
+        wrong3: "Brest-Litovsk",
+        explanation: "Punished Germany harshly.",
+        example: "1919 peace deal"
+    },
+    // 89
+    {
+        question: "Russian revolution 1917?",
+        answer: "Bolshevik Revolution",
+        wrong1: "French Revolution",
+        wrong2: "American Revolution",
+        wrong3: "Chinese Revolution",
+        explanation: "Led by Lenin, created USSR.",
+        example: "Communist takeover"
+    },
+    // 90
+    {
+        question: "First Communist leader of Russia?",
+        answer: "Vladimir Lenin",
+        wrong1: "Joseph Stalin",
+        wrong2: "Leon Trotsky",
+        wrong3: "Nicholas II",
+        explanation: "Founded Soviet Union.",
+        example: "Red Army victory"
+    },
+    // 91
+    {
+        question: "Second World War years?",
+        answer: "1939–1945",
+        wrong1: "1914–1918",
+        wrong2: "1950–1953",
+        wrong3: "1961–1965",
+        explanation: "Allies vs Axis Powers.",
+        example: "Most destructive war ever"
+    },
+    // 92
+    {
+        question: "Event starting WWII?",
+        answer: "Germany invaded Poland",
+        wrong1: "Attack on Pearl Harbor",
+        wrong2: "Assassination of Franz Ferdinand",
+        wrong3: "Fall of France",
+        explanation: "Britain and France declared war.",
+        example: "September 1, 1939"
+    },
+    // 93
+    {
+        question: "German dictator during WWII?",
+        answer: "Adolf Hitler",
+        wrong1: "Benito Mussolini",
+        wrong2: "Joseph Stalin",
+        wrong3: "Winston Churchill",
+        explanation: "Leader of Nazi Party.",
+        example: "Chancellor of Germany"
+    },
+    // 94
+    {
+        question: "Murder of 6 million Jews in WWII?",
+        answer: "Holocaust",
+        wrong1: "Genocide",
+        wrong2: "Massacre",
+        wrong3: "Execution",
+        explanation: "Nazi concentration camps.",
+        example: "Systematic murder"
+    },
+    // 95
+    {
+        question: "US President during most of WWII?",
+        answer: "Franklin D. Roosevelt",
+        wrong1: "Harry Truman",
+        wrong2: "Dwight Eisenhower",
+        wrong3: "John F. Kennedy",
+        explanation: "New Deal and WWII leader.",
+        example: "Died 1945 before war ended"
+    },
+    // 96
+    {
+        question: "British Prime Minister during WWII?",
+        answer: "Winston Churchill",
+        wrong1: "Neville Chamberlain",
+        wrong2: "Clement Attlee",
+        wrong3: "Margaret Thatcher",
+        explanation: "Inspirational war leader.",
+        example: "Never surrender speeches"
+    },
+    // 97
+    {
+        question: "War of words and threats after WWII?",
+        answer: "Cold War",
+        wrong1: "Hot War",
+        wrong2: "Civil War",
+        wrong3: "Trade War",
+        explanation: "USA vs USSR 1947–1991.",
+        example: "No direct fighting"
+    },
+    // 98
+    {
+        question: "Divided city in Cold War?",
+        answer: "Berlin",
+        wrong1: "Paris",
+        wrong2: "London",
+        wrong3: "Moscow",
+        explanation: "Berlin Wall built 1961.",
+        example: "East vs West Berlin"
+    },
+    // 99
+    {
+        question: "Movement for equal rights for Black Americans?",
+        answer: "Civil Rights Movement",
+        wrong1: "Abolitionist Movement",
+        wrong2: "Suffrage Movement",
+        wrong3: "Labor Movement",
+        explanation: "Led by Martin Luther King Jr.",
+        example: "1950s–1960s"
+    },
+    // 100
+    {
+        question: "Leader of Civil Rights Movement?",
+        answer: "Martin Luther King Jr.",
+        wrong1: "Malcolm X",
+        wrong2: "Rosa Parks",
+        wrong3: "Barack Obama",
+        explanation: "I Have a Dream speech.",
+        example: "Nobel Peace Prize winner"
+    }
+];
