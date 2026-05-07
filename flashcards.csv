@@ -1,0 +1,79 @@
+subject,question,answer,explanation,example
+maths,What is the derivative of x²?,2x,The derivative of xⁿ is nx^(n-1). For x², n=2, so derivative is 2x.,If f(x) = x², then f'(x) = 2x. At x=3, the slope is 6.
+maths,What is the value of π (pi) to 3 decimal places?,3.142,Pi is the ratio of a circle's circumference to its diameter. It is an irrational number.,Circumference of a circle with radius 5: C = 2πr = 2 × 3.142 × 5 = 31.42
+maths,Solve: 2x + 5 = 15,x = 5,Subtract 5 from both sides: 2x = 10. Divide by 2: x = 5.,2(5) + 5 = 10 + 5 = 15 ✓
+maths,What is the area of a circle with radius r?,πr²,The area enclosed by a circle is π multiplied by the radius squared.,Area of circle with radius 4: A = π(4)² = 16π ≈ 50.27
+maths,What is the Pythagorean theorem?,a² + b² = c²,In a right-angled triangle, the square of the hypotenuse equals the sum of squares of the other two sides.,If a=3, b=4, then c² = 9 + 16 = 25, so c=5
+maths,What is the limit as x approaches 0 of sin(x)/x?,1,Using L'Hospital's rule or squeeze theorem, this limit equals 1.,sin(0.1)/0.1 ≈ 0.9983/0.1 ≈ 0.998 ≈ 1
+maths,What is the formula for compound interest?,A = P(1 + r/n)^(nt),A=amount, P=principal, r=rate, n=compounds/year, t=time in years.,£1000 at 5% for 2 years: A = 1000(1.05)² = £1102.50
+maths,Solve: log₂(8) = ?,3,log_b(a) = c means b^c = a. 2³ = 8, so log₂(8) = 3.,log₁₀(100) = 2 because 10² = 100
+maths,What is the discriminant of ax² + bx + c = 0?,b² - 4ac,The discriminant determines the nature of roots: positive=2 real, zero=1 real, negative=2 complex.,For x² - 5x + 6=0: D=25-24=1>0, two real roots
+maths,What is the sum of angles in a triangle?,180°,The sum of interior angles in any triangle is always 180 degrees.,Right-angled triangle: 90° + 30° + 60° = 180°
+maths,What is the derivative of e^x?,e^x,The exponential function e^x is its own derivative.,If f(x) = e^(2x), then f'(x) = 2e^(2x)
+maths,What is the integral of 1/x dx?,ln|x| + C,The antiderivative of 1/x is the natural logarithm of the absolute value of x.,∫(1/x)dx from 1 to e = ln(e) - ln(1) = 1 - 0 = 1
+maths,What is the formula for the nth term of an arithmetic sequence?,aₙ = a₁ + (n-1)d,aₙ=nth term, a₁=first term, d=common difference.,Sequence 3,7,11,...: a₅ = 3 + 4(4) = 19
+maths,What is the probability of rolling a 6 on a fair die?,1/6,Probability = favorable outcomes / total outcomes = 1/6.,Probability of even number: 3/6 = 1/2
+maths,What is the mean of the numbers: 2, 4, 6, 8, 10?,6,Mean = sum of numbers / count = 30/5 = 6.,Mean of 1,2,3: (1+2+3)/3 = 2
+physics,What is Newton's first law of motion also known as?,Law of inertia,An object at rest stays at rest, and an object in motion stays in motion with constant velocity unless acted upon by a net force.,A book stays on a table until pushed
+physics,What is the relationship between angular velocity and linear velocity?,v = rω,Linear velocity equals radius multiplied by angular velocity.,If r=2m and ω=3rad/s, then v=6m/s
+physics,What is the principle of moments?,Sum of clockwise moments = sum of anticlockwise moments,For rotational equilibrium, the sum of clockwise moments equals the sum of anticlockwise moments.,A see-saw balances when moments are equal
+physics,What is the formula for centripetal force?,F = mv²/r,Centripetal force is mass times velocity squared divided by radius.,A car turning a corner experiences centripetal force
+physics,What is torque?,τ = r × F,Force multiplied by perpendicular distance from pivot.,Using a longer wrench produces more torque
+physics,What is simple harmonic motion?,Motion where acceleration is proportional to displacement and opposite in direction.,A mass on a spring exhibits simple harmonic motion
+physics,What is the formula for period of a simple pendulum?,T = 2π√(l/g),Period equals 2π times the square root of length over gravity.,A pendulum with l=1m has T≈2s
+physics,What is the difference between longitudinal and transverse waves?,Longitudinal: particles parallel to wave direction; Transverse: particles perpendicular,Longitudinal waves oscillate parallel to direction (sound), transverse oscillate perpendicular (light).
+physics,What is constructive interference?,Waves reinforce, amplitude increases,When two waves meet in phase, their amplitudes add up.
+physics,What is destructive interference?,Waves cancel, amplitude decreases,When two waves meet out of phase, their amplitudes cancel.
+chemistry,What is Avogadro's number?,6.022 × 10²³ mol⁻¹,Number of particles in one mole of a substance.,1 mole of water contains 6.022 × 10²³ molecules
+chemistry,What is the pH of pure water at 25°C?,7,Pure water is neutral with equal concentrations of H⁺ and OH⁻ ions.
+chemistry,What is oxidation?,Loss of electrons or increase in oxidation state,Oxidation is the loss of electrons during a chemical reaction.,Fe → Fe²⁺ + 2e⁻ (oxidation)
+chemistry,What is reduction?,Gain of electrons or decrease in oxidation state,Reduction is the gain of electrons during a chemical reaction.,Cu²⁺ + 2e⁻ → Cu (reduction)
+chemistry,What is a covalent bond?,Bond formed by sharing of electrons,Atoms share electrons to achieve stable electron configuration.,H₂O has covalent bonds between H and O
+chemistry,What is ionic bonding?,Bond formed by transfer of electrons between atoms,Electrons are transferred from metal to non-metal, forming ions.,NaCl: Na loses electron, Cl gains electron
+chemistry,What is Le Chatelier's principle?,System at equilibrium responds to stress to re-establish equilibrium,If a stress is applied to a system at equilibrium, it shifts to relieve the stress.,Increasing pressure shifts equilibrium toward fewer moles of gas
+chemistry,What is a catalyst?,Substance that speeds up reaction without being consumed,Catalysts lower activation energy but are not used up in the reaction.,MnO₂ catalyzes decomposition of H₂O₂
+biology,What is mitosis?,Cell division resulting in two identical daughter cells,Mitosis produces cells with the same number of chromosomes as the parent.,Somatic cells divide by mitosis
+biology,What is meiosis?,Cell division resulting in four genetically different gametes,Meiosis reduces chromosome number by half for sexual reproduction.,Gametes are produced by meiosis
+biology,What is photosynthesis?,Process by which plants convert light energy to chemical energy,6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂,Plants produce glucose and oxygen
+biology,What is DNA?,Deoxyribonucleic acid, the genetic material,DNA contains the instructions for building and maintaining an organism.,DNA is double-stranded with nucleotide base pairs
+biology,What is RNA?,Ribonucleic acid, involved in protein synthesis,RNA carries DNA instructions to ribosomes for protein production.,mRNA, tRNA, rRNA are types of RNA
+biology,What is osmosis?,Movement of water across a semipermeable membrane,Water moves from high water potential to low water potential.,Plant cells become turgid when water enters by osmosis
+biology,What is natural selection?,Process by which organisms better adapted to environment survive and reproduce,Survival of the fittest - organisms with favorable traits pass them to offspring.,Peppered moths evolved darker coloration during industrial revolution
+biology,What is homeostasis?,Maintenance of stable internal conditions,Organisms maintain constant internal environment despite external changes.,Body temperature regulation in humans
+english,What is the definition of pathetic fallacy?,Attributing human emotions to nature/objects,Using weather or nature to reflect character emotions.,"The rain wept as she cried" - rain reflects sadness
+english,What is the difference between dramatic and verbal irony?,Dramatic: audience knows more; Verbal: opposite of what is said,Dramatic irony creates tension; verbal irony is sarcasm.,In Romeo & Juliet, audience knows Juliet is alive but Romeo doesn't
+english,What is blank verse?,Unrhymed iambic pentameter,Poetry with ten syllables per line, no rhyme.,Much of Shakespeare's plays are in blank verse
+english,What is the purpose of a soliloquy in drama?,Reveal a character's inner thoughts aloud,A character speaks their thoughts when alone on stage.,Hamlet's "To be or not to be" is a soliloquy
+english,Who wrote "The Tempest"?,William Shakespeare,One of Shakespeare's final plays, thought to be written around 1610-1611.
+english,What is a Petrarchan sonnet structure?,Octave (8 lines) + Sestet (6 lines), ABBA ABBA rhyme scheme,Italian sonnet form with two parts: problem and resolution.,Petrarch popularized this sonnet form
+english,What is stream of consciousness narration?,Represents thoughts as they flow through the mind,Interior monologue style showing mental processes.,James Joyce's Ulysses uses stream of consciousness
+english,What is synecdoche?,Part represents whole or vice versa,A figure of speech where a part stands for the whole.,"All hands on deck" - hands represent sailors
+history,What was the impact of the Treaty of Versailles on Germany?,Imposed reparations, territorial losses, war guilt clause,The treaty blamed Germany for WWI and imposed harsh penalties.,Germany lost 13% of its territory
+history,What were the main causes of World War I?,Militarism, alliances, imperialism, nationalism, assassination of Franz Ferdinand,Five main causes that led to the outbreak of WWI in 1914.
+history,What was the significance of the Battle of Stalingrad?,Turning point in WWII; first major German defeat,Germany's defeat at Stalingrad marked the beginning of their retreat.,Soviet victory at Stalingrad in 1943
+history,What was the Marshall Plan?,US economic aid to Europe post-WWII to prevent communism,Over $13 billion in aid to help European countries recover.,Helped rebuild Western Europe after WWII
+history,What was the Cuban Missile Crisis?,1962 standoff between US and USSR over nuclear missiles,Closest the world came to nuclear war during the Cold War.,Khrushchev removed missiles from Cuba
+history,What were the causes of the French Revolution?,Social inequality, economic crisis, political corruption,Three estates system with unequal privileges for the nobility and clergy.,Storming of the Bastille in 1789
+history,What was the Enlightenment?,Intellectual movement emphasizing reason and individualism,Philosophers like Locke, Voltaire, Rousseau challenged absolute monarchy.,Enlightenment ideas influenced the American Revolution
+history,What was the Industrial Revolution's impact on society?,Urbanization, social class changes, technological innovation,Mass production, factories, and new social classes emerged.,Shift from agrarian to industrial society
+geography,What is erosion?,Process of wearing away land by natural forces,Water, wind, ice, and gravity wear down the Earth's surface.,Grand Canyon was formed by river erosion
+geography,What is the greenhouse effect?,Natural process that warms the Earth's surface,Gases like CO₂ trap heat from the sun in the atmosphere.,Human activities increase greenhouse gases, causing global warming
+geography,What is urbanization?,Movement of people from rural to urban areas,Increasing proportion of population living in cities.,Megacities like Tokyo and Delhi result from urbanization
+geography,What is climate change?,Long-term changes in temperature and weather patterns,Human-induced global warming is causing significant climate changes.,Rising sea levels, extreme weather events
+geography,What are renewable resources?,Resources that can be replenished naturally,Solar, wind, hydro, and geothermal energy are renewable.,Renewable energy reduces carbon emissions
+geography,What is the water cycle?,Continuous movement of water on, above, and below Earth's surface,Evaporation, condensation, precipitation, and runoff.,Water cycles between oceans, atmosphere, and land
+geography,What is ecosystem?,Community of organisms interacting with their environment,Includes both biotic (living) and abiotic (non-living) components.,Rainforest is an example of a complex ecosystem
+geography,What is biodiversity?,Variety of life in a particular habitat or ecosystem,High biodiversity means many different species.,Rainforests have high biodiversity
+economics,What is supply?,Quantity of goods producers are willing to sell at a price,Supply increases as price increases (law of supply).
+economics,What is demand?,Quantity of goods consumers are willing to buy at a price,Demand decreases as price increases (law of demand).
+economics,What is GDP?,Gross Domestic Product - total value of goods and services produced,GDP measures a country's economic output.
+economics,What is inflation?,General increase in prices and fall in purchasing power,Inflation erodes the value of money over time.
+economics,What is opportunity cost?,Value of the next best alternative forgone,Opportunity cost is what you give up to choose something else.,Choosing to study means giving up leisure time
+economics,What is monopoly?,Market with single seller, no competition,Monopolies can set prices without competition.
+economics,What is fiscal policy?,Government use of spending and taxation to influence economy,Expansionary fiscal policy increases government spending.
+economics,What is monetary policy?,Central bank control of money supply and interest rates,Lowering interest rates stimulates borrowing and spending.
+maths,What is the square root of 64?,8,Square root of a number x is y where y² = x.,√100 = 10
+maths,Solve: 3x - 7 = 8,x = 5,Add 7: 3x=15, Divide by 3: x=5,3(5)-7=15-7=8 ✓
+physics,What is work done?,W = F × d,Work = force × distance moved in direction of force.,W=10N × 5m=50J
+maths,What is the square root of 64?,8,Square root of a number x is y where y² = x.,√100 = 10
+maths,Solve: 3x - 7 = 8,x = 5,Add 7: 3x=15, Divide by 3: x=5,3(5)-7=15-7=8 ✓
