@@ -1,0 +1,1002 @@
+const chineseFirstLanguageFlashcards = [
+  // 1
+  {
+    question: "什么是记叙文？",
+    answer: "以记叙、描写为主要表达方式，记人、叙事、写景、状物的文章",
+    wrong1: "用来说理、发表观点的文章",
+    wrong2: "用来介绍知识、说明事物的文章",
+    wrong3: "格式固定、用于交际的应用文",
+    explanation: "记叙文重过程、重细节、重情感",
+    example: "《背影》《从百草园到三味书屋》"
+  },
+  // 2
+  {
+    question: "什么是说明文？",
+    answer: "以说明为主要表达方式，介绍事物、解释事理的文章",
+    wrong1: "讲述故事、描写人物的文章",
+    wrong2: "发表观点、论证道理的文章",
+    wrong3: "写信、写通知的应用文",
+    explanation: "说明文要求准确、清楚、客观",
+    example: "介绍植物、科学原理、建筑特点"
+  },
+  // 3
+  {
+    question: "什么是议论文？",
+    answer: "以议论为主要表达方式，表达观点、讲道理、辨是非的文章",
+    wrong1: "描写风景、叙述事件的文章",
+    wrong2: "介绍物品特征的文章",
+    wrong3: "格式固定的实用文体",
+    explanation: "议论文有论点、论据、论证三要素",
+    example: "谈努力、谈诚信、谈责任"
+  },
+  // 4
+  {
+    question: "什么是应用文？",
+    answer: "日常生活、工作中使用的格式固定、目的明确的文体",
+    wrong1: "讲述故事、抒发情感的文章",
+    wrong2: "发表观点、论证道理的文章",
+    wrong3: "描写景物的散文",
+    explanation: "格式正确、语言简洁、目的明确",
+    example: "通知、书信、请假条、倡议书"
+  },
+  // 5
+  {
+    question: "什么是散文？",
+    answer: "形散神不散，自由抒发情感、描写见闻的文学体裁",
+    wrong1: "有完整故事情节的小说",
+    wrong2: "格式严格的诗歌",
+    wrong3: "以对话为主的剧本",
+    explanation: "语言优美、情感真挚、结构自由",
+    example: "写景散文、抒情散文、哲理散文"
+  },
+  // 6
+  {
+    question: "什么是小说？",
+    answer: "以塑造人物为中心，通过完整故事情节和环境反映生活的文学作品",
+    wrong1: "真实记录事件的新闻",
+    wrong2: "直接说理的议论文",
+    wrong3: "格式固定的应用文",
+    explanation: "小说三要素：人物、情节、环境",
+    example: "《孔乙己》《骆驼祥子》"
+  },
+  // 7
+  {
+    question: "议论文三要素是什么？",
+    answer: "论点、论据、论证",
+    wrong1: "时间、地点、人物",
+    wrong2: "起因、经过、结果",
+    wrong3: "说明对象、特征、顺序",
+    explanation: "论点是观点，论据是证据，论证是方法",
+    example: "论点：坚持重要；论据：名人事例；论证：讲道理"
+  },
+  // 8
+  {
+    question: "什么是论点？",
+    answer: "作者在文章中表达的核心观点、主张",
+    wrong1: "用来证明观点的例子",
+    wrong2: "叙述故事的经过",
+    wrong3: "描写景物的句子",
+    explanation: "论点必须明确、正确、鲜明",
+    example: "我们应该珍惜时间"
+  },
+  // 9
+  {
+    question: "什么是论据？",
+    answer: "用来证明论点正确的材料、事实或道理",
+    wrong1: "作者的主观感受",
+    wrong2: "文章的中心思想",
+    wrong3: "描写性的句子",
+    explanation: "分为事实论据和道理论据",
+    example: "名人事例、名言警句、数据"
+  },
+  // 10
+  {
+    question: "什么是论证？",
+    answer: "用论据证明论点的过程和方法",
+    wrong1: "文章的标题",
+    wrong2: "故事的情节",
+    wrong3: "景物描写",
+    explanation: "把观点和证据联系起来",
+    example: "举例论证、道理论证、对比论证"
+  },
+  // 11
+  {
+    question: "什么是修辞手法？",
+    answer: "让语言更生动、形象、有感染力的表达技巧",
+    wrong1: "文章的结构安排",
+    wrong2: "写作的顺序",
+    wrong3: "说明方法",
+    explanation: "增强语言表现力，是阅读必考点",
+    example: "比喻、拟人、排比、夸张"
+  },
+  // 12
+  {
+    question: "什么是比喻？",
+    answer: "用与本体相似的事物来打比方，使表达更形象",
+    wrong1: "把事物当作人来写",
+    wrong2: "超出事实夸大描述",
+    wrong3: "三个以上结构相似句子",
+    explanation: "本体+喻体+比喻词（像、好像、仿佛）",
+    example: "月亮像小船"
+  },
+  // 13
+  {
+    question: "什么是拟人？",
+    answer: "把事物当作人来写，赋予人的动作、情感、语言",
+    wrong1: "用相似事物打比方",
+    wrong2: "故意夸大事实",
+    wrong3: "重复相同词语",
+    explanation: "让景物更生动、亲切",
+    example: "小鸟在树上唱歌"
+  },
+  // 14
+  {
+    question: "什么是排比？",
+    answer: "三个或以上结构相似、意思相关、语气一致的短语或句子",
+    wrong1: "两两相对的句子",
+    wrong2: "故意夸大",
+    wrong3: "自问自答",
+    explanation: "增强气势、节奏感强",
+    example: "努力是光，照亮前路；努力是火，点燃希望"
+  },
+  // 15
+  {
+    question: "什么是夸张？",
+    answer: "故意超出事实，突出事物特征，增强表达效果",
+    wrong1: "打比方",
+    wrong2: "当作人写",
+    wrong3: "结构相同句子",
+    explanation: "突出特点，让人印象深刻",
+    example: "飞流直下三千尺"
+  },
+  // 16
+  {
+    question: "什么是对比？",
+    answer: "把两种相反、相对的事物放在一起比较，突出特征",
+    wrong1: "自问自答",
+    wrong2: "重复词语",
+    wrong3: "引用名言",
+    explanation: "突出差异，强调观点",
+    example: "有的人活着，他已经死了"
+  },
+  // 17
+  {
+    question: "什么是设问？",
+    answer: "自问自答，引起读者注意和思考",
+    wrong1: "只问不答，引发思考",
+    wrong2: "夸大事实",
+    wrong3: "打比方",
+    explanation: "答案紧跟在问题后面",
+    example: "什么是路？路是走出来的"
+  },
+  // 18
+  {
+    question: "什么是反问？",
+    answer: "只问不答，答案藏在问题里，语气更强烈",
+    wrong1: "自问自答",
+    wrong2: "打比方",
+    wrong3: "重复句子",
+    explanation: "加强语气，表达肯定意思",
+    example: "难道我们不应该努力吗？"
+  },
+  // 19
+  {
+    question: "什么是反复？",
+    answer: "故意重复词语或句子，强调情感、突出意思",
+    wrong1: "三个结构相同句子",
+    wrong2: "两两相对句子",
+    wrong3: "夸大描述",
+    explanation: "强调重点，增强情感",
+    example: "盼望着，盼望着，春天来了"
+  },
+  // 20
+  {
+    question: "什么是引用？",
+    answer: "引用名言、诗句、俗语，增强说服力和文采",
+    wrong1: "自己创造句子",
+    wrong2: "夸大描述",
+    wrong3: "当作人写",
+    explanation: "让文章更有文化底蕴",
+    example: "孔子说：‘三人行，必有我师焉。’"
+  },
+  // 21
+  {
+    question: "什么是描写方法？",
+    answer: "对人物、景物、环境进行具体刻画的写作方法",
+    wrong1: "说明事物特征的方法",
+    wrong2: "论证观点的方法",
+    wrong3: "文章结构安排",
+    explanation: "让内容更具体、生动、可感",
+    example: "外貌、语言、动作、心理、环境描写"
+  },
+  // 22
+  {
+    question: "什么是人物描写？",
+    answer: "刻画人物形象的描写，包括外貌、语言、动作、心理、神态",
+    wrong1: "描写天气、风景",
+    wrong2: "介绍物品特点",
+    wrong3: "叙述事件经过",
+    explanation: "表现人物性格、品质、情感",
+    example: "他皱着眉头，沉默不语"
+  },
+  // 23
+  {
+    question: "什么是环境描写？",
+    answer: "对自然景物或社会场景的描写",
+    wrong1: "描写人物外貌",
+    wrong2: "叙述故事情节",
+    wrong3: "说明物品结构",
+    explanation: "渲染气氛、烘托人物心情、推动情节",
+    example: "窗外下着大雨，天色昏暗"
+  },
+  // 24
+  {
+    question: "什么是说明方法？",
+    answer: "说明文里用来把事物说清楚、准确的方法",
+    wrong1: "修辞手法",
+    wrong2: "人物描写方法",
+    wrong3: "抒情方式",
+    explanation: "准确、客观、清楚",
+    example: "举例子、列数字、作比较、打比方"
+  },
+  // 25
+  {
+    question: "什么是举例子？",
+    answer: "举出具体事例，把抽象、复杂的事物说明白",
+    wrong1: "用数字说明",
+    wrong2: "打比方说明",
+    wrong3: "对比说明",
+    explanation: "真实具体，容易理解",
+    example: "许多大型动物，比如大象，记忆力很强"
+  },
+  // 26
+  {
+    question: "什么是列数字？",
+    answer: "用具体数据准确说明事物的特征",
+    wrong1: "举例子",
+    wrong2: "打比方",
+    wrong3: "对比",
+    explanation: "准确、有说服力",
+    example: "这座塔高50米，有10层"
+  },
+  // 27
+  {
+    question: "什么是作比较？",
+    answer: "把两种事物放在一起对比，突出特征",
+    wrong1: "用数字说明",
+    wrong2: "举例子",
+    wrong3: "打比方",
+    explanation: "突出特点，更易懂",
+    example: "鲸比大象大得多"
+  },
+  // 28
+  {
+    question: "什么是打比方（说明文中）？",
+    answer: "用相似事物打比方，让说明更形象",
+    wrong1: "拟人",
+    wrong2: "夸张",
+    wrong3: "排比",
+    explanation: "说明文里不叫比喻，叫打比方",
+    example: "石拱桥的桥洞像彩虹"
+  },
+  // 29
+  {
+    question: "什么是表达方式？",
+    answer: "文章最基本的表达方法，共五种",
+    wrong1: "修辞手法",
+    wrong2: "说明方法",
+    wrong3: "人物描写",
+    explanation: "记叙、描写、说明、议论、抒情",
+    example: "叙述事情、描写景色、发表观点"
+  },
+  // 30
+  {
+    question: "五种表达方式是什么？",
+    answer: "记叙、描写、说明、议论、抒情",
+    wrong1: "比喻、拟人、排比、夸张、反问",
+    wrong2: "举例子、列数字、作比较、打比方、分类别",
+    wrong3: "外貌、语言、动作、心理、神态",
+    explanation: "所有文章都由这五种方式构成",
+    example: "记叙（讲故事）、抒情（表达情感）"
+  },
+  // 31
+  {
+    question: "什么是记叙的顺序？",
+    answer: "记叙文安排事件的先后顺序",
+    wrong1: "说明文的说明顺序",
+    wrong2: "议论文的结构",
+    wrong3: "应用文格式",
+    explanation: "顺叙、倒叙、插叙",
+    example: "按时间先后讲故事"
+  },
+  // 32
+  {
+    question: "什么是顺叙？",
+    answer: "按照事情发生、发展、结束的时间先后顺序写",
+    wrong1: "先写结果再写起因",
+    wrong2: "中间插入往事",
+    wrong3: "打乱时间顺序",
+    explanation: "条理清晰、自然易懂",
+    example: "早上→中午→晚上"
+  },
+  // 33
+  {
+    question: "什么是倒叙？",
+    answer: "先写结果或重要片段，再回头写起因、经过",
+    wrong1: "按时间先后写",
+    wrong2: "中间插入回忆",
+    wrong3: "随意打乱顺序",
+    explanation: "设置悬念，吸引读者",
+    example: "先写获奖，再写如何努力"
+  },
+  // 34
+  {
+    question: "什么是插叙？",
+    answer: "在叙述过程中插入一段相关往事或背景",
+    wrong1: "先写结果再写经过",
+    wrong2: "完全按时间顺序",
+    wrong3: "结尾补充内容",
+    explanation: "丰富内容，突出人物",
+    example: "正在讲故事，插入回忆"
+  },
+  // 35
+  {
+    question: "什么是中心思想？",
+    answer: "作者通过文章表达的主要意思、情感或道理",
+    wrong1: "文章的标题",
+    wrong2: "故事的情节",
+    wrong3: "优美句子",
+    explanation: "全文的灵魂、核心",
+    example: "赞美父爱、告诉我们要坚持"
+  },
+  // 36
+  {
+    question: "什么是线索？",
+    answer: "贯穿全文、把材料串联起来的人、事、物或情感",
+    wrong1: "文章标题",
+    wrong2: "中心思想",
+    wrong3: "故事情节",
+    explanation: "让文章结构完整、紧凑",
+    example: "一件物品、时间、情感变化"
+  },
+  // 37
+  {
+    question: "什么是过渡句？",
+    answer: "连接上下文、承上启下的句子",
+    wrong1: "点明中心的句子",
+    wrong2: "描写景物的句子",
+    wrong3: "发表观点的句子",
+    explanation: "使文章衔接自然、结构流畅",
+    example: "不仅……而且……、除此之外"
+  },
+  // 38
+  {
+    question: "什么是总起句？",
+    answer: "放在段落或文章开头，概括全段/全文内容的句子",
+    wrong1: "结尾总结句子",
+    wrong2: "中间过渡句子",
+    wrong3: "描写细节句子",
+    explanation: "总领下文，点明内容",
+    example: "公园的景色真美啊！"
+  },
+  // 39
+  {
+    question: "什么是总结句？",
+    answer: "放在段落或文章结尾，概括全段/全文的句子",
+    wrong1: "开头总领句子",
+    wrong2: "中间过渡句子",
+    wrong3: "细节描写句子",
+    explanation: "总结内容、点明中心",
+    example: "这件事让我明白了坚持的重要"
+  },
+  // 40
+  {
+    question: "什么是病句？",
+    answer: "语言表达不符合语法、逻辑或习惯的错误句子",
+    wrong1: "优美生动的句子",
+    wrong2: "结构复杂的句子",
+    wrong3: "富有哲理的句子",
+    explanation: "考试必考修改题型",
+    example: "我看见声音（搭配不当）"
+  },
+  // 41
+  {
+    question: "什么是搭配不当？",
+    answer: "词语之间不能互相组合，不符合语言习惯",
+    wrong1: "句子缺少主语",
+    wrong2: "意思重复",
+    wrong3: "语序颠倒",
+    explanation: "动词+名词、形容词+名词搭配错误",
+    example: "提高水平（正确）/提高态度（错误）"
+  },
+  // 42
+  {
+    question: "什么是成分残缺？",
+    answer: "句子缺少必要部分，意思不完整",
+    wrong1: "词语重复",
+    wrong2: "搭配错误",
+    wrong3: "语序不当",
+    explanation: "最常见缺主语、缺宾语",
+    example: "通过努力，使我进步（缺主语）"
+  },
+  // 43
+  {
+    question: "什么是重复累赘？",
+    answer: "句子中意思相同的词语重复使用",
+    wrong1: "缺少成分",
+    wrong2: "搭配不当",
+    wrong3: "语序混乱",
+    explanation: "语言啰嗦、不简洁",
+    example: "非常十分高兴、过去的往事"
+  },
+  // 44
+  {
+    question: "什么是语序不当？",
+    answer: "词语排列顺序错误，不符合逻辑",
+    wrong1: "意思重复",
+    wrong2: "缺少主语",
+    wrong3: "搭配错误",
+    explanation: "读起来不通顺、逻辑混乱",
+    example: "我国棉花的生产（改为：我国生产的棉花）"
+  },
+  // 45
+  {
+    question: "什么是前后矛盾？",
+    answer: "句子前后意思相反、冲突",
+    wrong1: "缺少成分",
+    wrong2: "重复啰嗦",
+    wrong3: "搭配不当",
+    explanation: "逻辑错误",
+    example: "公园里基本上没有人，只有几个老人"
+  },
+  // 46
+  {
+    question: "什么是标点符号？",
+    answer: "用来表示停顿、语气、标注语句的符号",
+    wrong1: "修辞手法",
+    wrong2: "说明方法",
+    wrong3: "描写方法",
+    explanation: "正确使用使语句清晰、语气准确",
+    example: "，。？！：；“”《》"
+  },
+  // 47
+  {
+    question: "引号的作用是什么？",
+    answer: "引用话语、标明特殊含义、强调词语",
+    wrong1: "表示书名",
+    wrong2: "表示停顿",
+    wrong3: "表示感叹",
+    explanation: "直接引语必须加引号",
+    example: "他说：“你好。”"
+  },
+  // 48
+  {
+    question: "书名号的作用是什么？",
+    answer: "标明书籍、文章、影视作品、歌曲名称",
+    wrong1: "引用说话内容",
+    wrong2: "表示强调",
+    wrong3: "表示特殊含义",
+    explanation: "名称专用，不能乱用",
+    example: "《朝花夕拾》《三国演义》"
+  },
+  // 49
+  {
+    question: "什么是同义词？",
+    answer: "意思相同或相近的词语",
+    wrong1: "意思相反的词语",
+    wrong2: "读音相同的词语",
+    wrong3: "字形相同的词语",
+    explanation: "可以替换，表达更丰富",
+    example: "美丽—漂亮、开心—快乐"
+  },
+  // 50
+  {
+    question: "什么是反义词？",
+    answer: "意思相对或相反的词语",
+    wrong1: "意思相近的词语",
+    wrong2: "读音相同的词语",
+    wrong3: "字形相同的词语",
+    explanation: "对比鲜明，常用于对比、排比",
+    example: "高—低、好—坏、成功—失败"
+  },
+  // 51
+  {
+    question: "什么是多音字？",
+    answer: "同一个字有两个或以上读音和意思",
+    wrong1: "读音相同字形不同",
+    wrong2: "字形相近意思不同",
+    wrong3: "只有一个读音",
+    explanation: "根据意思、用法确定读音",
+    example: "行：xíng（行走） háng（银行）"
+  },
+  // 52
+  {
+    question: "什么是形近字？",
+    answer: "字形相近、容易写错的字",
+    wrong1: "读音相同意思不同",
+    wrong2: "同一个字多个读音",
+    wrong3: "完全不同的字",
+    explanation: "注意偏旁、笔画区别",
+    example: "辩—辨—辫、即—既"
+  },
+  // 53
+  {
+    question: "什么是同音字？",
+    answer: "读音相同、字形、意思不同的字",
+    wrong1: "字形相近",
+    wrong2: "多音字",
+    wrong3: "形近字",
+    explanation: "容易写错，必须根据意思区分",
+    example: "在—再、有—友、工—公"
+  },
+  // 54
+  {
+    question: "什么是敬辞？",
+    answer: "对别人表示尊敬、礼貌的词语",
+    wrong1: "对自己谦虚的词语",
+    wrong2: "批评别人的词语",
+    wrong3: "口语化词语",
+    explanation: "用于长辈、陌生人、正式场合",
+    example: "您、贵、请、谢谢、光临"
+  },
+  // 55
+  {
+    question: "什么是谦辞？",
+    answer: "对自己表示谦虚的词语",
+    wrong1: "尊敬别人的词语",
+    wrong2: "命令语气词语",
+    wrong3: "赞美词语",
+    explanation: "用于自我介绍、说话客气",
+    example: "我、敝、拙、寒舍、见谅"
+  },
+  // 56
+  {
+    question: "请假条格式必须有什么？",
+    answer: "标题、称呼、正文、署名、日期",
+    wrong1: "只有正文",
+    wrong2: "只有署名",
+    wrong3: "只有日期",
+    explanation: "应用文格式必须完整",
+    example: "请假条：尊敬的老师……"
+  },
+  // 57
+  {
+    question: "通知的格式是什么？",
+    answer: "标题、称呼、正文、落款、日期",
+    wrong1: "书信格式",
+    wrong2: "散文格式",
+    wrong3: "议论文格式",
+    explanation: "通知要简洁、明确、清楚",
+    example: "通知：全体同学……"
+  },
+  // 58
+  {
+    question: "书信格式包括什么？",
+    answer: "称呼、问候语、正文、祝颂语、署名、日期",
+    wrong1: "只有正文",
+    wrong2: "只有标题",
+    wrong3: "只有结尾",
+    explanation: "日常交际最常用应用文",
+    example: "亲爱的妈妈：您好！……"
+  },
+  // 59
+  {
+    question: "倡议书格式是什么？",
+    answer: "标题、称呼、正文、倡议人、日期",
+    wrong1: "小说格式",
+    wrong2: "说明文格式",
+    wrong3: "只写正文",
+    explanation: "提出号召、呼吁大家行动",
+    example: "节约用水倡议书"
+  },
+  // 60
+  {
+    question: "什么是口语交际？",
+    answer: "日常生活中礼貌、清楚、得体的口头交流",
+    wrong1: "书面作文",
+    wrong2: "背诵课文",
+    wrong3: "抄写句子",
+    explanation: "礼貌、简洁、清楚、得体",
+    example: "问路、打电话、劝说、道歉"
+  },
+  // 61
+  {
+    question: "劝说别人要注意什么？",
+    answer: "语气委婉、礼貌尊重、讲道理、不生硬",
+    wrong1: "大声命令",
+    wrong2: "指责批评",
+    wrong3: "讽刺挖苦",
+    explanation: "让对方容易接受",
+    example: "别生气，我们好好说……"
+  },
+  // 62
+  {
+    question: "道歉要注意什么？",
+    answer: "态度诚恳、承认错误、表达歉意、提出改正",
+    wrong1: "找借口",
+    wrong2: "推卸责任",
+    wrong3: "强词夺理",
+    explanation: "真诚最能打动人",
+    example: "对不起，我错了，请原谅"
+  },
+  // 63
+  {
+    question: "什么是概括段意？",
+    answer: "用简洁语言总结段落主要内容",
+    wrong1: "抄写原句",
+    wrong2: "详细复述",
+    wrong3: "只写关键词",
+    explanation: "完整、简洁、准确",
+    example: "本段写了雨后公园的美景"
+  },
+  // 64
+  {
+    question: "概括文章主要内容的方法？",
+    answer: "谁+做什么+结果怎样（记叙文）",
+    wrong1: "抄写全文",
+    wrong2: "只写开头",
+    wrong3: "只写结尾",
+    explanation: "简洁、完整、准确",
+    example: "本文写了鲁迅童年的生活"
+  },
+  // 65
+  {
+    question: "体会句子含义要抓什么？",
+    answer: "关键词、修辞、情感、中心思想",
+    wrong1: "只看表面意思",
+    wrong2: "只看字数多少",
+    wrong3: "只看句子位置",
+    explanation: "理解深层意思、作者情感",
+    example: "‘温暖的光’既指阳光，也指关爱"
+  },
+  // 66
+  {
+    question: "赏析句子要答什么？",
+    answer: "手法+内容+情感/作用",
+    wrong1: "只抄句子",
+    wrong2: "只翻译句子",
+    wrong3: "只说好看",
+    explanation: "阅读高分答题模板",
+    example: "运用比喻，生动写出……表达……"
+  },
+  // 67
+  {
+    question: "环境描写的作用是什么？",
+    answer: "渲染气氛、烘托心情、推动情节、点明背景",
+    wrong1: "介绍知识",
+    wrong2: "发表观点",
+    wrong3: "总结全文",
+    explanation: "记叙文阅读必考点",
+    example: "雨天烘托悲伤心情"
+  },
+  // 68
+  {
+    question: "人物描写的作用是什么？",
+    answer: "表现人物性格、品质、情感，突出中心",
+    wrong1: "介绍景物",
+    wrong2: "说明知识",
+    wrong3: "总结道理",
+    explanation: "通过细节看人物",
+    example: "动作描写表现他很细心"
+  },
+  // 69
+  {
+    question: "标题的作用是什么？",
+    answer: "概括内容、点明中心、设置悬念、作为线索",
+    wrong1: "只是一个名字",
+    wrong2: "装饰文章",
+    wrong3: "无实际意义",
+    explanation: "标题是文章眼睛",
+    example: "《背影》点明写作对象"
+  },
+  // 70
+  {
+    question: "结尾的作用是什么？",
+    answer: "总结全文、点明中心、升华主题、照应开头",
+    wrong1: "开启下文",
+    wrong2: "设置悬念",
+    wrong3: "描写细节",
+    explanation: "结构+内容两方面作答",
+    example: "结尾点明道理，呼应开头"
+  },
+  // 71
+  {
+    question: "开头的作用是什么？",
+    answer: "总领全文、点题、设置悬念、引出下文",
+    wrong1: "总结全文",
+    wrong2: "升华主题",
+    wrong3: "照应结尾",
+    explanation: "吸引读者，奠定基调",
+    example: "开头写景，引出回忆"
+  },
+  // 72
+  {
+    question: "写作六要素是什么？",
+    answer: "时间、地点、人物、起因、经过、结果",
+    wrong1: "论点、论据、论证",
+    wrong2: "举例子、列数字、作比较",
+    wrong3: "比喻、拟人、排比",
+    explanation: "记叙文必须完整",
+    example: "什么时候、在哪里、谁、做了什么"
+  },
+  // 73
+  {
+    question: "作文选材要注意什么？",
+    answer: "真实、典型、具体、紧扣中心",
+    wrong1: "虚假、空洞、随便",
+    wrong2: "越多越好",
+    wrong3: "越难越好",
+    explanation: "小材料写出真情实感",
+    example: "写亲情选小事：一杯牛奶"
+  },
+  // 74
+  {
+    question: "作文结构要清晰指什么？",
+    answer: "开头、中间、结尾完整，层次分明",
+    wrong1: "想到什么写什么",
+    wrong2: "段落越长越好",
+    wrong3: "不分段落",
+    explanation: "条理清楚，一目了然",
+    example: "总—分—总结构"
+  },
+  // 75
+  {
+    question: "什么是总—分—总结构？",
+    answer: "开头总起、中间分述、结尾总结",
+    wrong1: "只分不总",
+    wrong2: "只总不分",
+    wrong3: "混乱无序",
+    explanation: "最常用、最清晰结构",
+    example: "开头点题→中间分段写→结尾升华"
+  },
+  // 76
+  {
+    question: "作文语言要做到什么？",
+    answer: "通顺、准确、生动、简洁、无病句",
+    wrong1: "华丽空洞",
+    wrong2: "啰嗦重复",
+    wrong3: "用词生僻",
+    explanation: "好语言服务于内容和情感",
+    example: "用细节代替空话"
+  },
+  // 77
+  {
+    question: "什么是细节描写？",
+    answer: "对人物、景物、动作的细小、具体刻画",
+    wrong1: "概括叙述",
+    wrong2: "空泛抒情",
+    wrong3: "笼统介绍",
+    explanation: "细节让作文真实感人",
+    example: "手冻得通红，依然握着笔"
+  },
+  // 78
+  {
+    question: "作文如何写出真情实感？",
+    answer: "写真实经历、抓细节、写心里话、不虚构",
+    wrong1: "编故事",
+    wrong2: "抄范文",
+    wrong3: "说空话",
+    explanation: "真情最能打动读者",
+    example: "写自己真实感受"
+  },
+  // 79
+  {
+    question: "什么是立意？",
+    answer: "文章的中心思想、写作目的、主题",
+    wrong1: "文章标题",
+    wrong2: "文章字数",
+    wrong3: "文章段落",
+    explanation: "立意正确、积极、深刻",
+    example: "赞美亲情、歌颂坚持、传递温暖"
+  },
+  // 80
+  {
+    question: "作文如何审题？",
+    answer: "看清题目、抓住关键词、确定中心和文体",
+    wrong1: "随便写",
+    wrong2: "只看一半题目",
+    wrong3: "不限制内容",
+    explanation: "审错题直接低分",
+    example: "题目《难忘的一件事》必须写一件事"
+  },
+  // 81
+  {
+    question: "什么是书写规范？",
+    answer: "字迹工整、卷面整洁、不涂改、不潦草",
+    wrong1: "字迹潦草",
+    wrong2: "随意涂改",
+    wrong3: "字体超大/超小",
+    explanation: "卷面影响作文分数",
+    example: "横平竖直、干净整洁"
+  },
+  // 82
+  {
+    question: "什么是古诗文背诵？",
+    answer: "准确记忆课内古诗、文言文，不写错字",
+    wrong1: "随便记大概",
+    wrong2: "只记意思",
+    wrong3: "只记标题",
+    explanation: "考试默写必考，一字一分",
+    example: "《静夜思》《望庐山瀑布》"
+  },
+  // 83
+  {
+    question: "古诗赏析写什么？",
+    answer: "画面+情感+炼字/修辞",
+    wrong1: "只抄诗句",
+    wrong2: "只翻译",
+    wrong3: "只说好听",
+    explanation: "描绘画面，体会情感",
+    example: "描绘了……表达了诗人……"
+  },
+  // 84
+  {
+    question: "文言文翻译原则？",
+    answer: "逐字翻译、通顺准确、保留专有名词",
+    wrong1: "随意改写",
+    wrong2: "只译大意",
+    wrong3: "加很多内容",
+    explanation: "信、达、雅",
+    example: "‘学而时习之’：学习并按时复习"
+  },
+  // 85
+  {
+    question: "什么是文言实词？",
+    answer: "有实际意思的文言词语",
+    wrong1: "无实际意思的虚词",
+    wrong2: "标点符号",
+    wrong3: "修辞方法",
+    explanation: "名词、动词、形容词等",
+    example: "走（跑）、去（离开）、之（的）"
+  },
+  // 86
+  {
+    question: "什么是文言虚词？",
+    answer: "无实际意思，起语法连接作用的词",
+    wrong1: "有实际意思的词",
+    wrong2: "专有名词",
+    wrong3: "动词名词",
+    explanation: "之、乎、者、也、而、以",
+    example: "而（但是、而且）"
+  },
+  // 87
+  {
+    question: "课内现代文阅读考什么？",
+    answer: "字词、修辞、句子含义、中心思想、结构作用",
+    wrong1: "只考生字",
+    wrong2: "只考背诵",
+    wrong3: "只考作文",
+    explanation: "理解课文是基础",
+    example: "《背影》段落作用、句子赏析"
+  },
+  // 88
+  {
+    question: "课外阅读考什么？",
+    answer: "概括内容、理解句子、赏析手法、体会情感、表达启示",
+    wrong1: "只考生字词",
+    wrong2: "只考背诵",
+    wrong3: "只考格式",
+    explanation: "读懂文章+会答题模板",
+    example: "记叙文、说明文、议论文阅读"
+  },
+  // 89
+  {
+    question: "阅读答题要分点吗？",
+    answer: "必须分点，条理清晰，按分值答题",
+    wrong1: "写成一团",
+    wrong2: "只写一句话",
+    wrong3: "随意乱写",
+    explanation: "阅卷老师一目了然，容易得分",
+    example: "①……②……③……"
+  },
+  // 90
+  {
+    question: "什么是语言得体？",
+    answer: "说话看对象、看场合、有礼貌、符合身份",
+    wrong1: "想说什么说什么",
+    wrong2: "大声说话",
+    wrong3: "用网络用语对长辈",
+    explanation: "礼貌、分寸恰当",
+    example: "对老师用“您”，对朋友可亲切"
+  },
+  // 91
+  {
+    question: "什么是词语的感情色彩？",
+    answer: "词语包含的褒义、贬义、中性情感",
+    wrong1: "词语读音",
+    wrong2: "词语字形",
+    wrong3: "词语结构",
+    explanation: "褒义赞扬，贬义批评，中性客观",
+    example: "果断（褒）、武断（贬）"
+  },
+  // 92
+  {
+    question: "褒义词是什么？",
+    answer: "带有赞美、肯定、喜爱感情的词语",
+    wrong1: "批评、否定的词",
+    wrong2: "无感情的词",
+    wrong3: "讽刺的词",
+    explanation: "用于赞扬、肯定",
+    example: "勇敢、善良、优秀、美丽"
+  },
+  // 93
+  {
+    question: "贬义词是什么？",
+    answer: "带有批评、否定、厌恶感情的词语",
+    wrong1: "赞扬的词",
+    wrong2: "无感情的词",
+    wrong3: "中性词",
+    explanation: "用于批评、否定",
+    example: "狡猾、自私、懒惰、傲慢"
+  },
+  // 94
+  {
+    question: "中性词是什么？",
+    answer: "不带明显感情色彩，客观描述的词语",
+    wrong1: "赞扬的词",
+    wrong2: "批评的词",
+    wrong3: "讽刺的词",
+    explanation: "客观、冷静、平实",
+    example: "桌子、跑步、学习、城市"
+  },
+  // 95
+  {
+    question: "什么是口语？",
+    answer: "日常口头交流的通俗语言",
+    wrong1: "正式书面语言",
+    wrong2: "古诗文言",
+    wrong3: "华丽文学语言",
+    explanation: "自然、通俗、亲切",
+    example: "咋、啥、聊天、吃饭"
+  },
+  // 96
+  {
+    question: "什么是书面语？",
+    answer: "正式、规范、用于文章的语言",
+    wrong1: "口头随意语言",
+    wrong2: "方言土话",
+    wrong3: "网络用语",
+    explanation: "庄重、规范、文雅",
+    example: "何时、用餐、交谈、祝贺"
+  },
+  // 97
+  {
+    question: "如何积累好词好句？",
+    answer: "多阅读、多摘抄、多背诵、多运用",
+    wrong1: "只看不记",
+    wrong2: "只记不用",
+    wrong3: "临时抱佛脚",
+    explanation: "积累提升语言能力",
+    example: "积累描写四季、情感的句子"
+  },
+  // 98
+  {
+    question: "语文学习最重要的习惯？",
+    answer: "多读书、多积累、勤练笔、勤思考",
+    wrong1: "只做题",
+    wrong2: "只背书",
+    wrong3: "只写作文",
+    explanation: "能力比分数更重要",
+    example: "每天阅读20分钟"
+  },
+  // 99
+  {
+    question: "考试中如何节约时间？",
+    answer: "先易后难、认真审题、作文留足时间、书写工整",
+    wrong1: "从头做到尾不检查",
+    wrong2: "先写作文",
+    wrong3: "随意涂改",
+    explanation: "合理分配时间，不慌不乱",
+    example: "基础题快做，阅读仔细，作文充分构思"
+  },
+  // 100
+  {
+    question: "10-11年级中文核心能力",
+    answer: "读懂文章、会赏析、能写作、语言规范、情感真挚、思维清晰",
+    wrong1: "只会背答案",
+    wrong2: "只写空话套话",
+    wrong3: "不重视基础",
+    explanation: "阅读有方法，作文有真情，基础不失分",
+    example: "阅读用模板，作文写细节，书写要工整"
+  }
+];

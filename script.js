@@ -44,6 +44,39 @@ let flashcardData = {};
 let loadedSubjects = new Set();
 let currentLevel = 'preigcse';
 
+function transformQuestion(question) {
+    if (!question) return question;
+    
+    let transformed = question.trim();
+    
+    const transformations = [
+        { regex: /^Define\s+(.+)/i, replace: 'What does $1 mean?' },
+        { regex: /^What is\s+(.+)\?$/i, replace: 'What is $1?' },
+        { regex: /^Explain\s+(.+)/i, replace: 'Explain what $1 is.' },
+        { regex: /^Describe\s+(.+)/i, replace: 'Describe what $1 is.' },
+        { regex: /^State\s+(.+)/i, replace: 'State what $1 is.' },
+        { regex: /^Name\s+(.+)/i, replace: 'Name $1.' },
+        { regex: /^List\s+(.+)/i, replace: 'List $1.' },
+        { regex: /^Compare\s+(.+)/i, replace: 'Compare $1.' },
+        { regex: /^Contrast\s+(.+)/i, replace: 'Contrast $1.' },
+        { regex: /^Analyze\s+(.+)/i, replace: 'Analyze $1.' },
+        { regex: /^Evaluate\s+(.+)/i, replace: 'Evaluate $1.' },
+        { regex: /^Discuss\s+(.+)/i, replace: 'Discuss $1.' },
+        { regex: /^Solve\s+(.+)/i, replace: 'Solve: $1' },
+        { regex: /^Calculate\s+(.+)/i, replace: 'Calculate: $1' },
+        { regex: /^Find\s+(.+)/i, replace: 'Find: $1' }
+    ];
+    
+    for (const { regex, replace } of transformations) {
+        if (regex.test(transformed)) {
+            transformed = transformed.replace(regex, replace);
+            break;
+        }
+    }
+    
+    return transformed;
+}
+
 async function loadSubjectData(subjectId) {
     const levelKey = `${currentLevel}_${subjectId}`;
     if (loadedSubjects.has(levelKey)) {
@@ -79,7 +112,13 @@ async function loadSubjectData(subjectId) {
             jsonString = quotedLines.join('\n');
             
             try {
-                const flashcards = JSON.parse(jsonString);
+                let flashcards = JSON.parse(jsonString);
+                
+                flashcards = flashcards.map(card => ({
+                    ...card,
+                    question: transformQuestion(card.question)
+                }));
+                
                 flashcardData[levelKey] = {
                     name: SUBJECT_NAMES[subjectId] || subjectId,
                     flashcards: flashcards
@@ -835,7 +874,10 @@ function initLoadingScreen() {
                 opacity: 0,
                 duration: 0.6,
                 delay: 2.5,
-                onComplete: () => loadingScreen.style.display = 'none'
+                onComplete: () => {
+                    loadingScreen.style.display = 'none';
+                    document.getElementById('app').style.opacity = '1';
+                }
             });
         }
     }, 300);
