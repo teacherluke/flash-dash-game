@@ -1,0 +1,1002 @@
+const psychologyFlashcards = [
+  // 1
+  {
+    question: "Define psychology (exam-standard)",
+    answer: "The scientific study of human behaviour, cognition, and mental processes",
+    wrong1: "Study of mental illness only",
+    wrong2: "Study of brain anatomy only",
+    wrong3: "Study of personality types",
+    explanation: "Uses scientific method; core IGCSE/IBDP definition",
+    example: "Research on memory, conformity, or attachment"
+  },
+  // 2
+  {
+    question: "Define cognitive processes",
+    answer: "Mental processes such as memory, thinking, perception, attention, and problem-solving",
+    wrong1: "Observable physical actions",
+    wrong2: "Unconscious emotional drives",
+    wrong3: "Social group influences",
+    explanation: "Internal mental activities studied in cognitive psychology",
+    example: "Storing information in long-term memory"
+  },
+  // 3
+  {
+    question: "Define behaviour (psychological)",
+    answer: "Observable, measurable actions or responses of an individual",
+    wrong1: "Internal thoughts",
+    wrong2: "Unconscious feelings",
+    wrong3: "Genetic traits",
+    explanation: "Directly observable; studied by behaviourist psychologists",
+    example: "Smiling, running, pressing a button"
+  },
+  // 4
+  {
+    question: "Define scientific method in psychology",
+    answer: "Systematic, objective process: hypothesise, test, measure, analyse, conclude",
+    wrong1: "Personal opinion and interpretation",
+    wrong2: "Qualitative diary studies only",
+    wrong3: "Uncontrolled observation",
+    explanation: "Ensures validity and reliability; required for psychology research",
+    example: "Controlled experiment testing memory"
+  },
+  // 5
+  {
+    question: "Define laboratory experiment",
+    answer: "Controlled study in artificial setting; IV manipulated, DV measured, extraneous variables controlled",
+    wrong1: "Real-life uncontrolled study",
+    wrong2: "Interview-based study",
+    wrong3: "Observational study in public",
+    explanation: "High control; high reliability; low ecological validity",
+    example: "Milgram’s shock experiment"
+  },
+  // 6
+  {
+    question: "Define IV (Independent Variable)",
+    answer: "Variable manipulated or changed by the researcher in an experiment",
+    wrong1: "Variable measured for results",
+    wrong2: "Uncontrolled variable",
+    wrong3: "Background variable",
+    explanation: "Presumed cause in a study",
+    example: "Type of instruction given to participants"
+  },
+  // 7
+  {
+    question: "Define DV (Dependent Variable)",
+    answer: "Variable measured by researcher to see effect of IV change",
+    wrong1: "Variable manipulated by researcher",
+    wrong2: "Uncontrolled variable",
+    wrong3: "Background variable",
+    explanation: "Presumed effect in a study",
+    example: "Number of words recalled from a list"
+  },
+  // 8
+  {
+    question: "Define extraneous variable",
+    answer: "Unwanted variable that could affect DV if not controlled",
+    wrong1: "Variable manipulated by researcher",
+    wrong2: "Variable measured for results",
+    wrong3: "Standardised procedure",
+    explanation: "Must be controlled to maintain validity",
+    example: "Noise, temperature, time of day"
+  },
+  // 9
+  {
+    question: "Define confounding variable",
+    answer: "Uncontrolled variable that affects DV and provides alternative explanation",
+    wrong1: "Controlled background factor",
+    wrong2: "Standardised instruction",
+    wrong3: "Measured outcome",
+    explanation: "Destroys internal validity; serious flaw",
+    example: "Testing some participants in noisy rooms"
+  },
+  // 10
+  {
+    question: "Define operationalisation of variables",
+    answer: "Defining variables clearly so they can be precisely measured",
+    wrong1: "General vague description",
+    wrong2: "Personal interpretation",
+    wrong3: "Unmeasurable abstract term",
+    explanation: "Critical for replicability and objectivity",
+    example: "‘Anxiety’ = heart rate in BPM"
+  },
+  // 11
+  {
+    question: "Define internal validity",
+    answer: "Extent to which study measures what it claims to measure",
+    wrong1: "Ability to generalise to real life",
+    wrong2: "Consistency of results",
+    wrong3: "Truthfulness of responses",
+    explanation: "Ensures IV caused DV changes",
+    example: "No confounding variables"
+  },
+  // 12
+  {
+    question: "Define ecological validity",
+    answer: "Extent to which findings apply to real-life settings",
+    wrong1: "Accuracy of measurement",
+    wrong2: "Consistency of results",
+    wrong3: "Control of variables",
+    explanation: "Lab experiments often low; field studies high",
+    example: "Realistic task vs artificial lab task"
+  },
+  // 13
+  {
+    question: "Define reliability",
+    answer: "Consistency and repeatability of results if study is replicated",
+    wrong1: "Accuracy of measurement",
+    wrong2: "Real-life applicability",
+    wrong3: "Honesty of participants",
+    explanation: "Key scientific standard",
+    example: "Same results in repeated test"
+  },
+  // 14
+  {
+    question: "Define quantitative data",
+    answer: "Numerical, statistical, measurable data",
+    wrong1: "Descriptive, word-based data",
+    wrong2: "Interview quotes",
+    wrong3: "Observational notes",
+    explanation: "Objective; easy to analyse statistically",
+    example: "Score out of 10, time in seconds"
+  },
+  // 15
+  {
+    question: "Define qualitative data",
+    answer: "Non-numerical, descriptive, word-based data",
+    wrong1: "Numerical statistical data",
+    wrong2: "Graphs and charts",
+    wrong3: "Averages and percentages",
+    explanation: "Rich detail; subjective interpretation",
+    example: "Interview responses, diary entries"
+  },
+  // 16
+  {
+    question: "Define field experiment",
+    answer: "Controlled experiment conducted in natural real-life setting",
+    wrong1: "Artificial lab setting",
+    wrong2: "Uncontrolled observation only",
+    wrong3: "Interview-based study",
+    explanation: "High ecological validity; less control",
+    example: "Testing helping behaviour in street"
+  },
+  // 17
+  {
+    question: "Define natural experiment",
+    answer: "Study using naturally occurring IV; researcher does not manipulate it",
+    wrong1: "Lab-based controlled study",
+    wrong2: "Researcher changes IV directly",
+    wrong3: "Observational description only",
+    explanation: "Used when manipulation unethical/impossible",
+    example: "Comparing abused vs non-abused children"
+  },
+  // 18
+  {
+    question: "Define correlation",
+    answer: "Measure of relationship between two variables; no manipulation",
+    wrong1: "Experiment testing cause and effect",
+    wrong2: "Controlled lab study",
+    wrong3: "Qualitative interview",
+    explanation: "Cannot prove causation; only relationship",
+    example: "Link between sleep and exam score"
+  },
+  // 19
+  {
+    question: "Define positive correlation",
+    answer: "As one variable rises, the other also rises",
+    wrong1: "As one rises, the other falls",
+    wrong2: "No relationship between variables",
+    wrong3: "One variable causes the other",
+    explanation: "Linear upward relationship",
+    example: "More study time = higher test score"
+  },
+  // 20
+  {
+    question: "Define negative correlation",
+    answer: "As one variable rises, the other falls",
+    wrong1: "Both variables rise together",
+    wrong2: "No relationship",
+    wrong3: "Direct causation",
+    explanation: "Linear downward relationship",
+    example: "More absences = lower grades"
+  },
+  // 21
+  {
+    question: "Define zero correlation",
+    answer: "No relationship or pattern between two variables",
+    wrong1: "Variables rise together",
+    wrong2: "Variables move oppositely",
+    wrong3: "Strong causal link",
+    explanation: "Random scatter pattern",
+    example: "Shoe size and IQ"
+  },
+  // 22
+  {
+    question: "Define unstructured interview",
+    answer: "Flexible, conversational interview with no fixed questions",
+    wrong1: "Fixed identical questions for all",
+    wrong2: "Written questionnaire",
+    wrong3: "Controlled experiment",
+    explanation: "Qualitative; detailed but hard to compare",
+    example: "Open discussion about childhood"
+  },
+  // 23
+  {
+    question: "Define structured interview",
+    answer: "Fixed identical questions in same order for all participants",
+    wrong1: "Flexible conversational style",
+    wrong2: "Open unplanned discussion",
+    wrong3: "Qualitative diary study",
+    explanation: "Quantitative; reliable; easy to compare",
+    example: "Standard job interview questions"
+  },
+  // 24
+  {
+    question: "Define questionnaire",
+    answer: "Written set of questions for self-report data collection",
+    wrong1: "Face-to-face discussion",
+    wrong2: "Controlled observation",
+    wrong3: "Lab experiment",
+    explanation: "Large sample; cheap; risk of dishonesty",
+    example: "Survey about phone usage"
+  },
+  // 25
+  {
+    question: "Define naturalistic observation",
+    answer: "Watching behaviour in natural setting without interference",
+    wrong1: "Controlled lab observation",
+    wrong2: "Interview discussion",
+    wrong3: "Written survey",
+    explanation: "High ecological validity; no control",
+    example: "Observing children in playground"
+  },
+  // 26
+  {
+    question: "Define informed consent",
+    answer: "Participants agree to take part after knowing true aims and risks",
+    wrong1: "Forced participation",
+    wrong2: "No information given",
+    wrong3: "Deception with no debrief",
+    explanation: "Key ethical rule; must be voluntary",
+    example: "Signing consent form"
+  },
+  // 27
+  {
+    question: "Define deception in research",
+    answer: "Misleading or withholding true aims from participants",
+    wrong1: "Full disclosure of study purpose",
+    wrong2: "Voluntary informed choice",
+    wrong3: "Right to withdraw",
+    explanation: "Only allowed if no alternative; must debrief",
+    example: "Milgram’s fake shock study"
+  },
+  // 28
+  {
+    question: "Define debriefing",
+    answer: "Post-study explanation of true aims, deception, and support offered",
+    wrong1: "Giving instructions before study",
+    wrong2: "Collecting results",
+    wrong3: "Recruiting participants",
+    explanation: "Ethical requirement after deception",
+    example: "Explaining Milgram’s study was safe"
+  },
+  // 29
+  {
+    question: "Define right to withdraw",
+    answer: "Participants may leave study at any time without penalty",
+    wrong1: "Must finish once started",
+    wrong2: "Forced to continue",
+    wrong3: "Paid only if complete",
+    explanation: "Core ethical protection",
+    example: "Stopping during a stress test"
+  },
+  // 30
+  {
+    question: "Define confidentiality",
+    answer: "Participant data and identity kept private and anonymous",
+    wrong1: "Publishing names and results",
+    wrong2: "Sharing data publicly",
+    wrong3: "Using real names in reports",
+    explanation: "Protects privacy; ethical requirement",
+    example: "Using numbers instead of names"
+  },
+  // 31
+  {
+    question: "Define protection from harm",
+    answer: "Participants must face no more than daily life risk; no physical/mental harm",
+    wrong1: "Allowing high stress or danger",
+    wrong2: "Forcing painful procedures",
+    wrong3: "Ignoring distress",
+    explanation: "Most important ethical rule",
+    example: "Stopping study if participant is upset"
+  },
+  // 32
+  {
+    question: "Define behaviourist perspective",
+    answer: "All behaviour is learned from environment via conditioning; ignores cognition",
+    wrong1: "Behaviour comes from genetics",
+    wrong2: "Behaviour from unconscious mind",
+    wrong3: "Behaviour from thinking processes",
+    explanation: "Nurture approach; observable behaviour only",
+    example: "Pavlov, Skinner, Watson"
+  },
+  // 33
+  {
+    question: "Define classical conditioning",
+    answer: "Learning through association; neutral stimulus becomes conditioned stimulus",
+    wrong1: "Learning via rewards and punishments",
+    wrong2: "Learning via observation",
+    wrong3: "Innate reflex behaviour",
+    explanation: "Pavlov’s dogs; learning by association",
+    example: "Bell + food = salivation at bell alone"
+  },
+  // 34
+  {
+    question: "Define operant conditioning",
+    answer: "Learning via consequences: rewards and punishments shape behaviour",
+    wrong1: "Learning by association",
+    wrong2: "Learning by observation",
+    wrong3: "Innate genetic behaviour",
+    explanation: "Skinner’s box; ABC model",
+    example: "Rat presses lever for food"
+  },
+  // 35
+  {
+    question: "Define positive reinforcement",
+    answer: "Adding pleasant reward to increase behaviour frequency",
+    wrong1: "Removing pleasant thing",
+    wrong2: "Adding unpleasant thing",
+    wrong3: "Removing unpleasant thing",
+    explanation: "Strengthens target behaviour",
+    example: "Praise for good work"
+  },
+  // 36
+  {
+    question: "Define negative reinforcement",
+    answer: "Removing unpleasant stimulus to increase behaviour",
+    wrong1: "Punishment to stop behaviour",
+    wrong2: "Adding a reward",
+    wrong3: "Adding a punishment",
+    explanation: "NOT punishment; increases behaviour",
+    example: "Taking painkillers to stop pain"
+  },
+  // 37
+  {
+    question: "Define positive punishment",
+    answer: "Adding unpleasant stimulus to decrease behaviour",
+    wrong1: "Rewarding to increase behaviour",
+    wrong2: "Removing unpleasant thing",
+    wrong3: "Removing pleasant thing",
+    explanation: "Reduces unwanted behaviour",
+    example: "Scolding for misbehaviour"
+  },
+  // 38
+  {
+    question: "Define social learning theory (SLT)",
+    answer: "Learning via observation, imitation, and modelling of others",
+    wrong1: "Learning by association only",
+    wrong2: "Learning by reward only",
+    wrong3: "Innate genetic behaviour",
+    explanation: "Bandura; combines nurture and cognition",
+    example: "Children copying adult aggression"
+  },
+  // 39
+  {
+    question: "Define modelling (SLT)",
+    answer: "Imitating behaviour observed from a role model",
+    wrong1: "Learning via reward",
+    wrong2: "Learning via association",
+    wrong3: "Innate reflex",
+    explanation: "Models are often same-age, powerful, admired",
+    example: "Child copying parent’s actions"
+  },
+  // 40
+  {
+    question: "Define vicarious reinforcement",
+    answer: "Learning by seeing others rewarded or punished",
+    wrong1: "Direct personal reward",
+    wrong2: "Classical association",
+    wrong3: "Innate tendency",
+    explanation: "Key SLT concept; no direct experience needed",
+    example: "Child stops behaviour after seeing peer punished"
+  },
+  // 41
+  {
+    question: "Define cognitive perspective",
+    answer: "Focus on internal mental processes: memory, thinking, perception, attention",
+    wrong1: "Only observable behaviour",
+    wrong2: "Only unconscious drives",
+    wrong3: "Only genetics and biology",
+    explanation: "‘Computer model’ of mind; mediational processes",
+    example: "How we store and retrieve memories"
+  },
+  // 42
+  {
+    question: "Define multi-store model of memory",
+    answer: "Atkinson-Shiffrin: sensory, short-term (STM), long-term (LTM) separate stores",
+    wrong1: "Single memory store",
+    wrong2: "Unlimited short-term memory",
+    wrong3: "No rehearsal needed",
+    explanation: "Linear; rehearsal transfers STM to LTM",
+    example: "Pay attention → rehearse → remember"
+  },
+  // 43
+  {
+    question: "Define STM (Short-Term Memory)",
+    answer: "Limited capacity (7±2 items) and short duration (18–30 seconds)",
+    wrong1: "Unlimited capacity",
+    wrong2: "Permanent duration",
+    wrong3: "Unlimited time and space",
+    explanation: "Rehearsal needed to move to LTM",
+    example: "Remembering a phone number temporarily"
+  },
+  // 44
+  {
+    question: "Define LTM (Long-Term Memory)",
+    answer: "Unlimited capacity and potentially permanent duration",
+    wrong1: "Limited to 7 items",
+    wrong2: "Lasts 20 seconds only",
+    wrong3: "Easily forgotten",
+    explanation: "Stores lifelong memories",
+    example: "Birthday, childhood event, facts"
+  },
+  // 45
+  {
+    question: "Define rehearsal",
+    answer: "Repetition of information to keep it in STM or transfer to LTM",
+    wrong1: "Understanding meaning deeply",
+    wrong2: "Visual imagery only",
+    wrong3: "Passive listening",
+    explanation: "Maintenance rehearsal keeps in STM",
+    example: "Repeating a name to remember it"
+  },
+  // 46
+  {
+    question: "Define forgetting in STM",
+    answer: "Displacement (new info pushes out old) or decay (time passes)",
+    wrong1: "Interference from LTM",
+    wrong2: "Lack of meaning",
+    wrong3: "Retrieval failure",
+    explanation: "STM has limited space",
+    example: "New phone number replaces old one"
+  },
+  // 47
+  {
+    question: "Define retroactive interference",
+    answer: "New learning disrupts recall of older information",
+    wrong1: "Old learning disrupts new",
+    wrong2: "Decay over time",
+    wrong3: "Displacement from STM",
+    explanation: "Common in everyday memory",
+    example: "New password blocks old one"
+  },
+  // 48
+  {
+    question: "Define proactive interference",
+    answer: "Old learning disrupts recall of newer information",
+    wrong1: "New learning blocks old",
+    wrong2: "Decay over time",
+    wrong3: "Displacement from STM",
+    explanation: "Habit interference",
+    example: "Old phone number blocks new one"
+  },
+  // 49
+  {
+    question: "Define biological perspective",
+    answer: "Behaviour caused by genetics, brain structure, hormones, neurotransmitters",
+    wrong1: "Only environmental learning",
+    wrong2: "Only thinking processes",
+    wrong3: "Only social influence",
+    explanation: "Nature side of debate",
+    example: "Testosterone linked to aggression"
+  },
+  // 50
+  {
+    question: "Define neurotransmitter",
+    answer: "Chemical messenger that sends signals between neurons in brain",
+    wrong1: "Hormone in bloodstream",
+    wrong2: "Red blood cell",
+    wrong3: "Digestive enzyme",
+    explanation: "Affects mood, behaviour, cognition",
+    example: "Serotonin, dopamine"
+  },
+  // 51
+  {
+    question: "Define hormone",
+    answer: "Chemical messenger released into bloodstream by glands",
+    wrong1: "Brain neuron signal",
+    wrong2: "Digestive chemical",
+    wrong3: "Oxygen carrier",
+    explanation: "Long-term effects on behaviour",
+    example: "Adrenaline, testosterone"
+  },
+  // 52
+  {
+    question: "Define nature-nurture debate",
+    answer: "Argument whether behaviour is caused by genetics (nature) or environment (nurture)",
+    wrong1: "Mind-body debate",
+    wrong2: "Free will-determinism debate",
+    wrong3: "Stability-change debate",
+    explanation: "Core debate in psychology",
+    example: "Intelligence: genes vs upbringing"
+  },
+  // 53
+  {
+    question: "Define free will",
+    answer: "Idea humans can choose and control their own behaviour",
+    wrong1: "Behaviour fully controlled by external factors",
+    wrong2: "Behaviour controlled by biology",
+    wrong3: "Behaviour determined by past learning",
+    explanation: "Humanistic approach belief",
+    example: "Choosing to study or not"
+  },
+  // 54
+  {
+    question: "Define determinism",
+    answer: "All behaviour has a cause; no true free will",
+    wrong1: "Humans have complete choice",
+    wrong2: "Behaviour is random",
+    wrong3: "No external causes",
+    explanation: "Scientific assumption; biology/learning determined",
+    example: "Aggression caused by testosterone"
+  },
+  // 55
+  {
+    question: "Define psychodynamic perspective",
+    answer: "Behaviour driven by unconscious conflicts, childhood experiences, instincts",
+    wrong1: "Only observable behaviour",
+    wrong2: "Only conscious thinking",
+    wrong3: "Only genetics",
+    explanation: "Freud’s theory; iceberg model of mind",
+    example: "Unconscious fear affecting behaviour"
+  },
+  // 56
+  {
+    question: "Define unconscious mind",
+    answer: "Part of mind containing hidden thoughts, desires, memories we cannot access",
+    wrong1: "Conscious current thoughts",
+    wrong2: "Preconscious memories",
+    wrong3: "Observable behaviour",
+    explanation: "Drives behaviour according to Freud",
+    example: "Hidden childhood trauma"
+  },
+  // 57
+  {
+    question: "Define humanistic perspective",
+    answer: "Focus on self-actualisation, free will, personal growth, and subjective experience",
+    wrong1: "Only scientific lab study",
+    wrong2: "Only unconscious drives",
+    wrong3: "Only genetics",
+    explanation: "Third force; Rogers, Maslow",
+    example: "Person-centred therapy"
+  },
+  // 58
+  {
+    question: "Define self-actualisation",
+    answer: "Innate human drive to reach full potential and become best version of self",
+    wrong1: "Biological survival need",
+    wrong2: "Learned behaviour",
+    wrong3: "Unconscious fear",
+    explanation: "Top of Maslow’s hierarchy",
+    example: "Artist creating meaningful work"
+  },
+  // 59
+  {
+    question: "Define conformity",
+    answer: "Changing behaviour/beliefs to match real or imagined group norms",
+    wrong1: "Independent behaviour",
+    wrong2: "Aggressive behaviour",
+    wrong3: "Leader behaviour",
+    explanation: "Asch’s line study; social influence",
+    example: "Going along with group opinion"
+  },
+  // 60
+  {
+    question: "Define compliance (conformity)",
+    answer: "Publicly agreeing but privately disagreeing; temporary change",
+    wrong1: "Private acceptance",
+    wrong2: "Permanent belief change",
+    wrong3: "Internalisation",
+    explanation: "Superficial conformity",
+    example: "Laughing at joke you don’t find funny"
+  },
+  // 61
+  {
+    question: "Define internalisation (conformity)",
+    answer: "Public and private acceptance; permanent belief and behaviour change",
+    wrong1: "Public only agreement",
+    wrong2: "Temporary compliance",
+    wrong3: "Fake agreement",
+    explanation: "Deepest level of conformity",
+    example: "Truly adopting group values"
+  },
+  // 62
+  {
+    question: "Define normative social influence",
+    answer: "Conformity to fit in, gain approval, avoid rejection",
+    wrong1: "Conformity because you believe group is right",
+    wrong2: "Conformity for information",
+    wrong3: "Independent decision",
+    explanation: "Need to be liked; compliance",
+    example: "Wearing fashion to fit in"
+  },
+  // 63
+  {
+    question: "Define informational social influence",
+    answer: "Conformity because you believe group is correct/has expertise",
+    wrong1: "Conformity to fit in",
+    wrong2: "Conformity to avoid rejection",
+    wrong3: "Fake public agreement",
+    explanation: "Need to be right; internalisation",
+    example: "Following expert advice"
+  },
+  // 64
+  {
+    question: "Define obedience",
+    answer: "Following direct order from an authority figure",
+    wrong1: "Voluntary group conformity",
+    wrong2: "Independent choice",
+    wrong3: "Imitation of peers",
+    explanation: "Milgram’s study; power hierarchy",
+    example: "Following teacher’s instruction"
+  },
+  // 65
+  {
+    question: "Define social role",
+    answer: "Behaviour expected from a person in a particular social position",
+    wrong1: "Personality trait",
+    wrong2: "Genetic tendency",
+    wrong3: "Individual preference",
+    explanation: "Zimbardo’s Stanford Prison Experiment",
+    example: "Prisoner vs guard behaviour"
+  },
+  // 66
+  {
+    question: "Define in-group",
+    answer: "Group an individual identifies with and belongs to",
+    wrong1: "Group seen as different or opposing",
+    wrong2: "Stranger group",
+    wrong3: "Competitor group",
+    explanation: "Feel loyalty and favouritism",
+    example: "Your own school team"
+  },
+  // 67
+  {
+    question: "Define out-group",
+    answer: "Group seen as separate or opposing to one’s own group",
+    wrong1: "Personal identity group",
+    wrong2: "Close friendship group",
+    wrong3: "Self-identified group",
+    explanation: "Often discriminated against",
+    example: "Rival school team"
+  },
+  // 68
+  {
+    question: "Define prejudice",
+    answer: "Pre-judgement; unjustified negative attitude/belief about a group",
+    wrong1: "Negative action towards a group",
+    wrong2: "Positive opinion",
+    wrong3: "Equal treatment",
+    explanation: "Attitude (thoughts/feelings)",
+    example: "Stereotyping a group negatively"
+  },
+  // 69
+  {
+    question: "Define discrimination",
+    answer: "Unjustified negative behaviour or action towards a group",
+    wrong1: "Negative attitude only",
+    wrong2: "Positive opinion",
+    wrong3: "Stereotype thought",
+    explanation: "Behaviour (actions)",
+    example: "Refusing service to someone"
+  },
+  // 70
+  {
+    question: "Define stereotype",
+    answer: "Oversimplified, fixed, generalised belief about a group",
+    wrong1: "Accurate individual assessment",
+    wrong2: "Personal experience",
+    wrong3: "Detailed unique view",
+    explanation: "Cognitive shortcut; leads to prejudice",
+    example: "All athletes are not academic"
+  },
+  // 71
+  {
+    question: "Define attachment (developmental)",
+    answer: "Strong emotional bond between infant and primary caregiver",
+    wrong1: "Learned food association only",
+    wrong2: "Temporary play relationship",
+    wrong3: "Cognitive memory skill",
+    explanation: "Bowlby; critical for emotional development",
+    example: "Baby clinging to mother"
+  },
+  // 72
+  {
+    question: "Define caregiver-infant interaction",
+    answer: "Reciprocal communication: eye contact, smiling, vocalising between baby and caregiver",
+    wrong1: "One-way adult instruction",
+    wrong2: "Unresponsive care",
+    wrong3: "Solo infant play",
+    explanation: "Builds attachment; reciprocity is key",
+    example: "Baby smiles → mother smiles back"
+  },
+  // 73
+  {
+    question: "Define secure attachment",
+    answer: "Healthy attachment; infant confident, explores, seeks comfort from caregiver",
+    wrong1: "Fear of caregiver; no exploration",
+    wrong2: "No interest in caregiver",
+    wrong3: "Angry and resistant behaviour",
+    explanation: "Responsive, sensitive caregiver",
+    example: "Calmly returns to mother after play"
+  },
+  // 74
+  {
+    question: "Define insecure-avoidant attachment",
+    answer: "Infant ignores caregiver; no distress when left; no contact when return",
+    wrong1: "Very distressed when separated",
+    wrong2: "Angry resistance to comfort",
+    wrong3: "Healthy secure bond",
+    explanation: "Unresponsive, rejecting caregiver",
+    example: "Baby does not react to mother leaving"
+  },
+  // 75
+  {
+    question: "Define insecure-resistant attachment",
+    answer: "Infant very distressed when separated; angry and resists comfort on return",
+    wrong1: "Calmly seeks comfort",
+    wrong2: "Ignores caregiver",
+    wrong3: "Healthy secure bond",
+    explanation: "Inconsistent caregiver response",
+    example: "Cries but pushes mother away"
+  },
+  // 76
+  {
+    question: "Define deprivation (attachment)",
+    answer: "Loss or damage to attachment bond after it has formed",
+    wrong1: "No bond ever formed",
+    wrong2: "Strong healthy bond",
+    wrong3: "Responsive caregiving",
+    explanation: "Bowlby’s maternal deprivation hypothesis",
+    example: "Being separated from mother"
+  },
+  // 77
+  {
+    question: "Define abnormality (deviation from social norms)",
+    answer: "Behaviour that violates unwritten social rules or expectations",
+    wrong1: "Statistically rare behaviour",
+    wrong2: "Personal distress",
+    wrong3: "Inability to function",
+    explanation: "Culturally relative definition",
+    example: "Standing too close to strangers"
+  },
+  // 78
+  {
+    question: "Define abnormality (statistical infrequency)",
+    answer: "Behaviour that is very rare or falls outside typical statistical range",
+    wrong1: "Violating social rules",
+    wrong2: "Personal distress",
+    wrong3: "Inability to work/live",
+    explanation: "Uses normal distribution curve",
+    example: "Extremely high or low IQ"
+  },
+  // 79
+  {
+    question: "Define abnormality (failure to function adequately)",
+    answer: "Cannot cope with daily life: work, relationships, self-care",
+    wrong1: "Rare behaviour only",
+    wrong2: "Breaking social rules",
+    wrong3: "Unusual thoughts only",
+    explanation: "Practical real-life definition",
+    example: "Cannot get out of bed or feed self"
+  },
+  // 80
+  {
+    question: "Define mental illness",
+    answer: "Disorder affecting mood, thinking, or behaviour causing distress or impairment",
+    wrong1: "Temporary bad mood",
+    wrong2: "Choice of behaviour",
+    wrong3: "Lack of willpower",
+    explanation: "Medical/psychological condition",
+    example: "Depression, anxiety disorder"
+  },
+  // 81
+  {
+    question: "Define unconditioned stimulus (UCS)",
+    answer: "Stimulus that automatically causes reflex response without learning",
+    wrong1: "Learned stimulus",
+    wrong2: "Neutral stimulus",
+    wrong3: "Learned response",
+    explanation: "Classical conditioning term",
+    example: "Food causing salivation"
+  },
+  // 82
+  {
+    question: "Define unconditioned response (UCR)",
+    answer: "Natural automatic reflex response to UCS; no learning required",
+    wrong1: "Learned response",
+    wrong2: "Response to neutral stimulus",
+    wrong3: "Voluntary behaviour",
+    explanation: "Classical conditioning term",
+    example: "Salivation at food"
+  },
+  // 83
+  {
+    question: "Define conditioned stimulus (CS)",
+    answer: "Previously neutral stimulus that now causes learned response",
+    wrong1: "Natural reflex stimulus",
+    wrong2: "Unlearned stimulus",
+    wrong3: "Voluntary action",
+    explanation: "Classical conditioning term",
+    example: "Bell causing salivation"
+  },
+  // 84
+  {
+    question: "Define conditioned response (CR)",
+    answer: "Learned response to conditioned stimulus after association",
+    wrong1: "Natural reflex",
+    wrong2: "Unlearned response",
+    wrong3: "Voluntary action",
+    explanation: "Classical conditioning term",
+    example: "Salivation at bell alone"
+  },
+  // 85
+  {
+    question: "Define schema (cognitive psychology)",
+    answer: "Mental framework of knowledge that organises and interprets information",
+    wrong1: "Exact memory record",
+    wrong2: "Random thought",
+    wrong3: "Learned behaviour",
+    explanation: "Affects perception and memory",
+    example: "‘Dog schema’ = 4 legs, fur, barks"
+  },
+  // 86
+  {
+    question: "Define eyewitness testimony (EWT)",
+    answer: "Evidence given by person who saw an event",
+    wrong1: "Circumstantial evidence",
+    wrong2: "DNA evidence",
+    wrong3: "Expert opinion",
+    explanation: "Often unreliable due to memory distortion",
+    example: "Witness identifying a criminal"
+  },
+  // 87
+  {
+    question: "Define leading question",
+    answer: "Question that suggests desired answer or biases response",
+    wrong1: "Neutral open question",
+    wrong2: "Objective question",
+    wrong3: "Open non-biased question",
+    explanation: "Distorts EWT; Loftus research",
+    example: "How fast was car going when it smashed?"
+  },
+  // 88
+  {
+    question: "Define anxiety",
+    answer: "State of unease, fear, or worry; future-oriented stress response",
+    wrong1: "Sadness and low mood",
+    wrong2: "Extreme happiness",
+    wrong3: "Aggressive anger",
+    explanation: "Common emotional and psychological state",
+    example: "Nerves before exam"
+  },
+  // 89
+  {
+    question: "Define stress",
+    answer: "Physical and psychological response to demands or pressures",
+    wrong1: "Clinical depression",
+    wrong2: "Permanent mental illness",
+    wrong3: "Choice of emotion",
+    explanation: "Body’s fight or flight trigger",
+    example: "Work pressure, exam stress"
+  },
+  // 90
+  {
+    question: "Define fight or flight response",
+    answer: "Physiological reaction to threat: body prepares to fight or run away",
+    wrong1: "Relaxation response",
+    wrong2: "Sleep response",
+    wrong3: "Digestion response",
+    explanation: "Adrenaline; biological stress response",
+    example: "Increased heart rate, rapid breathing"
+  },
+  // 91
+  {
+    question: "Define personality",
+    answer: "Stable pattern of thoughts, feelings, and behaviours that make a person unique",
+    wrong1: "Temporary mood",
+    wrong2: "Learned behaviour only",
+    wrong3: "Social role",
+    explanation: "Consistent over time",
+    example: "Shy, outgoing, calm"
+  },
+  // 92
+  {
+    question: "Define sample (research)",
+    answer: "Group of participants selected to take part in a study",
+    wrong1: "Whole population",
+    wrong2: "Control group only",
+    wrong3: "Experimental group only",
+    explanation: "Should represent target population",
+    example: "50 students from local school"
+  },
+  // 93
+  {
+    question: "Define random sampling",
+    answer: "Every member of population has equal chance of being selected",
+    wrong1: "Choosing easy-to-reach people",
+    wrong2: "Volunteer participants only",
+    wrong3: "Specific targeted group",
+    explanation: "Unbiased; representative",
+    example: "Drawing names from a hat"
+  },
+  // 94
+  {
+    question: "Define opportunity sampling",
+    answer: "Selecting easily available, convenient participants",
+    wrong1: "Equal chance selection",
+    wrong2: "Volunteer only",
+    wrong3: "Systematic selection",
+    explanation: "Quick but biased; unrepresentative",
+    example: "Asking people in street"
+  },
+  // 95
+  {
+    question: "Define independent groups design",
+    answer: "Different participants in each experimental condition",
+    wrong1: "Same participants do all conditions",
+    wrong2: "Participants matched on traits",
+    wrong3: "Single group only",
+    explanation: "No order effects; needs more participants",
+    example: "Group A vs Group B"
+  },
+  // 96
+  {
+    question: "Define repeated measures design",
+    answer: "Same participants take part in all experimental conditions",
+    wrong1: "Different people per condition",
+    wrong2: "Matched participants",
+    wrong3: "Separate groups",
+    explanation: "Order effects (practice/boredom) possible",
+    example: "Person does both Task 1 and Task 2"
+  },
+  // 97
+  {
+    question: "Define matched pairs design",
+    answer: "Participants matched on key traits then split into groups",
+    wrong1: "Different people with no match",
+    wrong2: "Same people repeat tasks",
+    wrong3: "Random opportunity sample",
+    explanation: "Controls individual differences",
+    example: "Matching age, gender, ability"
+  },
+  // 98
+  {
+    question: "Define demand characteristics",
+    answer: "Clues in study that make participants guess aims and change behaviour",
+    wrong1: "Strictly controlled variables",
+    wrong2: "Standardised instructions",
+    wrong3: "Double-blind procedure",
+    explanation: "Lowers validity; participant bias",
+    example: "Trying to ‘help’ researcher get good results"
+  },
+  // 99
+  {
+    question: "Define researcher bias",
+    answer: "Researcher’s expectations influencing results or interpretation",
+    wrong1: "Objective neutral observation",
+    wrong2: "Standardised measurement",
+    wrong3: "Double-blind procedure",
+    explanation: "Affects validity; solved by double-blind",
+    example: "Unconsciously scoring participants differently"
+  },
+  // 100
+  {
+    question: "Core Grade 10–11 Psychology exam skill",
+    answer: "Evaluate theories/studies using validity, reliability, ethics, strengths, weaknesses",
+    wrong1: "Memorise facts only",
+    wrong2: "Describe without analysis",
+    wrong3: "Give personal opinion only",
+    explanation: "Required for top IGCSE/IBDP marks",
+    example: "Evaluate Milgram: ethical issues + high reliability"
+  }
+];

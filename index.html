@@ -71,7 +71,12 @@
             </section>
 
             <section id="subjects" class="section">
-                <h2>Choose Your Subject</h2>
+                <h2>Choose Your Level</h2>
+                <div class="level-buttons">
+                    <button class="level-btn active" id="pre-igcse-btn" onclick="setLevel('preigcse')">Pre-IGCSE</button>
+                    <button class="level-btn" id="igcse-btn" onclick="setLevel('igcse')">IGCSE</button>
+                </div>
+                <h3>Choose Your Subject</h3>
                 <div class="subject-grid">
                     <div class="subject-card" data-subject="maths">
                         <i class="fas fa-calculator"></i>
