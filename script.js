@@ -789,74 +789,25 @@ function base64ToBlob(base64, mimeType) {
 function handleGoogleLogin() {
     trackEvent('login_attempt', { provider: 'google' });
     
-    if (typeof google !== 'undefined') {
-        google.accounts.oauth2.initTokenClient({
-            client_id: 'YOUR_GOOGLE_CLIENT_ID',
-            scope: 'email profile',
-            callback: (tokenResponse) => {
-                if (tokenResponse.access_token) {
-                    fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                        headers: { 'Authorization': `Bearer ${tokenResponse.access_token}` }
-                    })
-                    .then(response => response.json())
-                    .then(userData => {
-                        const user = {
-                            name: userData.name || userData.given_name,
-                            email: userData.email,
-                            provider: 'google',
-                            picture: userData.picture
-                        };
-                        completeLogin(user);
-                    })
-                    .catch(error => {
-                        console.error('Google login error:', error);
-                        completeLogin({ name: 'Student', email: 'student@school.edu', provider: 'google' });
-                    });
-                }
-            }
-        }).requestAccessToken();
-    } else {
-        completeLogin({ name: 'Student', email: 'student@school.edu', provider: 'google' });
-    }
+    const mockUser = {
+        name: 'Student',
+        email: 'student@school.edu',
+        provider: 'google',
+        picture: 'https://ui-avatars.com/api/?name=Student&background=6366f1&color=fff'
+    };
+    completeLogin(mockUser);
 }
 
 function handleMicrosoftLogin() {
     trackEvent('login_attempt', { provider: 'microsoft' });
     
-    const clientId = 'YOUR_MICROSOFT_CLIENT_ID';
-    const redirectUri = window.location.origin;
-    const scope = 'openid profile email';
-    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&prompt=select_account`;
-    
-    const popup = window.open(authUrl, 'microsoft-login', 'width=600,height=600');
-    
-    const checkPopup = setInterval(() => {
-        if (popup.closed) {
-            clearInterval(checkPopup);
-            const hash = window.location.hash;
-            if (hash.includes('access_token')) {
-                const params = new URLSearchParams(hash.substring(1));
-                const accessToken = params.get('access_token');
-                
-                fetch('https://graph.microsoft.com/v1.0/me', {
-                    headers: { 'Authorization': `Bearer ${accessToken}` }
-                })
-                .then(response => response.json())
-                .then(userData => {
-                    const user = {
-                        name: userData.displayName,
-                        email: userData.mail || userData.userPrincipalName,
-                        provider: 'microsoft'
-                    };
-                    completeLogin(user);
-                })
-                .catch(error => {
-                    console.error('Microsoft login error:', error);
-                    completeLogin({ name: 'Student', email: 'student@school.edu', provider: 'microsoft' });
-                });
-            }
-        }
-    }, 1000);
+    const mockUser = {
+        name: 'Student',
+        email: 'student@school.edu',
+        provider: 'microsoft',
+        picture: 'https://ui-avatars.com/api/?name=Student&background=0078d4&color=fff'
+    };
+    completeLogin(mockUser);
 }
 
 function handleWeChatLogin() {
