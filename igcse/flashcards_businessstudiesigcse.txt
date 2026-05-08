@@ -1,0 +1,1002 @@
+const businessStudiesFlashcards = [
+  // 1
+  {
+    question: "Define business",
+    answer: "An organisation that combines resources to produce goods or services to satisfy customer needs",
+    wrong1: "A group of people working for free",
+    wrong2: "Only organisations that make large profits",
+    wrong3: "Government department only",
+    explanation: "Businesses operate in private, public and voluntary sectors",
+    example: "Retail shop, factory, restaurant"
+  },
+  // 2
+  {
+    question: "Define need in business terms",
+    answer: "A basic requirement essential for survival",
+    wrong1: "Something people simply desire",
+    wrong2: "Luxury item for enjoyment",
+    wrong3: "Optional extra purchase",
+    explanation: "Needs cannot be avoided for basic living",
+    example: "Food, water, shelter, clothing"
+  },
+  // 3
+  {
+    question: "Define want in business terms",
+    answer: "A luxury or non-essential item people desire but do not need to survive",
+    wrong1: "Basic survival requirement",
+    wrong2: "Mandatory daily purchase",
+    wrong3: "Government essential service",
+    explanation: "Wants are unlimited and influenced by trends",
+    example: "Smartphone, designer clothes, holiday"
+  },
+  // 4
+  {
+    question: "Define scarcity",
+    answer: "Limited resources available to satisfy unlimited human wants",
+    wrong1: "Unlimited resources with limited wants",
+    wrong2: "Equal balance of resources and wants",
+    wrong3: "Too few people buying products",
+    explanation: "Creates the need for choice and opportunity cost",
+    example: "Limited farmland but high demand for food"
+  },
+  // 5
+  {
+    question: "Define opportunity cost",
+    answer: "The next best alternative forgone when a choice is made",
+    wrong1: "Total money spent on a purchase",
+    wrong2: "Profit lost from bad business decisions",
+    wrong3: "Cost of raw materials",
+    explanation: "Exists due to scarcity of resources",
+    example: "Choosing to buy a phone instead of a laptop"
+  },
+  // 6
+  {
+    question: "Define factors of production",
+    answer: "The four resources used by businesses to produce goods and services",
+    wrong1: "Only money and equipment",
+    wrong2: "Workers and customers only",
+    wrong3: "Buildings and transport only",
+    explanation: "Land, Labour, Capital, Enterprise",
+    example: "Farm land, factory workers, machinery, entrepreneur"
+  },
+  // 7
+  {
+    question: "Define land (factor of production)",
+    answer: "All natural resources provided by nature used in production",
+    wrong1: "Only buildings and offices",
+    wrong2: "Human workforce",
+    wrong3: "Money invested in business",
+    explanation: "Includes raw materials, water, farmland, minerals",
+    example: "Oil reserves, forest land, fishing waters"
+  },
+  // 8
+  {
+    question: "Define labour (factor of production)",
+    answer: "The human workforce, physical and mental effort used in production",
+    wrong1: "Natural resources",
+    wrong2: "Machinery and tools",
+    wrong3: "Business decision-making",
+    explanation: "All employees, manual and skilled workers",
+    example: "Teachers, factory staff, managers"
+  },
+  // 9
+  {
+    question: "Define capital (factor of production)",
+    answer: "Man-made resources used to produce other goods and services",
+    wrong1: "Natural raw materials",
+    wrong2: "Unskilled labour",
+    wrong3: "Customer demand",
+    explanation: "Also called capital goods",
+    example: "Machines, vehicles, tools, factories"
+  },
+  // 10
+  {
+    question: "Define enterprise (factor of production)",
+    answer: "The skill of combining other factors of production and taking business risks",
+    wrong1: "Investment money only",
+    wrong2: "Factory building ownership",
+    wrong3: "Government regulation",
+    explanation: "Provided by entrepreneurs",
+    example: "Founder starting and managing a new company"
+  },
+  // 11
+  {
+    question: "Define entrepreneur",
+    answer: "A person who organises business resources, takes risks and starts a new business",
+    wrong1: "An employee working fixed hours",
+    wrong2: "A government official",
+    wrong3: "A regular customer",
+    explanation: "Gains profit as reward for risk-taking",
+    example: "Someone opening a café or online store"
+  },
+  // 12
+  {
+    question: "Define primary sector",
+    answer: "Business activity extracting or harvesting natural resources",
+    wrong1: "Manufacturing finished goods",
+    wrong2: "Providing customer services",
+    wrong3: "Online retail only",
+    explanation: "First stage of production chain",
+    example: "Farming, mining, fishing, forestry"
+  },
+  // 13
+  {
+    question: "Define secondary sector",
+    answer: "Business activity manufacturing or processing raw materials into finished goods",
+    wrong1: "Extracting natural resources",
+    wrong2: "Providing services",
+    wrong3: "Importing goods only",
+    explanation: "Turns primary goods into usable products",
+    example: "Car factory, bakery, clothing manufacturer"
+  },
+  // 14
+  {
+    question: "Define tertiary sector",
+    answer: "Business activity providing services to customers and other businesses",
+    wrong1: "Making physical products",
+    wrong2: "Mining and farming",
+    wrong3: "Processing raw materials",
+    explanation: "Largest sector in developed economies",
+    example: "Banking, tourism, teaching, transport"
+  },
+  // 15
+  {
+    question: "Define quaternary sector",
+    answer: "Knowledge-based service sector focused on research, IT and innovation",
+    wrong1: "Mass manufacturing",
+    wrong2: "Agricultural production",
+    wrong3: "Retail shop sales",
+    explanation: "Focuses on information and expertise",
+    example: "Software development, scientific research, consulting"
+  },
+  // 16
+  {
+    question: "Define private sector",
+    answer: "Businesses owned and controlled by individuals or shareholders, not the government",
+    wrong1: "Owned and run by the state",
+    wrong2: "Charity organisations only",
+    wrong3: "Free public services",
+    explanation: "Main aim usually profit maximisation",
+    example: "Private shops, limited companies, sole traders"
+  },
+  // 17
+  {
+    question: "Define public sector",
+    answer: "Organisations owned, funded and run by the government",
+    wrong1: "Private profit-making firms",
+    wrong2: "Voluntary charity groups",
+    wrong3: "Family-owned small businesses",
+    explanation: "Focus on public service not profit",
+    example: "State schools, public hospitals, police"
+  },
+  // 18
+  {
+    question: "Define voluntary sector",
+    answer: "Non-profit organisations run by volunteers, charities and community groups",
+    wrong1: "Government controlled services",
+    wrong2: "Private profit businesses",
+    wrong3: "Large multinational corporations",
+    explanation: "Surplus money reinvested into the cause",
+    example: "Red Cross, local animal shelters, community clubs"
+  },
+  // 19
+  {
+    question: "Define sole trader",
+    answer: "A business owned and controlled by one person",
+    wrong1: "Owned by two or more people",
+    wrong2: "Owned by shareholders",
+    wrong3: "Government owned",
+    explanation: "Has unlimited liability",
+    example: "Independent plumber, freelance artist"
+  },
+  // 20
+  {
+    question: "Define partnership",
+    answer: "Business owned by two or more people who share profits and losses",
+    wrong1: "Owned by one single person",
+    wrong2: "Owned by public shareholders",
+    wrong3: "Run by government officials",
+    explanation: "Usually 2–20 partners in IGCSE context",
+    example: "Law firm, medical practice, accounting partnership"
+  },
+  // 21
+  {
+    question: "Define limited company",
+    answer: "A separate legal business entity where owners have limited liability",
+    wrong1: "Owner personally pays all business debts",
+    wrong2: "Same legal identity as owner",
+    wrong3: "Only for small home businesses",
+    explanation: "Company finances separate from personal finances",
+    example: "Small private Ltd company"
+  },
+  // 22
+  {
+    question: "Define unlimited liability",
+    answer: "Business owner is personally responsible for all business debts",
+    wrong1: "Owner only loses invested money",
+    wrong2: "Company pays all personal bills",
+    wrong3: "No risk of debt at all",
+    explanation: "Personal assets can be taken to pay business debts",
+    example: "Sole trader losing house to pay business debt"
+  },
+  // 23
+  {
+    question: "Define limited liability",
+    answer: "Owners only risk the money they invested in the business",
+    wrong1: "Personal assets used to pay business debt",
+    wrong2: "Infinite financial risk for owners",
+    wrong3: "Government covers all losses",
+    explanation: "Personal wealth protected from business failure",
+    example: "Shareholders only lose their share investment"
+  },
+  // 24
+  {
+    question: "Define private limited company (Ltd)",
+    answer: "Small to medium company with private shares not sold to the public",
+    wrong1: "Shares traded freely on stock exchange",
+    wrong2: "Owned only by government",
+    wrong3: "Unlimited liability for owners",
+    explanation: "Cannot advertise shares publicly",
+    example: "Family-owned manufacturing Ltd"
+  },
+  // 25
+  {
+    question: "Define public limited company (PLC)",
+    answer: "Large company with shares available to buy on the stock exchange",
+    wrong1: "Shares restricted to private owners only",
+    wrong2: "Government owned public service",
+    wrong3: "Unlimited liability business",
+    explanation: "Can raise large amounts of capital",
+    example: "Major retail brands, large multinational firms"
+  },
+  // 26
+  {
+    question: "Define multinational company (MNC)",
+    answer: "A large business with operations, factories or shops in more than one country",
+    wrong1: "Small local business in one town",
+    wrong2: "Government only organisation",
+    wrong3: "Charity with no offices",
+    explanation: "Global production and sales",
+    example: "Nike, Coca-Cola, Samsung"
+  },
+  // 27
+  {
+    question: "Define business objective",
+    answer: "A specific target or goal a business aims to achieve",
+    wrong1: "Random daily business tasks",
+    wrong2: "Customer complaints policy",
+    wrong3: "Employee holiday rules",
+    explanation: "Guides business decisions and strategy",
+    example: "Maximise profit, grow market share, survive"
+  },
+  // 28
+  {
+    question: "Define profit maximisation",
+    answer: "Business aim to make the largest possible profit from sales",
+    wrong1: "Sell products at lowest price possible",
+    wrong2: "Donate all income to charity",
+    wrong3: "Keep sales exactly the same every year",
+    explanation: "Main private sector objective",
+    example: "Increasing revenue while cutting costs"
+  },
+  // 29
+  {
+    question: "Define business survival",
+    answer: "Short-term objective to stay operating during economic difficulty",
+    wrong1: "Expanding into new markets quickly",
+    wrong2: "Maximising high profit immediately",
+    wrong3: "Buying many new competitors",
+    explanation: "Common for new businesses or recessions",
+    example: "Cutting costs to avoid closing down"
+  },
+  // 30
+  {
+    question: "Define growth as a business objective",
+    answer: "Expanding business size, sales, outlets or market share over time",
+    wrong1: "Keeping business size fixed forever",
+    wrong2: "Reducing number of employees",
+    wrong3: "Closing unprofitable branches only",
+    explanation: "Can be internal or external growth",
+    example: "Opening new stores in other cities"
+  },
+  // 31
+  {
+    question: "Define market share",
+    answer: "Percentage of total market sales held by one business",
+    wrong1: "Total profit of a business",
+    wrong2: "Number of employees in a firm",
+    wrong3: "Cost of production per unit",
+    explanation: "Higher market share means stronger market position",
+    example: "A brand holding 20% of all smartphone sales"
+  },
+  // 32
+  {
+    question: "Define social responsibility",
+    answer: "Business acting ethically to benefit society, not just profit",
+    wrong1: "Only focusing on maximum profit",
+    wrong2: "Ignoring environmental impact",
+    wrong3: "Paying workers below minimum wage",
+    explanation: "Includes ethical treatment, environment and community support",
+    example: "Using recycled materials, fair worker pay"
+  },
+  // 33
+  {
+    question: "Define stakeholder",
+    answer: "Any individual or group with an interest in the activities of a business",
+    wrong1: "Only owners of the business",
+    wrong2: "Only regular customers",
+    wrong3: "Only government regulators",
+    explanation: "Internal and external stakeholders exist",
+    example: "Owners, employees, customers, suppliers, government"
+  },
+  // 34
+  {
+    question: "Define internal stakeholder",
+    answer: "Stakeholders who are part of the business organisation",
+    wrong1: "People outside the business",
+    wrong2: "Local community residents",
+    wrong3: "Government tax officials",
+    explanation: "Work within or own the firm",
+    example: "Owners, managers, employees"
+  },
+  // 35
+  {
+    question: "Define external stakeholder",
+    answer: "Stakeholders outside the business but affected by its actions",
+    wrong1: "Company managers and staff",
+    wrong2: "Business shareholders",
+    wrong3: "Internal department leaders",
+    explanation: "No direct employment or ownership role",
+    example: "Customers, suppliers, local community, government"
+  },
+  // 36
+  {
+    question: "Define shareholder",
+    answer: "A person who owns shares in a limited company",
+    wrong1: "A full-time employee",
+    wrong2: "A supplier of raw materials",
+    wrong3: "A regular retail customer",
+    explanation: "Earns dividends from company profits",
+    example: "Investor buying stock in a PLC"
+  },
+  // 37
+  {
+    question: "Define dividend",
+    answer: "Share of company profit paid to shareholders",
+    wrong1: "Salary paid to managers",
+    wrong2: "Tax paid to government",
+    wrong3: "Cost of raw materials",
+    explanation: "Depends on company profit and share count",
+    example: "Annual profit payment to investors"
+  },
+  // 38
+  {
+    question: "Define market",
+    answer: "Place or situation where buyers and sellers exchange goods and services",
+    wrong1: "Only physical indoor shop buildings",
+    wrong2: "Government economic policy",
+    wrong3: "Single business product range",
+    explanation: "Can be physical or online",
+    example: "Local market street, online shopping platform"
+  },
+  // 39
+  {
+    question: "Define demand",
+    answer: "Quantity of a product customers are willing and able to buy at a given price",
+    wrong1: "Quantity businesses want to produce",
+    wrong2: "Total stock stored in warehouses",
+    wrong3: "Fixed amount sold every year",
+    explanation: "Usually falls as price rises",
+    example: "More people buying cheap phones than expensive ones"
+  },
+  // 40
+  {
+    question: "Define supply",
+    answer: "Quantity of a product businesses are willing and able to sell at a given price",
+    wrong1: "Amount customers want to buy",
+    wrong2: "Unused customer demand",
+    wrong3: "Fixed minimum production",
+    explanation: "Usually rises as price rises",
+    example: "Firms making more when product price increases"
+  },
+  // 41
+  {
+    question: "Define price equilibrium",
+    answer: "Market price where demand equals supply",
+    wrong1: "When demand is higher than supply",
+    wrong2: "When supply is higher than demand",
+    wrong3: "Maximum price set by government",
+    explanation: "No surplus or shortage at this price",
+    example: "Stable market price with no unsold stock"
+  },
+  // 42
+  {
+    question: "Define competition in business",
+    answer: "Rivalry between businesses selling similar goods or services",
+    wrong1: "Businesses sharing all profits equally",
+    wrong2: "Government controlling all sales",
+    wrong3: "Only one firm selling a product",
+    explanation: "Competition lowers prices and improves quality",
+    example: "Coca-Cola competing with Pepsi"
+  },
+  // 43
+  {
+    question: "Define monopoly",
+    answer: "Market situation where one single business dominates the whole industry",
+    wrong1: "Many small firms competing",
+    wrong2: "Equal market share for all firms",
+    wrong3: "Only charity organisations operating",
+    explanation: "Little competition, can set high prices",
+    example: "One company controlling all local utility supply"
+  },
+  // 44
+  {
+    question: "Define oligopoly",
+    answer: "Market dominated by a small number of large businesses",
+    wrong1: "One single dominant firm",
+    wrong2: "Hundreds of tiny competing firms",
+    wrong3: "Government owned monopoly",
+    explanation: "Firms watch and copy each other’s pricing",
+    example: "Major airline companies, large supermarket chains"
+  },
+  // 45
+  {
+    question: "Define marketing",
+    answer: "Identifying customer needs and promoting products to satisfy them profitably",
+    wrong1: "Only advertising on social media",
+    wrong2: "Manufacturing physical goods only",
+    wrong3: "Paying employee wages",
+    explanation: "Includes product, price, place, promotion",
+    example: "Designing, pricing, advertising and selling a new product"
+  },
+  // 46
+  {
+    question: "Define market research",
+    answer: "Gathering information about customers, competitors and market trends",
+    wrong1: "Random guessing of customer tastes",
+    wrong2: "Counting employee numbers",
+    wrong3: "Calculating production costs only",
+    explanation: "Reduces risk of launching unpopular products",
+    example: "Surveys, focus groups, online questionnaires"
+  },
+  // 47
+  {
+    question: "Define primary market research",
+    answer: "New data collected first-hand by the business itself",
+    wrong1: "Using existing published data",
+    wrong2: "Reading old industry reports",
+    wrong3: "Government statistics only",
+    explanation: "Customised to the business’s exact needs",
+    example: "Questionnaires, interviews, product trials"
+  },
+  // 48
+  {
+    question: "Define secondary market research",
+    answer: "Using existing data already collected by other organisations",
+    wrong1: "Original surveys made by the firm",
+    wrong2: "Focus group feedback",
+    wrong3: "Direct customer interviews",
+    explanation: "Faster and cheaper than primary research",
+    example: "Government reports, industry magazines, online statistics"
+  },
+  // 49
+  {
+    question: "Define target market",
+    answer: "Specific group of customers a business aims its products at",
+    wrong1: "All people in the entire country",
+    wrong2: "Only business competitors",
+    wrong3: "Government regulators",
+    explanation: "Defined by age, income, lifestyle or location",
+    example: "Teenagers for gaming products"
+  },
+  // 50
+  {
+    question: "Define market segmentation",
+    answer: "Dividing the whole market into smaller distinct customer groups",
+    wrong1: "Selling one product to everyone",
+    wrong2: "Splitting company into departments",
+    wrong3: "Separating profits from costs",
+    explanation: "Segments have similar needs and traits",
+    example: "Segmenting by age, income or location"
+  },
+  // 51
+  {
+    question: "Define product",
+    answer: "Good or service offered by a business to satisfy customer needs",
+    wrong1: "Only physical manufactured items",
+    wrong2: "Only digital online services",
+    wrong3: "Advertising campaign material",
+    explanation: "Includes goods (tangible) and services (intangible)",
+    example: "Shoes, mobile data, haircuts"
+  },
+  // 52
+  {
+    question: "Define product life cycle",
+    answer: "Stages a product goes through from launch to decline",
+    wrong1: "Time taken to manufacture one item",
+    wrong2: "Employee career timeline in a firm",
+    wrong3: "Company opening and closing dates",
+    explanation: "Introduction, Growth, Maturity, Decline",
+    example: "New phone launch → peak sales → falling demand"
+  },
+  // 53
+  {
+    question: "Define brand",
+    answer: "Unique name, logo or design that identifies a business or product",
+    wrong1: "Generic product with no identity",
+    wrong2: "Standard industry price level",
+    wrong3: "Total market sales volume",
+    explanation: "Builds customer loyalty and recognition",
+    example: "Apple logo, Nike swoosh"
+  },
+  // 54
+  {
+    question: "Define branding",
+    answer: "Creating a unique identity and reputation for a product or business",
+    wrong1: "Setting the lowest possible price",
+    wrong2: "Cutting production costs only",
+    wrong3: "Changing supplier every month",
+    explanation: "Encourages repeat purchases",
+    example: "Using consistent logo, colour and style"
+  },
+  // 55
+  {
+    question: "Define price in marketing",
+    answer: "Amount of money customers pay to buy a product or service",
+    wrong1: "Cost to make the product",
+    wrong2: "Employee salary cost",
+    wrong3: "Business tax payment",
+    explanation: "Affects demand, profit and brand image",
+    example: "Premium price for luxury goods, low price for budget items"
+  },
+  // 56
+  {
+    question: "Define pricing strategy",
+    answer: "Planned method a business uses to set prices for its products",
+    wrong1: "Randomly changing prices daily",
+    wrong2: "Copying employee wage levels",
+    wrong3: "Setting price equal to raw material cost",
+    explanation: "Includes penetration, skimming, competitive pricing",
+    example: "Low launch price to enter a new market"
+  },
+  // 57
+  {
+    question: "Define penetration pricing",
+    answer: "Setting a low initial price to gain quick market share",
+    wrong1: "High launch price for new unique products",
+    wrong2: "Matching competitors’ prices exactly",
+    wrong3: "Always pricing above all rivals",
+    explanation: "Attracts large customer numbers fast",
+    example: "New streaming service launching with cheap monthly fees"
+  },
+  // 58
+  {
+    question: "Define price skimming",
+    answer: "Setting a high initial price for a new unique product then lowering over time",
+    wrong1: "Low launch price to capture market share",
+    wrong2: "Pricing below production cost forever",
+    wrong3: "Same fixed price for all product versions",
+    explanation: "Targets early willing-to-pay customers",
+    example: "New flagship smartphone high launch price"
+  },
+  // 59
+  {
+    question: "Define place (marketing mix)",
+    answer: "Channels and locations used to make products available to customers",
+    wrong1: "Product packaging design",
+    wrong2: "Advertising method used",
+    wrong3: "Price level set for sales",
+    explanation: "Includes retail shops, online, wholesalers",
+    example: "Selling in supermarkets, website delivery"
+  },
+  // 60
+  {
+    question: "Define promotion",
+    answer: "Communicating with customers to increase product awareness and sales",
+    wrong1: "Reducing factory production time",
+    wrong2: "Changing company ownership",
+    wrong3: "Lowering employee wages",
+    explanation: "Advertising, sales promotion, public relations",
+    example: "TV ads, social media posts, discount offers"
+  },
+  // 61
+  {
+    question: "Define advertising",
+    answer: "Paid form of promotion to inform and persuade customers",
+    wrong1: "Free word-of-mouth recommendations",
+    wrong2: "Employee internal training",
+    wrong3: "Government business laws",
+    explanation: "Paid media communication",
+    example: "Billboards, YouTube ads, magazine adverts"
+  },
+  // 62
+  {
+    question: "Define sales promotion",
+    answer: "Short-term incentive to encourage immediate product purchase",
+    wrong1: "Long-term brand image building",
+    wrong2: "Permanent price reduction forever",
+    wrong3: "Market research data collection",
+    explanation: "Temporary offers to boost sales",
+    example: "Discounts, buy one get one free, loyalty points"
+  },
+  // 63
+  {
+    question: "Define public relations (PR)",
+    answer: "Building a positive business reputation with the public and media",
+    wrong1: "Direct product price cutting",
+    wrong2: "Only online paid adverts",
+    wrong3: "Changing product packaging weekly",
+    explanation: "Often free or low-cost publicity",
+    example: "Charity events, press releases, community projects"
+  },
+  // 64
+  {
+    question: "Define distribution channel",
+    answer: "Path a product takes from producer to final consumer",
+    wrong1: "Advertising route to social media",
+    wrong2: "Employee promotion pathway",
+    wrong3: "Government tax collection process",
+    explanation: "Can include wholesalers and retailers",
+    example: "Manufacturer → wholesaler → shop → customer"
+  },
+  // 65
+  {
+    question: "Define e-commerce",
+    answer: "Buying and selling goods and services over the internet",
+    wrong1: "Only physical shop retail",
+    wrong2: "Bank loan transactions only",
+    wrong3: "Employee online training",
+    explanation: "Allows global sales 24/7",
+    example: "Shopping on Amazon, online clothing stores"
+  },
+  // 66
+  {
+    question: "Define human resources (HR)",
+    answer: "Business function managing employees, recruitment, training and welfare",
+    wrong1: "Managing raw material supply",
+    wrong2: "Setting product advertising plans",
+    wrong3: "Calculating company profit only",
+    explanation: "Focuses on workforce management",
+    example: "Hiring staff, running training, handling contracts"
+  },
+  // 67
+  {
+    question: "Define recruitment",
+    answer: "Process of finding and hiring new employees for a business role",
+    wrong1: "Training existing workers",
+    wrong2: "Promoting products to customers",
+    wrong3: "Negotiating with suppliers",
+    explanation: "Includes job analysis, advertising, interviews",
+    example: "Posting job vacancy, interviewing candidates"
+  },
+  // 68
+  {
+    question: "Define internal recruitment",
+    answer: "Filling a job vacancy with an existing employee from inside the business",
+    wrong1: "Hiring someone new from outside",
+    wrong2: "Using volunteer workers only",
+    wrong3: "Government assigned staff",
+    explanation: "Cheaper, known performance, boosts morale",
+    example: "Promoting a senior worker to manager"
+  },
+  // 69
+  {
+    question: "Define external recruitment",
+    answer: "Filling a job vacancy by hiring someone from outside the business",
+    wrong1: "Promoting current employees",
+    wrong2: "Assigning work to unpaid interns",
+    wrong3: "Choosing from company shareholders",
+    explanation: "Brings new skills and fresh ideas",
+    example: "Advertising online to attract outside applicants"
+  },
+  // 70
+  {
+    question: "Define training",
+    answer: "Teaching employees new skills, knowledge and work methods",
+    wrong1: "Cutting employee working hours",
+    wrong2: "Reducing staff salary levels",
+    wrong3: "Changing product pricing",
+    explanation: "Improves productivity and quality",
+    example: "Customer service training, new software training"
+  },
+  // 71
+  {
+    question: "Define motivation in business",
+    answer: "Factors encouraging employees to work hard and achieve business goals",
+    wrong1: "Strict rules forcing workers to stay",
+    wrong2: "Reducing staff break times",
+    wrong3: "Limiting employee promotion chances",
+    explanation: "Motivated workers are more productive",
+    example: "Higher pay, bonuses, praise, career progression"
+  },
+  // 72
+  {
+    question: "Define wage",
+    answer: "Payment to employees calculated per hour worked",
+    wrong1: "Fixed annual salary regardless of hours",
+    wrong2: "Profit share paid once a year",
+    wrong3: "Free company benefits only",
+    explanation: "Often paid weekly",
+    example: "15 dollars per hour for shop staff"
+  },
+  // 73
+  {
+    question: "Define salary",
+    answer: "Fixed annual employee income paid monthly, not based on hourly work",
+    wrong1: "Pay calculated by number of hours",
+    wrong2: "Payment per item produced",
+    wrong3: "One-off bonus payment",
+    explanation: "Common for professional and office roles",
+    example: "Manager fixed monthly salary"
+  },
+  // 74
+  {
+    question: "Define job satisfaction",
+    answer: "The enjoyment and fulfilment an employee gains from their work",
+    wrong1: "Only high salary payment",
+    wrong2: "Strict workplace rules",
+    wrong3: "Long working hours",
+    explanation: "High satisfaction reduces staff turnover",
+    example: "Enjoying tasks, good colleagues, fair treatment"
+  },
+  // 75
+  {
+    question: "Define staff turnover",
+    answer: "Rate at which employees leave a business and are replaced",
+    wrong1: "Number of new customers per month",
+    wrong2: "Change in product price levels",
+    wrong3: "Growth in market share",
+    explanation: "High turnover is costly for businesses",
+    example: "Many workers quitting within one year"
+  },
+  // 76
+  {
+    question: "Define production",
+    answer: "Process of converting raw materials into goods or services",
+    wrong1: "Only advertising and selling",
+    wrong2: "Recruiting new employees",
+    wrong3: "Calculating business taxes",
+    explanation: "Uses all four factors of production",
+    example: "Turning flour into bread in a bakery"
+  },
+  // 77
+  {
+    question: "Define job production",
+    answer: "Producing one unique custom product at a time",
+    wrong1: "Mass making identical items non-stop",
+    wrong2: "Making batches of identical products",
+    wrong3: "Automated factory production only",
+    explanation: "High skill, high price, custom design",
+    example: "Wedding dress, custom furniture"
+  },
+  // 78
+  {
+    question: "Define batch production",
+    answer: "Producing goods in groups or batches before switching to another product",
+    wrong1: "One single custom item at a time",
+    wrong2: "Continuous identical mass production",
+    wrong3: "Handmade craft only",
+    explanation: "Flexible, can make different product lines",
+    example: "Baking one batch of cookies then one batch of cakes"
+  },
+  // 79
+  {
+    question: "Define flow production",
+    answer: "Continuous mass production of identical products on a production line",
+    wrong1: "Single custom item production",
+    wrong2: "Small batch limited runs",
+    wrong3: "Handmade individual craft work",
+    explanation: "High output, low unit cost",
+    example: "Car assembly line, bottled drink production"
+  },
+  // 80
+  {
+    question: "Define productivity",
+    answer: "Output produced per worker or per machine per period of time",
+    wrong1: "Total number of employees",
+    wrong2: "Total business profit",
+    wrong3: "Market share percentage",
+    explanation: "Higher productivity means lower unit costs",
+    example: "One worker making 20 items per hour"
+  },
+  // 81
+  {
+    question: "Define quality control",
+    answer: "Checking finished products to remove faulty items before sale",
+    wrong1: "Designing products with no faults from start",
+    wrong2: "Ignoring defective goods",
+    wrong3: "Reducing worker pay for mistakes",
+    explanation: "Inspection after production",
+    example: "Checking each toy for damage before packaging"
+  },
+  // 82
+  {
+    question: "Define quality assurance",
+    answer: "Setting high standards throughout production to prevent faults",
+    wrong1: "Only checking finished goods",
+    wrong2: "Selling defective products cheaply",
+    wrong3: "Cutting quality to lower cost",
+    explanation: "Quality built into every stage",
+    example: "Following strict manufacturing rules at every step"
+  },
+  // 83
+  {
+    question: "Define inventory (stock)",
+    answer: "Raw materials, work-in-progress and finished goods stored by a business",
+    wrong1: "Total money in bank accounts",
+    wrong2: "Number of employees on contract",
+    wrong3: "Customer database records",
+    explanation: "Stock control balances cost and availability",
+    example: "Fabric, half-made clothes, finished garments in a factory"
+  },
+  // 84
+  {
+    question: "Define just-in-time (JIT) stock control",
+    answer: "Receiving raw materials exactly when needed for production, minimal stored stock",
+    wrong1: "Keeping large stock warehouses full at all times",
+    wrong2: "Ordering stock one year in advance",
+    wrong3: "Never ordering new supplies",
+    explanation: "Reduces storage costs and waste",
+    example: "Car parts delivered directly to assembly line"
+  },
+  // 85
+  {
+    question: "Define finance in business",
+    answer: "Management of money, income, costs and investment for a business",
+    wrong1: "Managing employee training only",
+    wrong2: "Designing advertising campaigns",
+    wrong3: "Organising product delivery",
+    explanation: "Covers sources of finance, costs, profit and loss",
+    example: "Tracking sales income, paying bills, investing growth money"
+  },
+  // 86
+  {
+    question: "Define capital (business finance)",
+    answer: "Money invested into a business to start or expand operations",
+    wrong1: "Daily small sales income",
+    wrong2: "Tax paid to government",
+    wrong3: "Employee monthly wages",
+    explanation: "Can be owned capital or loan capital",
+    example: "Owner investing savings to open a shop"
+  },
+  // 87
+  {
+    question: "Define revenue (sales turnover)",
+    answer: "Total income from selling goods or services; price × quantity sold",
+    wrong1: "Profit after all costs paid",
+    wrong2: "Cost of raw materials",
+    wrong3: "Bank loan repayments",
+    explanation: "Revenue is total sales before costs deducted",
+    example: "Selling 100 items at $10 = $1000 revenue"
+  },
+  // 88
+  {
+    question: "Define cost in business",
+    answer: "Any expense a business pays to operate and produce goods",
+    wrong1: "Money earned from sales",
+    wrong2: "Profit kept by owners",
+    wrong3: "Shareholder dividend payments",
+    explanation: "Split into fixed and variable costs",
+    example: "Rent, wages, raw materials, utility bills"
+  },
+  // 89
+  {
+    question: "Define fixed cost",
+    answer: "Cost that does not change with the number of units produced",
+    wrong1: "Cost rising when output increases",
+    wrong2: "Cost zero if production stops",
+    wrong3: "Cost linked directly to each item made",
+    explanation: "Must be paid even with no sales",
+    example: "Shop rent, manager’s fixed salary"
+  },
+  // 90
+  {
+    question: "Define variable cost",
+    answer: "Cost that increases directly as production or sales rise",
+    wrong1: "Cost unchanged no matter output level",
+    wrong2: "Only office building rent",
+    wrong3: "Fixed monthly insurance payment",
+    explanation: "Zero variable cost when no items are made",
+    example: "Raw materials, packaging per unit"
+  },
+  // 91
+  {
+    question: "Define total cost",
+    answer: "Fixed costs plus variable costs added together",
+    wrong1: "Total sales revenue",
+    wrong2: "Profit minus tax",
+    wrong3: "Only daily running costs",
+    explanation: "TC = FC + VC",
+    example: "Rent $500 + materials $300 = total cost $800"
+  },
+  // 92
+  {
+    question: "Define profit",
+    answer: "Revenue minus total costs",
+    wrong1: "Total money from sales only",
+    wrong2: "Costs added to revenue",
+    wrong3: "Total wages paid to staff",
+    explanation: "Profit = Revenue − Total Costs",
+    example: "Revenue $2000, costs $1200 → profit $800"
+  },
+  // 93
+  {
+    question: "Define loss in business",
+    answer: "When total costs are higher than business revenue",
+    wrong1: "When revenue is higher than costs",
+    wrong2: "When fixed costs fall",
+    wrong3: "When sales increase rapidly",
+    explanation: "Continuous loss leads to business closure",
+    example: "Revenue $1000, costs $1500 → loss $500"
+  },
+  // 94
+  {
+    question: "Define break-even point",
+    answer: "Output level where total revenue equals total costs; no profit no loss",
+    wrong1: "Maximum profit output level",
+    wrong2: "Point where costs double",
+    wrong3: "Point where revenue is triple costs",
+    explanation: "Sales above break-even make profit",
+    example: "Selling exactly 200 units to cover all costs"
+  },
+  // 95
+  {
+    question: "Define internal source of finance",
+    answer: "Money raised from inside the business",
+    wrong1: "Bank loans and outside investors",
+    wrong2: "Government grants",
+    wrong3: "Crowdfunding from public",
+    explanation: "No interest to pay, no loss of control",
+    example: "Retained profit, selling unused assets"
+  },
+  // 96
+  {
+    question: "Define external source of finance",
+    answer: "Money raised from outside the business organisation",
+    wrong1: "Using saved business profits",
+    wrong2: "Selling old company equipment",
+    wrong3: "Owner investing personal savings",
+    explanation: "Often requires interest payments or share ownership",
+    example: "Bank loan, issuing shares, venture capital"
+  },
+  // 97
+  {
+    question: "Define inflation",
+    answer: "General increase in average price levels across an economy over time",
+    wrong1: "Falling prices for all goods",
+    wrong2: "Fixed unchanging prices",
+    wrong3: "Only business wage increases",
+    explanation: "Raises business costs and customer living expenses",
+    example: "Food, fuel and rent prices rising yearly"
+  },
+  // 98
+  {
+    question: "Define exchange rate",
+    answer: "Value of one country’s currency compared to another",
+    wrong1: "Fixed price of local products",
+    wrong2: "Minimum wage set by government",
+    wrong3: "Business tax percentage",
+    explanation: "Affects import and export costs",
+    example: "1 USD = 7.2 Chinese Yuan"
+  },
+  // 99
+  {
+    question: "Define government regulation",
+    answer: "Laws and rules set by the government that businesses must follow",
+    wrong1: "Voluntary guidelines businesses can ignore",
+    wrong2: "Internal company staff rules",
+    wrong3: "Customer personal preferences",
+    explanation: "Covers employment, health safety, advertising and tax",
+    example: "Minimum wage law, health and safety rules"
+  },
+  // 100
+  {
+    question: "Core Grade 10–11 Business Studies exam skill",
+    answer: "Define key terms, analyse business decisions and evaluate advantages/disadvantages",
+    wrong1: "Only memorise definitions with no application",
+    wrong2: "Guess answers without using business concepts",
+    wrong3: "Write personal opinions with no business theory",
+    explanation: "Top marks require applying theory to real business scenarios",
+    example: "Evaluating whether a business should use penetration pricing or price skimming"
+  }
+];
