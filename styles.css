@@ -618,12 +618,18 @@ main {
 }
 
 #game.red-flash {
-    animation: redFlash 0.2s ease-in-out;
+    animation: redFlash 0.5s ease-in-out infinite;
 }
 
 @keyframes redFlash {
-    0%, 100% { background-color: transparent; }
-    50% { background-color: rgba(239, 68, 68, 0.2); }
+    0%, 100% { 
+        background-color: transparent; 
+        box-shadow: none;
+    }
+    50% { 
+        background-color: rgba(239, 68, 68, 0.15); 
+        box-shadow: inset 0 0 100px rgba(239, 68, 68, 0.3);
+    }
 }
 
 /* Flashcard */

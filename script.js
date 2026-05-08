@@ -254,6 +254,57 @@ class SoundManager {
         oscillator.stop(this.audioContext.currentTime + 0.5);
     }
 
+    playCountdown(number) {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        const frequencies = {
+            5: 880,
+            4: 880,
+            3: 880,
+            2: 880,
+            1: 1320
+        };
+        
+        oscillator.frequency.setValueAtTime(frequencies[number] || 880, this.audioContext.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.4, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.2);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.2);
+    }
+
+    playBuzzer() {
+        this.init();
+        
+        const oscillator1 = this.audioContext.createOscillator();
+        const oscillator2 = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator1.type = 'square';
+        oscillator2.type = 'sawtooth';
+        
+        oscillator1.frequency.setValueAtTime(100, this.audioContext.currentTime);
+        oscillator2.frequency.setValueAtTime(150, this.audioContext.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.5, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.8);
+        
+        oscillator1.start(this.audioContext.currentTime);
+        oscillator2.start(this.audioContext.currentTime);
+        oscillator1.stop(this.audioContext.currentTime + 0.8);
+        oscillator2.stop(this.audioContext.currentTime + 0.8);
+    }
+
     playCheer() {
         this.init();
         
@@ -315,12 +366,14 @@ function trackEvent(eventName, properties = {}) {
     }
 }
 
+let redFlashActive = false;
+
 function triggerRedFlash() {
+    if (redFlashActive) return;
+    redFlashActive = true;
+    
     const gameSection = document.getElementById('game');
     gameSection.classList.add('red-flash');
-    setTimeout(() => {
-        gameSection.classList.remove('red-flash');
-    }, 200);
 }
 
 function handleGoogleLogin() {
@@ -474,12 +527,17 @@ function resetOptionButtons() {
 
 function resetTimer() {
     timer = 15;
+    redFlashActive = false;
+    
     document.getElementById('timer').textContent = timer;
     document.getElementById('timer').classList.remove('timer-warning');
     
     const timerBar = document.getElementById('timer-bar');
     timerBar.style.width = '100%';
     timerBar.classList.remove('warning');
+    
+    const gameSection = document.getElementById('game');
+    gameSection.classList.remove('red-flash');
     
     if (timerInterval) clearInterval(timerInterval);
     
