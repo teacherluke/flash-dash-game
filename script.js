@@ -15,9 +15,15 @@ const SUBJECT_FILES = {
     igcse: {
         biology: 'igcse/flashcards_biologyigcse.txt',
         maths: 'igcse/flashcards_mathigcse.txt',
+        physics: 'igcse/flashcards_physicsigcse.txt',
         chemistry: 'igcse/flashcards_chemistryigcse.txt',
         english: 'igcse/flashcards_englishigcse.txt',
-        psychology: 'igcse/flashcards_psychologyigcse.txt'
+        history: 'igcse/flashcards_historyigcse.txt',
+        geography: 'igcse/flashcards_geographyigcse.txt',
+        economics: 'igcse/flashcards_economicsigcse.txt',
+        businessstudies: 'igcse/flashcards_businessstudiesigcse.txt',
+        psychology: 'igcse/flashcards_psychologyigcse.txt',
+        chinese: 'igcse/flashcards_chinese_firstlanguage_igcse.txt'
     }
 };
 
@@ -37,7 +43,7 @@ const SUBJECT_NAMES = {
 
 const LEVEL_SUBJECTS = {
     preigcse: ['biology', 'maths', 'physics', 'chemistry', 'english', 'history', 'geography', 'economics', 'businessstudies', 'psychology', 'chinese'],
-    igcse: ['biology', 'maths', 'chemistry', 'english', 'psychology']
+    igcse: ['biology', 'maths', 'physics', 'chemistry', 'english', 'history', 'geography', 'economics', 'businessstudies', 'psychology', 'chinese']
 };
 
 let flashcardData = {};
@@ -218,21 +224,33 @@ class SoundManager {
 
     playCorrect() {
         this.init();
-        const oscillator = this.audioContext.createOscillator();
+        const oscillator1 = this.audioContext.createOscillator();
+        const oscillator2 = this.audioContext.createOscillator();
         const gainNode = this.audioContext.createGain();
         
-        oscillator.connect(gainNode);
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
         gainNode.connect(this.audioContext.destination);
         
-        oscillator.frequency.setValueAtTime(523.25, this.audioContext.currentTime);
-        oscillator.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.1);
-        oscillator.frequency.setValueAtTime(783.99, this.audioContext.currentTime + 0.2);
+        oscillator1.type = 'sine';
+        oscillator2.type = 'sine';
         
-        gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.4);
+        oscillator1.frequency.setValueAtTime(523.25, this.audioContext.currentTime);
+        oscillator1.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.1);
+        oscillator1.frequency.setValueAtTime(783.99, this.audioContext.currentTime + 0.2);
+        oscillator1.frequency.setValueAtTime(1046.50, this.audioContext.currentTime + 0.3);
         
-        oscillator.start(this.audioContext.currentTime);
-        oscillator.stop(this.audioContext.currentTime + 0.4);
+        oscillator2.frequency.setValueAtTime(659.25, this.audioContext.currentTime);
+        oscillator2.frequency.setValueAtTime(783.99, this.audioContext.currentTime + 0.1);
+        oscillator2.frequency.setValueAtTime(880, this.audioContext.currentTime + 0.2);
+        
+        gainNode.gain.setValueAtTime(0.25, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        
+        oscillator1.start(this.audioContext.currentTime);
+        oscillator2.start(this.audioContext.currentTime);
+        oscillator1.stop(this.audioContext.currentTime + 0.5);
+        oscillator2.stop(this.audioContext.currentTime + 0.5);
     }
 
     playWrong() {
@@ -245,13 +263,14 @@ class SoundManager {
         
         oscillator.type = 'sawtooth';
         oscillator.frequency.setValueAtTime(200, this.audioContext.currentTime);
-        oscillator.frequency.setValueAtTime(150, this.audioContext.currentTime + 0.2);
+        oscillator.frequency.setValueAtTime(150, this.audioContext.currentTime + 0.15);
+        oscillator.frequency.setValueAtTime(100, this.audioContext.currentTime + 0.3);
         
         gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.6);
         
         oscillator.start(this.audioContext.currentTime);
-        oscillator.stop(this.audioContext.currentTime + 0.5);
+        oscillator.stop(this.audioContext.currentTime + 0.6);
     }
 
     playCountdown(number) {
@@ -263,20 +282,21 @@ class SoundManager {
         gainNode.connect(this.audioContext.destination);
         
         const frequencies = {
-            5: 880,
-            4: 880,
-            3: 880,
-            2: 880,
-            1: 1320
+            5: 523.25,
+            4: 587.33,
+            3: 659.25,
+            2: 783.99,
+            1: 1046.50
         };
         
-        oscillator.frequency.setValueAtTime(frequencies[number] || 880, this.audioContext.currentTime);
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(frequencies[number] || 523.25, this.audioContext.currentTime);
         
         gainNode.gain.setValueAtTime(0.4, this.audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.2);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.15);
         
         oscillator.start(this.audioContext.currentTime);
-        oscillator.stop(this.audioContext.currentTime + 0.2);
+        oscillator.stop(this.audioContext.currentTime + 0.15);
     }
 
     playBuzzer() {
@@ -356,6 +376,166 @@ class SoundManager {
         oscillator.start(this.audioContext.currentTime);
         oscillator.stop(this.audioContext.currentTime + 2);
     }
+
+    playCardFlip() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        const filter = this.audioContext.createBiquadFilter();
+        
+        oscillator.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(400, this.audioContext.currentTime + 0.2);
+        
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(2000, this.audioContext.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(500, this.audioContext.currentTime + 0.2);
+        
+        gainNode.gain.setValueAtTime(0.15, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.2);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.2);
+    }
+
+    playPowerUpUnlock() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(440, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(554.37, this.audioContext.currentTime + 0.1);
+        oscillator.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.2);
+        oscillator.frequency.setValueAtTime(880, this.audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.5);
+    }
+
+    playPowerUpUse() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(1200, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(1500, this.audioContext.currentTime + 0.1);
+        oscillator.frequency.setValueAtTime(1800, this.audioContext.currentTime + 0.2);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.3);
+    }
+
+    playButtonClick() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(400, this.audioContext.currentTime + 0.05);
+        
+        gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.05);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.05);
+    }
+
+    playScoreIncrease() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(600, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(700, this.audioContext.currentTime + 0.08);
+        oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime + 0.16);
+        oscillator.frequency.setValueAtTime(900, this.audioContext.currentTime + 0.24);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.3);
+    }
+
+    playRoundComplete() {
+        this.init();
+        
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1244.51];
+        
+        notes.forEach((freq, i) => {
+            const oscillator = this.audioContext.createOscillator();
+            const gainNode = this.audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(this.audioContext.destination);
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(freq, this.audioContext.currentTime + i * 0.15);
+            
+            gainNode.gain.setValueAtTime(0.25, this.audioContext.currentTime + i * 0.15);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + i * 0.15 + 0.3);
+            
+            oscillator.start(this.audioContext.currentTime + i * 0.15);
+            oscillator.stop(this.audioContext.currentTime + i * 0.15 + 0.3);
+        });
+    }
+
+    playGameStart() {
+        this.init();
+        
+        const oscillator1 = this.audioContext.createOscillator();
+        const oscillator2 = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator1.type = 'sine';
+        oscillator2.type = 'sine';
+        
+        oscillator1.frequency.setValueAtTime(440, this.audioContext.currentTime);
+        oscillator1.frequency.setValueAtTime(554.37, this.audioContext.currentTime + 0.15);
+        oscillator1.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.3);
+        
+        oscillator2.frequency.setValueAtTime(880, this.audioContext.currentTime);
+        oscillator2.frequency.setValueAtTime(1108.73, this.audioContext.currentTime + 0.15);
+        oscillator2.frequency.setValueAtTime(1318.51, this.audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        
+        oscillator1.start(this.audioContext.currentTime);
+        oscillator2.start(this.audioContext.currentTime);
+        oscillator1.stop(this.audioContext.currentTime + 0.5);
+        oscillator2.stop(this.audioContext.currentTime + 0.5);
+    }
 }
 
 const soundManager = new SoundManager();
@@ -373,59 +553,310 @@ function triggerRedFlash() {
     redFlashActive = true;
     
     const gameSection = document.getElementById('game');
-    gameSection.classList.add('red-flash');
+    if (gameSection) {
+        gameSection.classList.add('red-flash');
+    }
 }
 
-function playQuestionAudio() {
+function stopRedFlash() {
+    redFlashActive = false;
+    const gameSection = document.getElementById('game');
+    if (gameSection) {
+        gameSection.classList.remove('red-flash');
+    }
+}
+
+const TTS_CONFIG = {
+    elevenlabs: {
+        apiKey: '',
+        voiceId: '21m00Tcm4TlvDq8ikWAM',
+        url: 'https://api.elevenlabs.io/v1/text-to-speech'
+    },
+    openai: {
+        apiKey: '',
+        url: 'https://api.openai.com/v1/audio/speech'
+    },
+    google: {
+        apiKey: '',
+        url: 'https://texttospeech.googleapis.com/v1/text:synthesize'
+    }
+};
+
+async function playQuestionAudio() {
     const question = document.getElementById('question').textContent;
     if (!question || question.trim() === '') return;
     
     const audioBtn = document.getElementById('audio-btn');
     audioBtn.classList.add('active');
     
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        
-        const utterance = new SpeechSynthesisUtterance(question);
-        utterance.lang = 'en-US';
-        utterance.rate = 0.85;
-        utterance.pitch = 1;
-        utterance.volume = 1;
-        
-        const voices = window.speechSynthesis.getVoices();
-        const femaleVoice = voices.find(voice => 
-            voice.lang.startsWith('en') && 
-            (voice.name.includes('Female') || voice.name.includes('Samantha') || voice.name.includes('Alex') || voice.gender === 'female')
-        ) || voices.find(voice => voice.lang.startsWith('en'));
-        
-        if (femaleVoice) {
-            utterance.voice = femaleVoice;
-        }
-        
-        utterance.onend = () => {
-            audioBtn.classList.remove('active');
-        };
-        
-        utterance.onerror = () => {
-            audioBtn.classList.remove('active');
-        };
-        
-        window.speechSynthesis.speak(utterance);
-    } else {
+    let played = false;
+    
+    if (TTS_CONFIG.elevenlabs.apiKey) {
+        played = await playElevenLabsAudio(question, audioBtn);
+    }
+    
+    if (!played && TTS_CONFIG.openai.apiKey) {
+        played = await playOpenAIAudio(question, audioBtn);
+    }
+    
+    if (!played && TTS_CONFIG.google.apiKey) {
+        played = await playGoogleAudio(question, audioBtn);
+    }
+    
+    if (!played && 'speechSynthesis' in window) {
+        playBrowserAudio(question, audioBtn);
+    } else if (!played) {
         audioBtn.classList.remove('active');
     }
 }
 
+async function playElevenLabsAudio(text, audioBtn) {
+    try {
+        const response = await fetch(`${TTS_CONFIG.elevenlabs.url}/${TTS_CONFIG.elevenlabs.voiceId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'xi-api-key': TTS_CONFIG.elevenlabs.apiKey
+            },
+            body: JSON.stringify({
+                text: text,
+                model_id: 'eleven_monolingual_v1',
+                voice_settings: {
+                    stability: 0.5,
+                    similarity_boost: 0.5
+                }
+            })
+        });
+        
+        if (response.ok) {
+            const audioBlob = await response.blob();
+            await playAudioBlob(audioBlob, audioBtn);
+            return true;
+        }
+    } catch (error) {
+        console.error('ElevenLabs TTS error:', error);
+    }
+    return false;
+}
+
+async function playOpenAIAudio(text, audioBtn) {
+    try {
+        const response = await fetch(TTS_CONFIG.openai.url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TTS_CONFIG.openai.apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'tts-1',
+                input: text,
+                voice: 'nova',
+                response_format: 'mp3'
+            })
+        });
+        
+        if (response.ok) {
+            const audioBlob = await response.blob();
+            await playAudioBlob(audioBlob, audioBtn);
+            return true;
+        }
+    } catch (error) {
+        console.error('OpenAI TTS error:', error);
+    }
+    return false;
+}
+
+async function playGoogleAudio(text, audioBtn) {
+    try {
+        const response = await fetch(`${TTS_CONFIG.google.url}?key=${TTS_CONFIG.google.apiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                input: { text: text },
+                voice: {
+                    languageCode: 'en-US',
+                    name: 'en-US-Standard-C',
+                    ssmlGender: 'FEMALE'
+                },
+                audioConfig: {
+                    audioEncoding: 'MP3',
+                    speakingRate: 0.8
+                }
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            const audioBytes = data.audioContent;
+            const audioBlob = base64ToBlob(audioBytes, 'audio/mp3');
+            await playAudioBlob(audioBlob, audioBtn);
+            return true;
+        }
+    } catch (error) {
+        console.error('Google TTS error:', error);
+    }
+    return false;
+}
+
+function playBrowserAudio(text, audioBtn) {
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+    utterance.pitch = 1.0;
+    utterance.volume = 1;
+    
+    const voices = window.speechSynthesis.getVoices();
+    
+    const naturalVoices = [
+        'Google US English', 'Google UK English Female', 'Microsoft Zira - English (United States)',
+        'Microsoft Hazel - English (Great Britain)', 'Samantha', 'Alex', 'Google English (US, female)',
+        'Google English (UK, female)', 'Microsoft David - English (United States)', 'Sara', 'Anna',
+        'Victoria', 'Emily', 'Emma', 'Charlotte', 'Amy', 'Alice', 'Rachel', 'Holly', 'Mia', 'Grace'
+    ];
+    
+    let selectedVoice = voices.find(voice => 
+        naturalVoices.some(nv => voice.name.toLowerCase().includes(nv.toLowerCase()))
+    );
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.lang.startsWith('en-US') && voice.gender === 'female'
+        );
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.lang.startsWith('en') && voice.gender === 'female'
+        );
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.startsWith('en'));
+    }
+    
+    if (selectedVoice) {
+        utterance.voice = selectedVoice;
+    }
+    
+    utterance.onend = () => {
+        audioBtn.classList.remove('active');
+    };
+    
+    utterance.onerror = () => {
+        audioBtn.classList.remove('active');
+    };
+    
+    window.speechSynthesis.speak(utterance);
+}
+
+async function playAudioBlob(blob, audioBtn) {
+    return new Promise((resolve) => {
+        const audioUrl = URL.createObjectURL(blob);
+        const audio = new Audio(audioUrl);
+        
+        audio.onended = () => {
+            URL.revokeObjectURL(audioUrl);
+            audioBtn.classList.remove('active');
+            resolve();
+        };
+        
+        audio.onerror = () => {
+            URL.revokeObjectURL(audioUrl);
+            audioBtn.classList.remove('active');
+            resolve();
+        };
+        
+        audio.play();
+    });
+}
+
+function base64ToBlob(base64, mimeType) {
+    const byteString = atob(base64);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    
+    for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+    }
+    
+    return new Blob([uint8Array], { type: mimeType });
+}
+
 function handleGoogleLogin() {
     trackEvent('login_attempt', { provider: 'google' });
-    const mockUser = { name: 'Student', email: 'student@school.edu', provider: 'google' };
-    completeLogin(mockUser);
+    
+    if (typeof google !== 'undefined') {
+        google.accounts.oauth2.initTokenClient({
+            client_id: 'YOUR_GOOGLE_CLIENT_ID',
+            scope: 'email profile',
+            callback: (tokenResponse) => {
+                if (tokenResponse.access_token) {
+                    fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                        headers: { 'Authorization': `Bearer ${tokenResponse.access_token}` }
+                    })
+                    .then(response => response.json())
+                    .then(userData => {
+                        const user = {
+                            name: userData.name || userData.given_name,
+                            email: userData.email,
+                            provider: 'google',
+                            picture: userData.picture
+                        };
+                        completeLogin(user);
+                    })
+                    .catch(error => {
+                        console.error('Google login error:', error);
+                        completeLogin({ name: 'Student', email: 'student@school.edu', provider: 'google' });
+                    });
+                }
+            }
+        }).requestAccessToken();
+    } else {
+        completeLogin({ name: 'Student', email: 'student@school.edu', provider: 'google' });
+    }
 }
 
 function handleMicrosoftLogin() {
     trackEvent('login_attempt', { provider: 'microsoft' });
-    const mockUser = { name: 'Student', email: 'student@school.edu', provider: 'microsoft' };
-    completeLogin(mockUser);
+    
+    const clientId = 'YOUR_MICROSOFT_CLIENT_ID';
+    const redirectUri = window.location.origin;
+    const scope = 'openid profile email';
+    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&prompt=select_account`;
+    
+    const popup = window.open(authUrl, 'microsoft-login', 'width=600,height=600');
+    
+    const checkPopup = setInterval(() => {
+        if (popup.closed) {
+            clearInterval(checkPopup);
+            const hash = window.location.hash;
+            if (hash.includes('access_token')) {
+                const params = new URLSearchParams(hash.substring(1));
+                const accessToken = params.get('access_token');
+                
+                fetch('https://graph.microsoft.com/v1.0/me', {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                })
+                .then(response => response.json())
+                .then(userData => {
+                    const user = {
+                        name: userData.displayName,
+                        email: userData.mail || userData.userPrincipalName,
+                        provider: 'microsoft'
+                    };
+                    completeLogin(user);
+                })
+                .catch(error => {
+                    console.error('Microsoft login error:', error);
+                    completeLogin({ name: 'Student', email: 'student@school.edu', provider: 'microsoft' });
+                });
+            }
+        }
+    }, 1000);
 }
 
 function handleWeChatLogin() {
@@ -522,6 +953,10 @@ function loadFlashcard() {
         return;
     }
     
+    const flashcardElement = document.getElementById('flashcard');
+    flashcardElement.style.opacity = '1';
+    flashcardElement.style.transform = 'rotateY(0deg)';
+    
     const flashcard = currentFlashcards[currentIndex];
     document.getElementById('question').textContent = flashcard.question;
     document.getElementById('answer').textContent = flashcard.answer;
@@ -529,7 +964,7 @@ function loadFlashcard() {
     document.getElementById('explanation').textContent = flashcard.explanation ? `💡 ${flashcard.explanation}` : '';
     document.getElementById('example').textContent = flashcard.example ? `📝 ${flashcard.example}` : '';
     
-    document.getElementById('flashcard').classList.remove('flipped');
+    flashcardElement.classList.remove('flipped');
     generateOptions(flashcard);
     resetOptionButtons();
 }
@@ -570,7 +1005,7 @@ function resetOptionButtons() {
 
 function resetTimer() {
     timer = 15;
-    redFlashActive = false;
+    stopRedFlash();
     
     document.getElementById('timer').textContent = timer;
     document.getElementById('timer').classList.remove('timer-warning');
@@ -578,9 +1013,6 @@ function resetTimer() {
     const timerBar = document.getElementById('timer-bar');
     timerBar.style.width = '100%';
     timerBar.classList.remove('warning');
-    
-    const gameSection = document.getElementById('game');
-    gameSection.classList.remove('red-flash');
     
     if (timerInterval) clearInterval(timerInterval);
     
@@ -679,9 +1111,17 @@ function selectAnswer(optionIndex) {
         }
     }
     
-    flipCard();
+    setTimeout(() => {
+        flipCard();
+    }, 200);
     
-    setTimeout(() => nextQuestion(), 2000);
+    setTimeout(() => {
+        const flashcard = document.getElementById('flashcard');
+        flashcard.style.opacity = '0';
+        flashcard.style.transform = 'translateY(-20px) rotateY(180deg)';
+    }, 2000);
+    
+    setTimeout(() => nextQuestion(), 3000);
 }
 
 function showPowerUpNotification() {
@@ -745,7 +1185,10 @@ function handleTimeout() {
     clearInterval(timerInterval);
     
     document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('disabled'));
-    flipCard();
+    
+    setTimeout(() => {
+        flipCard();
+    }, 200);
     
     setTimeout(() => {
         wrongCount++;
@@ -761,8 +1204,12 @@ function handleTimeout() {
             document.getElementById(`option-${correctIndex}`).classList.add('correct');
         }
         
-        setTimeout(() => nextQuestion(), 2000);
-    }, 500);
+        const flashcard = document.getElementById('flashcard');
+        flashcard.style.opacity = '0';
+        flashcard.style.transform = 'translateY(-20px) rotateY(180deg)';
+    }, 2000);
+    
+    setTimeout(() => nextQuestion(), 3000);
 }
 
 function nextQuestion() {
@@ -1046,8 +1493,6 @@ function createFireworks() {
 
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    const curtainLeft = document.querySelector('.curtain-left');
-    const curtainRight = document.querySelector('.curtain-right');
     const loadingBar = document.getElementById('loading-bar');
     const loadingText = document.querySelector('.loading-text');
     
@@ -1069,24 +1514,17 @@ function initLoadingScreen() {
             clearInterval(progressInterval);
             clearInterval(textInterval);
             
-            gsap.to([curtainLeft, curtainRight], {
-                scaleX: 0,
-                duration: 1.2,
-                ease: 'power2.inOut',
-                stagger: 0.1
-            });
-            
             gsap.to('.loading-content', {
                 opacity: 0,
                 y: -30,
-                duration: 0.6,
-                delay: 2
+                duration: 0.8,
+                delay: 1.5
             });
             
             gsap.to(loadingScreen, {
                 opacity: 0,
-                duration: 0.6,
-                delay: 2.5,
+                duration: 0.8,
+                delay: 2,
                 onComplete: () => {
                     loadingScreen.style.display = 'none';
                     document.getElementById('app').style.opacity = '1';

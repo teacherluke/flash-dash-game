@@ -722,17 +722,30 @@ main {
 }
 
 #game.red-flash {
-    animation: redFlash 0.5s ease-in-out infinite;
+    position: relative;
 }
 
-@keyframes redFlash {
+#game.red-flash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(239, 68, 68, 0);
+    pointer-events: none;
+    z-index: 100;
+    animation: redGameFlash 0.3s ease-in-out infinite;
+    border-radius: 20px;
+}
+
+@keyframes redGameFlash {
     0%, 100% { 
-        background-color: transparent; 
-        box-shadow: none;
+        opacity: 0;
     }
     50% { 
-        background-color: rgba(239, 68, 68, 0.15); 
-        box-shadow: inset 0 0 100px rgba(239, 68, 68, 0.3);
+        opacity: 0.4;
+        background-color: rgba(239, 68, 68, 0.5);
     }
 }
 
@@ -749,7 +762,7 @@ main {
     margin: 0 auto;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, transform 0.5s ease;
     cursor: pointer;
 }
 
@@ -817,18 +830,28 @@ main {
 
 .flashcard .explanation,
 .flashcard .example {
-    margin-top: 15px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--text-primary);
     text-align: center;
     max-width: 100%;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    line-height: 1.6;
+}
+
+.flashcard .explanation {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    font-weight: 500;
 }
 
 .flashcard .example {
-    margin-top: 10px;
+    margin-top: 15px;
+    background: rgba(251, 191, 36, 0.15);
+    border-color: rgba(251, 191, 36, 0.3);
 }
 
 /* Options */
