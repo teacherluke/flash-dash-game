@@ -5,10 +5,19 @@
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 8080",
-    "build": "mkdir -p dist && cp index.html styles.css script.js dist/ && cp flashcards_*.txt dist/",
+    "build": "mkdir -p dist && cp index.html styles.css script.js speed-insights.js dist/ && cp flashcards_*.txt dist/ && mkdir -p dist/node_modules/@vercel/speed-insights/dist && cp node_modules/@vercel/speed-insights/dist/index.mjs dist/node_modules/@vercel/speed-insights/dist/",
     "deploy": "vercel --prod"
   },
-  "keywords": ["flashcards", "education", "learning", "cambridge", "IB"],
+  "keywords": [
+    "flashcards",
+    "education",
+    "learning",
+    "cambridge",
+    "IB"
+  ],
   "author": "A-STUDENT",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
 }
