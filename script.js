@@ -376,6 +376,46 @@ function triggerRedFlash() {
     gameSection.classList.add('red-flash');
 }
 
+function playQuestionAudio() {
+    const question = document.getElementById('question').textContent;
+    if (!question || question.trim() === '') return;
+    
+    const audioBtn = document.getElementById('audio-btn');
+    audioBtn.classList.add('active');
+    
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(question);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.85;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        
+        const voices = window.speechSynthesis.getVoices();
+        const femaleVoice = voices.find(voice => 
+            voice.lang.startsWith('en') && 
+            (voice.name.includes('Female') || voice.name.includes('Samantha') || voice.name.includes('Alex') || voice.gender === 'female')
+        ) || voices.find(voice => voice.lang.startsWith('en'));
+        
+        if (femaleVoice) {
+            utterance.voice = femaleVoice;
+        }
+        
+        utterance.onend = () => {
+            audioBtn.classList.remove('active');
+        };
+        
+        utterance.onerror = () => {
+            audioBtn.classList.remove('active');
+        };
+        
+        window.speechSynthesis.speak(utterance);
+    } else {
+        audioBtn.classList.remove('active');
+    }
+}
+
 function handleGoogleLogin() {
     trackEvent('login_attempt', { provider: 'google' });
     const mockUser = { name: 'Student', email: 'student@school.edu', provider: 'google' };
@@ -409,11 +449,14 @@ function completeLogin(user) {
 }
 
 function logout() {
-    trackEvent('logout');
+    trackEvent('logout', {});
     currentUser = null;
+    
     document.getElementById('user-name').textContent = 'Guest';
     document.getElementById('auth-buttons').style.display = 'flex';
     document.getElementById('logout-btn').style.display = 'none';
+    
+    localStorage.removeItem('flashDashUser');
 }
 
 function showSection(sectionId) {
@@ -587,59 +630,58 @@ function selectAnswer(optionIndex) {
     const isCorrect = selectedAnswer === currentFlashcard.answer;
     
     document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('disabled'));
-    flipCard();
     
-    setTimeout(() => {
-        if (isCorrect) {
-            trackEvent('answer_correct', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
-            soundManager.playCorrect();
-            correctCount++;
-            consecutiveCorrect++;
-            
-            const basePoints = Math.max(10, timer * 2);
-            const multiplier = doublePointsActive ? 2 : 1;
-            roundPoints += basePoints * multiplier;
-            document.getElementById('round-points').textContent = roundPoints;
-            
-            if (currentFlashcards.length === MAX_QUESTIONS_PER_ROUND && consecutiveCorrect >= 3 && !powerUpsAvailable) {
-                powerUpsAvailable = true;
-                showPowerUpNotification();
-                trackEvent('powerups_unlocked', { subject: currentSubject });
-            }
-            
-            if (consecutiveCorrect >= 3) {
-                totalPoints += 100;
-                document.getElementById('total-points').textContent = totalPoints;
-                consecutiveCorrect = 0;
-            }
-            
-            document.getElementById(`option-${optionIndex}`).classList.add('correct');
-            createConfetti();
-            
-            const cardIndex = wrongFlashcards.findIndex(card => card.question === currentFlashcard.question && card.subject === currentSubject);
-            if (cardIndex !== -1) {
-                wrongFlashcards.splice(cardIndex, 1);
-            }
-        } else {
-            trackEvent('answer_incorrect', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
-            soundManager.playWrong();
-            wrongCount++;
-            consecutiveCorrect = 0;
-            
-            if (!wrongFlashcards.some(fc => fc.question === currentFlashcard.question)) {
-                wrongFlashcards.push({ ...currentFlashcard, subject: currentSubject });
-            }
-            
-            document.getElementById(`option-${optionIndex}`).classList.add('wrong');
-            
-            const correctIndex = currentOptions.indexOf(currentFlashcard.answer);
-            if (correctIndex !== -1) {
-                document.getElementById(`option-${correctIndex}`).classList.add('correct');
-            }
+    if (isCorrect) {
+        trackEvent('answer_correct', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
+        soundManager.playCorrect();
+        correctCount++;
+        consecutiveCorrect++;
+        
+        const basePoints = Math.max(10, timer * 2);
+        const multiplier = doublePointsActive ? 2 : 1;
+        roundPoints += basePoints * multiplier;
+        document.getElementById('round-points').textContent = roundPoints;
+        
+        if (currentFlashcards.length === MAX_QUESTIONS_PER_ROUND && consecutiveCorrect >= 3 && !powerUpsAvailable) {
+            powerUpsAvailable = true;
+            showPowerUpNotification();
+            trackEvent('powerups_unlocked', { subject: currentSubject });
         }
         
-        setTimeout(() => nextQuestion(), 2000);
-    }, 500);
+        if (consecutiveCorrect >= 3) {
+            totalPoints += 100;
+            document.getElementById('total-points').textContent = totalPoints;
+            consecutiveCorrect = 0;
+        }
+        
+        document.getElementById(`option-${optionIndex}`).classList.add('correct');
+        createConfetti();
+        
+        const cardIndex = wrongFlashcards.findIndex(card => card.question === currentFlashcard.question && card.subject === currentSubject);
+        if (cardIndex !== -1) {
+            wrongFlashcards.splice(cardIndex, 1);
+        }
+    } else {
+        trackEvent('answer_incorrect', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
+        soundManager.playWrong();
+        wrongCount++;
+        consecutiveCorrect = 0;
+        
+        if (!wrongFlashcards.some(fc => fc.question === currentFlashcard.question)) {
+            wrongFlashcards.push({ ...currentFlashcard, subject: currentSubject });
+        }
+        
+        document.getElementById(`option-${optionIndex}`).classList.add('wrong');
+        
+        const correctIndex = currentOptions.indexOf(currentFlashcard.answer);
+        if (correctIndex !== -1) {
+            document.getElementById(`option-${correctIndex}`).classList.add('correct');
+        }
+    }
+    
+    flipCard();
+    
+    setTimeout(() => nextQuestion(), 2000);
 }
 
 function showPowerUpNotification() {
@@ -747,6 +789,7 @@ function endGame() {
     
     if (currentFlashcards.length === MAX_QUESTIONS_PER_ROUND) {
         soundManager.playCheer();
+        createFireworks();
     }
     
     totalPoints += roundPoints;
@@ -803,6 +846,62 @@ function startRedemptionQuiz() {
 }
 
 function playAgain() { selectSubject(currentSubject); }
+
+let scoreboardRefreshInterval = null;
+
+function startScoreboardRefresh() {
+    if (scoreboardRefreshInterval) clearInterval(scoreboardRefreshInterval);
+    scoreboardRefreshInterval = setInterval(() => {
+        updateLeaderboardDisplay();
+    }, 10000);
+}
+
+function stopScoreboardRefresh() {
+    if (scoreboardRefreshInterval) {
+        clearInterval(scoreboardRefreshInterval);
+        scoreboardRefreshInterval = null;
+    }
+}
+
+function updateLeaderboardDisplay() {
+    const tableBody = document.querySelector('#leaderboard-table tbody');
+    if (!tableBody) return;
+    
+    tableBody.innerHTML = '';
+    
+    leaderboard.forEach((player, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td class="rank">${index + 1}</td>
+            <td class="player-name">${player.name}</td>
+            <td class="player-subject">${player.subject}</td>
+            <td class="player-points">${player.points}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function exportScoresToExcel() {
+    let csv = 'Rank,Name,Subject,Points\n';
+    
+    leaderboard.forEach((player, index) => {
+        csv += `${index + 1},${player.name},${player.subject},${player.points}\n`;
+    });
+    
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `flash-dash-scores-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    trackEvent('scores_exported', { count: leaderboard.length });
+}
 
 const leaderboard = [
     { name: 'Alex Johnson', points: 2500, subject: 'Mathematics' },
@@ -862,12 +961,11 @@ function renderLeaderboard() {
 
 function createConfetti() {
     const container = document.getElementById('confetti-container');
-    container.innerHTML = '';
     
-    const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9'];
+    const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#a29bfe', '#fd79a8', '#00b894'];
     const shapes = ['circle', 'square', 'triangle'];
     
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 100; i++) {
         const confetti = document.createElement('div');
         confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
         
@@ -878,15 +976,72 @@ function createConfetti() {
             confetti.style.borderBottomColor = color;
         }
         
+        const size = 8 + Math.random() * 12;
+        confetti.style.width = `${size}px`;
+        confetti.style.height = `${size}px`;
         confetti.style.left = `${Math.random() * 100}%`;
-        confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
-        confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+        confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
+        confetti.style.animationDelay = `${Math.random() * 0.3}s`;
         confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.opacity = 0.8 + Math.random() * 0.2;
         
         container.appendChild(confetti);
     }
     
-    setTimeout(() => container.innerHTML = '', 5000);
+    setTimeout(() => {
+        const remaining = container.querySelectorAll('.confetti');
+        remaining.forEach(c => c.remove());
+    }, 6000);
+}
+
+function createFireworks() {
+    const container = document.getElementById('confetti-container');
+    
+    const fireworksColors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#a29bfe', '#fd79a8'];
+    const explosionCount = 8;
+    
+    for (let e = 0; e < explosionCount; e++) {
+        setTimeout(() => {
+            const centerX = 20 + Math.random() * 60;
+            const centerY = 20 + Math.random() * 40;
+            const particleCount = 30 + Math.floor(Math.random() * 20);
+            const color = fireworksColors[Math.floor(Math.random() * fireworksColors.length)];
+            
+            for (let p = 0; p < particleCount; p++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.background = color;
+                particle.style.left = `${centerX}%`;
+                particle.style.top = `${centerY}%`;
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.borderRadius = '50%';
+                
+                const angle = (Math.PI * 2 * p) / particleCount;
+                const velocity = 3 + Math.random() * 4;
+                const distance = 80 + Math.random() * 120;
+                
+                particle.style.setProperty('--angle', `${angle}rad`);
+                particle.style.setProperty('--velocity', `${velocity}s`);
+                particle.style.setProperty('--distance', `${distance}px`);
+                particle.style.setProperty('--delay', `${Math.random() * 0.1}s`);
+                
+                container.appendChild(particle);
+            }
+            
+            const burst = document.createElement('div');
+            burst.className = 'firework-burst';
+            burst.style.left = `${centerX}%`;
+            burst.style.top = `${centerY}%`;
+            burst.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+            container.appendChild(burst);
+        }, e * 300);
+    }
+    
+    setTimeout(() => {
+        const fireworks = container.querySelectorAll('.firework-particle, .firework-burst');
+        fireworks.forEach(f => f.remove());
+    }, 5000);
 }
 
 function initLoadingScreen() {
