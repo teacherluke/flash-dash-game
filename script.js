@@ -704,33 +704,42 @@ function playBrowserAudio(text, audioBtn) {
     window.speechSynthesis.cancel();
     
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
+    utterance.lang = 'en-GB';
     utterance.rate = 0.8;
-    utterance.pitch = 1.0;
+    utterance.pitch = 0.9;
     utterance.volume = 1;
     
     const voices = window.speechSynthesis.getVoices();
     
-    const naturalVoices = [
-        'Google US English', 'Google UK English Female', 'Microsoft Zira - English (United States)',
-        'Microsoft Hazel - English (Great Britain)', 'Samantha', 'Alex', 'Google English (US, female)',
-        'Google English (UK, female)', 'Microsoft David - English (United States)', 'Sara', 'Anna',
-        'Victoria', 'Emily', 'Emma', 'Charlotte', 'Amy', 'Alice', 'Rachel', 'Holly', 'Mia', 'Grace'
+    const maleUKVoices = [
+        'Google UK English Male', 'Microsoft David - English (United Kingdom)',
+        'Google English (UK, male)', 'Microsoft George - English (United Kingdom)',
+        'Brian', 'Daniel', 'Oliver', 'William', 'James', 'Harry'
     ];
     
     let selectedVoice = voices.find(voice => 
-        naturalVoices.some(nv => voice.name.toLowerCase().includes(nv.toLowerCase()))
+        maleUKVoices.some(mv => voice.name.toLowerCase().includes(mv.toLowerCase()))
     );
     
     if (!selectedVoice) {
         selectedVoice = voices.find(voice => 
-            voice.lang.startsWith('en-US') && voice.gender === 'female'
+            voice.lang.startsWith('en-GB') && voice.gender === 'male'
         );
     }
     
     if (!selectedVoice) {
         selectedVoice = voices.find(voice => 
-            voice.lang.startsWith('en') && voice.gender === 'female'
+            voice.lang.startsWith('en-GB') && voice.name.toLowerCase().includes('male')
+        );
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.startsWith('en-GB'));
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.lang.startsWith('en') && voice.gender === 'male'
         );
     }
     
