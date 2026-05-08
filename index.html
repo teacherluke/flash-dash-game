@@ -6,38 +6,36 @@
     <title>Flashcard Learning Game - Cambridge & IB</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        <div class="loading-content">
+            <div class="logo-container">
+                <i class="fas fa-bolt loading-icon"></i>
+                <h1 class="loading-title">FLASH DASH</h1>
+                <p class="loading-subtitle">Cambridge & IB Learning Game</p>
+            </div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loading-bar"></div>
+            </div>
+            <p class="loading-text">Loading knowledge...</p>
+        </div>
+    </div>
     <div id="app">
         <header class="header">
             <div class="header-content">
-                <div class="logo">
-                    <svg viewBox="0 0 100 100" class="logo-icon">
-                        <path d="M35 25 Q25 25 20 35 L15 65 Q15 75 25 75 L65 85 Q75 85 80 75 L85 45 Q85 35 75 35 L45 25 Q35 25 35 25" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M50 20 Q40 20 35 30 L30 60 Q30 70 40 70 L80 80 Q90 80 95 70 L100 40 Q100 30 90 30 L60 20 Q50 20 50 20" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-                        <text x="35" y="40" fill="white" font-size="20" font-weight="bold" font-family="Arial">A</text>
-                        <polygon points="50,55 53,63 62,63 55,68 58,77 50,72 42,77 45,68 38,63 47,63" fill="white"/>
-                        <text x="55" y="82" fill="white" font-size="14" font-weight="bold" font-family="Arial" transform="rotate(-15, 55, 82)">A</text>
-                    </svg>
-                    <span class="logo-text">FLASH DASH</span>
-                </div>
+                <div class="logo-text">FLASH DASH</div>
                 <nav class="nav-links">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#subjects" class="nav-link">Subjects</a>
-                    <a href="#multiplayer" class="nav-link">Multiplayer</a>
                     <a href="#leaderboard" class="nav-link">Leaderboard</a>
                 </nav>
-                <div class="user-section">
-                    <div class="points-display">
-                        <i class="fas fa-trophy"></i>
-                        <span id="total-points">0</span>
-                    </div>
-                    <div class="user-info" id="user-info">
-                        <span id="user-name">Guest</span>
-                        <button class="login-btn" id="login-btn" onclick="showLoginModal()">
-                            <i class="fas fa-sign-in-alt"></i>
-                        </button>
-                    </div>
+                <div class="points-display">
+                    <i class="fas fa-trophy"></i>
+                    <span id="total-points">0</span>
                 </div>
             </div>
         </header>
@@ -46,7 +44,7 @@
             <section id="home" class="section active">
                 <div class="hero">
                     <h1>Master Cambridge & IB Topics</h1>
-                    <p>Interactive flashcard learning with real-time scoring and power-ups</p>
+                    <p>Interactive flashcard learning with real-time scoring</p>
                     <button class="cta-btn" onclick="showSubjects()">Start Learning</button>
                 </div>
                 <div class="features">
@@ -57,8 +55,8 @@
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-star"></i>
-                        <h3>Power-Ups</h3>
-                        <p>Unlock boosts to enhance your learning</p>
+                        <h3>Score Tracking</h3>
+                        <p>Track your progress and improve</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-coins"></i>
@@ -71,99 +69,60 @@
             <section id="subjects" class="section">
                 <h2>Choose Your Subject</h2>
                 <div class="subject-grid">
-                    <div class="subject-card" onclick="selectSubject('maths')">
+                    <div class="subject-card" data-subject="maths">
                         <i class="fas fa-calculator"></i>
                         <h3>Mathematics</h3>
                         <p>Algebra, Calculus, Statistics</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('physics')">
+                    <div class="subject-card" data-subject="physics">
                         <i class="fas fa-atom"></i>
                         <h3>Physics</h3>
                         <p>Mechanics, Waves, Electricity</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('chemistry')">
+                    <div class="subject-card" data-subject="chemistry">
                         <i class="fas fa-flask"></i>
                         <h3>Chemistry</h3>
                         <p>Atoms, Reactions, Organic</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('biology')">
+                    <div class="subject-card" data-subject="biology">
                         <i class="fas fa-dna"></i>
                         <h3>Biology</h3>
                         <p>Cells, Genetics, Ecology</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('history')">
+                    <div class="subject-card" data-subject="history">
                         <i class="fas fa-book-open"></i>
                         <h3>History</h3>
                         <p>World History, Modern Studies</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('geography')">
+                    <div class="subject-card" data-subject="geography">
                         <i class="fas fa-globe"></i>
                         <h3>Geography</h3>
                         <p>Physical, Human, Environmental</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('economics')">
+                    <div class="subject-card" data-subject="economics">
                         <i class="fas fa-chart-line"></i>
                         <h3>Economics</h3>
                         <p>Micro, Macro, International</p>
                     </div>
-                    <div class="subject-card" onclick="selectSubject('english')">
+                    <div class="subject-card" data-subject="english">
                         <i class="fas fa-pencil-alt"></i>
                         <h3>English</h3>
                         <p>Literature, Language, Analysis</p>
                     </div>
-                </div>
-            </section>
-
-            <section id="multiplayer" class="section">
-                <h2>Multiplayer Quiz</h2>
-                <div class="multiplayer-container">
-                    <div class="multiplayer-option">
-                        <div class="qr-code-section">
-                        <div class="qr-code" id="qr-code">
-                            <img id="qr-image" src="" alt="QR Code" style="display: none;">
-                            <i class="fas fa-qrcode" id="qr-icon"></i>
-                            <div class="qr-text" id="qr-text">Create a game to generate QR code</div>
-                        </div>
-                        <p class="game-code-display">Game Code: <span id="game-code">----</span></p>
+                    <div class="subject-card" data-subject="businessstudies">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Business Studies</h3>
+                        <p>Management, Marketing, Finance</p>
                     </div>
-                        <button class="create-game-btn" onclick="createGame()">
-                            <i class="fas fa-plus"></i>
-                            Create New Game
-                        </button>
+                    <div class="subject-card" data-subject="psychology">
+                        <i class="fas fa-brain"></i>
+                        <h3>Psychology</h3>
+                        <p>Behavior, Cognition, Development</p>
                     </div>
-
-                    <div class="multiplayer-option">
-                        <h3>Join a Game</h3>
-                        <input type="text" id="join-code-input" placeholder="Enter game code" maxlength="6">
-                        <button class="join-game-btn" onclick="joinGame()">
-                            <i class="fas fa-sign-in-alt"></i>
-                            Join Game
-                        </button>
-                    </div>
-                </div>
-
-                <div class="lobby-container" id="lobby-container" style="display: none;">
-                    <div class="lobby-header">
-                        <h3>Game Lobby</h3>
-                        <span class="lobby-code">Code: <span id="lobby-code-display"></span></span>
-                    </div>
-                    <div class="players-list" id="players-list">
-                    </div>
-                    <div class="lobby-actions">
-                        <button class="start-game-btn" id="start-game-btn" onclick="startMultiplayerGame()" style="display: none;">
-                            <i class="fas fa-play"></i>
-                            Start Game
-                        </button>
-                        <button class="leave-game-btn" onclick="leaveGame()">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Leave Game
-                        </button>
-                    </div>
-                </div>
-
-                <div class="live-scores" id="live-scores" style="display: none;">
-                    <h3>Live Scores</h3>
-                    <div class="live-scores-container" id="live-scores-container">
+                    <div class="subject-card" data-subject="chinese">
+                        <i class="fas fa-language"></i>
+                        <h3>Chinese</h3>
+                        <p>Language, Literature, Culture</p>
                     </div>
                 </div>
             </section>
@@ -206,42 +165,22 @@
                 </div>
 
                 <div class="options-container">
-                    <button class="option-btn" id="option-0" onclick="selectAnswer(0)">
+                    <button class="option-btn" id="option-0">
                         <span class="option-letter">A</span>
                         <span class="option-text" id="option-text-0"></span>
                     </button>
-                    <button class="option-btn" id="option-1" onclick="selectAnswer(1)">
+                    <button class="option-btn" id="option-1">
                         <span class="option-letter">B</span>
                         <span class="option-text" id="option-text-1"></span>
                     </button>
-                    <button class="option-btn" id="option-2" onclick="selectAnswer(2)">
+                    <button class="option-btn" id="option-2">
                         <span class="option-letter">C</span>
                         <span class="option-text" id="option-text-2"></span>
                     </button>
-                    <button class="option-btn" id="option-3" onclick="selectAnswer(3)">
+                    <button class="option-btn" id="option-3">
                         <span class="option-letter">D</span>
                         <span class="option-text" id="option-text-3"></span>
                     </button>
-                </div>
-
-                <div class="power-ups">
-                    <button class="power-up-btn" id="power-up-1" onclick="usePowerUp(1)">
-                        <i class="fas fa-clock"></i>
-                        +5s Time
-                    </button>
-                    <button class="power-up-btn" id="power-up-2" onclick="usePowerUp(2)">
-                        <i class="fas fa-star"></i>
-                        Double Points
-                    </button>
-                    <button class="power-up-btn" id="power-up-3" onclick="usePowerUp(3)">
-                        <i class="fas fa-shield-alt"></i>
-                        Skip Question
-                    </button>
-                </div>
-
-                <div class="bank-notification" id="bank-notification">
-                    <i class="fas fa-coins"></i>
-                    <span>Bonus! You banked 100 points!</span>
                 </div>
 
                 <div class="timer-bar-container">
@@ -281,7 +220,7 @@
                     <div class="results-actions">
                         <button class="action-btn primary" onclick="playAgain()">Play Again</button>
                         <button class="action-btn secondary" onclick="goHome()">Back to Home</button>
-                        <button class="action-btn redemption" id="redemption-btn" onclick="startRedemptionQuiz()" style="display: none;">
+                        <button class="action-btn redemption" id="redemption-btn" style="display: none;">
                             <i class="fas fa-redo"></i>
                             Redemption Quiz
                         </button>
@@ -307,24 +246,6 @@
         <footer class="footer">
             <p>A-STUDENT | Cambridge & IB Learning Game</p>
         </footer>
-    </div>
-
-    <div class="modal-overlay" id="login-modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Login</h3>
-                <button class="modal-close" onclick="closeLoginModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="username-input" placeholder="Enter your name" maxlength="20">
-                <button class="modal-login-btn" onclick="login()">
-                    <i class="fas fa-sign-in-alt"></i>
-                    Login
-                </button>
-            </div>
-        </div>
     </div>
 
     <script src="script.js"></script>

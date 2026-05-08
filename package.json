@@ -1,0 +1,14 @@
+{
+  "name": "flash-dash-game",
+  "version": "1.0.0",
+  "description": "Cambridge & IB Flashcard Learning Game",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "build": "mkdir -p dist && cp index.html styles.css script.js dist/ && cp flashcards_*.txt dist/",
+    "deploy": "vercel --prod"
+  },
+  "keywords": ["flashcards", "education", "learning", "cambridge", "IB"],
+  "author": "A-STUDENT",
+  "license": "MIT"
+}

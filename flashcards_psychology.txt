@@ -1,0 +1,1002 @@
+const psychologyFlashcards = [
+    // 1
+    {
+        question: "What is the scientific study of behaviour and mental processes?",
+        answer: "Psychology",
+        wrong1: "Sociology",
+        wrong2: "Biology",
+        wrong3: "Philosophy",
+        explanation: "Studies thoughts, feelings, actions, and the brain.",
+        example: "Learning, memory, personality, mental health"
+    },
+    // 2
+    {
+        question: "Which approach focuses on unconscious thoughts and childhood experiences?",
+        answer: "Psychodynamic",
+        wrong1: "Behaviorist",
+        wrong2: "Cognitive",
+        wrong3: "Humanistic",
+        explanation: "Founded by Sigmund Freud.",
+        example: "Dreams, defence mechanisms, the unconscious mind"
+    },
+    // 3
+    {
+        question: "Who is the founder of the psychodynamic approach?",
+        answer: "Sigmund Freud",
+        wrong1: "Pavlov",
+        wrong2: "Skinner",
+        wrong3: "Maslow",
+        explanation: "Created psychoanalysis and theories of the unconscious.",
+        example: "Id, ego, superego theory"
+    },
+    // 4
+    {
+        question: "Which approach studies only observable, measurable behaviour?",
+        answer: "Behaviorist",
+        wrong1: "Cognitive",
+        wrong2: "Biological",
+        wrong3: "Social",
+        explanation: "Ignores thoughts; focuses on what we can see.",
+        example: "Learning through rewards and punishment"
+    },
+    // 5
+    {
+        question: "Which approach focuses on thinking, memory, and decision-making?",
+        answer: "Cognitive",
+        wrong1: "Behaviorist",
+        wrong2: "Psychodynamic",
+        wrong3: "Humanistic",
+        explanation: "Studies mental processes like a computer.",
+        example: "Memory, attention, problem-solving"
+    },
+    // 6
+    {
+        question: "Which approach focuses on free will and personal growth?",
+        answer: "Humanistic",
+        wrong1: "Biological",
+        wrong2: "Cognitive",
+        wrong3: "Behaviorist",
+        explanation: "Also called the 'third force' of psychology.",
+        example: "Self-actualization, personal choice"
+    },
+    // 7
+    {
+        question: "Which approach studies the brain, genes, hormones, and neurotransmitters?",
+        answer: "Biological",
+        wrong1: "Cognitive",
+        wrong2: "Social",
+        wrong3: "Developmental",
+        explanation: "Believes behaviour is caused by physical factors.",
+        example: "Brain scans, genetics, neurotransmitters"
+    },
+    // 8
+    {
+        question: "Which approach studies how culture and group influence behaviour?",
+        answer: "Social",
+        wrong1: "Biological",
+        wrong2: "Cognitive",
+        wrong3: "Clinical",
+        explanation: "Looks at conformity, obedience, and group behaviour.",
+        example: "Peer pressure, social norms"
+    },
+    // 9
+    {
+        question: "What is a testable prediction in psychology?",
+        answer: "Hypothesis",
+        wrong1: "Theory",
+        wrong2: "Aim",
+        wrong3: "Conclusion",
+        explanation: "A statement that can be proven true or false.",
+        example: "Sleep deprivation reduces memory test scores"
+    },
+    // 10
+    {
+        question: "What is the variable the researcher changes or controls?",
+        answer: "Independent Variable (IV)",
+        wrong1: "Dependent Variable",
+        wrong2: "Extraneous Variable",
+        wrong3: "Controlled Variable",
+        explanation: "The 'cause' in an experiment.",
+        example: "Amount of sleep given to participants"
+    },
+    // 11
+    {
+        question: "What is the variable being measured in a study?",
+        answer: "Dependent Variable (DV)",
+        wrong1: "Independent Variable",
+        wrong2: "Confounding Variable",
+        wrong3: "Extraneous Variable",
+        explanation: "The 'effect' or result measured.",
+        example: "Score on a memory test"
+    },
+    // 12
+    {
+        question: "What type of study shows a relationship between two variables?",
+        answer: "Correlation",
+        wrong1: "Experiment",
+        wrong2: "Case Study",
+        wrong3: "Observation",
+        explanation: "Does NOT prove cause and effect.",
+        example: "Positive, negative, or zero correlation"
+    },
+    // 13
+    {
+        question: "What type of research establishes cause and effect?",
+        answer: "Experiment",
+        wrong1: "Correlation",
+        wrong2: "Survey",
+        wrong3: "Interview",
+        explanation: "Only experiments can show causation.",
+        example: "Laboratory experiment with controls"
+    },
+    // 14
+    {
+        question: "What is a sample that represents the whole population?",
+        answer: "Representative Sample",
+        wrong1: "Biased Sample",
+        wrong2: "Random Sample",
+        wrong3: "Opportunity Sample",
+        explanation: "Matches the group being studied.",
+        example: "Same age, gender, background as population"
+    },
+    // 15
+    {
+        question: "What type of sample gives everyone an equal chance?",
+        answer: "Random Sample",
+        wrong1: "Opportunity",
+        wrong2: "Volunteer",
+        wrong3: "Snowball",
+        explanation: "Most fair and unbiased sampling method.",
+        example: "Names picked from a hat"
+    },
+    // 16
+    {
+        question: "What is an in-depth study of one person or group?",
+        answer: "Case Study",
+        wrong1: "Experiment",
+        wrong2: "Survey",
+        wrong3: "Correlation",
+        explanation: "Uses interviews, tests, and observations.",
+        example: "Phineas Gage brain injury study"
+    },
+    // 17
+    {
+        question: "What are rules to protect participants in research?",
+        answer: "Ethical Guidelines",
+        wrong1: "Hypotheses",
+        wrong2: "Variables",
+        wrong3: "Controls",
+        explanation: "Include consent, deception, debrief, protection.",
+        example: "No harm, right to withdraw"
+    },
+    // 18
+    {
+        question: "What is it called when participants guess the aim?",
+        answer: "Demand Characteristics",
+        wrong1: "Experimenter Bias",
+        wrong2: "Observer Effect",
+        wrong3: "Sampling Bias",
+        explanation: "Changes behaviour to 'help' the study.",
+        example: "Acting better or worse than normal"
+    },
+    // 19
+    {
+        question: "What is learning through association?",
+        answer: "Classical Conditioning",
+        wrong1: "Operant Conditioning",
+        wrong2: "Social Learning",
+        wrong3: "Insight Learning",
+        explanation: "Pavlov's dogs experiment.",
+        example: "A bell makes a dog salivate"
+    },
+    // 20
+    {
+        question: "Who studied classical conditioning with dogs?",
+        answer: "Ivan Pavlov",
+        wrong1: "B.F. Skinner",
+        wrong2: "Albert Bandura",
+        wrong3: "John Watson",
+        explanation: "Discovered conditioned reflexes.",
+        example: "Bell + food = salivation"
+    },
+    // 21
+    {
+        question: "What is learning through rewards and punishment?",
+        answer: "Operant Conditioning",
+        wrong1: "Classical Conditioning",
+        wrong2: "Observational Learning",
+        wrong3: "Latent Learning",
+        explanation: "Behaviour is shaped by consequences.",
+        example: "Skinner box with rats"
+    },
+    // 22
+    {
+        question: "Who studied operant conditioning with rats and pigeons?",
+        answer: "B.F. Skinner",
+        wrong1: "Pavlov",
+        wrong2: "Bandura",
+        wrong3: "Freud",
+        explanation: "Used the Skinner Box for experiments.",
+        example: "Animals press levers for food"
+    },
+    // 23
+    {
+        question: "What increases behaviour by adding a pleasant stimulus?",
+        answer: "Positive Reinforcement",
+        wrong1: "Negative Reinforcement",
+        wrong2: "Punishment",
+        wrong3: "Extinction",
+        explanation: "Giving a reward to repeat behaviour.",
+        example: "Giving candy for good behaviour"
+    },
+    // 24
+    {
+        question: "What increases behaviour by removing something unpleasant?",
+        answer: "Negative Reinforcement",
+        wrong1: "Positive Reinforcement",
+        wrong2: "Punishment",
+        wrong3: "Shaping",
+        explanation: "Taking away stress to encourage behaviour.",
+        example: "Turning off an alarm when you wake up"
+    },
+    // 25
+    {
+        question: "What decreases unwanted behaviour?",
+        answer: "Punishment",
+        wrong1: "Reinforcement",
+        wrong2: "Shaping",
+        wrong3: "Generalization",
+        explanation: "Consequence to stop bad behaviour.",
+        example: "Time-out for misbehaving"
+    },
+    // 26
+    {
+        question: "Learning by watching and imitating others?",
+        answer: "Observational Learning",
+        wrong1: "Classical Conditioning",
+        wrong2: "Operant Conditioning",
+        wrong3: "Latent Learning",
+        explanation: "Also called social learning theory.",
+        example: "Children copy adults"
+    },
+    // 27
+    {
+        question: "Who did the Bobo doll experiment on aggression?",
+        answer: "Albert Bandura",
+        wrong1: "Skinner",
+        wrong2: "Pavlov",
+        wrong3: "Watson",
+        explanation: "Showed children imitate violent behaviour.",
+        example: "Bobo doll punching study"
+    },
+    // 28
+    {
+        question: "What is the first stage of memory?",
+        answer: "Sensory Memory",
+        wrong1: "Short-Term Memory",
+        wrong2: "Long-Term Memory",
+        wrong3: "Working Memory",
+        explanation: "Lasts less than one second.",
+        example: "Seeing a flash of light"
+    },
+    // 29
+    {
+        question: "What memory lasts about 20-30 seconds?",
+        answer: "Short-Term Memory (STM)",
+        wrong1: "Sensory Memory",
+        wrong2: "Long-Term Memory",
+        wrong3: "Episodic Memory",
+        explanation: "Limited capacity: 7±2 items.",
+        example: "Remembering a phone number briefly"
+    },
+    // 30
+    {
+        question: "What is permanent memory storage?",
+        answer: "Long-Term Memory (LTM)",
+        wrong1: "Short-Term Memory",
+        wrong2: "Sensory Memory",
+        wrong3: "Working Memory",
+        explanation: "Unlimited capacity and duration.",
+        example: "Childhood memories, skills"
+    },
+    // 31
+    {
+        question: "Memory for personal events and experiences?",
+        answer: "Episodic Memory",
+        wrong1: "Semantic Memory",
+        wrong2: "Procedural Memory",
+        wrong3: "Sensory Memory",
+        explanation: "'What happened' memories.",
+        example: "Your birthday party last year"
+    },
+    // 32
+    {
+        question: "Memory for facts, knowledge, and words?",
+        answer: "Semantic Memory",
+        wrong1: "Episodic Memory",
+        wrong2: "Procedural Memory",
+        wrong3: "Short-Term Memory",
+        explanation: "General knowledge of the world.",
+        example: "Paris is the capital of France"
+    },
+    // 33
+    {
+        question: "Memory for skills and actions?",
+        answer: "Procedural Memory",
+        wrong1: "Semantic Memory",
+        wrong2: "Episodic Memory",
+        wrong3: "Working Memory",
+        explanation: "Muscle memory and habits.",
+        example: "Riding a bike, typing"
+    },
+    // 34
+    {
+        question: "Failure to remember stored information?",
+        answer: "Forgetting",
+        wrong1: "Encoding",
+        wrong2: "Storage",
+        wrong3: "Retrieval",
+        explanation: "Caused by decay, interference, or repression.",
+        example: "Forgetting a name or a fact"
+    },
+    // 35
+    {
+        question: "What is the smallest unit of sound in language?",
+        answer: "Phoneme",
+        wrong1: "Morpheme",
+        wrong2: "Syntax",
+        wrong3: "Semantics",
+        explanation: "Basic sound building blocks.",
+        example: "'b', 'a', 't' sounds"
+    },
+    // 36
+    {
+        question: "What is the smallest unit of meaning in language?",
+        answer: "Morpheme",
+        wrong1: "Phoneme",
+        wrong2: "Syntax",
+        wrong3: "Pragmatics",
+        explanation: "Smallest meaningful part.",
+        example: "'un-', 'happy', 'dog'"
+    },
+    // 37
+    {
+        question: "Who proposed the language acquisition device (LAD)?",
+        answer: "Noam Chomsky",
+        wrong1: "Skinner",
+        wrong2: "Bandura",
+        wrong3: "Pavlov",
+        explanation: "Said we are born with language ability.",
+        example: "Innate language instinct"
+    },
+    // 38
+    {
+        question: "What is a mental framework for understanding the world?",
+        answer: "Schema",
+        wrong1: "Memory",
+        wrong2: "Perception",
+        wrong3: "Motivation",
+        explanation: "Mental model or category.",
+        example: "A 'dog' schema: four legs, barks"
+    },
+    // 39
+    {
+        question: "Adding new information to existing schemas?",
+        answer: "Assimilation",
+        wrong1: "Accommodation",
+        wrong2: "Adaptation",
+        wrong3: "Organization",
+        explanation: "Fitting new things into old ideas.",
+        example: "Calling all four-legged animals 'dog'"
+    },
+    // 40
+    {
+        question: "Changing schemas to fit new information?",
+        answer: "Accommodation",
+        wrong1: "Assimilation",
+        wrong2: "Encoding",
+        wrong3: "Storage",
+        explanation: "Updating mental models.",
+        example: "Learning a 'cat' is not a dog"
+    },
+    // 41
+    {
+        question: "Who developed the 4 stages of cognitive development?",
+        answer: "Jean Piaget",
+        wrong1: "Erikson",
+        wrong2: "Kohlberg",
+        wrong3: "Freud",
+        explanation: "Famous child development theorist.",
+        example: "Sensorimotor, preoperational stages"
+    },
+    // 42
+    {
+        question: "Piaget's first stage (birth to 2 years)?",
+        answer: "Sensorimotor",
+        wrong1: "Preoperational",
+        wrong2: "Concrete Operational",
+        wrong3: "Formal Operational",
+        explanation: "Learning through senses and movement.",
+        example: "Object permanence develops"
+    },
+    // 43
+    {
+        question: "Understanding objects exist when out of sight?",
+        answer: "Object Permanence",
+        wrong1: "Conservation",
+        wrong2: "Egocentrism",
+        wrong3: "Animism",
+        explanation: "Develops in sensorimotor stage.",
+        example: "Looking for a hidden toy"
+    },
+    // 44
+    {
+        question: "Piaget's second stage (2-7 years)?",
+        answer: "Preoperational",
+        wrong1: "Sensorimotor",
+        wrong2: "Concrete Operational",
+        wrong3: "Formal Operational",
+        explanation: "Language and imagination develop.",
+        example: "Egocentrism, pretend play"
+    },
+    // 45
+    {
+        question: "Seeing the world only from your own view?",
+        answer: "Egocentrism",
+        wrong1: "Conservation",
+        wrong2: "Animism",
+        wrong3: "Theory of Mind",
+        explanation: "Common in preoperational children.",
+        example: "Covering eyes thinking others can't see you"
+    },
+    // 46
+    {
+        question: "Understanding quantity stays the same despite shape?",
+        answer: "Conservation",
+        wrong1: "Egocentrism",
+        wrong2: "Animism",
+        wrong3: "Object Permanence",
+        explanation: "Develops in concrete operational stage.",
+        example: "Water in tall vs short glass"
+    },
+    // 47
+    {
+        question: "Who created the 8 stages of psychosocial development?",
+        answer: "Erik Erikson",
+        wrong1: "Piaget",
+        wrong2: "Kohlberg",
+        wrong3: "Freud",
+        explanation: "Focuses on social and emotional growth.",
+        example: "Trust vs mistrust, identity crisis"
+    },
+    // 48
+    {
+        question: "Who studied moral development with Heinz dilemma?",
+        answer: "Lawrence Kohlberg",
+        wrong1: "Piaget",
+        wrong2: "Erikson",
+        wrong3: "Bandura",
+        explanation: "3 levels of moral reasoning.",
+        example: "Pre-conventional, conventional, post-conventional"
+    },
+    // 49
+    {
+        question: "What is a person's unique pattern of thoughts and feelings?",
+        answer: "Personality",
+        wrong1: "Intelligence",
+        wrong2: "Memory",
+        wrong3: "Perception",
+        explanation: "Makes you different from others.",
+        example: "Shy, outgoing, calm, energetic"
+    },
+    // 50
+    {
+        question: "Freud's 3 parts of personality: instinctive drive?",
+        answer: "Id",
+        wrong1: "Ego",
+        wrong2: "Superego",
+        wrong3: "Conscious",
+        explanation: "Pleasure principle, immediate gratification.",
+        example: "Hungry baby crying for food"
+    },
+    // 51
+    {
+        question: "Freud's rational, reality-based part of personality?",
+        answer: "Ego",
+        wrong1: "Id",
+        wrong2: "Superego",
+        wrong3: "Unconscious",
+        explanation: "Reality principle, balances id and superego.",
+        example: "Waiting to eat until mealtime"
+    },
+    // 52
+    {
+        question: "Freud's moral conscience and sense of right/wrong?",
+        answer: "Superego",
+        wrong1: "Id",
+        wrong2: "Ego",
+        wrong3: "Preconscious",
+        explanation: "Moral compass, guilt and pride.",
+        example: "Feeling bad after lying"
+    },
+    // 53
+    {
+        question: "Unconscious tactics to reduce anxiety?",
+        answer: "Defence Mechanisms",
+        wrong1: "Personality Traits",
+        wrong2: "Coping Skills",
+        wrong3: "Emotions",
+        explanation: "Protect the ego from stress.",
+        example: "Denial, repression, projection"
+    },
+    // 54
+    {
+        question: "Pushing painful thoughts into the unconscious?",
+        answer: "Repression",
+        wrong1: "Denial",
+        wrong2: "Projection",
+        wrong3: "Displacement",
+        explanation: "Forgetting trauma unconsciously.",
+        example: "Not remembering a painful event"
+    },
+    // 55
+    {
+        question: "Refusing to accept reality?",
+        answer: "Denial",
+        wrong1: "Repression",
+        wrong2: "Rationalization",
+        wrong3: "Sublimation",
+        explanation: "Ignoring a problem exists.",
+        example: "Saying you're not sick when you are"
+    },
+    // 56
+    {
+        question: "Who created the hierarchy of needs?",
+        answer: "Abraham Maslow",
+        wrong1: "Freud",
+        wrong2: "Skinner",
+        wrong3: "Bandura",
+        explanation: "Pyramid of human motivation.",
+        example: "Physiological, safety, love, esteem, self-actualization"
+    },
+    // 57
+    {
+        question: "Reaching full potential and personal growth?",
+        answer: "Self-Actualization",
+        wrong1: "Self-Esteem",
+        wrong2: "Self-Concept",
+        wrong3: "Self-Efficacy",
+        explanation: "Top of Maslow's hierarchy.",
+        example: "Living up to your full abilities"
+    },
+    // 58
+    {
+        question: "Belief in your own ability to succeed?",
+        answer: "Self-Efficacy",
+        wrong1: "Self-Esteem",
+        wrong2: "Self-Concept",
+        wrong3: "Confidence",
+        explanation: "Created by Albert Bandura.",
+        example: "Believing you can pass an exam"
+    },
+    // 59
+    {
+        question: "What is a stable quality that describes behaviour?",
+        answer: "Trait",
+        wrong1: "State",
+        wrong2: "Mood",
+        wrong3: "Emotion",
+        explanation: "Enduring part of personality.",
+        example: "Kindness, honesty, shyness"
+    },
+    // 60
+    {
+        question: "What is the ability to learn, reason, and solve problems?",
+        answer: "Intelligence",
+        wrong1: "Memory",
+        wrong2: "Creativity",
+        wrong3: "Wisdom",
+        explanation: "Mental ability to adapt to the world.",
+        example: "IQ test measures this"
+    },
+    // 61
+    {
+        question: "What is a test that measures what it claims to measure?",
+        answer: "Validity",
+        wrong1: "Reliability",
+        wrong2: "Standardization",
+        wrong3: "Norming",
+        explanation: "Accuracy of a test.",
+        example: "A valid IQ test measures intelligence"
+    },
+    // 62
+    {
+        question: "What is a test that gives consistent results?",
+        answer: "Reliability",
+        wrong1: "Validity",
+        wrong2: "Accuracy",
+        wrong3: "Sensitivity",
+        explanation: "Consistency over time.",
+        example: "Same score if you take the test twice"
+    },
+    // 63
+    {
+        question: "What is a feeling that affects thoughts and behaviour?",
+        answer: "Emotion",
+        wrong1: "Mood",
+        wrong2: "Motivation",
+        wrong3: "Personality",
+        explanation: "Short-term, intense response.",
+        example: "Happiness, anger, fear, sadness"
+    },
+    // 64
+    {
+        question: "What is a long-lasting, low-intensity feeling?",
+        answer: "Mood",
+        wrong1: "Emotion",
+        wrong2: "Motivation",
+        wrong3: "Trait",
+        explanation: "No clear trigger.",
+        example: "Feeling happy or grumpy all day"
+    },
+    // 65
+    {
+        question: "A need or desire that energizes and directs behaviour?",
+        answer: "Motivation",
+        wrong1: "Emotion",
+        wrong2: "Personality",
+        wrong3: "Learning",
+        explanation: "Drives us to act.",
+        example: "Hunger, thirst, achievement"
+    },
+    // 66
+    {
+        question: "Changing behaviour to fit a group?",
+        answer: "Conformity",
+        wrong1: "Obedience",
+        wrong2: "Compliance",
+        wrong3: "Identity",
+        explanation: "Going along with peers or norms.",
+        example: "Asch's line experiment"
+    },
+    // 67
+    {
+        question: "Who studied conformity with line judgment tests?",
+        answer: "Solomon Asch",
+        wrong1: "Stanley Milgram",
+        wrong2: "Philip Zimbardo",
+        wrong3: "Albert Bandura",
+        explanation: "Participants gave wrong answers to fit in.",
+        example: "75% conformed at least once"
+    },
+    // 68
+    {
+        question: "Following orders from an authority figure?",
+        answer: "Obedience",
+        wrong1: "Conformity",
+        wrong2: "Compliance",
+        wrong3: "Independence",
+        explanation: "Doing what you're told by someone in power.",
+        example: "Milgram's shock experiment"
+    },
+    // 69
+    {
+        question: "Who studied obedience with fake electric shocks?",
+        answer: "Stanley Milgram",
+        wrong1: "Asch",
+        wrong2: "Zimbardo",
+        wrong3: "Bandura",
+        explanation: "Most people obeyed harmful orders.",
+        example: "65% gave maximum shock"
+    },
+    // 70
+    {
+        question: "Unfair negative attitude toward a group?",
+        answer: "Prejudice",
+        wrong1: "Discrimination",
+        wrong2: "Stereotype",
+        wrong3: "Bias",
+        explanation: "An opinion or feeling, not action.",
+        example: "Disliking someone due to race"
+    },
+    // 71
+    {
+        question: "Unfair negative action toward a group?",
+        answer: "Discrimination",
+        wrong1: "Prejudice",
+        wrong2: "Stereotype",
+        wrong3: "Bias",
+        explanation: "Behaviour or treatment.",
+        example: "Not hiring someone due to gender"
+    },
+    // 72
+    {
+        question: "Oversimplified belief about a group?",
+        answer: "Stereotype",
+        wrong1: "Prejudice",
+        wrong2: "Discrimination",
+        wrong3: "Bias",
+        explanation: "Generalized idea about people.",
+        example: "All tall people are good at sports"
+    },
+    // 73
+    {
+        question: "Loss of self-awareness in a group?",
+        answer: "Deindividuation",
+        wrong1: "Groupthink",
+        wrong2: "Social Loafing",
+        wrong3: "Conformity",
+        explanation: "People act impulsively in crowds.",
+        example: "Riots or mob behaviour"
+    },
+    // 74
+    {
+        question: "Poor decision-making to keep group harmony?",
+        answer: "Groupthink",
+        wrong1: "Social Loafing",
+        wrong2: "Deindividuation",
+        wrong3: "Conformity",
+        explanation: "Avoid disagreement at all costs.",
+        example: "A group making a bad decision"
+    },
+    // 75
+    {
+        question: "Working less hard in a group?",
+        answer: "Social Loafing",
+        wrong1: "Social Facilitation",
+        wrong2: "Groupthink",
+        wrong3: "Deindividuation",
+        explanation: "People slack when responsibility is shared.",
+        example: "Not trying in a group project"
+    },
+    // 76
+    {
+        question: "Helping others with no reward?",
+        answer: "Altruism",
+        wrong1: "Egoism",
+        wrong2: "Compliance",
+        wrong3: "Obedience",
+        explanation: "Selfless helping behaviour.",
+        example: "Giving money to a stranger"
+    },
+    // 77
+    {
+        question: "People less likely to help when others are present?",
+        answer: "Bystander Effect",
+        wrong1: "Social Loafing",
+        wrong2: "Groupthink",
+        wrong3: "Altruism",
+        explanation: "Diffusion of responsibility.",
+        example: "Kitty Genovese case"
+    },
+    // 78
+    {
+        question: "Chemical messengers in the brain?",
+        answer: "Neurotransmitters",
+        wrong1: "Hormones",
+        wrong2: "Enzymes",
+        wrong3: "Neurons",
+        explanation: "Send signals between nerve cells.",
+        example: "Serotonin, dopamine"
+    },
+    // 79
+    {
+        question: "Neurotransmitter linked to pleasure and reward?",
+        answer: "Dopamine",
+        wrong1: "Serotonin",
+        wrong2: "Adrenaline",
+        wrong3: "GABA",
+        explanation: "Motivation, addiction, movement.",
+        example: "Released when eating or winning"
+    },
+    // 80
+    {
+        question: "Neurotransmitter linked to mood and happiness?",
+        answer: "Serotonin",
+        wrong1: "Dopamine",
+        wrong2: "Adrenaline",
+        wrong3: "Acetylcholine",
+        explanation: "Low levels linked to depression.",
+        example: "Regulates sleep and mood"
+    },
+    // 81
+    {
+        question: "Nerve cells that send messages in the brain?",
+        answer: "Neurons",
+        wrong1: "Glia",
+        wrong2: "Hormones",
+        wrong3: "Enzymes",
+        explanation: "Building blocks of the nervous system.",
+        example: "Sensory, motor, relay neurons"
+    },
+    // 82
+    {
+        question: "Part of the brain for thinking and memory?",
+        answer: "Cerebrum/Cerebral Cortex",
+        wrong1: "Cerebellum",
+        wrong2: "Brainstem",
+        wrong3: "Hypothalamus",
+        explanation: "Largest part of the human brain.",
+        example: "Decision-making, personality"
+    },
+    // 83
+    {
+        question: "Part of the brain for balance and coordination?",
+        answer: "Cerebellum",
+        wrong1: "Cerebrum",
+        wrong2: "Brainstem",
+        wrong3: "Amygdala",
+        explanation: "'Little brain' at the back.",
+        example: "Walking, dancing, posture"
+    },
+    // 84
+    {
+        question: "Part of the brain for fear and emotions?",
+        answer: "Amygdala",
+        wrong1: "Hippocampus",
+        wrong2: "Hypothalamus",
+        wrong3: "Thalamus",
+        explanation: "Controls fight or flight response.",
+        example: "Feeling scared or angry"
+    },
+    // 85
+    {
+        question: "Part of the brain for forming new memories?",
+        answer: "Hippocampus",
+        wrong1: "Amygdala",
+        wrong2: "Hypothalamus",
+        wrong3: "Cerebellum",
+        explanation: "Converts short-term to long-term memory.",
+        example: "Remembering new facts"
+    },
+    // 86
+    {
+        question: "Chemical messengers in the bloodstream?",
+        answer: "Hormones",
+        wrong1: "Neurotransmitters",
+        wrong2: "Enzymes",
+        wrong3: "Cells",
+        explanation: "Made by endocrine glands.",
+        example: "Testosterone, estrogen, cortisol"
+    },
+    // 87
+    {
+        question: "Stress hormone released in danger?",
+        answer: "Cortisol",
+        wrong1: "Adrenaline",
+        wrong2: "Testosterone",
+        wrong3: "Insulin",
+        explanation: "Long-term stress hormone.",
+        example: "Released during exams or danger"
+    },
+    // 88
+    {
+        question: "Fight or flight hormone?",
+        answer: "Adrenaline",
+        wrong1: "Cortisol",
+        wrong2: "Serotonin",
+        wrong3: "Dopamine",
+        explanation: "Quick stress response.",
+        example: "Heart racing in an emergency"
+    },
+    // 89
+    {
+        question: "Pattern of biological changes over 24 hours?",
+        answer: "Circadian Rhythm",
+        wrong1: "Ultradian Rhythm",
+        wrong2: "Infradian Rhythm",
+        wrong3: "Biological Clock",
+        explanation: "Sleep-wake cycle.",
+        example: "Feeling awake during the day"
+    },
+    // 90
+    {
+        question: "Rapid eye movement sleep, where dreams happen?",
+        answer: "REM Sleep",
+        wrong1: "NREM Sleep",
+        wrong2: "Deep Sleep",
+        wrong3: "Light Sleep",
+        explanation: "Brain active, body paralyzed.",
+        example: "Most dreaming occurs here"
+    },
+    // 91
+    {
+        question: "Disorder with extreme sadness and loss of interest?",
+        answer: "Depression",
+        wrong1: "Anxiety",
+        wrong2: "Schizophrenia",
+        wrong3: "OCD",
+        explanation: "Mood disorder with low serotonin.",
+        example: "Persistent low mood, tiredness"
+    },
+    // 92
+    {
+        question: "Disorder with excessive worry and fear?",
+        answer: "Anxiety",
+        wrong1: "Depression",
+        wrong2: "Schizophrenia",
+        wrong3: "Bipolar",
+        explanation: "Most common mental health disorder.",
+        example: "Panic attacks, constant stress"
+    },
+    // 93
+    {
+        question: "Disorder with obsessions and compulsions?",
+        answer: "OCD",
+        wrong1: "PTSD",
+        wrong2: "Depression",
+        wrong3: "Anxiety",
+        explanation: "Repetitive thoughts and actions.",
+        example: "Hand washing, checking locks"
+    },
+    // 94
+    {
+        question: "Disorder after a traumatic event?",
+        answer: "PTSD",
+        wrong1: "OCD",
+        wrong2: "Schizophrenia",
+        wrong3: "Bipolar",
+        explanation: "Flashbacks, nightmares, anxiety.",
+        example: "After war, accident, or abuse"
+    },
+    // 95
+    {
+        question: "Treatment using talking and therapy?",
+        answer: "Psychotherapy",
+        wrong1: "Chemotherapy",
+        wrong2: "Physiotherapy",
+        wrong3: "Drug Therapy",
+        explanation: "'Talking cure' for mental health.",
+        example: "Counselling, CBT"
+    },
+    // 96
+    {
+        question: "Therapy changing negative thought patterns?",
+        answer: "CBT",
+        wrong1: "Psychoanalysis",
+        wrong2: "Humanistic Therapy",
+        wrong3: "Behaviour Therapy",
+        explanation: "Cognitive Behavioural Therapy.",
+        example: "Changing negative thinking to positive"
+    },
+    // 97
+    {
+        question: "Using medication to treat mental illness?",
+        answer: "Drug Therapy / Biomedical Therapy",
+        wrong1: "Psychoanalysis",
+        wrong2: "CBT",
+        wrong3: "Group Therapy",
+        explanation: "Antidepressants, anti-anxiety meds.",
+        example: "Pills to balance brain chemicals"
+    },
+    // 98
+    {
+        question: "What is the measure of central tendency (most common)?",
+        answer: "Mode",
+        wrong1: "Mean",
+        wrong2: "Median",
+        wrong3: "Range",
+        explanation: "Most frequent value in data.",
+        example: "Most common score in a test"
+    },
+    // 99
+    {
+        question: "What is the average score in a data set?",
+        answer: "Mean",
+        wrong1: "Median",
+        wrong2: "Mode",
+        wrong3: "Standard Deviation",
+        explanation: "Total sum divided by number of values.",
+        example: "Average test score of a class"
+    },
+    // 100
+    {
+        question: "What is the middle score in ordered data?",
+        answer: "Median",
+        wrong1: "Mean",
+        wrong2: "Mode",
+        wrong3: "Range",
+        explanation: "Middle value when sorted low to high.",
+        example: "Middle score in a ranked list"
+    }
+];
