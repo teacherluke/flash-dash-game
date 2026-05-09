@@ -6,19 +6,12 @@
     --success-color: #10b981;
     --danger-color: #ef4444;
     --warning-color: #f97316;
-    --bg-dark: #0f172a;
-    --bg-card: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --border-color: #334155;
-}
-
-[data-theme="light"] {
-    --bg-dark: #f8fafc;
-    --bg-card: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --border-color: #e2e8f0;
+    --bg-dark: light-dark(#f8fafc, #0f172a);
+    --bg-card: light-dark(#ffffff, #1e293b);
+    --text-primary: light-dark(#1e293b, #f8fafc);
+    --text-secondary: light-dark(#64748b, #94a3b8);
+    --border-color: light-dark(#e2e8f0, #334155);
+    --shadow-color: light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
 }
 
 .theme-toggle {
@@ -42,8 +35,22 @@
     transform: scale(1.05);
 }
 
-[data-theme="light"] .theme-toggle {
-    background: rgba(99, 102, 241, 0.1);
+[data-theme="dark"] {
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] {
+    --bg-dark: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -54,15 +61,11 @@
 
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a2e 50%, #16213e 100%);
+    background: linear-gradient(135deg, var(--bg-dark) 0%, light-dark(#e2e8f0, #1a1a2e) 50%, light-dark(#cbd5e1, #16213e) 100%);
     min-height: 100vh;
     color: var(--text-primary);
     overflow-x: hidden;
     transition: background 0.3s ease;
-}
-
-[data-theme="light"] body {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #e2e8f0 50%, #cbd5e1 100%);
 }
 
 /* Loading Screen */
@@ -72,7 +75,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: linear-gradient(135deg, light-dark(#e2e8f0, #1a1a2e) 0%, light-dark(#cbd5e1, #16213e) 50%, light-dark(#94a3b8, #0f3460) 100%);
     display: flex;
     align-items: center;
     justify-content: center;

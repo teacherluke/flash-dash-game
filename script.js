@@ -1536,26 +1536,46 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
 });
 
-let currentTheme = 'dark';
+let currentTheme = 'system';
 
 function loadTheme() {
-    const savedTheme = localStorage.getItem('flashDashTheme') || 'dark';
+    const savedTheme = localStorage.getItem('flashDashTheme') || 'system';
     currentTheme = savedTheme;
-    document.body.setAttribute('data-theme', savedTheme);
     
+    if (savedTheme === 'system') {
+        document.body.removeAttribute('data-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        updateToggleIcon(systemPrefersDark ? 'dark' : 'light');
+    } else {
+        document.body.setAttribute('data-theme', savedTheme);
+        updateToggleIcon(savedTheme);
+    }
+}
+
+function updateToggleIcon(theme) {
     const toggleIcon = document.querySelector('#theme-toggle i');
     if (toggleIcon) {
-        toggleIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        toggleIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 }
 
 function toggleTheme() {
-    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.body.setAttribute('data-theme', currentTheme);
-    localStorage.setItem('flashDashTheme', currentTheme);
-    
-    const toggleIcon = document.querySelector('#theme-toggle i');
-    if (toggleIcon) {
-        toggleIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    if (currentTheme === 'system') {
+        currentTheme = 'light';
+    } else if (currentTheme === 'light') {
+        currentTheme = 'dark';
+    } else {
+        currentTheme = 'system';
     }
+    
+    if (currentTheme === 'system') {
+        document.body.removeAttribute('data-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        updateToggleIcon(systemPrefersDark ? 'dark' : 'light');
+    } else {
+        document.body.setAttribute('data-theme', currentTheme);
+        updateToggleIcon(currentTheme);
+    }
+    
+    localStorage.setItem('flashDashTheme', currentTheme);
 }
