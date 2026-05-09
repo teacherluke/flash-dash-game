@@ -539,10 +539,7 @@ main {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 24px;
-    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .level-buttons {
@@ -1050,10 +1047,7 @@ main {
 #results h2 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 30px;
-    background: linear-gradient(135deg, var(--accent-color), var(--warning-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .results-stats {
@@ -1130,10 +1124,7 @@ main {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 30px;
-    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .leaderboard-container {
