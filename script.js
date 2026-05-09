@@ -1532,4 +1532,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     updateSubjectDisplay();
     showSection('home');
+    
+    loadTheme();
 });
+
+let currentTheme = 'dark';
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('flashDashTheme') || 'dark';
+    currentTheme = savedTheme;
+    document.body.setAttribute('data-theme', savedTheme);
+    
+    const toggleIcon = document.querySelector('#theme-toggle i');
+    if (toggleIcon) {
+        toggleIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+}
+
+function toggleTheme() {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('flashDashTheme', currentTheme);
+    
+    const toggleIcon = document.querySelector('#theme-toggle i');
+    if (toggleIcon) {
+        toggleIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+}

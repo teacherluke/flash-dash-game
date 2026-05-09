@@ -37,12 +37,15 @@
                     <a href="#leaderboard" class="nav-link">Leaderboard</a>
                 </nav>
                 <div class="user-section">
-                    <div class="points-display">
-                        <i class="fas fa-trophy"></i>
-                        <span id="total-points">0</span>
-                    </div>
-                    <div class="user-info" id="user-info">
-                        <span id="user-name">Guest</span>
+                        <div class="points-display">
+                            <i class="fas fa-trophy"></i>
+                            <span id="total-points">0</span>
+                        </div>
+                        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <div class="user-info" id="user-info">
+                            <span id="user-name">Guest</span>
                         <div class="auth-buttons" id="auth-buttons">
                             <button class="auth-btn google-btn" id="google-login-btn" onclick="handleGoogleLogin()">
                                 <i class="fab fa-google"></i>
