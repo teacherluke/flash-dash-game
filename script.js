@@ -207,7 +207,7 @@ let powerUpsAvailable = false;
 let powerUpDoublePointsUsed = false;
 let powerUpSkipUsed = false;
 let powerUpHintUsed = false;
-let currentUser = null;
+let currentUser = { name: 'Player', isLoggedIn: true };
 
 const MAX_QUESTIONS_PER_ROUND = 20;
 
@@ -795,60 +795,7 @@ function base64ToBlob(base64, mimeType) {
     return new Blob([uint8Array], { type: mimeType });
 }
 
-function handleGoogleLogin() {
-    trackEvent('login_attempt', { provider: 'google' });
-    
-    const mockUser = {
-        name: 'Student',
-        email: 'student@school.edu',
-        provider: 'google',
-        picture: 'https://ui-avatars.com/api/?name=Student&background=6366f1&color=fff'
-    };
-    completeLogin(mockUser);
-}
 
-function handleMicrosoftLogin() {
-    trackEvent('login_attempt', { provider: 'microsoft' });
-    
-    const mockUser = {
-        name: 'Student',
-        email: 'student@school.edu',
-        provider: 'microsoft',
-        picture: 'https://ui-avatars.com/api/?name=Student&background=0078d4&color=fff'
-    };
-    completeLogin(mockUser);
-}
-
-function handleWeChatLogin() {
-    trackEvent('login_attempt', { provider: 'wechat' });
-    const mockUser = { name: 'Student', email: 'student@school.edu', provider: 'wechat' };
-    completeLogin(mockUser);
-}
-
-function completeLogin(user) {
-    currentUser = { name: user.name, email: user.email, provider: user.provider, isLoggedIn: true };
-    trackEvent('login_success', { provider: user.provider });
-    
-    if (typeof posthog !== 'undefined') {
-        posthog.identify(user.email, { name: user.name, provider: user.provider });
-    }
-    
-    document.getElementById('user-name').textContent = user.name;
-    document.getElementById('auth-buttons').style.display = 'none';
-    document.getElementById('logout-btn').style.display = 'flex';
-    loadUserProgress();
-}
-
-function logout() {
-    trackEvent('logout', {});
-    currentUser = null;
-    
-    document.getElementById('user-name').textContent = 'Guest';
-    document.getElementById('auth-buttons').style.display = 'flex';
-    document.getElementById('logout-btn').style.display = 'none';
-    
-    localStorage.removeItem('flashDashUser');
-}
 
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
@@ -1518,9 +1465,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     document.getElementById('redemption-btn').addEventListener('click', startRedemptionQuiz);
-    document.getElementById('google-login-btn').addEventListener('click', handleGoogleLogin);
-    document.getElementById('microsoft-login-btn').addEventListener('click', handleMicrosoftLogin);
-    document.getElementById('wechat-login-btn').addEventListener('click', handleWeChatLogin);
     
     document.addEventListener('keydown', (e) => {
         if (e.key >= '1' && e.key <= '4') {
@@ -1532,50 +1476,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     updateSubjectDisplay();
     showSection('home');
-    
-    loadTheme();
 });
-
-let currentTheme = 'system';
-
-function loadTheme() {
-    const savedTheme = localStorage.getItem('flashDashTheme') || 'system';
-    currentTheme = savedTheme;
-    
-    if (savedTheme === 'system') {
-        document.body.removeAttribute('data-theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        updateToggleIcon(systemPrefersDark ? 'dark' : 'light');
-    } else {
-        document.body.setAttribute('data-theme', savedTheme);
-        updateToggleIcon(savedTheme);
-    }
-}
-
-function updateToggleIcon(theme) {
-    const toggleIcon = document.querySelector('#theme-toggle i');
-    if (toggleIcon) {
-        toggleIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-}
-
-function toggleTheme() {
-    if (currentTheme === 'system') {
-        currentTheme = 'light';
-    } else if (currentTheme === 'light') {
-        currentTheme = 'dark';
-    } else {
-        currentTheme = 'system';
-    }
-    
-    if (currentTheme === 'system') {
-        document.body.removeAttribute('data-theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        updateToggleIcon(systemPrefersDark ? 'dark' : 'light');
-    } else {
-        document.body.setAttribute('data-theme', currentTheme);
-        updateToggleIcon(currentTheme);
-    }
-    
-    localStorage.setItem('flashDashTheme', currentTheme);
-}
