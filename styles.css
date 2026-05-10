@@ -721,8 +721,10 @@ main {
     margin: 0 auto;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
     cursor: pointer;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .flashcard.flipped {
@@ -1217,39 +1219,294 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.loading-content {
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-content p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* Error Overlay */
+.error-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.error-content {
+    background: var(--bg-card);
+    border: 2px solid var(--danger-color);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: errorFadeIn 0.3s ease-out;
+}
+
+@keyframes errorFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.error-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: rgba(239, 68, 68, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-icon i {
+    font-size: 3rem;
+    color: var(--danger-color);
+}
+
+.error-content h3 {
+    font-size: 1.5rem;
+    color: var(--danger-color);
+    margin-bottom: 10px;
+}
+
+.error-content p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.error-close-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.error-close-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
         gap: 15px;
+        padding: 15px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
     }
     
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 10px;
+    }
+    
+    .nav-link {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .user-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .points-display {
+        font-size: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        padding: 0 20px;
+    }
+    
+    .hero p {
+        padding: 0 20px;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .subject-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 0 15px;
+    }
+    
+    .subject-card {
+        padding: 15px;
+    }
+    
+    .subject-card i {
+        font-size: 2.5rem;
+    }
+    
+    .subject-card h3 {
+        font-size: 0.9rem;
     }
     
     .game-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
     }
     
     .game-stats {
-        margin-top: 10px;
+        margin-top: 0;
+        width: 100%;
+        justify-content: space-between;
     }
     
-    .options {
-        grid-template-columns: 1fr;
+    .stat-item {
+        font-size: 0.9rem;
+        gap: 5px;
+    }
+    
+    .flashcard-container {
+        padding: 15px;
+    }
+    
+    .flashcard {
+        height: min(280px, 40vh);
+        padding: 20px;
+    }
+    
+    .flashcard-front h3,
+    .flashcard-back h3 {
+        font-size: clamp(1rem, 3.5vw, 1.4rem);
+    }
+    
+    .options-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 15px;
+    }
+    
+    .option-btn {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .option-letter {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+    
+    .results-container {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .results-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .results-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .result-item {
+        padding: 15px;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .action-btn {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    .leaderboard-container {
+        margin: 0 15px;
+        overflow-x: auto;
     }
     
     .leaderboard-header,
     .leaderboard-row {
         grid-template-columns: 1fr 2fr 1fr;
+        min-width: 300px;
     }
     
     .leaderboard-header .player-subject,
     .leaderboard-row .player-subject {
         display: none;
+    }
+    
+    .footer p {
+        font-size: 0.8rem;
+        padding: 0 10px;
     }
 }
 
@@ -1257,24 +1514,69 @@ footer a:hover {
     .level-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
     
     .level-btn {
         width: 100%;
         max-width: 200px;
+        padding: 12px 24px;
     }
     
     .powerup-buttons {
         flex-direction: column;
+        gap: 8px;
     }
     
     .powerup-btn {
         width: 100%;
         justify-content: center;
+        padding: 10px;
     }
     
-    .game-code-section {
-        flex-direction: column;
+    .flashcard {
+        height: min(250px, 35vh);
+    }
+    
+    .options-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .option-btn {
+        padding: 14px 12px;
+        flex-direction: row;
         gap: 10px;
     }
     
+    .option-letter {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+    
+    .game-header {
+        padding: 10px;
+    }
+    
+    .subject-tag {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+    
+    .question-count {
+        font-size: 0.85rem;
+    }
+    
+    .timer-warning {
+        font-size: 1.2rem;
+    }
+    
+    .results-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .results-icon i {
+        font-size: 3rem;
+    }
+}

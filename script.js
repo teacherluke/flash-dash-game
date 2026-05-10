@@ -808,37 +808,99 @@ function showSection(sectionId) {
 function showSubjects() { showSection('subjects'); }
 function goHome() { showSection('home'); }
 
-async function selectSubject(subjectId) {
-    const data = await loadSubjectData(subjectId);
-    if (!data) {
-        alert(`Could not load ${SUBJECT_NAMES[subjectId]} flashcards`);
-        return;
+function showLoading(message = 'Loading...') {
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'loading-overlay';
+    loadingOverlay.innerHTML = `
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>${message}</p>
+        </div>
+    `;
+    document.body.appendChild(loadingOverlay);
+    return loadingOverlay;
+}
+
+function hideLoading(overlay) {
+    if (overlay && overlay.parentNode) {
+        overlay.remove();
     }
+}
+
+function showErrorMessage(title, message) {
+    const errorOverlay = document.createElement('div');
+    errorOverlay.className = 'error-overlay';
+    errorOverlay.innerHTML = `
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>${title}</h3>
+            <p>${message}</p>
+            <button class="error-close-btn" onclick="this.parentElement.parentElement.remove()">
+                OK
+            </button>
+        </div>
+    `;
+    document.body.appendChild(errorOverlay);
+}
+
+async function selectSubject(subjectId) {
+    const loadingOverlay = showLoading(`Loading ${SUBJECT_NAMES[subjectId]}...`);
     
-    trackEvent('subject_selected', { subject: subjectId, subject_name: data.name });
-    
-    currentSubject = subjectId;
-    originalFlashcards = [...data.flashcards];
-    currentFlashcards = getRandomFlashcards(originalFlashcards, MAX_QUESTIONS_PER_ROUND);
-    currentIndex = 0;
-    roundPoints = 0;
-    correctCount = 0;
-    wrongCount = 0;
-    consecutiveCorrect = 0;
-    doublePointsActive = false;
-    powerUpsAvailable = false;
-    powerUpDoublePointsUsed = false;
-    powerUpSkipUsed = false;
-    powerUpHintUsed = false;
-    
-    document.getElementById('game-subject').textContent = data.name;
-    document.getElementById('current-question').textContent = '1';
-    document.getElementById('total-questions').textContent = currentFlashcards.length;
-    document.getElementById('round-points').textContent = '0';
-    
-    resetTimer();
-    loadFlashcard();
-    showSection('game');
+    try {
+        const data = await loadSubjectData(subjectId);
+        if (!data) {
+            hideLoading(loadingOverlay);
+            showErrorMessage(
+                'Flashcards Not Found',
+                `Sorry, we couldn't load the ${SUBJECT_NAMES[subjectId]} flashcards. Please try again later.`
+            );
+            return;
+        }
+        
+        if (data.flashcards.length === 0) {
+            hideLoading(loadingOverlay);
+            showErrorMessage(
+                'No Flashcards Available',
+                `There are no flashcards available for ${SUBJECT_NAMES[subjectId]} yet. Please check back later.`
+            );
+            return;
+        }
+        
+        trackEvent('subject_selected', { subject: subjectId, subject_name: data.name });
+        
+        currentSubject = subjectId;
+        originalFlashcards = [...data.flashcards];
+        currentFlashcards = getRandomFlashcards(originalFlashcards, MAX_QUESTIONS_PER_ROUND);
+        currentIndex = 0;
+        roundPoints = 0;
+        correctCount = 0;
+        wrongCount = 0;
+        consecutiveCorrect = 0;
+        doublePointsActive = false;
+        powerUpsAvailable = false;
+        powerUpDoublePointsUsed = false;
+        powerUpSkipUsed = false;
+        powerUpHintUsed = false;
+        
+        document.getElementById('game-subject').textContent = data.name;
+        document.getElementById('current-question').textContent = '1';
+        document.getElementById('total-questions').textContent = currentFlashcards.length;
+        document.getElementById('round-points').textContent = '0';
+        
+        hideLoading(loadingOverlay);
+        resetTimer();
+        loadFlashcard();
+        showSection('game');
+    } catch (error) {
+        hideLoading(loadingOverlay);
+        showErrorMessage(
+            'Unexpected Error',
+            'Something went wrong while loading the flashcards. Please try again.'
+        );
+        console.error('Error selecting subject:', error);
+    }
 }
 
 function getRandomFlashcards(flashcards, count) {
@@ -1277,23 +1339,100 @@ function updateLeaderboard(correct, wrong, accuracy, points) {
 }
 
 function saveUserProgress() {
-    localStorage.setItem('flashDashPoints', totalPoints.toString());
-    localStorage.setItem('flashDashWrongFlashcards', JSON.stringify(wrongFlashcards));
+    const progress = {
+        totalPoints: totalPoints,
+        wrongFlashcards: wrongFlashcards,
+        lastPlayedSubject: currentSubject,
+        lastPlayedDate: new Date().toISOString(),
+        gamesPlayed: getGamesPlayed() + 1,
+        totalCorrect: getTotalCorrect() + correctCount,
+        totalWrong: getTotalWrong() + wrongCount
+    };
+    localStorage.setItem('flashDashProgress', JSON.stringify(progress));
 }
 
 function loadUserProgress() {
-    const savedPoints = localStorage.getItem('flashDashPoints');
-    const savedWrongFlashcards = localStorage.getItem('flashDashWrongFlashcards');
+    const savedProgress = localStorage.getItem('flashDashProgress');
     
-    if (savedPoints) {
-        totalPoints = parseInt(savedPoints);
-        document.getElementById('total-points').textContent = totalPoints;
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            
+            if (progress.totalPoints !== undefined) {
+                totalPoints = progress.totalPoints;
+                document.getElementById('total-points').textContent = totalPoints;
+            }
+            
+            if (progress.wrongFlashcards && Array.isArray(progress.wrongFlashcards)) {
+                wrongFlashcards = progress.wrongFlashcards;
+            }
+            
+            if (progress.lastPlayedDate) {
+                const lastPlayed = new Date(progress.lastPlayedDate);
+                const now = new Date();
+                const diffDays = Math.floor((now - lastPlayed) / (1000 * 60 * 60 * 24));
+                
+                if (diffDays > 7) {
+                    clearOldProgress();
+                }
+            }
+        } catch (e) {
+            console.error('Error loading progress:', e);
+        }
     }
-    
-    if (savedWrongFlashcards) {
-        try { wrongFlashcards = JSON.parse(savedWrongFlashcards); }
-        catch (e) { wrongFlashcards = []; }
+}
+
+function getGamesPlayed() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            return progress.gamesPlayed || 0;
+        } catch (e) {
+            return 0;
+        }
     }
+    return 0;
+}
+
+function getTotalCorrect() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            return progress.totalCorrect || 0;
+        } catch (e) {
+            return 0;
+        }
+    }
+    return 0;
+}
+
+function getTotalWrong() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            return progress.totalWrong || 0;
+        } catch (e) {
+            return 0;
+        }
+    }
+    return 0;
+}
+
+function clearOldProgress() {
+    localStorage.removeItem('flashDashProgress');
+    totalPoints = 0;
+    wrongFlashcards = [];
+    document.getElementById('total-points').textContent = '0';
+}
+
+function clearAllProgress() {
+    localStorage.removeItem('flashDashProgress');
+    totalPoints = 0;
+    wrongFlashcards = [];
+    document.getElementById('total-points').textContent = '0';
 }
 
 function renderLeaderboard() {
