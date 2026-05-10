@@ -672,8 +672,8 @@ const mathFlashcards = [
   // 68
   {
     question: "Define categorical data",
-    answer: "Non-numerical data grouped by qualities or categories",
-    wrong1: "Numerical counted values",
+    answer: "Non-numerical category labels",
+    wrong1: "Counted numerical values",
     wrong2: "Measured continuous values",
     wrong3: "Ordered number sequence",
     explanation: "Descriptive labels not numbers",
@@ -682,10 +682,10 @@ const mathFlashcards = [
   // 69
   {
     question: "Define probability",
-    answer: "A numerical value between 0 and 1 measuring likelihood of an event happening",
-    wrong1: "Value greater than 1 only",
+    answer: "Likelihood of an event (0-1)",
+    wrong1: "Value always greater than 1",
     wrong2: "Negative decimal value",
-    wrong3: "Random guess with no scale",
+    wrong3: "Random guess without scale",
     explanation: "0 = impossible, 1 = certain",
     example: "Probability of rolling a 6 = 1/6"
   },
