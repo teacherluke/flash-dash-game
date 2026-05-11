@@ -1,0 +1,1002 @@
+const economicsFlashcards = [
+  // 1
+  {
+    question: "Define Economics",
+    answer: "The study of how scarce resources are allocated to satisfy unlimited human wants and needs",
+    wrong1: "The study only of money and banking",
+    wrong2: "The study of government laws and rules",
+    wrong3: "The study only of business profits",
+    explanation: "Core ideas: scarcity, choice, opportunity cost",
+    example: "Choosing between buying a laptop or saving money"
+  },
+  // 2
+  {
+    question: "Define Scarcity",
+    answer: "Limited resources exist to meet unlimited human wants",
+    wrong1: "Unlimited resources for everyone",
+    wrong2: "People have no basic needs",
+    wrong3: "Shortage of workers only",
+    explanation: "Scarcity forces individuals and governments to make choices",
+    example: "Limited farmland but growing population demand"
+  },
+  // 3
+  {
+    question: "Define Opportunity Cost",
+    answer: "The value of the next best alternative forgone when a choice is made",
+    wrong1: "The total money spent on a purchase",
+    wrong2: "The profit lost from selling goods",
+    wrong3: "The cost of raw materials",
+    explanation: "Fundamental principle of all economic decisions",
+    example: "Going to university means giving up full-time work earnings"
+  },
+  // 4
+  {
+    question: "Define Needs",
+    answer: "Basic essentials required for human survival",
+    wrong1: "Luxury items for enjoyment",
+    wrong2: "Non-essential lifestyle goods",
+    wrong3: "Entertainment products",
+    explanation: "Cannot survive without these goods/services",
+    example: "Food, water, shelter, healthcare"
+  },
+  // 5
+  {
+    question: "Define Wants",
+    answer: "Unlimited human desires for goods not required for survival",
+    wrong1: "Basic survival necessities",
+    wrong2: "Mandatory government payments",
+    wrong3: "Free public services",
+    explanation: "Wants are infinite and constantly changing",
+    example: "Luxury cars, holidays, gaming consoles"
+  },
+  // 6
+  {
+    question: "Define Factors of Production",
+    answer: "The four resources used to produce goods: land, labour, capital, enterprise",
+    wrong1: "Money, savings and banks",
+    wrong2: "Consumers, shops and markets",
+    wrong3: "Government, taxes and laws",
+    explanation: "All production depends on these four inputs",
+    example: "Farmland, workers, machines, business owners"
+  },
+  // 7
+  {
+    question: "Define Land (Factor of Production)",
+    answer: "All natural resources provided by nature used in production",
+    wrong1: "Man-made factories and tools",
+    wrong2: "Human mental and physical effort",
+    wrong3: "Business risk-taking and organisation",
+    explanation: "Includes minerals, forests, water and land space",
+    example: "Oil, gold, rivers, farmland, forests"
+  },
+  // 8
+  {
+    question: "Define Labour (Factor of Production)",
+    answer: "All human physical and mental effort used in producing goods and services",
+    wrong1: "Natural raw materials",
+    wrong2: "Factory equipment and vehicles",
+    wrong3: "Company profit income",
+    explanation: "Includes skilled, semi-skilled and unskilled workers",
+    example: "Teachers, doctors, factory workers, engineers"
+  },
+  // 9
+  {
+    question: "Define Capital (Factor of Production)",
+    answer: "Man-made resources used to produce other goods and services",
+    wrong1: "Natural resources from the earth",
+    wrong2: "Consumer luxury goods",
+    wrong3: "Unskilled human labour",
+    explanation: "Also known as capital goods",
+    example: "Machines, tools, factories, trucks"
+  },
+  // 10
+  {
+    question: "Define Enterprise (Factor of Production)",
+    answer: "Organising the other three factors of production and taking business risks",
+    wrong1: "Working for a fixed salary",
+    wrong2: "Owning land without production",
+    wrong3: "Operating machines only",
+    explanation: "Performed by entrepreneurs",
+    example: "Starting a company and making investment decisions"
+  },
+  // 11
+  {
+    question: "Define Goods",
+    answer: "Tangible physical items that can be touched, stored and owned",
+    wrong1: "Intangible work or service",
+    wrong2: "Free natural resources like air",
+    wrong3: "Professional advice and help",
+    explanation: "Goods are either durable or non-durable",
+    example: "Clothes, phones, food, furniture"
+  },
+  // 12
+  {
+    question: "Define Services",
+    answer: "Intangible tasks or work performed for consumers",
+    wrong1: "Physical products sold in shops",
+    wrong2: "Raw materials for factories",
+    wrong3: "Manufacturing equipment",
+    explanation: "Services cannot be stored or physically held",
+    example: "Teaching, healthcare, haircuts, transport"
+  },
+  // 13
+  {
+    question: "Define Consumer Goods",
+    answer: "Finished goods bought by consumers for direct use and satisfaction",
+    wrong1: "Goods used to make other products",
+    wrong2: "Raw materials for industry",
+    wrong3: "Factory machinery",
+    explanation: "Final goods for the end user",
+    example: "Shoes, laptops, snacks, watches"
+  },
+  // 14
+  {
+    question: "Define Capital Goods",
+    answer: "Goods bought by firms to produce other goods and services",
+    wrong1: "Items bought for personal daily use",
+    wrong2: "Luxury holiday products",
+    wrong3: "Free government public goods",
+    explanation: "Not consumed directly by the public",
+    example: "Robots, drills, factory buildings, conveyor belts"
+  },
+  // 15
+  {
+    question: "Define Economic System",
+    answer: "The way a country organises resource allocation, production and distribution",
+    wrong1: "Only a national banking system",
+    wrong2: "Only school education structure",
+    wrong3: "Only road transport networks",
+    explanation: "Three types: market, planned, mixed",
+    example: "Most countries use a mixed economic system"
+  },
+  // 16
+  {
+    question: "Define Market Economic System",
+    answer: "Resources allocated by supply and demand with minimal government control",
+    wrong1: "Government controls all prices and production",
+    wrong2: "All goods are free for everyone",
+    wrong3: "No private businesses allowed",
+    explanation: "Price mechanism decides what is produced",
+    example: "Private firms set prices based on consumer demand"
+  },
+  // 17
+  {
+    question: "Define Planned Economic System",
+    answer: "Government controls all resources, production, prices and distribution",
+    wrong1: "Private businesses make all economic choices",
+    wrong2: "Supply and demand set market prices",
+    wrong3: "Competition controls output",
+    explanation: "Also called a command economy",
+    example: "The state plans factory output and pricing"
+  },
+  // 18
+  {
+    question: "Define Mixed Economic System",
+    answer: "Combines private sector markets with government public sector control",
+    wrong1: "Fully government controlled economy",
+    wrong2: "Pure private economy with no government",
+    wrong3: "No taxes or public services",
+    explanation: "The most common system globally",
+    example: "Private shops + public schools and hospitals"
+  },
+  // 19
+  {
+    question: "Define Demand",
+    answer: "Quantity of a good consumers are willing and able to buy at each price",
+    wrong1: "Amount producers want to sell",
+    wrong2: "Total stock stored in warehouses",
+    wrong3: "Government production limits",
+    explanation: "Price and demand have an inverse relationship",
+    example: "More people buy when price falls"
+  },
+  // 20
+  {
+    question: "Define Supply",
+    answer: "Quantity of a good firms are willing and able to produce and sell",
+    wrong1: "Consumer desire to purchase goods",
+    wrong2: "Total population basic needs",
+    wrong3: "Public service demand",
+    explanation: "Higher price usually increases supply",
+    example: "Farmers grow more crops when prices rise"
+  },
+  // 21
+  {
+    question: "Define Equilibrium Price",
+    answer: "Market price where quantity demanded equals quantity supplied",
+    wrong1: "The highest price sellers can charge",
+    wrong2: "The minimum legal price",
+    wrong3: "Fixed price set by government",
+    explanation: "No surplus or shortage at equilibrium",
+    example: "Buyer demand exactly matches seller supply"
+  },
+  // 22
+  {
+    question: "Define Surplus",
+    answer: "Quantity supplied is greater than quantity demanded",
+    wrong1: "Demand higher than supply",
+    wrong2: "Demand equals supply exactly",
+    wrong3: "Government stock shortage",
+    explanation: "Surplus forces market prices down",
+    example: "Unsold winter clothes at end of season"
+  },
+  // 23
+  {
+    question: "Define Shortage",
+    answer: "Quantity demanded is greater than quantity supplied",
+    wrong1: "Supply greater than demand",
+    wrong2: "Perfect market balance",
+    wrong3: "Too many unsold goods in stock",
+    explanation: "Shortage causes market prices to rise",
+    example: "Limited concert tickets with high demand"
+  },
+  // 24
+  {
+    question: "Define Price Elasticity of Demand",
+    answer: "Responsiveness of quantity demanded to a change in price",
+    wrong1: "Total profit change for a company",
+    wrong2: "Change in raw material costs",
+    wrong3: "Government income tax rate",
+    explanation: "Categorised as elastic or inelastic",
+    example: "Medicine is inelastic; luxury fashion is elastic"
+  },
+  // 25
+  {
+    question: "Define Elastic Demand",
+    answer: "Small price change causes large change in quantity demanded",
+    wrong1: "Price change has almost no effect on demand",
+    wrong2: "Demand never changes with price",
+    wrong3: "Supply is fixed forever",
+    explanation: "Many substitute goods available",
+    example: "Restaurant meals, branded clothing"
+  },
+  // 26
+  {
+    question: "Define Inelastic Demand",
+    answer: "Large price change causes only small change in quantity demanded",
+    wrong1: "Easy to replace with other goods",
+    wrong2: "Consumers stop buying immediately",
+    wrong3: "Demand drops to zero quickly",
+    explanation: "Necessities with few substitutes",
+    example: "Salt, essential medicine, petrol"
+  },
+  // 27
+  {
+    question: "Define Substitute Goods",
+    answer: "Goods that can replace each other to satisfy the same want",
+    wrong1: "Goods used together",
+    wrong2: "Essential survival goods only",
+    wrong3: "Free public goods",
+    explanation: "Price rise in one increases demand for the other",
+    example: "Tea & coffee, butter & margarine"
+  },
+  // 28
+  {
+    question: "Define Complementary Goods",
+    answer: "Goods used together to satisfy a want",
+    wrong1: "Goods that replace one another",
+    wrong2: "Unrelated independent products",
+    wrong3: "Raw materials for factories",
+    explanation: "Price rise in one reduces demand for the other",
+    example: "Cars & petrol, phones & chargers"
+  },
+  // 29
+  {
+    question: "Define Inflation",
+    answer: "A sustained rise in the general price level of goods and services",
+    wrong1: "General fall in all prices",
+    wrong2: "Price rise for one product only",
+    wrong3: "Population decrease",
+    explanation: "Reduces the purchasing power of money",
+    example: "Grocery prices slowly rising each year"
+  },
+  // 30
+  {
+    question: "Define Deflation",
+    answer: "A sustained fall in the general price level across the economy",
+    wrong1: "Prices rising rapidly",
+    wrong2: "Increase in taxation",
+    wrong3: "Rise in worker wages",
+    explanation: "Can make consumers delay spending",
+    example: "Electronics prices gradually falling over time"
+  },
+  // 31
+  {
+    question: "Define Purchasing Power",
+    answer: "The amount of goods and services one unit of money can buy",
+    wrong1: "Total annual salary earned",
+    wrong2: "Total bank loan available",
+    wrong3: "Total company sales revenue",
+    explanation: "Inflation reduces purchasing power",
+    example: "$100 buys less during high inflation"
+  },
+  // 32
+  {
+    question: "Define Economic Growth",
+    answer: "Increase in a country’s ability to produce goods and services over time",
+    wrong1: "Only population growth",
+    wrong2: "Rising unemployment",
+    wrong3: "Increase in imports only",
+    explanation: "Measured by an increase in GDP",
+    example: "Building new factories, roads and technology"
+  },
+  // 33
+  {
+    question: "Define GDP",
+    answer: "Total value of all goods and services produced within a country in one year",
+    wrong1: "Total savings of citizens",
+    wrong2: "Total government tax income",
+    wrong3: "Total export revenue only",
+    explanation: "Key measure of economic size",
+    example: "GDP shows how large a nation’s economy is"
+  },
+  // 34
+  {
+    question: "Define Unemployment",
+    answer: "People willing and able to work but unable to find a job",
+    wrong1: "Full-time students",
+    wrong2: "Retired people",
+    wrong3: "People choosing not to work",
+    explanation: "Only economically active people are counted",
+    example: "Graduates searching unsuccessfully for work"
+  },
+  // 35
+  {
+    question: "Define Structural Unemployment",
+    answer: "Unemployment from industry changes and worker skills mismatch",
+    wrong1: "Quiet season joblessness",
+    wrong2: "Temporary recession layoffs",
+    wrong3: "Workers moving between jobs",
+    explanation: "Old skills become outdated",
+    example: "Factory workers replaced by automation"
+  },
+  // 36
+  {
+    question: "Define Seasonal Unemployment",
+    answer: "Unemployment occurring only at certain times of the year",
+    wrong1: "Permanent industry job loss",
+    wrong2: "Recession caused job loss",
+    wrong3: "Skills shortage unemployment",
+    explanation: "Common in tourism, farming, construction",
+    example: "Beach resort staff unemployed in winter"
+  },
+  // 37
+  {
+    question: "Define Frictional Unemployment",
+    answer: "Temporary unemployment while workers move between jobs",
+    wrong1: "Long-term industrial job loss",
+    wrong2: "Off-season layoffs",
+    wrong3: "Recession job losses",
+    explanation: "Short-term and natural in any economy",
+    example: "Worker leaves old job before starting new one"
+  },
+  // 38
+  {
+    question: "Define Recession",
+    answer: "Period of falling economic activity, lower demand and rising unemployment",
+    wrong1: "Fast economic expansion",
+    wrong2: "High inflation with stable jobs",
+    wrong3: "Large government spending increases",
+    explanation: "Firms cut production and staff",
+    example: "Global slowdown reducing international trade"
+  },
+  // 39
+  {
+    question: "Define Fiscal Policy",
+    answer: "Government policy using taxation and public spending to manage the economy",
+    wrong1: "Controlling interest rates and money supply",
+    wrong2: "Setting profit limits for companies",
+    wrong3: "Fixing private business prices",
+    explanation: "Tools: taxes, welfare, public projects",
+    example: "Government builds roads or raises income tax"
+  },
+  // 40
+  {
+    question: "Define Monetary Policy",
+    answer: "Central bank policy controlling interest rates, money supply and lending",
+    wrong1: "Changing government spending",
+    wrong2: "Creating retail business laws",
+    wrong3: "Controlling school fees",
+    explanation: "Used to control inflation and growth",
+    example: "Raising interest rates to reduce borrowing"
+  },
+  // 41
+  {
+    question: "Define Tax",
+    answer: "Compulsory payment from individuals and firms to the government",
+    wrong1: "Voluntary charity donations",
+    wrong2: "Bank interest charges",
+    wrong3: "Company dividend payments",
+    explanation: "Tax funds public services",
+    example: "Income tax, sales tax, corporate tax"
+  },
+  // 42
+  {
+    question: "Define Direct Tax",
+    answer: "Tax paid directly by the person or firm to the government",
+    wrong1: "Tax added onto goods at sale",
+    wrong2: "Tax collected only by shops",
+    wrong3: "Import tax on foreign goods",
+    explanation: "Hard to pass onto others",
+    example: "Income tax, business profit tax"
+  },
+  // 43
+  {
+    question: "Define Indirect Tax",
+    answer: "Tax added to goods’ prices, paid indirectly by consumers",
+    wrong1: "Tax deducted from salaries",
+    wrong2: "Tax on company profits",
+    wrong3: "Wealth tax on property",
+    explanation: "Firms collect tax for the state",
+    example: "VAT, sales tax, excise duty"
+  },
+  // 44
+  {
+    question: "Define Public Goods",
+    answer: "Non-excludable and non-rivalrous goods provided by government",
+    wrong1: "Private shop products",
+    wrong2: "Luxury goods for wealthy people",
+    wrong3: "Goods only for taxpayers",
+    explanation: "Free for all to use",
+    example: "Street lighting, national defence, public roads"
+  },
+  // 45
+  {
+    question: "Define Private Goods",
+    answer: "Excludable and rivalrous goods owned and consumed individually",
+    wrong1: "Free government services",
+    wrong2: "Public parks and libraries",
+    wrong3: "Free services for everyone",
+    explanation: "Must be purchased to consume",
+    example: "Phones, food, clothing, cars"
+  },
+  // 46
+  {
+    question: "Define Merit Goods",
+    answer: "Goods society benefits from, under-consumed in a free market",
+    wrong1: "Goods banned by government",
+    wrong2: "Unnecessary luxury products",
+    wrong3: "Goods only for rich consumers",
+    explanation: "Usually subsidised by the state",
+    example: "Education, healthcare, vaccinations"
+  },
+  // 47
+  {
+    question: "Define Demerit Goods",
+    answer: "Goods harmful to consumers and society, over-consumed in free markets",
+    wrong1: "Goods government encourages",
+    wrong2: "Healthy essential products",
+    wrong3: "Free public welfare services",
+    explanation: "Often taxed or restricted",
+    example: "Cigarettes, alcohol, sugary drinks"
+  },
+  // 48
+  {
+    question: "Define Externalities",
+    answer: "Costs or benefits affecting third parties not involved in a transaction",
+    wrong1: "Only firm internal production costs",
+    wrong2: "Only consumer personal costs",
+    wrong3: "Regular government tax income",
+    explanation: "Split into positive and negative externalities",
+    example: "Factory pollution harming local residents"
+  },
+  // 49
+  {
+    question: "Define Positive Externality",
+    answer: "A benefit gained by third parties from economic activity",
+    wrong1: "Harm to outside communities",
+    wrong2: "Financial loss for locals",
+    wrong3: "Higher pollution levels",
+    explanation: "Society gains unpaid benefits",
+    example: "Education benefits the whole community"
+  },
+  // 50
+  {
+    question: "Define Negative Externality",
+    answer: "A cost or harm suffered by third parties from economic activity",
+    wrong1: "Free advantage for neighbours",
+    wrong2: "Social gain from production",
+    wrong3: "Public good benefits",
+    explanation: "Free markets overproduce these goods",
+    example: "Traffic congestion and air pollution"
+  },
+  // 51
+  {
+    question: "Define Budget",
+    answer: "Planned statement of expected income and expenditure over time",
+    wrong1: "Random list of personal purchases",
+    wrong2: "Bank loan legal contract",
+    wrong3: "Company official profit report",
+    explanation: "Used by individuals, firms and governments",
+    example: "Monthly budget for rent, food and savings"
+  },
+  // 52
+  {
+    question: "Define Budget Surplus",
+    answer: "Total income greater than total expenditure",
+    wrong1: "Spending higher than income",
+    wrong2: "Income equals spending exactly",
+    wrong3: "Constant reliance on loans",
+    explanation: "Extra money can be saved or invested",
+    example: "Government tax income higher than spending"
+  },
+  // 53
+  {
+    question: "Define Budget Deficit",
+    answer: "Total expenditure greater than total income",
+    wrong1: "Income higher than spending",
+    wrong2: "Perfect income-cost balance",
+    wrong3: "High personal savings",
+    explanation: "Requires borrowing to cover the gap",
+    example: "Government spends more than it collects in taxes"
+  },
+  // 54
+  {
+    question: "Define Revenue",
+    answer: "Total income a firm earns from selling goods and services",
+    wrong1: "Total production costs",
+    wrong2: "Profit after all expenses",
+    wrong3: "Tax paid to government",
+    explanation: "Revenue = Price × Quantity Sold",
+    example: "A shop earns $15,000 monthly from sales"
+  },
+  // 55
+  {
+    question: "Define Cost of Production",
+    answer: "All expenses a firm pays to produce goods and services",
+    wrong1: "Money from product sales",
+    wrong2: "Net profit for business owners",
+    wrong3: "Customer discount value",
+    explanation: "Includes fixed costs and variable costs",
+    example: "Wages, rent, raw materials, electricity"
+  },
+  // 56
+  {
+    question: "Define Profit",
+    answer: "Total revenue minus total costs of production",
+    wrong1: "Gross sales income before expenses",
+    wrong2: "Only fixed business costs",
+    wrong3: "Government subsidy payments",
+    explanation: "Main incentive for entrepreneurs",
+    example: "Sales $6000 − Costs $3500 = Profit $2500"
+  },
+  // 57
+  {
+    question: "Define Fixed Costs",
+    answer: "Costs that do not change with output in the short run",
+    wrong1: "Costs rising with production",
+    wrong2: "Raw material and packaging costs",
+    wrong3: "Temporary worker wages",
+    explanation: "Must be paid even if output = 0",
+    example: "Rent, insurance, manager salaries"
+  },
+  // 58
+  {
+    question: "Define Variable Costs",
+    answer: "Costs that rise directly as production output increases",
+    wrong1: "Costs fixed regardless of output",
+    wrong2: "Annual building rent",
+    wrong3: "Fixed licence fees",
+    explanation: "Variable cost = 0 when output = 0",
+    example: "Raw materials, packaging, hourly wages"
+  },
+  // 59
+  {
+    question: "Define Average Cost",
+    answer: "Total cost divided by the quantity of units produced",
+    wrong1: "Total sales revenue",
+    wrong2: "Profit per unit sold",
+    wrong3: "Market price of a product",
+    explanation: "Shows cost to make one item",
+    example: "Total cost $1000 for 100 units = Avg cost $10"
+  },
+  // 60
+  {
+    question: "Define Economies of Scale",
+    answer: "Falling average costs as a firm increases its scale of production",
+    wrong1: "Rising average costs as a firm grows",
+    wrong2: "Fixed costs increasing every year",
+    wrong3: "Variable costs falling to zero",
+    explanation: "Larger firms can produce more cheaply per unit",
+    example: "A big factory makes each item cheaper than a small workshop"
+  },
+  // 61
+  {
+    question: "Define Diseconomies of Scale",
+    answer: "Rising average costs when a firm grows too large",
+    wrong1: "Costs falling as firm expands",
+    wrong2: "All costs stay exactly the same",
+    wrong3: "Variable costs disappear",
+    explanation: "Caused by poor management and communication",
+    example: "A company becomes too big and inefficient"
+  },
+  // 62
+  {
+    question: "Define Sole Trader",
+    answer: "A business owned and controlled by one person",
+    wrong1: "Business owned by two or more people",
+    wrong2: "Business owned by shareholders",
+    wrong3: "Government-owned public business",
+    explanation: "Simple to set up, full control by owner",
+    example: "Local small shop run by one person"
+  },
+  // 63
+  {
+    question: "Define Partnership",
+    answer: "Business owned by two or more people who share profits and losses",
+    wrong1: "Owned by one single person",
+    wrong2: "Owned by thousands of shareholders",
+    wrong3: "Owned and run by the government",
+    explanation: "Partners share decision-making",
+    example: "Two doctors opening a clinic together"
+  },
+  // 64
+  {
+    question: "Define Private Limited Company",
+    answer: "Business with shareholders, limited liability, shares not sold publicly",
+    wrong1: "Shares freely traded on the stock market",
+    wrong2: "Unlimited liability for owners",
+    wrong3: "Government state-owned enterprise",
+    explanation: "Owners only lose their investment",
+    example: "Small family-owned registered company"
+  },
+  // 65
+  {
+    question: "Define Public Limited Company",
+    answer: "Large company with shares traded openly on the stock exchange",
+    wrong1: "Shares cannot be sold to the public",
+    wrong2: "Owned by one person only",
+    wrong3: "Run directly by the government",
+    explanation: "Can raise large amounts of capital",
+    example: "Major international brands listed on the stock market"
+  },
+  // 66
+  {
+    question: "Define Limited Liability",
+    answer: "Business owners only risk losing their investment, not personal assets",
+    wrong1: "Owners must pay all business debts with personal money",
+    wrong2: "Government pays all company losses",
+    wrong3: "No risk at all for business owners",
+    explanation: "Encourages people to start businesses",
+    example: "Shareholders only lose money they invested"
+  },
+  // 67
+  {
+    question: "Define Unlimited Liability",
+    answer: "Owners must use personal assets to pay business debts",
+    wrong1: "Only investment money is at risk",
+    wrong2: "Government covers all business losses",
+    wrong3: "Shareholders have no financial risk",
+    explanation: "Risky for sole traders and partnerships",
+    example: "A shop owner must sell personal property to pay business debt"
+  },
+  // 68
+  {
+    question: "Define Interest Rate",
+    answer: "Percentage charged by banks for borrowing money, or paid on savings",
+    wrong1: "Government tax percentage",
+    wrong2: "Company profit percentage",
+    wrong3: "Inflation rate percentage",
+    explanation: "Key tool of monetary policy",
+    example: "5% interest on a bank loan"
+  },
+  // 69
+  {
+    question: "Define Exchange Rate",
+    answer: "The price of one country’s currency compared to another",
+    wrong1: "Fixed price of goods in shops",
+    wrong2: "Tax rate on imported goods",
+    wrong3: "Bank interest rate for savings",
+    explanation: "Affects imports, exports and travel costs",
+    example: "1 USD = 15,000 Indonesian Rupiah"
+  },
+  // 70
+  {
+    question: "Define Imports",
+    answer: "Goods and services bought from foreign countries",
+    wrong1: "Goods sold to other countries",
+    wrong2: "Goods made and sold locally only",
+    wrong3: "Free government public goods",
+    explanation: "Imports enter the domestic market",
+    example: "Buying electronics from overseas"
+  },
+  // 71
+  {
+    question: "Define Exports",
+    answer: "Goods and services sold to foreign countries",
+    wrong1: "Goods bought from overseas",
+    wrong2: "Goods consumed inside the country",
+    wrong3: "Taxed local services",
+    explanation: "Exports bring foreign income into the country",
+    example: "Selling local coffee to other nations"
+  },
+  // 72
+  {
+    question: "Define Balance of Trade",
+    answer: "Difference between the value of a country’s exports and imports",
+    wrong1: "Total money in all banks",
+    wrong2: "Government budget income minus spending",
+    wrong3: "Total company profits nationwide",
+    explanation: "Can be surplus or deficit",
+    example: "Exports higher than imports = trade surplus"
+  },
+  // 73
+  {
+    question: "Define Tariff",
+    answer: "A tax placed on imported goods",
+    wrong1: "Tax on local domestic products",
+    wrong2: "Subsidy given to exporters",
+    wrong3: "Interest rate on foreign loans",
+    explanation: "Makes imports more expensive, protects local firms",
+    example: "Import tax on foreign cars"
+  },
+  // 74
+  {
+    question: "Define Quota",
+    answer: "A physical limit on the quantity of imported goods allowed into a country",
+    wrong1: "Tax charged on imports",
+    wrong2: "Subsidy for local producers",
+    wrong3: "Minimum price for exported goods",
+    explanation: "Limits how much foreign goods can enter",
+    example: "Only 10,000 foreign cars allowed per year"
+  },
+  // 75
+  {
+    question: "Define Subsidy",
+    answer: "Money given by government to firms to lower costs and increase output",
+    wrong1: "Tax charged on business profits",
+    wrong2: "Fine for polluting factories",
+    wrong3: "Interest on government loans",
+    explanation: "Lowers prices for consumers too",
+    example: "Government subsidising public transport"
+  },
+  // 76
+  {
+    question: "Define Market Failure",
+    answer: "When the free market fails to allocate resources efficiently",
+    wrong1: "When prices stay exactly the same",
+    wrong2: "When supply equals demand perfectly",
+    wrong3: "When all goods are free",
+    explanation: "Caused by externalities, public goods, demerit goods",
+    example: "Overproduction of pollution-causing goods"
+  },
+  // 77
+  {
+    question: "Define Productivity",
+    answer: "Output produced per worker or per unit of input",
+    wrong1: "Total number of workers employed",
+    wrong2: "Total cost of production",
+    wrong3: "Total sales revenue of a firm",
+    explanation: "Higher productivity means more efficient production",
+    example: "A worker making 10 items per hour instead of 5"
+  },
+  // 78
+  {
+    question: "Define Wage",
+    answer: "Payment to workers usually based on hours worked or output made",
+    wrong1: "Profit earned by business owners",
+    wrong2: "Interest paid to banks",
+    wrong3: "Tax paid to government",
+    explanation: "Main income for labourers",
+    example: "Hourly pay for factory staff"
+  },
+  // 79
+  {
+    question: "Define Salary",
+    answer: "Fixed regular monthly payment to professional workers",
+    wrong1: "Pay based on hours worked only",
+    wrong2: "Bonus paid once a year only",
+    wrong3: "Profit share for partners",
+    explanation: "Common for office, teaching and management roles",
+    example: "Fixed monthly pay for teachers"
+  },
+  // 80
+  {
+    question: "Define Division of Labour",
+    answer: "Splitting production into separate tasks for different workers",
+    wrong1: "One worker making the whole product alone",
+    wrong2: "All workers doing identical jobs",
+    wrong3: "Government assigning all jobs",
+    explanation: "Increases efficiency and skill",
+    example: "One worker assembles phones, another tests them"
+  },
+  // 81
+  {
+    question: "Define Specialisation",
+    answer: "Individuals, firms or countries focusing on producing what they are best at",
+    wrong1: "Producing every good needed locally",
+    wrong2: "Buying all goods from foreign countries",
+    wrong3: "Making only luxury products",
+    explanation: "Boosts efficiency and trade",
+    example: "A country specialising in growing coffee"
+  },
+  // 82
+  {
+    question: "Define Living Standards",
+    answer: "The quality of life and access to goods, services and welfare",
+    wrong1: "Only the amount of money earned",
+    wrong2: "Only house size and car ownership",
+    wrong3: "Only GDP number alone",
+    explanation: "Includes health, education, safety and income",
+    example: "Good healthcare, clean water and safe housing"
+  },
+  // 83
+  {
+    question: "Define Disposable Income",
+    answer: "Income left after paying direct taxes, available for spending and saving",
+    wrong1: "Total salary before tax",
+    wrong2: "Money only saved in banks",
+    wrong3: "Income from government benefits only",
+    explanation: "Determines consumer demand",
+    example: "Monthly pay minus income tax = disposable income"
+  },
+  // 84
+  {
+    question: "Define Inflation Rate",
+    answer: "The percentage increase in the average price level each year",
+    wrong1: "Percentage rise in wages",
+    wrong2: "Growth rate of GDP",
+    wrong3: "Unemployment percentage",
+    explanation: "Used to measure price stability",
+    example: "3% annual inflation means prices rise 3% on average"
+  },
+  // 85
+  {
+    question: "Define Monopoly",
+    answer: "One single firm dominating an entire market with no close competitors",
+    wrong1: "Many small firms competing equally",
+    wrong2: "Government running all shops",
+    wrong3: "Lots of substitute goods available",
+    explanation: "Can set high prices and limit output",
+    example: "One company controlling all local utility supply"
+  },
+  // 86
+  {
+    question: "Define Perfect Competition",
+    answer: "Market with many small firms, identical goods, free entry and exit",
+    wrong1: "One firm controlling the whole market",
+    wrong2: "Only two large firms competing",
+    wrong3: "Government fixing all prices",
+    explanation: "Firms cannot influence market price",
+    example: "Small farmers selling identical crops"
+  },
+  // 87
+  {
+    question: "Define Oligopoly",
+    answer: "Market dominated by a small number of large firms",
+    wrong1: "One firm with total market control",
+    wrong2: "Thousands of tiny competing firms",
+    wrong3: "Free goods provided by government",
+    explanation: "Firms watch and react to competitors",
+    example: "Major airline companies competing in a market"
+  },
+  // 88
+  {
+    question: "Define Minimum Wage",
+    answer: "Legal lowest hourly pay employers can pay workers",
+    wrong1: "Highest wage allowed by law",
+    wrong2: "Average wage across all jobs",
+    wrong3: "Bonus payment for overtime",
+    explanation: "Protects low-income workers",
+    example: "Government sets $8 per hour as minimum pay"
+  },
+  // 89
+  {
+    question: "Define Maximum Price Control",
+    answer: "Legal highest price sellers can charge for a good",
+    wrong1: "Legal lowest price allowed",
+    wrong2: "Fixed price always above equilibrium",
+    wrong3: "Tax added to all goods",
+    explanation: "Set below equilibrium to make goods affordable",
+    example: "Government capping rent prices"
+  },
+  // 90
+  {
+    question: "Define Minimum Price Control",
+    answer: "Legal lowest price buyers can pay for a good",
+    wrong1: "Legal highest price allowed",
+    wrong2: "Price set below market level",
+    wrong3: "Subsidy given to consumers",
+    explanation: "Set above equilibrium to support producers",
+    example: "Guaranteed minimum price for farmers’ crops"
+  },
+  // 91
+  {
+    question: "Define Economic Boom",
+    answer: "Period of rapid economic growth, high demand, low unemployment",
+    wrong1: "Falling output and rising joblessness",
+    wrong2: "General fall in prices",
+    wrong3: "Government cutting all spending",
+    explanation: "Businesses expand and hire more workers",
+    example: "High consumer spending and new business openings"
+  },
+  // 92
+  {
+    question: "Define Recovery",
+    answer: "Period after recession where economic activity slowly improves",
+    wrong1: "Fast boom with maximum growth",
+    wrong2: "New recession starting",
+    wrong3: "Prices falling continuously",
+    explanation: "Unemployment slowly falls, demand rises",
+    example: "Shops start selling more, firms hire again"
+  },
+  // 93
+  {
+    question: "Define Raw Materials",
+    answer: "Unprocessed natural resources used to manufacture goods",
+    wrong1: "Finished consumer products",
+    wrong2: "Man-made factory tools",
+    wrong3: "Services provided by workers",
+    explanation: "Turned into goods during production",
+    example: "Cotton, iron ore, crude oil, wood"
+  },
+  // 94
+  {
+    question: "Define Value Added",
+    answer: "The extra worth a business creates by processing raw materials into goods",
+    wrong1: "Total cost of raw materials alone",
+    wrong2: "Total tax paid to government",
+    wrong3: "Interest paid on bank loans",
+    explanation: "Profit comes from adding value",
+    example: "Turning raw wood into furniture increases value"
+  },
+  // 95
+  {
+    question: "Define Consumer Spending",
+    answer: "Total money households spend on goods and services",
+    wrong1: "Total money saved by households",
+    wrong2: "Government public spending",
+    wrong3: "Business investment in machines",
+    explanation: "Largest part of aggregate demand",
+    example: "Households buying food, clothes and electronics"
+  },
+  // 96
+  {
+    question: "Define Investment (Economic Term)",
+    answer: "Firms spending money on capital goods like machines and factories",
+    wrong1: "People saving money in bank accounts",
+    wrong2: "Government spending on schools",
+    wrong3: "Money spent on daily food",
+    explanation: "Investment increases future production capacity",
+    example: "A company buying new factory robots"
+  },
+  // 97
+  {
+    question: "Define Aggregate Demand",
+    answer: "Total demand for all goods and services in an entire economy",
+    wrong1: "Demand for one single product",
+    wrong2: "Total supply of all goods only",
+    wrong3: "Government budget spending only",
+    explanation: "Includes consumption, investment, government spending, net exports",
+    example: "Total spending across all households, firms and government"
+  },
+  // 98
+  {
+    question: "Define Net Exports",
+    answer: "Value of exports minus value of imports",
+    wrong1: "Total exports alone",
+    wrong2: "Total imports alone",
+    wrong3: "Export tax minus import tariff",
+    explanation: "Positive net exports boost economic growth",
+    example: "Exports $200B − Imports $150B = Net Exports $50B"
+  },
+  // 99
+  {
+    question: "Define Government Spending",
+    answer: "Money the government spends on public goods, services and projects",
+    wrong1: "Tax income collected by the state",
+    wrong2: "Money saved by government",
+    wrong3: "Subsidies paid to foreign firms",
+    explanation: "Part of fiscal policy and aggregate demand",
+    example: "Spending on roads, hospitals, schools and defence"
+  },
+  // 100
+  {
+    question: "Define Sustainable Economic Growth",
+    answer: "Long-term economic growth without damaging the environment or future resources",
+    wrong1: "Fast growth using all natural resources quickly",
+    wrong2: "Growth only from population increase",
+    wrong3: "Growth caused purely by inflation",
+    explanation: "Balances economic progress and environmental protection",
+    example: "Using renewable energy while growing the economy"
+  }
+];

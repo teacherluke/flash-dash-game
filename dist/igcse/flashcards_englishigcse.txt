@@ -1,0 +1,1002 @@
+const englishFlashcards = [
+    // 1
+    {
+        question: "Define simile (IGCSE exam definition)",
+        answer: "Explicit comparison between two unrelated things using 'like' or 'as'",
+        wrong1: "Direct comparison without connecting words",
+        wrong2: "Giving human traits to non-human entities",
+        wrong3: "Exaggeration for dramatic emphasis",
+        explanation: "Core Paper 2 stylistic analysis term for 0500/0510.",
+        example: "Her smile was as bright as sunlight"
+    },
+    // 2
+    {
+        question: "Define metaphor (exam-standard)",
+        answer: "Implicit direct comparison stating one thing is another; no like/as",
+        wrong1: "Comparison using like or as",
+        wrong2: "Repetition of initial consonant sounds",
+        wrong3: "Sound words mimicking noises",
+        explanation: "Creates powerful imagery; high-value analysis term.",
+        example: "The classroom was a zoo"
+    },
+    // 3
+    {
+        question: "Define personification",
+        answer: "Attribution of human characteristics, emotions or actions to non-humans",
+        wrong1: "Extreme exaggeration for effect",
+        wrong2: "Contrast between two opposing ideas",
+        wrong3: "Repetition of vowel sounds",
+        explanation: "Used to build mood and empathy in descriptive texts.",
+        example: "The old house groaned in the storm"
+    },
+    // 4
+    {
+        question: "Define alliteration",
+        answer: "Repetition of identical initial consonant sounds in adjacent words",
+        wrong1: "Repetition of vowel sounds",
+        wrong2: "Words that sound like their meaning",
+        wrong3: "Direct metaphorical comparison",
+        explanation: "Creates rhythm, emphasis, or tension in prose/poetry.",
+        example: "Savage silver sparks"
+    },
+    // 5
+    {
+        question: "Define assonance",
+        answer: "Repetition of similar vowel sounds within nearby words",
+        wrong1: "Repeating starting consonant sounds",
+        wrong2: "Giving objects human qualities",
+        wrong3: "Opposing ideas for effect",
+        explanation: "Subtle sound device for flow and atmosphere.",
+        example: "The rain in Spain falls mainly"
+    },
+    // 6
+    {
+        question: "Define onomatopoeia",
+        answer: "Words that phonetically imitate the sound they represent",
+        wrong1: "Comparison using like/as",
+        wrong2: "Repetition of consonant clusters",
+        wrong3: "Exaggerated statement",
+        explanation: "Appeals to auditory sense in descriptive writing.",
+        example: "Buzz, crash, hiss, thud"
+    },
+    // 7
+    {
+        question: "Define hyperbole",
+        answer: "Deliberate extreme exaggeration for emphasis or effect",
+        wrong1: "Understatement to weaken impact",
+        wrong2: "Human traits to objects",
+        wrong3: "Sound imitation words",
+        explanation: "Used for humour, drama, or strong emotion.",
+        example: "I’ve waited forever for this moment"
+    },
+    // 8
+    {
+        question: "Define understatement",
+        answer: "Presentation of something as less significant than it is",
+        wrong1: "Extreme over-exaggeration",
+        wrong2: "Direct metaphor",
+        wrong3: "Repetition for emphasis",
+        explanation: "Creates irony or subtle emphasis in texts.",
+        example: "The hurricane was a bit windy"
+    },
+    // 9
+    {
+        question: "Define oxymoron",
+        answer: "Pair of contradictory words placed together for effect",
+        wrong1: "Extended metaphor over a text",
+        wrong2: "Repetition of phrases",
+        wrong3: "Comparison using like/as",
+        explanation: "Highlights tension, paradox, or complexity.",
+        example: "Deafening silence, bitter sweet"
+    },
+    // 10
+    {
+        question: "Define irony (verbal)",
+        answer: "Saying the opposite of what is truly meant for effect",
+        wrong1: "Literal truth with no hidden meaning",
+        wrong2: "Giving objects human traits",
+        wrong3: "Sound imitation device",
+        explanation: "Key for tone and inference questions Paper 2.",
+        example: "Saying ‘Great weather!’ during a storm"
+    },
+    // 11
+    {
+        question: "Define tone in literature",
+        answer: "Author’s attitude towards the subject/audience (e.g. sarcastic, urgent)",
+        wrong1: "Overall feeling/mood of the text",
+        wrong2: "Sequence of events",
+        wrong3: "Central message of the text",
+        explanation: "Must identify and analyse tone for 0500 high marks.",
+        example: "Formal, sympathetic, critical, humorous"
+    },
+    // 12
+    {
+        question: "Define mood in literature",
+        answer: "Emotional atmosphere/feeling created for the reader",
+        wrong1: "Author’s personal opinion",
+        wrong2: "Structure of paragraphs",
+        wrong3: "Central argument",
+        explanation: "Created by setting, language, and imagery.",
+        example: "Gloomy, tense, peaceful, nostalgic"
+    },
+    // 13
+    {
+        question: "Define theme (IGCSE definition)",
+        answer: "Central universal message, idea or insight of a text",
+        wrong1: "Summary of plot events",
+        wrong2: "Author’s biography",
+        wrong3: "Literal description of setting",
+        explanation: "Required for high-level comprehension responses.",
+        example: "Themes: love, loss, justice, identity"
+    },
+    // 14
+    {
+        question: "Define motif",
+        answer: "Recurring symbol, image, or idea that reinforces theme",
+        wrong1: "Main plot twist",
+        wrong2: "Type of simile",
+        wrong3: "Author’s tone",
+        explanation: "Common in prose and poetry analysis.",
+        example: "Light/dark as a motif for good/evil"
+    },
+    // 15
+    {
+        question: "Define narrative perspective",
+        answer: "The point of view from which a story is told",
+        wrong1: "Author’s tone",
+        wrong2: "Emotional atmosphere",
+        wrong3: "Central theme",
+        explanation: "First/third person shapes reader understanding.",
+        example: "First-person: ‘I’; Third-person: ‘he/she/they’"
+    },
+    // 16
+    {
+        question: "Purpose of first-person narration",
+        answer: "Creates intimacy, subjectivity, and personal voice",
+        wrong1: "Shows all characters’ thoughts objectively",
+        wrong2: "Makes text formal and factual",
+        wrong3: "Removes emotion from narration",
+        explanation: "Common in memoirs, diaries, and narratives.",
+        example: "Reader sees only the narrator’s perspective"
+    },
+    // 17
+    {
+        question: "Purpose of third-person omniscient",
+        answer: "All-knowing view; reveals multiple characters’ thoughts",
+        wrong1: "Only narrator’s feelings are shared",
+        wrong2: "Limited to one character’s view",
+        wrong3: "Factual report style only",
+        explanation: "Used for epic and narrative storytelling.",
+        example: "Novels with multiple character storylines"
+    },
+    // 18
+    {
+        question: "Define setting",
+        answer: "Time, place, and social context of a text",
+        wrong1: "Central conflict",
+        wrong2: "Author’s message",
+        wrong3: "Type of literary device",
+        explanation: "Setting shapes mood, conflict, and character behaviour.",
+        example: "19th-century London, wartime France"
+    },
+    // 19
+    {
+        question: "Define conflict (literary)",
+        answer: "Struggle between opposing forces driving plot",
+        wrong1: "Resolution of the story",
+        wrong2: "Descriptive language technique",
+        wrong3: "Author’s tone",
+        explanation: "Internal (character) or external (nature/society).",
+        example: "Man vs self, man vs society"
+    },
+    // 20
+    {
+        question: "Define climax of a narrative",
+        answer: "Turning point/highest tension point in plot",
+        wrong1: "Introduction of setting",
+        wrong2: "Final resolution",
+        wrong3: "Background exposition",
+        explanation: "Key structural term for narrative analysis.",
+        example: "Main character faces greatest challenge"
+    },
+    // 21
+    {
+        question: "Command word: State",
+        answer: "Give a brief, factual answer without explanation",
+        wrong1: "Explain in detail with reasons",
+        wrong2: "Evaluate strengths/weaknesses",
+        wrong3: "Compare two ideas",
+        explanation: "1-mark question instruction Paper 1/2.",
+        example: "State the age of the narrator"
+    },
+    // 22
+    {
+        question: "Command word: Describe",
+        answer: "Provide details about appearance, feeling, or features",
+        wrong1: "Give only factual data",
+        wrong2: "Argue a position",
+        wrong3: "Summarise briefly",
+        explanation: "Requires sensory or detailed language.",
+        example: "Describe the mood of the scene"
+    },
+    // 23
+    {
+        question: "Command word: Explain",
+        answer: "Give reasons and cause-effect to support an answer",
+        wrong1: "List facts only",
+        wrong2: "Brief one-word answer",
+        wrong3: "Evaluate effectiveness",
+        explanation: "2–3 mark question standard IGCSE.",
+        example: "Explain why the character acted this way"
+    },
+    // 24
+    {
+        question: "Command word: Analyse",
+        answer: "Examine in depth; link language/structure to effect",
+        wrong1: "Summarise the text",
+        wrong2: "List literary devices",
+        wrong3: "Give brief facts",
+        explanation: "High-mark skill for Paper 2 Section B.",
+        example: "Analyse how language creates tension"
+    },
+    // 25
+    {
+        question: "Command word: Evaluate",
+        answer: "Judge effectiveness; give strengths/limitations",
+        wrong1: "Describe only",
+        wrong2: "List facts",
+        wrong3: "Summarise events",
+        explanation: "Top-band skill for 0500 extended responses.",
+        example: "Evaluate the effectiveness of the ending"
+    },
+    // 26
+    {
+        question: "Command word: Compare",
+        answer: "Identify similarities AND differences between two things",
+        wrong1: "Describe one item only",
+        wrong2: "Evaluate value",
+        wrong3: "Give brief facts",
+        explanation: "Must use linking words: similarly, however.",
+        example: "Compare two characters’ attitudes"
+    },
+    // 27
+    {
+        question: "Command word: Summarise",
+        answer: "Give main points concisely without detail/quotes",
+        wrong1: "Copy text directly",
+        wrong2: "Analyse language",
+        wrong3: "Evaluate tone",
+        explanation: "Paper 1 core skill: own words only.",
+        example: "Summarise the writer’s argument"
+    },
+    // 28
+    {
+        question: "Define inference (IGCSE comprehension)",
+        answer: "Reading between lines; deduce unstated meaning",
+        wrong1: "Copy literal facts from text",
+        wrong2: "Describe vocabulary only",
+        wrong3: "List plot points",
+        explanation: "Critical for 0510 reading high marks.",
+        example: "Infer the character’s hidden feelings"
+    },
+    // 29
+    {
+        question: "Define connotation",
+        answer: "Hidden emotional/cultural meaning of a word",
+        wrong1: "Literal dictionary definition",
+        wrong2: "Type of simile",
+        wrong3: "Sentence structure term",
+        explanation: "Key for word choice analysis.",
+        example: "‘Home’ = warmth; ‘house’ = neutral"
+    },
+    // 30
+    {
+        question: "Define denotation",
+        answer: "Literal/dictionary meaning of a word",
+        wrong1: "Emotional hidden meaning",
+        wrong2: "Author’s tone",
+        wrong3: "Figurative language",
+        explanation: "Direct factual meaning, no emotion.",
+        example: "‘Snake’ = literal reptile"
+    },
+    // 31
+    {
+        question: "Define discourse marker",
+        answer: "Word/phrase linking ideas for coherence (however, therefore)",
+        wrong1: "Descriptive adjective",
+        wrong2: "Figurative device",
+        wrong3: "Narrative character term",
+        explanation: "Vital for coherent writing Paper 1.",
+        example: "However, furthermore, in contrast"
+    },
+    // 32
+    {
+        question: "Define formal language",
+        answer: "Standard, academic, impersonal language for professional contexts",
+        wrong1: "Colloquial, casual speech",
+        wrong2: "Slang and contractions",
+        wrong3: "Conversational tone",
+        explanation: "Required for reports, arguments, formal letters.",
+        example: "‘Therefore’ not ‘so’; no contractions"
+    },
+    // 33
+    {
+        question: "Define informal language",
+        answer: "Casual, conversational language with contractions/slang",
+        wrong1: "Academic impersonal tone",
+        wrong2: "Complex formal structure",
+        wrong3: "Factual report style",
+        explanation: "Used for emails to friends, narratives, speeches.",
+        example: "‘Don’t’, ‘kids’, ‘stuff’"
+    },
+    // 34
+    {
+        question: "Define emotive language",
+        answer: "Language designed to trigger strong feelings in reader",
+        wrong1: "Factual neutral language",
+        wrong2: "Literal descriptive words",
+        wrong3: "Statistical data only",
+        explanation: "Used in persuasion and argument.",
+        example: "Tragic, innocent, horrific, brave"
+    },
+    // 35
+    {
+        question: "Define persuasive techniques",
+        answer: "Language tools to convince reader of an argument",
+        wrong1: "Narrative plot devices",
+        wrong2: "Poetic sound devices",
+        wrong3: "Characterisation tools",
+        explanation: "Core for Paper 1 directed writing/essays.",
+        example: "Rhetorical questions, facts, anecdotes"
+    },
+    // 36
+    {
+        question: "Define rhetorical question",
+        answer: "Question not needing answer; used for persuasion/impact",
+        wrong1: "Literal question requiring response",
+        wrong2: "Exaggeration device",
+        wrong3: "Sound technique",
+        explanation: "Powerful for argument and speech writing.",
+        example: "How can we ignore this crisis?"
+    },
+    // 37
+    {
+        question: "Define anecdote",
+        answer: "Short personal story to illustrate a point",
+        wrong1: "Statistical data",
+        wrong2: "Formal report fact",
+        wrong3: "Figurative device",
+        explanation: "Builds trust and engagement in writing.",
+        example: "Personal experience to support argument"
+    },
+    // 38
+    {
+        question: "Define fact vs opinion",
+        answer: "Fact = provable true; Opinion = personal belief",
+        wrong1: "Both are personal views",
+        wrong2: "Facts are debatable",
+        wrong3: "Opinions are proven true",
+        explanation: "Key for non-fiction comprehension.",
+        example: "Fact: Earth orbits sun; Opinion: Pizza is best"
+    },
+    // 39
+    {
+        question: "Define structure in writing",
+        answer: "Organisation of paragraphs, ideas, and text sequence",
+        wrong1: "Word choice and vocabulary",
+        wrong2: "Figurative language",
+        wrong3: "Author’s tone",
+        explanation: "Structure shapes meaning and impact.",
+        example: "Introduction → evidence → conclusion"
+    },
+    // 40
+    {
+        question: "Purpose of short sentences",
+        answer: "Create tension, emphasis, urgency, or shock",
+        wrong1: "Add description and detail",
+        wrong2: "Slow down the narrative",
+        wrong3: "Build complex ideas",
+        explanation: "High-impact structural technique.",
+        example: "He stopped. She waited. Silence."
+    },
+    // 41
+    {
+        question: "Purpose of long complex sentences",
+        answer: "Add detail, description, flow, or formality",
+        wrong1: "Create sharp tension",
+        wrong2: "Emphasise single ideas",
+        wrong3: "Shorten reading time",
+        explanation: "Used for setting, explanation, description.",
+        example: "Beneath the glowing moon, the forest slept quietly"
+    },
+    // 42
+    {
+        question: "Define paragraph structure (PEEL)",
+        answer: "Point, Evidence, Explain, Link – academic paragraph structure",
+        wrong1: "Random idea organisation",
+        wrong2: "Narrative plot sequence",
+        wrong3: "Poetic stanza pattern",
+        explanation: "Mandatory for high-band IGCSE essays.",
+        example: "Used for all argument and analysis responses"
+    },
+    // 43
+    {
+        question: "Define thesis statement",
+        answer: "Main argument/claim of an essay in one sentence",
+        wrong1: "Summary of plot",
+        wrong2: "Descriptive detail",
+        wrong3: "Figurative device",
+        explanation: "Required in essay introductions 0500.",
+        example: "Social media harms adolescent mental health"
+    },
+    // 44
+    {
+        question: "Define topic sentence",
+        answer: "First sentence of a paragraph stating main idea",
+        wrong1: "Final concluding sentence",
+        wrong2: "Quotation from text",
+        wrong3: "Descriptive example",
+        explanation: "Ensures clarity and coherence in writing.",
+        example: "First reason to ban single-use plastic is pollution"
+    },
+    // 45
+    {
+        question: "Define pronoun",
+        answer: "Word replacing noun (he, she, they, it)",
+        wrong1: "Describing word",
+        wrong2: "Action word",
+        wrong3: "Connecting word",
+        explanation: "Grammar term for accuracy in writing.",
+        example: "She went to the park"
+    },
+    // 46
+    {
+        question: "Define adjective",
+        answer: "Word describing a noun/pronoun (quality, state)",
+        wrong1: "Action word",
+        wrong2: "Connecting word",
+        wrong3: "Replacement for noun",
+        explanation: "Adds detail in descriptive writing.",
+        example: "Red apple, happy child"
+    },
+    // 47
+    {
+        question: "Define adverb",
+        answer: "Word modifying verb/adjective (how, when, where)",
+        wrong1: "Describing noun",
+        wrong2: "Action word",
+        wrong3: "Connecting clause",
+        explanation: "Improves precision in writing.",
+        example: "Ran quickly, very happy"
+    },
+    // 48
+    {
+        question: "Define conjunction",
+        answer: "Word connecting clauses/phrases (and, but, because)",
+        wrong1: "Describing word",
+        wrong2: "Action word",
+        wrong3: "Replacement noun",
+        explanation: "Builds complex sentences.",
+        example: "I walked but it rained"
+    },
+    // 49
+    {
+        question: "Define active voice",
+        answer: "Subject performs the action (clear + direct)",
+        wrong1: "Subject receives the action",
+        wrong2: "Passive vague structure",
+        wrong3: "Formal impersonal tone only",
+        explanation: "Preferred for clarity in narratives/essays.",
+        example: "The dog chased the ball"
+    },
+    // 50
+    {
+        question: "Define passive voice",
+        answer: "Subject receives the action (formal/impersonal)",
+        wrong1: "Subject does the action",
+        wrong2: "Casual conversational tone",
+        wrong3: "Short emphatic structure",
+        explanation: "Used in reports, formal writing.",
+        example: "The ball was chased by the dog"
+    },
+    // 51
+    {
+        question: "Define clause (independent)",
+        answer: "Complete sentence with subject + verb; stands alone",
+        wrong1: "Incomplete sentence fragment",
+        wrong2: "Phrase without verb",
+        wrong3: "Single word unit",
+        explanation: "Grammar foundation for sentence accuracy.",
+        example: "She laughed loudly"
+    },
+    // 52
+    {
+        question: "Define clause (dependent)",
+        answer: "Incomplete clause; needs independent clause to make sense",
+        wrong1: "Full standalone sentence",
+        wrong2: "Phrase with no subject/verb",
+        wrong3: "Single word",
+        explanation: "Used for complex sentence structure.",
+        example: "When the bell rang..."
+    },
+    // 53
+    {
+        question: "Define compound sentence",
+        answer: "Two independent clauses joined by conjunction/semicolon",
+        wrong1: "One independent clause only",
+        wrong2: "Incomplete fragment",
+        wrong3: "Phrase without verb",
+        explanation: "Adds fluency to writing.",
+        example: "I studied hard and I passed the test"
+    },
+    // 54
+    {
+        question: "Define complex sentence",
+        answer: "One independent + one/more dependent clauses",
+        wrong1: "Two simple sentences joined",
+        wrong2: "Single clause only",
+        wrong3: "Fragment",
+        explanation: "Shows sophistication for high marks.",
+        example: "Although it rained, we went out"
+    },
+    // 55
+    {
+        question: "Define sentence fragment",
+        answer: "Incomplete sentence missing subject/verb",
+        wrong1: "Full complete sentence",
+        wrong2: "Complex structure",
+        wrong3: "Two independent clauses",
+        explanation: "Grammatical error to avoid in exams.",
+        example: "Running quickly down the street"
+    },
+    // 56
+    {
+        question: "Define tautology",
+        answer: "Unnecessary repetition of meaning (e.g. true fact)",
+        wrong1: "Effective repetition for emphasis",
+        wrong2: "Figurative device",
+        wrong3: "Persuasive technique",
+        explanation: "Weakens writing; avoid in IGCSE.",
+        example: "Past experience, end result"
+    },
+    // 57
+    {
+        question: "Define ambiguity",
+        answer: "Unclear phrasing with two or more meanings",
+        wrong1: "Clear precise language",
+        wrong2: "Emotive persuasive word",
+        wrong3: "Figurative comparison",
+        explanation: "Grammatical/writing error to avoid.",
+        example: "I saw the man with the telescope"
+    },
+    // 58
+    {
+        question: "Define register",
+        answer: "Language style suited to audience/purpose",
+        wrong1: "Type of literary device",
+        wrong2: "Narrative structure",
+        wrong3: "Author’s tone",
+        explanation: "Key for directed writing (letters, speeches).",
+        example: "Formal for principal; informal for friend"
+    },
+    // 59
+    {
+        question: "Define audience (writing)",
+        answer: "Target reader/group for a text",
+        wrong1: "Author of the text",
+        wrong2: "Narrator",
+        wrong3: "Central character",
+        explanation: "Determines tone, register, language.",
+        example: "Children, adults, teachers, officials"
+    },
+    // 60
+    {
+        question: "Define purpose (writing)",
+        answer: "Reason for writing (inform, persuade, describe)",
+        wrong1: "Central theme",
+        wrong2: "Narrative conflict",
+        wrong3: "Figurative device",
+        explanation: "Guides structure and language choice.",
+        example: "To argue, to entertain, to advise"
+    },
+    // 61
+    {
+        question: "Define descriptive writing",
+        answer: "Writing using sensory details to create vivid images",
+        wrong1: "Persuading reader to act",
+        wrong2: "Arguing a position",
+        wrong3: "Listing facts",
+        explanation: "Paper 1 Section 1 core task.",
+        example: "Describing a place, event, person"
+    },
+    // 62
+    {
+        question: "Define narrative writing",
+        answer: "Story writing with plot, characters, setting, structure",
+        wrong1: "Argumentative essay",
+        wrong2: "Factual report",
+        wrong3: "Persuasive speech",
+        explanation: "Creative writing task Paper 1.",
+        example: "Short story, personal narrative"
+    },
+    // 63
+    {
+        question: "Define argumentative writing",
+        answer: "Writing defending a position with evidence and logic",
+        wrong1: "Creative story",
+        wrong2: "Descriptive prose",
+        wrong3: "Personal diary",
+        explanation: "0500 essay task requiring balance.",
+        example: "Should mobile phones be banned in schools?"
+    },
+    // 64
+    {
+        question: "Define counter-argument",
+        answer: "Opposing view addressed then refuted",
+        wrong1: "Main supporting point",
+        wrong2: "Descriptive example",
+        wrong3: "Narrative subplot",
+        explanation: "Adds balance and sophistication essays.",
+        example: "Some say phones help learning, but they cause distraction"
+    },
+    // 65
+    {
+        question: "Define directed writing",
+        answer: "Writing to set task: letter, speech, article, report",
+        wrong1: "Free creative story",
+        wrong2: "Unstructured essay",
+        wrong3: "Poem",
+        explanation: "Paper 1 core assessment 0510/0500.",
+        example: "Formal letter, speech, newspaper article"
+    },
+    // 66
+    {
+        question: "Define report writing structure",
+        answer: "Headings, subheadings, formal tone, objective facts",
+        wrong1: "Conversational slang",
+        wrong2: "Figurative language",
+        wrong3: "Narrative plot",
+        explanation: "Formal, impersonal, clear structure.",
+        example: "School event report, survey analysis"
+    },
+    // 67
+    {
+        question: "Define speech writing features",
+        answer: "Direct address, rhetorical questions, emotive language",
+        wrong1: "Impersonal formal report style",
+        wrong2: "Short fragmented notes",
+        wrong3: "Poetic devices only",
+        explanation: "Engaging, direct, persuasive tone.",
+        example: "My friends, let us consider..."
+    },
+    // 68
+    {
+        question: "Define article writing features",
+        answer: "Catchy headline, paragraphs, informal/formal mix",
+        wrong1: "Bullet points only",
+        wrong2: "Strict report headings",
+        wrong3: "Poetic stanzas",
+        explanation: "Newspaper/magazine style.",
+        example: "School magazine article"
+    },
+    // 69
+    {
+        question: "Define formal letter features",
+        answer: "Sender address, date, receiver address, formal close",
+        wrong1: "Slang and contractions",
+        wrong2: "Headline and subheadings",
+        wrong3: "Conversational tone",
+        explanation: "Required layout for IGCSE marks.",
+        example: "Letter to principal/organisation"
+    },
+    // 70
+    {
+        question: "Define informal email features",
+        answer: "Casual tone, contractions, friendly closing",
+        wrong1: "Strict formal layout",
+        wrong2: "Impersonal factual tone",
+        wrong3: "Headings and subheadings",
+        explanation: "To friends/peers.",
+        example: "Hi! Hope you’re well..."
+    },
+    // 71
+    {
+        question: "Define coherence in writing",
+        answer: "Logical flow of ideas with clear links",
+        wrong1: "Random unconnected ideas",
+        wrong2: "Repetitive phrasing",
+        wrong3: "Short fragments only",
+        explanation: "Achieved with paragraphs and discourse markers.",
+        example: "Ideas connect smoothly throughout text"
+    },
+    // 72
+    {
+        question: "Define cohesion in writing",
+        answer: "Grammatical/lexical linking of sentences",
+        wrong1: "Creative plot twists",
+        wrong2: "Descriptive vocabulary",
+        wrong3: "Figurative devices",
+        explanation: "Pronouns, synonyms, linkers.",
+        example: "Using ‘this’ ‘such’ ‘however’"
+    },
+    // 73
+    {
+        question: "Define vocabulary range",
+        answer: "Varied academic vocabulary avoiding repetition",
+        wrong1: "Simple repeated words",
+        wrong2: "Slang and informal terms",
+        wrong3: "Only basic adjectives",
+        explanation: "High-band writing skill IGCSE.",
+        example: "‘Delighted’ not just ‘happy’"
+    },
+    // 74
+    {
+        question: "Define proofreading",
+        answer: "Checking for spelling, grammar, punctuation errors",
+        wrong1: "Adding more description",
+        wrong2: "Changing plot",
+        wrong3: "Increasing word count",
+        explanation: "Mandatory to lose no marks in exam.",
+        example: "Fix typos, missing commas"
+    },
+    // 75
+    {
+        question: "Define comma splice",
+        answer: "Error: two sentences joined only by a comma",
+        wrong1: "Correct compound sentence",
+        wrong2: "Complex sentence structure",
+        wrong3: "Effective stylistic choice",
+        explanation: "Serious grammar error to avoid.",
+        example: "I ran, I fell"
+    },
+    // 76
+    {
+        question: "Purpose of colon",
+        answer: "Introduce list, explanation, or quotation",
+        wrong1: "Join two equal sentences",
+        wrong2: "Mark pause in list",
+        wrong3: "Show possession",
+        explanation: "Punctuation for clarity.",
+        example: "You need three items: pen, paper, ruler"
+    },
+    // 77
+    {
+        question: "Purpose of semicolon",
+        answer: "Link closely related independent clauses",
+        wrong1: "Introduce list",
+        wrong2: "Show possession",
+        wrong3: "Mark short pause",
+        explanation: "Advanced punctuation for sophistication.",
+        example: "She loved art; he loved music"
+    },
+    // 78
+    {
+        question: "Purpose of apostrophe",
+        answer: "Show possession or missing letters (contraction)",
+        wrong1: "Pluralise nouns",
+        wrong2: "End sentence",
+        wrong3: "Introduce quotes",
+        explanation: "Common exam error area.",
+        example: "John’s book; don’t (do not)"
+    },
+    // 79
+    {
+        question: "Define dialogue punctuation",
+        answer: "Quotation marks, commas before speech, capital letters",
+        wrong1: "No punctuation needed",
+        wrong2: "Only periods inside quotes",
+        wrong3: "Lowercase after quotes",
+        explanation: "Required for narrative writing.",
+        example: "She said, “Hello.”"
+    },
+    // 80
+    {
+        question: "Define foreshadowing",
+        answer: "Hinting at future events to build tension",
+        wrong1: "Describing past events",
+        wrong2: "Direct metaphor",
+        wrong3: "Sound device",
+        explanation: "Narrative technique for suspense.",
+        example: "Dark clouds warning of a storm"
+    },
+    // 81
+    {
+        question: "Define flashback",
+        answer: "Scene interrupting timeline to show past event",
+        wrong1: "Hint at future plot",
+        wrong2: "Descriptive setting",
+        wrong3: "Persuasive technique",
+        explanation: "Reveals character backstory.",
+        example: "Character remembers childhood event"
+    },
+    // 82
+    {
+        question: "Define pathos",
+        answer: "Persuasive appeal to reader’s emotions",
+        wrong1: "Appeal to logic/facts",
+        wrong2: "Appeal to authority",
+        wrong3: "Figurative device",
+        explanation: "Used in speeches and arguments.",
+        example: "Story of suffering to gain support"
+    },
+    // 83
+    {
+        question: "Define logos",
+        answer: "Persuasive appeal to logic/reason/facts",
+        wrong1: "Emotional appeal",
+        wrong2: "Appeal to authority",
+        wrong3: "Sound device",
+        explanation: "Uses stats, data, cause-effect.",
+        example: "70% of students support the rule"
+    },
+    // 84
+    {
+        question: "Define ethos",
+        answer: "Persuasive appeal to credibility/authority",
+        wrong1: "Emotional appeal",
+        wrong2: "Logical facts only",
+        wrong3: "Figurative language",
+        explanation: "Uses expert opinion, trustworthiness.",
+        example: "Doctor recommends this treatment"
+    },
+    // 85
+    {
+        question: "Define stereotype",
+        answer: "Oversimplified generalised image of a group",
+        wrong1: "Individual unique character",
+        wrong2: "Figurative device",
+        wrong3: "Persuasive fact",
+        explanation: "Common in character analysis.",
+        example: "All athletes are not academic"
+    },
+    // 86
+    {
+        question: "Define characterisation",
+        answer: "Way writer reveals personality of characters",
+        wrong1: "Setting description",
+        wrong2: "Plot structure",
+        wrong3: "Figurative device",
+        explanation: "Through actions, speech, thoughts.",
+        example: "Kind, brave, selfish, anxious"
+    },
+    // 87
+    {
+        question: "Define dynamic character",
+        answer: "Character who changes/develops in story",
+        wrong1: "Character who stays same",
+        wrong2: "Minor background character",
+        wrong3: "Narrator only",
+        explanation: "Key for narrative analysis.",
+        example: "Character learns lesson and grows"
+    },
+    // 88
+    {
+        question: "Define static character",
+        answer: "Character who remains unchanged throughout",
+        wrong1: "Character who grows/develops",
+        wrong2: "Main protagonist",
+        wrong3: "Narrator",
+        explanation: "Often minor or symbolic characters.",
+        example: "Consistently wise mentor"
+    },
+    // 89
+    {
+        question: "Define protagonist",
+        answer: "Main character/hero of narrative",
+        wrong1: "Villain/opposing character",
+        wrong2: "Minor background figure",
+        wrong3: "Narrator only",
+        explanation: "Central to plot and conflict.",
+        example: "Harry Potter, main hero"
+    },
+    // 90
+    {
+        question: "Define antagonist",
+        answer: "Character/force opposing protagonist",
+        wrong1: "Main hero",
+        wrong2: "Narrator",
+        wrong3: "Minor character",
+        explanation: "Creates central conflict.",
+        example: "Villain, harsh society, nature"
+    },
+    // 91
+    {
+        question: "Define objective writing",
+        answer: "Impersonal, factual, no bias/emotion",
+        wrong1: "Personal opinion and emotion",
+        wrong2: "Persuasive argument",
+        wrong3: "Descriptive imagery",
+        explanation: "Used in reports, news, summaries.",
+        example: "The meeting lasted two hours"
+    },
+    // 92
+    {
+        question: "Define subjective writing",
+        answer: "Personal opinion, feelings, bias included",
+        wrong1: "Factual impersonal data",
+        wrong2: "Objective report",
+        wrong3: "Statistics only",
+        explanation: "Used in reviews, narratives, blogs.",
+        example: "The film was amazing and inspiring"
+    },
+    // 93
+    {
+        question: "Define tautology vs effective repetition",
+        answer: "Tautology = redundant; Repetition = intentional emphasis",
+        wrong1: "Both are errors",
+        wrong2: "Both are persuasive",
+        wrong3: "No difference",
+        explanation: "Repetition is stylistic; tautology is mistake.",
+        example: "Repetition: ‘Never, never give up’"
+    },
+    // 94
+    {
+        question: "Define parallel structure",
+        answer: "Repeating grammatical pattern for rhythm/emphasis",
+        wrong1: "Random sentence structure",
+        wrong2: "Fragmented sentences",
+        wrong3: "Complex vocabulary only",
+        explanation: "Advanced writing skill for speeches/essays.",
+        example: "I came, I saw, I conquered"
+    },
+    // 95
+    {
+        question: "Define nuance",
+        answer: "Subtle difference in meaning/feeling/tone",
+        wrong1: "Obvious clear meaning",
+        wrong2: "Literal fact",
+        wrong3: "Figurative device",
+        explanation: "High-level analysis term 0500.",
+        example: "Slight tone shift from sad to bitter"
+    },
+    // 96
+    {
+        question: "Define satire",
+        answer: "Use of irony/humour to criticise flaws/society",
+        wrong1: "Serious emotional story",
+        wrong2: "Factual report",
+        wrong3: "Descriptive prose",
+        explanation: "Higher-level text analysis.",
+        example: "Mocking unfair rules or politicians"
+    },
+    // 97
+    {
+        question: "Define euphemism",
+        answer: "Mild word replacing harsh/unpleasant one",
+        wrong1: "Harsh direct language",
+        wrong2: "Exaggeration",
+        wrong3: "Sound device",
+        explanation: "Used for politeness or sensitivity.",
+        example: "Passed away instead of died"
+    },
+    // 98
+    {
+        question: "Define precise vocabulary",
+        answer: "Exact specific word avoiding vagueness",
+        wrong1: "Vague general words",
+        wrong2: "Repetitive simple terms",
+        wrong3: "Slang words",
+        explanation: "Maximises impact in writing.",
+        example: "‘Dashed’ not just ‘went quickly’"
+    },
+    // 99
+    {
+        question: "Define text cohesion tools",
+        answer: "Synonyms, pronouns, linkers, reference words",
+        wrong1: "Figurative devices",
+        wrong2: "Narrative plot points",
+        wrong3: "Persuasive appeals",
+        explanation: "Creates smooth professional writing.",
+        example: "This, such, these, however"
+    },
+    // 100
+    {
+        question: "Top IGCSE English exam rule",
+        answer: "Answer the question precisely; use PEA/PEEL; proofread",
+        wrong1: "Write as much as possible",
+        wrong2: "Copy text directly",
+        wrong3: "Use only simple sentences",
+        explanation: "Follow command words for maximum marks.",
+        example: "Analyse don’t just describe; explain don’t list"
+    }
+];

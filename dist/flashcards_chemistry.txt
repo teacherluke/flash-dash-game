@@ -1,0 +1,1002 @@
+const chemistryFlashcards = [
+    // 1
+    {
+        question: "What is an atom?",
+        answer: "The smallest unit of an element that retains its chemical properties",
+        wrong1: "A group of bonded atoms",
+        wrong2: "A charged particle",
+        wrong3: "A mixture of elements",
+        explanation: "Atoms are the building blocks of all matter.",
+        example: "Oxygen atom, iron atom"
+    },
+    // 2
+    {
+        question: "What is a molecule?",
+        answer: "Two or more atoms bonded together",
+        wrong1: "A single charged atom",
+        wrong2: "A pure element",
+        wrong3: "A type of mixture",
+        explanation: "Molecules can be elements or compounds.",
+        example: "O₂ (oxygen), H₂O (water)"
+    },
+    // 3
+    {
+        question: "What is an element?",
+        answer: "A pure substance made of only one type of atom",
+        wrong1: "Two or more elements combined",
+        wrong2: "A substance that can be separated physically",
+        wrong3: "A charged particle",
+        explanation: "Elements are listed on the Periodic Table.",
+        example: "Carbon (C), Hydrogen (H)"
+    },
+    // 4
+    {
+        question: "What is a compound?",
+        answer: "Two or more different elements chemically bonded",
+        wrong1: "A single type of atom",
+        wrong2: "A mixture of substances",
+        wrong3: "An unbonded group of atoms",
+        explanation: "Compounds have fixed chemical formulas.",
+        example: "NaCl (salt), H₂O (water)"
+    },
+    // 5
+    {
+        question: "What is a mixture?",
+        answer: "Two or more substances physically combined, not bonded",
+        wrong1: "A chemically bonded substance",
+        wrong2: "A pure element",
+        wrong3: "A fixed-ratio compound",
+        explanation: "Mixtures can be separated by physical means.",
+        example: "Air, salt water, sand and water"
+    },
+    // 6
+    {
+        question: "What is a homogeneous mixture?",
+        answer: "A mixture with uniform composition throughout",
+        wrong1: "A mixture with visibly different parts",
+        wrong2: "A chemically bonded compound",
+        wrong3: "A pure element",
+        explanation: "Also called a solution.",
+        example: "Salt water, air, sugar dissolved in water"
+    },
+    // 7
+    {
+        question: "What is a heterogeneous mixture?",
+        answer: "A mixture with non-uniform, visibly distinct parts",
+        wrong1: "A uniform solution",
+        wrong2: "A pure compound",
+        wrong3: "A single element",
+        explanation: "Different components can be seen.",
+        example: "Sand and water, salad, oil and water"
+    },
+    // 8
+    {
+        question: "What are the three states of matter?",
+        answer: "Solid, liquid, gas",
+        wrong1: "Atom, element, compound",
+        wrong2: "Metal, non-metal, metalloid",
+        wrong3: "Proton, neutron, electron",
+        explanation: "Matter changes state with temperature/pressure.",
+        example: "Ice (solid), water (liquid), steam (gas)"
+    },
+    // 9
+    {
+        question: "What is melting?",
+        answer: "Solid to liquid (heat added)",
+        wrong1: "Liquid to solid",
+        wrong2: "Liquid to gas",
+        wrong3: "Gas to liquid",
+        explanation: "Melting point = temperature at which it occurs.",
+        example: "Ice → water"
+    },
+    // 10
+    {
+        question: "What is freezing?",
+        answer: "Liquid to solid (heat removed)",
+        wrong1: "Solid to liquid",
+        wrong2: "Liquid to gas",
+        wrong3: "Gas to solid",
+        explanation: "Freezing point = same as melting point for a substance.",
+        example: "Water → ice"
+    },
+    // 11
+    {
+        question: "What is evaporation?",
+        answer: "Liquid to gas (slow, at surface)",
+        wrong1: "Gas to liquid",
+        wrong2: "Solid to gas",
+        wrong3: "Rapid liquid to gas",
+        explanation: "Occurs at any temperature below boiling point.",
+        example: "Puddle drying up"
+    },
+    // 12
+    {
+        question: "What is boiling?",
+        answer: "Rapid liquid to gas (throughout liquid)",
+        wrong1: "Slow surface vaporization",
+        wrong2: "Gas to liquid",
+        wrong3: "Solid to liquid",
+        explanation: "Happens at a specific boiling point temperature.",
+        example: "Water bubbling at 100°C"
+    },
+    // 13
+    {
+        question: "What is condensation?",
+        answer: "Gas to liquid (heat removed)",
+        wrong1: "Liquid to gas",
+        wrong2: "Solid to gas",
+        wrong3: "Liquid to solid",
+        explanation: "Forms when vapor cools.",
+        example: "Water droplets on a cold glass"
+    },
+    // 14
+    {
+        question: "What is sublimation?",
+        answer: "Solid directly to gas (no liquid stage)",
+        wrong1: "Gas to solid",
+        wrong2: "Liquid to gas",
+        wrong3: "Solid to liquid",
+        explanation: "Only certain substances sublime.",
+        example: "Dry ice (solid CO₂), iodine"
+    },
+    // 15
+    {
+        question: "What is deposition?",
+        answer: "Gas directly to solid (no liquid stage)",
+        wrong1: "Solid to gas",
+        wrong2: "Liquid to gas",
+        wrong3: "Solid to liquid",
+        explanation: "Reverse of sublimation.",
+        example: "Frost forming on cold surfaces"
+    },
+    // 16
+    {
+        question: "What three subatomic particles make up an atom?",
+        answer: "Proton, neutron, electron",
+        wrong1: "Nucleus, ion, molecule",
+        wrong2: "Atom, element, compound",
+        wrong3: "Metal, non-metal, gas",
+        explanation: "Protons and neutrons in the nucleus; electrons orbit.",
+        example: "Hydrogen has 1 proton, 0 neutrons, 1 electron"
+    },
+    // 17
+    {
+        question: "Charge and location of a proton?",
+        answer: "+1 charge, in the nucleus",
+        wrong1: "-1 charge, outside nucleus",
+        wrong2: "0 charge, in nucleus",
+        wrong3: "+1 charge, orbiting nucleus",
+        explanation: "Proton number defines the element.",
+        example: "Carbon has 6 protons"
+    },
+    // 18
+    {
+        question: "Charge and location of a neutron?",
+        answer: "0 (neutral), in the nucleus",
+        wrong1: "+1 charge, nucleus",
+        wrong2: "-1 charge, outside",
+        wrong3: "0 charge, orbiting",
+        explanation: "Neutrons add mass and stabilize the nucleus.",
+        example: "Carbon-12 has 6 neutrons"
+    },
+    // 19
+    {
+        question: "Charge and location of an electron?",
+        answer: "-1 charge, orbiting the nucleus in shells",
+        wrong1: "+1 charge, nucleus",
+        wrong2: "0 charge, nucleus",
+        wrong3: "-1 charge, inside nucleus",
+        explanation: "Electrons are responsible for bonding and reactions.",
+        example: "Oxygen has 8 electrons"
+    },
+    // 20
+    {
+        question: "What is the atomic number?",
+        answer: "Number of protons in an atom",
+        wrong1: "Number of neutrons",
+        wrong2: "Protons + neutrons",
+        wrong3: "Number of electrons in a negative ion",
+        explanation: "Defines the element’s identity.",
+        example: "Atomic number of oxygen = 8"
+    },
+    // 21
+    {
+        question: "What is the mass number?",
+        answer: "Protons + neutrons in the nucleus",
+        wrong1: "Number of protons only",
+        wrong2: "Number of electrons only",
+        wrong3: "Protons + electrons",
+        explanation: "Electron mass is negligible and not included.",
+        example: "Carbon-12: 6 protons + 6 neutrons = 12"
+    },
+    // 22
+    {
+        question: "How to calculate neutrons?",
+        answer: "Mass number − atomic number",
+        wrong1: "Atomic number − mass number",
+        wrong2: "Protons + electrons",
+        wrong3: "Mass number + atomic number",
+        explanation: "Neutrons = total mass − proton count.",
+        example: "12 − 6 = 6 neutrons in carbon-12"
+    },
+    // 23
+    {
+        question: "What is an ion?",
+        answer: "A charged atom (gained/lost electrons)",
+        wrong1: "A neutral atom",
+        wrong2: "A bonded molecule",
+        wrong3: "A mixture component",
+        explanation: "Cation = positive; Anion = negative.",
+        example: "Na⁺ (sodium ion), Cl⁻ (chloride ion)"
+    },
+    // 24
+    {
+        question: "What is a cation?",
+        answer: "Positive ion (lost electrons)",
+        wrong1: "Negative ion (gained electrons)",
+        wrong2: "Neutral atom",
+        wrong3: "Bonded metal and non-metal",
+        explanation: "Metals usually form cations.",
+        example: "Mg²⁺, Na⁺, Al³⁺"
+    },
+    // 25
+    {
+        question: "What is an anion?",
+        answer: "Negative ion (gained electrons)",
+        wrong1: "Positive ion (lost electrons)",
+        wrong2: "Neutral atom",
+        wrong3: "A type of element",
+        explanation: "Non-metals usually form anions.",
+        example: "O²⁻, Cl⁻, N³⁻"
+    },
+    // 26
+    {
+        question: "What are isotopes?",
+        answer: "Atoms of same element with different neutron numbers",
+        wrong1: "Different elements with same mass",
+        wrong2: "Charged atoms",
+        wrong3: "Bonded atoms",
+        explanation: "Same proton number, different mass numbers.",
+        example: "Carbon-12 and Carbon-14"
+    },
+    // 27
+    {
+        question: "How are electrons arranged?",
+        answer: "In shells (energy levels) around the nucleus",
+        wrong1: "Inside the nucleus",
+        wrong2: "Randomly in the atom",
+        wrong3: "Bonded to neutrons",
+        explanation: "Shell 1: max 2, Shell 2: max 8, Shell 3: max 18.",
+        example: "Oxygen: 2,6 electrons"
+    },
+    // 28
+    {
+        question: "What is a valence electron?",
+        answer: "Electrons in the outermost shell",
+        wrong1: "Electrons in inner shells",
+        wrong2: "Electrons in the nucleus",
+        wrong3: "Neutrons in the shell",
+        explanation: "Determine bonding and chemical properties.",
+        example: "Oxygen has 6 valence electrons"
+    },
+    // 29
+    {
+        question: "What is the Periodic Table arranged by?",
+        answer: "Increasing atomic number (protons)",
+        wrong1: "Increasing mass number",
+        wrong2: "Alphabetical order",
+        wrong3: "Number of neutrons",
+        explanation: "Also grouped by similar chemical properties.",
+        example: "H (1), He (2), Li (3), Be (4)..."
+    },
+    // 30
+    {
+        question: "What is a group on the Periodic Table?",
+        answer: "Vertical column; same number of valence electrons",
+        wrong1: "Horizontal row; same electron shells",
+        wrong2: "A type of compound",
+        wrong3: "A mixture category",
+        explanation: "Elements in a group have similar properties.",
+        example: "Group 1: alkali metals"
+    },
+    // 31
+    {
+        question: "What is a period on the Periodic Table?",
+        answer: "Horizontal row; same number of electron shells",
+        wrong1: "Vertical column; same valence electrons",
+        wrong2: "A type of ion",
+        wrong3: "A bonded molecule",
+        explanation: "Period number = number of occupied shells.",
+        example: "Period 2: Li, Be, B, C, N, O, F, Ne"
+    },
+    // 32
+    {
+        question: "Group 1 elements name and properties?",
+        answer: "Alkali metals; very reactive, 1 valence electron",
+        wrong1: "Halogens; reactive non-metals",
+        wrong2: "Noble gases; unreactive",
+        wrong3: "Transition metals; strong and dense",
+        explanation: "React violently with water; form +1 ions.",
+        example: "Lithium, sodium, potassium"
+    },
+    // 33
+    {
+        question: "Group 7 elements name and properties?",
+        answer: "Halogens; reactive non-metals, 7 valence electrons",
+        wrong1: "Alkali metals; reactive metals",
+        wrong2: "Noble gases; inert",
+        wrong3: "Metalloids; semi-conductors",
+        explanation: "Form -1 ions; exist as diatomic molecules.",
+        example: "Chlorine, bromine, iodine"
+    },
+    // 34
+    {
+        question: "Group 0/8 elements name and properties?",
+        answer: "Noble gases; unreactive (inert), full outer shells",
+        wrong1: "Very reactive metals",
+        wrong2: "Reactive non-metals",
+        wrong3: "Form ionic bonds easily",
+        explanation: "Full valence shells = stable, no bonding.",
+        example: "Helium, neon, argon"
+    },
+    // 35
+    {
+        question: "What are transition metals?",
+        answer: "Middle block metals; hard, shiny, high density",
+        wrong1: "Group 1 reactive metals",
+        wrong2: "Group 7 non-metals",
+        wrong3: "Unreactive gases",
+        explanation: "Form colored compounds and variable ions.",
+        example: "Iron, copper, gold, silver"
+    },
+    // 36
+    {
+        question: "What is ionic bonding?",
+        answer: "Transfer of electrons between metal and non-metal",
+        wrong1: "Sharing of electrons",
+        wrong2: "Bond between two metals",
+        wrong3: "Bond between two non-metals",
+        explanation: "Forms positive and negative ions.",
+        example: "NaCl, MgO, CaCl₂"
+    },
+    // 37
+    {
+        question: "What is covalent bonding?",
+        answer: "Sharing of electrons between non-metal atoms",
+        wrong1: "Transfer of electrons",
+        wrong2: "Bond between metal and non-metal",
+        wrong3: "Attraction between ions",
+        explanation: "Forms molecules.",
+        example: "H₂O, CO₂, O₂, CH₄"
+    },
+    // 38
+    {
+        question: "What is metallic bonding?",
+        answer: "Attraction between metal cations and delocalized electrons",
+        wrong1: "Sharing electrons",
+        wrong2: "Transferring electrons",
+        wrong3: "Bonding in non-metals",
+        explanation: "Gives metals conductivity and malleability.",
+        example: "Iron, copper, aluminum"
+    },
+    // 39
+    {
+        question: "Properties of ionic compounds?",
+        answer: "High melting/boiling points; conduct when molten/dissolved",
+        wrong1: "Low melting points; soft",
+        wrong2: "Always gases at room temp",
+        wrong3: "Do not conduct electricity at all",
+        explanation: "Giant ionic lattice structure.",
+        example: "Salt (NaCl) crystals"
+    },
+    // 40
+    {
+        question: "Properties of simple covalent substances?",
+        answer: "Low melting/boiling points; do not conduct electricity",
+        wrong1: "High melting points; hard",
+        wrong2: "Conduct electricity well",
+        wrong3: "Giant lattice structures",
+        explanation: "Weak intermolecular forces between molecules.",
+        example: "Water, carbon dioxide, oxygen"
+    },
+    // 41
+    {
+        question: "What is a giant covalent structure?",
+        answer: "Millions of atoms bonded in a strong lattice network",
+        wrong1: "Small separate molecules",
+        wrong2: "Charged ions in a lattice",
+        wrong3: "Soft and low melting point",
+        explanation: "Very high melting/boiling points; hard.",
+        example: "Diamond, graphite, silicon dioxide"
+    },
+    // 42
+    {
+        question: "Properties of metals?",
+        answer: "Shiny, malleable, ductile, good conductors",
+        wrong1: "Brittle, dull, insulators",
+        wrong2: "Low melting points",
+        wrong3: "Only exist as gases",
+        explanation: "Delocalized electrons allow conductivity.",
+        example: "Copper wire, iron nail"
+    },
+    // 43
+    {
+        question: "What is malleable?",
+        answer: "Can be hammered into shape without breaking",
+        wrong1: "Can be drawn into wire",
+        wrong2: "Brittle and breaks easily",
+        wrong3: "Does not conduct heat",
+        explanation: "Metals are malleable.",
+        example: "Gold hammered into foil"
+    },
+    // 44
+    {
+        question: "What is ductile?",
+        answer: "Can be stretched into wire",
+        wrong1: "Can be hammered flat",
+        wrong2: "Brittle and breaks",
+        wrong3: "Insulator of heat",
+        explanation: "Metals are ductile.",
+        example: "Copper wire"
+    },
+    // 45
+    {
+        question: "What is a reactant in a chemical reaction?",
+        answer: "Substance present at the start (left of arrow)",
+        wrong1: "Substance formed (right of arrow)",
+        wrong2: "A catalyst",
+        wrong3: "A type of ion",
+        explanation: "Reactants → Products.",
+        example: "In H₂ + O₂ → H₂O, H₂ and O₂ are reactants"
+    },
+    // 46
+    {
+        question: "What is a product in a chemical reaction?",
+        answer: "Substance formed at the end (right of arrow)",
+        wrong1: "Starting substance (left of arrow)",
+        wrong2: "A catalyst",
+        wrong3: "An ion",
+        explanation: "Reactants react to form products.",
+        example: "H₂O is the product in H₂ + O₂ → H₂O"
+    },
+    // 47
+    {
+        question: "What does the law of conservation of mass state?",
+        answer: "Mass is conserved; no mass lost/gained in reaction",
+        wrong1: "Mass increases during reaction",
+        wrong2: "Mass decreases during reaction",
+        wrong3: "Mass depends on catalyst",
+        explanation: "Total mass reactants = total mass products.",
+        example: "Burning wood: ash + gas mass = original wood mass"
+    },
+    // 48
+    {
+        question: "Why must equations be balanced?",
+        answer: "To obey conservation of mass",
+        wrong1: "To make them look neat",
+        wrong2: "To increase reaction rate",
+        wrong3: "To change the products",
+        explanation: "Same number of each atom on both sides.",
+        example: "2H₂ + O₂ → 2H₂O (balanced)"
+    },
+    // 49
+    {
+        question: "What is a catalyst?",
+        answer: "Speeds up reaction without being used up",
+        wrong1: "Slows down reaction",
+        wrong2: "Is consumed during reaction",
+        wrong3: "Changes the products formed",
+        explanation: "Lowers activation energy.",
+        example: "Enzymes in body, manganese dioxide (MnO₂)"
+    },
+    // 50
+    {
+        question: "What is activation energy?",
+        answer: "Minimum energy needed for a reaction to start",
+        wrong1: "Energy released by reaction",
+        wrong2: "Energy of reactants",
+        wrong3: "Energy of products",
+        explanation: "Catalysts lower activation energy.",
+        example: "Heat provides activation energy for burning"
+    },
+    // 51
+    {
+        question: "What is an exothermic reaction?",
+        answer: "Releases heat energy to surroundings",
+        wrong1: "Absorbs heat from surroundings",
+        wrong2: "No energy change",
+        wrong3: "Only occurs in cold temperatures",
+        explanation: "Temperature increases.",
+        example: "Combustion, neutralization"
+    },
+    // 52
+    {
+        question: "What is an endothermic reaction?",
+        answer: "Absorbs heat energy from surroundings",
+        wrong1: "Releases heat to surroundings",
+        wrong2: "No energy change",
+        wrong3: "Temperature increases",
+        explanation: "Temperature decreases.",
+        example: "Photosynthesis, cold packs"
+    },
+    // 53
+    {
+        question: "What is combustion?",
+        answer: "Burning in oxygen; releases heat (exothermic)",
+        wrong1: "Reaction with water",
+        wrong2: "Absorbing heat",
+        wrong3: "Breaking down with heat",
+        explanation: "Fuel + O₂ → CO₂ + H₂O (complete combustion).",
+        example: "Burning methane, wood"
+    },
+    // 54
+    {
+        question: "What is thermal decomposition?",
+        answer: "Breakdown of compound by heat into simpler substances",
+        wrong1: "Burning in oxygen",
+        wrong2: "Reaction with acid",
+        wrong3: "Combination of two elements",
+        explanation: "One reactant → multiple products.",
+        example: "CaCO₃ → CaO + CO₂"
+    },
+    // 55
+    {
+        question: "What is oxidation?",
+        answer: "Gain of oxygen OR loss of electrons",
+        wrong1: "Loss of oxygen OR gain of electrons",
+        wrong2: "Gain of hydrogen",
+        wrong3: "No electron change",
+        explanation: "OIL RIG: Oxidation Is Loss (electrons).",
+        example: "Iron → rust (iron gains oxygen)"
+    },
+    // 56
+    {
+        question: "What is reduction?",
+        answer: "Loss of oxygen OR gain of electrons",
+        wrong1: "Gain of oxygen OR loss of electrons",
+        wrong2: "Loss of hydrogen",
+        wrong3: "No electron change",
+        explanation: "OIL RIG: Reduction Is Gain (electrons).",
+        example: "Iron ore → iron (iron loses oxygen)"
+    },
+    // 57
+    {
+        question: "What is a redox reaction?",
+        answer: "Oxidation and reduction happen together",
+        wrong1: "Only oxidation occurs",
+        wrong2: "Only reduction occurs",
+        wrong3: "No electron transfer",
+        explanation: "One substance oxidized, one reduced.",
+        example: "Metal + acid reaction"
+    },
+    // 58
+    {
+        question: "What is an acid?",
+        answer: "Substance with pH <7; releases H⁺ ions in water",
+        wrong1: "pH >7; releases OH⁻ ions",
+        wrong2: "pH =7; neutral",
+        wrong3: "Does not dissolve in water",
+        explanation: "Sour taste; turns blue litmus red.",
+        example: "Hydrochloric acid (HCl), vinegar"
+    },
+    // 59
+    {
+        question: "What is a base?",
+        answer: "Substance with pH >7; metal oxide/hydroxide",
+        wrong1: "pH <7; acid",
+        wrong2: "pH =7; neutral",
+        wrong3: "Releases H⁺ ions",
+        explanation: "Bitter taste; turns red litmus blue.",
+        example: "Sodium hydroxide, copper oxide"
+    },
+    // 60
+    {
+        question: "What is an alkali?",
+        answer: "Soluble base that releases OH⁻ ions in water",
+        wrong1: "Insoluble base",
+        wrong2: "pH <7 acid",
+        wrong3: "Neutral substance",
+        explanation: "All alkalis are bases; not all bases are alkalis.",
+        example: "NaOH, KOH, Ca(OH)₂"
+    },
+    // 61
+    {
+        question: "What is neutral pH?",
+        answer: "pH 7",
+        wrong1: "pH 0",
+        wrong2: "pH 14",
+        wrong3: "pH 5",
+        explanation: "Neither acidic nor alkaline.",
+        example: "Pure water"
+    },
+    // 62
+    {
+        question: "What is neutralization?",
+        answer: "Acid + base → salt + water (exothermic)",
+        wrong1: "Acid + metal → salt + hydrogen",
+        wrong2: "Base + water → alkali",
+        wrong3: "Oxidation reaction",
+        explanation: "pH moves toward 7.",
+        example: "HCl + NaOH → NaCl + H₂O"
+    },
+    // 63
+    {
+        question: "Acid + metal → ?",
+        answer: "Salt + hydrogen gas",
+        wrong1: "Salt + water",
+        wrong2: "Salt + carbon dioxide + water",
+        wrong3: "Metal oxide only",
+        explanation: "Only reactive metals react (not Cu, Ag, Au).",
+        example: "Mg + 2HCl → MgCl₂ + H₂"
+    },
+    // 64
+    {
+        question: "Acid + metal oxide → ?",
+        answer: "Salt + water",
+        wrong1: "Salt + hydrogen",
+        wrong2: "Salt + CO₂ + water",
+        wrong3: "Metal only",
+        explanation: "Neutralization reaction.",
+        example: "CuO + H₂SO₄ → CuSO₄ + H₂O"
+    },
+    // 65
+    {
+        question: "Acid + metal carbonate → ?",
+        answer: "Salt + water + carbon dioxide",
+        wrong1: "Salt + hydrogen",
+        wrong2: "Salt + water only",
+        wrong3: "Metal oxide only",
+        explanation: "CO₂ gas bubbles produced.",
+        example: "CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂"
+    },
+    // 66
+    {
+        question: "What test identifies hydrogen gas?",
+        answer: "Lit splint burns with a squeaky pop",
+        wrong1: "Glowing splint relights",
+        wrong2: "Turns limewater cloudy",
+        wrong3: "Turns damp blue litmus red",
+        explanation: "Classic H₂ test.",
+        example: "Test gas from metal + acid"
+    },
+    // 67
+    {
+        question: "What test identifies oxygen gas?",
+        answer: "Glowing splint relights",
+        wrong1: "Squeaky pop with lit splint",
+        wrong2: "Turns limewater cloudy",
+        wrong3: "Smells of rotten eggs",
+        explanation: "Oxygen supports combustion.",
+        example: "Test gas from decomposition of H₂O₂"
+    },
+    // 68
+    {
+        question: "What test identifies carbon dioxide?",
+        answer: "Turns limewater cloudy/milky",
+        wrong1: "Squeaky pop",
+        wrong2: "Glowing splint relights",
+        wrong3: "Burns with blue flame",
+        explanation: "CO₂ reacts with calcium hydroxide.",
+        example: "Test gas from acid + carbonate"
+    },
+    // 69
+    {
+        question: "What is electrolysis?",
+        answer: "Breaking down a compound using electricity",
+        wrong1: "Bonding elements with heat",
+        wrong2: "Separating mixtures with filter",
+        wrong3: "Speeding up a reaction",
+        explanation: "Requires molten or dissolved ionic compound.",
+        example: "Electrolysis of brine (salt water)"
+    },
+    // 70
+    {
+        question: "What is an electrolyte?",
+        answer: "Liquid that conducts electricity in electrolysis",
+        wrong1: "A solid metal conductor",
+        wrong2: "An insoluble substance",
+        wrong3: "A type of catalyst",
+        explanation: "Contains free-moving ions.",
+        example: "Molten NaCl, salt water"
+    },
+    // 71
+    {
+        question: "What is the cathode?",
+        answer: "Negative electrode in electrolysis",
+        wrong1: "Positive electrode",
+        wrong2: "Type of electrolyte",
+        wrong3: "Type of ion",
+        explanation: "Cations (+) are attracted to cathode.",
+        example: "Metal forms at cathode"
+    },
+    // 72
+    {
+        question: "What is the anode?",
+        answer: "Positive electrode in electrolysis",
+        wrong1: "Negative electrode",
+        wrong2: "Type of ion",
+        wrong3: "Type of catalyst",
+        explanation: "Anions (-) are attracted to anode.",
+        example: "Oxygen or halogen forms at anode"
+    },
+    // 73
+    {
+        question: "What is rusting?",
+        answer: "Corrosion of iron; needs oxygen + water",
+        wrong1: "Corrosion of copper",
+        wrong2: "Only needs water",
+        wrong3: "Only needs oxygen",
+        explanation: "Hydrated iron(III) oxide = rust.",
+        example: "Iron nail rusting in damp air"
+    },
+    // 74
+    {
+        question: "How to prevent rusting?",
+        answer: "Barrier method (paint, oil, plating) or sacrificial metal",
+        wrong1: "Leave in water and air",
+        wrong2: "Heat strongly",
+        wrong3: "Mix with acid",
+        explanation: "Stop oxygen/water reaching iron.",
+        example: "Painting iron gates, galvanizing"
+    },
+    // 75
+    {
+        question: "What is galvanizing?",
+        answer: "Coating iron with zinc to prevent rust",
+        wrong1: "Coating with copper",
+        wrong2: "Painting with color",
+        wrong3: "Mixing with carbon",
+        explanation: "Zinc is more reactive and corrodes first.",
+        example: "Galvanized steel buckets"
+    },
+    // 76
+    {
+        question: "What is an alloy?",
+        answer: "Mixture of metal + metal / metal + non-metal",
+        wrong1: "Pure metal",
+        wrong2: "Ionic compound",
+        wrong3: "Covalent molecule",
+        explanation: "Alloys are stronger/harder than pure metals.",
+        example: "Brass, steel, bronze"
+    },
+    // 77
+    {
+        question: "What is crude oil?",
+        answer: "Mixture of hydrocarbons (alkanes) from fossils",
+        wrong1: "Pure element",
+        wrong2: "Single compound",
+        wrong3: "Ionic lattice",
+        explanation: "Separated by fractional distillation.",
+        example: "Raw oil from underground"
+    },
+    // 78
+    {
+        question: "What is a hydrocarbon?",
+        answer: "Compound made only of hydrogen and carbon",
+        wrong1: "Compound of carbon and oxygen",
+        wrong2: "Pure carbon",
+        wrong3: "Compound of hydrogen and oxygen",
+        explanation: "Main components of fossil fuels.",
+        example: "Methane (CH₄), ethane (C₂H₆)"
+    },
+    // 79
+    {
+        question: "What is fractional distillation?",
+        answer: "Separates crude oil by boiling point differences",
+        wrong1: "Separates mixtures with filter paper",
+        wrong2: "Uses magnet to separate metals",
+        wrong3: "Breaks compounds with electricity",
+        explanation: "Different fractions boil at different temps.",
+        example: "Refining crude oil into petrol, diesel"
+    },
+    // 80
+    {
+        question: "What is cracking?",
+        answer: "Breaking large hydrocarbons into smaller useful ones",
+        wrong1: "Combining small molecules into large",
+        wrong2: "Burning hydrocarbons",
+        wrong3: "Dissolving in water",
+        explanation: "Produces alkenes for plastics.",
+        example: "Heavy oil → petrol + ethene"
+    },
+    // 81
+    {
+        question: "What is an alkane?",
+        answer: "Saturated hydrocarbon; single bonds only",
+        wrong1: "Unsaturated; double bond",
+        wrong2: "Contains oxygen",
+        wrong3: "Charged ion",
+        explanation: "General formula: CnH2n+2.",
+        example: "Methane, ethane, propane"
+    },
+    // 82
+    {
+        question: "What is an alkene?",
+        answer: "Unsaturated hydrocarbon; C=C double bond",
+        wrong1: "Single bonds only",
+        wrong2: "Contains metal ions",
+        wrong3: "Saturated hydrocarbon",
+        explanation: "General formula: CnH2n.",
+        example: "Ethene, propene"
+    },
+    // 83
+    {
+        question: "Test for alkenes (unsaturation)?",
+        answer: "Bromine water turns from orange to colorless",
+        wrong1: "Lit splint pops",
+        wrong2: "Glowing splint relights",
+        wrong3: "Turns limewater cloudy",
+        explanation: "Addition reaction with bromine.",
+        example: "Ethene decolorizes bromine water"
+    },
+    // 84
+    {
+        question: "What is fermentation?",
+        answer: "Glucose → ethanol + carbon dioxide (yeast)",
+        wrong1: "Glucose → water + oxygen",
+        wrong2: "Ethanol → glucose",
+        wrong3: "Combustion of alcohol",
+        explanation: "Anaerobic process using yeast enzymes.",
+        example: "Making alcohol from sugar"
+    },
+    // 85
+    {
+        question: "What is photosynthesis?",
+        answer: "CO₂ + H₂O → glucose + O₂ (light, chlorophyll)",
+        wrong1: "Glucose + O₂ → CO₂ + H₂O",
+        wrong2: "Glucose → ethanol + CO₂",
+        wrong3: "Burning fuel in oxygen",
+        explanation: "Endothermic; makes food for plants.",
+        example: "Plants making glucose from sunlight"
+    },
+    // 86
+    {
+        question: "What is respiration?",
+        answer: "Glucose + O₂ → CO₂ + H₂O + energy",
+        wrong1: "CO₂ + H₂O → glucose + O₂",
+        wrong2: "Glucose → ethanol + CO₂",
+        wrong3: "Heat + CaCO₃ → CaO + CO₂",
+        explanation: "Exothermic; releases energy for life.",
+        example: "Humans and animals respiring"
+    },
+    // 87
+    {
+        question: "What is greenhouse effect?",
+        answer: "Gases trap heat in atmosphere; keeps Earth warm",
+        wrong1: "Ozone layer blocking UV rays",
+        wrong2: "Acid rain formation",
+        wrong3: "Water evaporation cycle",
+        explanation: "CO₂, methane are greenhouse gases.",
+        example: "Natural and man-made effect"
+    },
+    // 88
+    {
+        question: "What causes global warming?",
+        answer: "Increased greenhouse gases from human activity",
+        wrong1: "Ozone layer depletion",
+        wrong2: "Acid rain",
+        wrong3: "Water pollution",
+        explanation: "Burning fossil fuels increases CO₂.",
+        example: "Car emissions, factory fumes"
+    },
+    // 89
+    {
+        question: "What causes acid rain?",
+        question: "SO₂ and NOₓ gases from burning fossil fuels",
+        answer: "Carbon dioxide from respiration",
+        wrong1: "Oxygen from photosynthesis",
+        wrong2: "Nitrogen from air",
+        explanation: "Gases dissolve in rain to form acids.",
+        example: "Burns trees, corrodes buildings"
+    },
+    // 90
+    {
+        question: "What is air mostly made of?",
+        answer: "Nitrogen (~78%), Oxygen (~21%)",
+        wrong1: "Oxygen (~78%), Nitrogen (~21%)",
+        wrong2: "Carbon dioxide (~50%)",
+        wrong3: "Hydrogen (~50%)",
+        explanation: "Small amounts of argon, CO₂, water vapor.",
+        example: "Earth’s atmosphere composition"
+    },
+    // 91
+    {
+        question: "What is filtration used for?",
+        answer: "Separate insoluble solid from liquid",
+        wrong1: "Separate dissolved solid from liquid",
+        wrong2: "Separate two liquids",
+        wrong3: "Separate two gases",
+        explanation: "Uses filter paper.",
+        example: "Sand from water"
+    },
+    // 92
+    {
+        question: "What is crystallization used for?",
+        answer: "Separate dissolved solid from solution",
+        wrong1: "Separate insoluble solid from liquid",
+        wrong2: "Separate two immiscible liquids",
+        wrong3: "Separate two gases",
+        explanation: "Evaporate solvent to leave solid crystals.",
+        example: "Salt from salt water"
+    },
+    // 93
+    {
+        question: "What is distillation used for?",
+        answer: "Separate liquid from solution (collect pure liquid)",
+        wrong1: "Separate insoluble solid",
+        wrong2: "Separate two solids",
+        wrong3: "Magnetic separation",
+        explanation: "Boil then condense the liquid.",
+        example: "Pure water from salt water"
+    },
+    // 94
+    {
+        question: "What is a solvent?",
+        answer: "Substance that dissolves the solute (usually liquid)",
+        wrong1: "Substance being dissolved",
+        wrong2: "Mixture of solute and solvent",
+        wrong3: "Insoluble substance",
+        explanation: "Does the dissolving.",
+        example: "Water in salt water"
+    },
+    // 95
+    {
+        question: "What is a solute?",
+        answer: "Substance that is dissolved in solvent",
+        wrong1: "Liquid that does the dissolving",
+        wrong2: "Final mixture",
+        wrong3: "Insoluble solid",
+        explanation: "Gets dissolved.",
+        example: "Salt in salt water"
+    },
+    // 96
+    {
+        question: "What is a solution?",
+        answer: "Solvent + dissolved solute (homogeneous mixture)",
+        wrong1: "Undissolved solid + liquid",
+        wrong2: "Insoluble mixture",
+        wrong3: "Pure compound",
+        explanation: "Clear, uniform mixture.",
+        example: "Sugar water, salt water"
+    },
+    // 97
+    {
+        question: "What is solubility?",
+        answer: "Mass of solute that dissolves in 100g solvent",
+        wrong1: "Speed of dissolving",
+        wrong2: "Volume of solvent",
+        wrong3: "Color of solution",
+        explanation: "Increases with temperature for most solids.",
+        example: "36g salt dissolves in 100g water"
+    },
+    // 98
+    {
+        question: "What is hardness in water?",
+        answer: "Dissolved calcium/magnesium ions",
+        wrong1: "Dissolved oxygen",
+        wrong2: "Dissolved salt",
+        wrong3: "High pH",
+        explanation: "Prevents lather with soap; forms scale.",
+        example: "Tap water in limestone areas"
+    },
+    // 99
+    {
+        question: "What is the reactivity series?",
+        answer: "Order of metals from most to least reactive",
+        wrong1: "Order of boiling points",
+        wrong2: "Order of atomic numbers",
+        wrong3: "Order of colors",
+        explanation: "Determines metal reactions and extraction.",
+        example: "K, Na, Ca, Mg, Al, Zn, Fe, Pb, Cu, Ag, Au"
+    },
+    // 100
+    {
+        question: "How are very reactive metals extracted?",
+        answer: "Electrolysis (expensive)",
+        wrong1: "Reduction with carbon",
+        wrong2: "Heating alone",
+        wrong3: "Filtration",
+        explanation: "Metals above carbon need electrolysis.",
+        example: "Aluminum from bauxite ore"
+    }
+];

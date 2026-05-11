@@ -1,0 +1,1002 @@
+const historyFlashcards = [
+    // 1
+    {
+        question: "Define historical causation",
+        answer: "The study of reasons, events and factors that lead to a historical outcome",
+        wrong1: "Only describing what happened",
+        wrong2: "Judging if events were good or bad",
+        wrong3: "Remembering dates only",
+        explanation: "Core IGCSE skill: short-term, long-term, social, economic, political causes",
+        example: "Causes of WWI or the Cold War"
+    },
+    // 2
+    {
+        question: "Define historical consequence",
+        answer: "The results, impacts and effects caused by a historical event",
+        wrong1: "The reasons an event started",
+        wrong2: "Only the date of an event",
+        wrong3: "Personal opinions about history",
+        explanation: "Can be short-term, long-term, social, economic, political",
+        example: "Consequences of WWII on Europe"
+    },
+    // 3
+    {
+        question: "Define short-term cause",
+        answer: "An immediate trigger that happens just before an event",
+        wrong1: "A factor building up over many years",
+        wrong2: "A long-term economic problem",
+        wrong3: "A consequence after the event",
+        explanation: "Often the spark that starts conflict or change",
+        example: "Assassination of Franz Ferdinand 1914"
+    },
+    // 4
+    {
+        question: "Define long-term cause",
+        answer: "A factor that develops gradually over years leading to an event",
+        wrong1: "Immediate trigger event",
+        wrong2: "The final result of a war",
+        wrong3: "A single day’s decision",
+        explanation: "Builds tension over decades",
+        example: "Militarism, alliances, imperialism before WWI"
+    },
+    // 5
+    {
+        question: "Define source reliability",
+        answer: "How trustworthy, accurate and credible a historical source is",
+        wrong1: "How interesting the source is",
+        wrong2: "How old the source looks",
+        wrong3: "If the source has pictures",
+        explanation: "Judged by origin, purpose, bias, context",
+        example: "Official government report vs personal diary"
+    },
+    // 6
+    {
+        question: "Define source bias",
+        answer: "When a source writer shows favouritism, one-sided views or prejudice",
+        wrong1: "A completely neutral account",
+        wrong2: "Only facts with no opinion",
+        wrong3: "A source with no purpose",
+        explanation: "Bias does not make a source useless; it reveals attitude",
+        example: "Propaganda poster during wartime"
+    },
+    // 7
+    {
+        question: "Define primary source",
+        answer: "First-hand material created at the time of the event by someone present",
+        wrong1: "Written later by historians",
+        wrong2: "A modern textbook summary",
+        wrong3: "A film made 50 years later",
+        explanation: "Diaries, letters, photos, speeches, official records",
+        example: "Soldier’s letter home in 1916"
+    },
+    // 8
+    {
+        question: "Define secondary source",
+        answer: "Material created after the event by someone who did not witness it",
+        wrong1: "Original letter from the time",
+        wrong2: "Eyewitness interview",
+        wrong3: "Wartime newspaper",
+        explanation: "Textbooks, historian books, documentaries",
+        example: "IGCSE history textbook chapter on WWI"
+    },
+    // 9
+    {
+        question: "Define source purpose",
+        answer: "The reason why a source was created by its author",
+        wrong1: "The date the source was found",
+        wrong2: "The language of the source",
+        wrong3: "How famous the writer is",
+        explanation: "To persuade, inform, entertain, record, propaganda",
+        example: "Propaganda poster purpose = recruit soldiers"
+    },
+    // 10
+    {
+        question: "Define contextual knowledge (history skill)",
+        answer: "Using outside factual knowledge to explain and evaluate a source",
+        wrong1: "Only reading the source alone",
+        wrong2: "Guessing without facts",
+        wrong3: "Copying source wording",
+        explanation: "Required for top-band source analysis answers",
+        example: "Knowing tension in Europe 1914 to analyse a speech"
+    },
+    // 11
+    {
+        question: "Define militarism",
+        answer: "Glorification of military power, army build-up and aggressive military policy",
+        wrong1: "Working together in international organisations",
+        wrong2: "Gaining colonies overseas",
+        wrong3: "Sharing trade peacefully",
+        explanation: "Key long-term cause of WWI",
+        example: "Arms race between Britain and Germany"
+    },
+    // 12
+    {
+        question: "Define alliance system",
+        answer: "Agreements between countries to support each other if war breaks out",
+        wrong1: "Free trade agreement only",
+        wrong2: "Colonial takeover policy",
+        wrong3: "Disarmament treaty",
+        explanation: "Split Europe into two armed camps by 1914",
+        example: "Triple Entente vs Triple Alliance"
+    },
+    // 13
+    {
+        question: "Define imperialism",
+        answer: "Policy of extending a nation’s power by conquering colonies and territories",
+        wrong1: "Keeping within national borders",
+        wrong2: "Sharing land equally",
+        wrong3: "Global peace cooperation",
+        explanation: "Caused rivalry and tension before WWI",
+        example: "Britain, France, Germany competing for Africa"
+    },
+    // 14
+    {
+        question: "Define nationalism (WWI era)",
+        answer: "Strong pride in one’s nation; desire for unity, power or independence",
+        wrong1: "Loyalty to a global organisation",
+        wrong2: "Support for foreign rule",
+        wrong3: "Opposing national culture",
+        explanation: "Fueled tension in Balkan states",
+        example: "Serbian nationalism against Austria-Hungary"
+    },
+    // 15
+    {
+        question: "What was the immediate cause of WWI?",
+        answer: "Assassination of Archduke Franz Ferdinand in Sarajevo 1914",
+        wrong1: "Invasion of Poland",
+        wrong2: "Treaty of Versailles",
+        wrong3: "Russian Revolution",
+        explanation: "The short-term spark activating alliances",
+        example: "28 June 1914, Gavrilo Princip"
+    },
+    // 16
+    {
+        question: "Define trench warfare",
+        answer: "Fighting from long dug-out trenches with static defensive front lines",
+        wrong1: "Fast mobile tank attacks",
+        wrong2: "Air bombing only",
+        wrong3: "Naval battle at sea",
+        explanation: "Created stalemate on Western Front 1914–1918",
+        example: "Trenches from Switzerland to English Channel"
+    },
+    // 17
+    {
+        question: "Define stalemate in WWI",
+        answer: "Deadlock where neither side could make large territorial gains",
+        wrong1: "Quick victory for one side",
+        wrong2: "Immediate peace treaty",
+        wrong3: "Complete surrender",
+        explanation: "Caused by trenches, machine guns, barbed wire",
+        example: "Western Front 1914–1916 no big advances"
+    },
+    // 18
+    {
+        question: "Define total war",
+        answer: "War involving civilians, economies and entire societies, not just armies",
+        wrong1: "Only professional soldiers fighting",
+        wrong2: "Limited to one battlefield only",
+        wrong3: "No civilian impact",
+        explanation: "WWI and WWII are classic total wars",
+        example: "Civilians worked in factories, rationing, bombing"
+    },
+    // 19
+    {
+        question: "Define Treaty of Versailles 1919",
+        answer: "Peace settlement ending WWI, imposing strict terms on Germany",
+        wrong1: "Alliance agreement before WWI",
+        wrong2: "Cold War peace deal",
+        wrong3: "Russian peace treaty with Germany",
+        explanation: "Created anger in Germany and helped rise of Hitler",
+        example: "War guilt, reparations, disarmament, lost land"
+    },
+    // 20
+    {
+        question: "Define war guilt clause (Article 231)",
+        answer: "Part of Versailles forcing Germany to accept full blame for causing WWI",
+        wrong1: "Clause sharing blame equally",
+        wrong2: "Trade agreement clause",
+        wrong3: "Disarmament rule only",
+        explanation: "Humiliating for German people",
+        example: "Made Germans feel betrayed and angry"
+    },
+    // 21
+    {
+        question: "Define reparations (Versailles)",
+        answer: "Large money payments Germany had to pay Allied nations for war damage",
+        wrong1: "Land given to Germany",
+        wrong2: "Reduction of army size",
+        wrong3: "Free trade terms",
+        explanation: "Damaged German economy and created poverty",
+        example: "Massive financial debt burden"
+    },
+    // 22
+    {
+        question: "Define disarmament (Versailles terms)",
+        answer: "Forcing Germany to drastically reduce army, navy and air force",
+        wrong1: "All countries increase weapons",
+        wrong2: "Germany allowed full military power",
+        wrong3: "Only naval limits applied",
+        explanation: "Army limited to 100,000 men; no air force",
+        example: "German military weakened severely"
+    },
+    // 23
+    {
+        question: "Define League of Nations",
+        answer: "International organisation created after WWI to keep world peace",
+        wrong1: "Military alliance for war",
+        wrong2: "Colonial ruling body",
+        wrong3: "Economic trade union only",
+        explanation: "Failed to stop aggression in 1930s",
+        example: "Set up 1920, based in Geneva"
+    },
+    // 24
+    {
+        question: "Why did the League of Nations fail?",
+        answer: "No army, USA not joining, slow decision-making, powerful nations ignoring rules",
+        wrong1: "Too many member countries",
+        wrong2: "Had too much military power",
+        wrong3: "Rules were too strict",
+        explanation: "Lacked authority to stop Hitler, Japan, Italy",
+        example: "Could not stop invasion of Manchuria or Abyssinia"
+    },
+    // 25
+    {
+        question: "Define fascism",
+        answer: "Extreme right-wing authoritarian ideology with strong nationalism and one-party rule",
+        wrong1: "Communist left-wing system",
+        wrong2: "Democratic multi-party system",
+        wrong3: "Pacifist peace ideology",
+        explanation: "Mussolini (Italy) and Hitler (Germany)",
+        example: "Strict state control, censorship, militarism"
+    },
+    // 26
+    {
+        question: "Define communism",
+        answer: "Ideology aiming for classless society with state ownership of resources",
+        wrong1: "Free market capitalist system",
+        wrong2: "Fascist one-party nationalism",
+        wrong3: "Monarchy rule",
+        explanation: "Linked to USSR, Stalin, Russian Revolution",
+        example: "State controls industry, land and wealth"
+    },
+    // 27
+    {
+        question: "Define dictatorship",
+        answer: "Rule by one single leader with absolute power, no free elections",
+        wrong1: "Government voted by people",
+        wrong2: "Rule by royal family only",
+        wrong3: "Power shared by parliament",
+        explanation: "Dictator controls media, police and law",
+        example: "Hitler, Mussolini, Stalin"
+    },
+    // 28
+    {
+        question: "Define hyperinflation (Germany 1923)",
+        answer: "Extreme rapid rise in prices making money worthless",
+        wrong1: "Prices falling very fast",
+        wrong2: "Stable strong currency",
+        wrong3: "Low unemployment economy",
+        explanation: "Destroyed savings and angered German middle class",
+        example: "Millions of marks for a loaf of bread"
+    },
+    // 29
+    {
+        question: "Define Weimar Republic",
+        answer: "Democratic government of Germany 1919–1933 between WWI and Nazi rule",
+        wrong1: "Nazi government after 1933",
+        wrong2: "German empire before 1914",
+        wrong3: "East Germany after WWII",
+        explanation: "Weak, unstable, blamed for Versailles",
+        example: "Faced rebellion, inflation and poverty"
+    },
+    // 30
+    {
+        question: "Define Nazi Party",
+        answer: "National Socialist German Workers’ Party led by Hitler, extreme nationalist and racist",
+        wrong1: "German communist party",
+        wrong2: "Democratic liberal party",
+        wrong3: "Pacifist peace movement",
+        explanation: "Gained support from anger and economic crisis",
+        example: "Rise to power 1933"
+    },
+    // 31
+    {
+        question: "Define appeasement (1930s policy)",
+        answer: "Giving in to Hitler’s demands to avoid war",
+        wrong1: "Immediate military attack on Germany",
+        wrong2: "Total economic boycott",
+        wrong3: "Joining USSR against Germany",
+        explanation: "Chamberlain allowed rearmament, Anschluss, Sudetenland",
+        example: "Munich Agreement 1938"
+    },
+    // 32
+    {
+        question: "Define Anschluss 1938",
+        answer: "Nazi Germany’s unification and takeover of Austria",
+        wrong1: "Invasion of Poland",
+        wrong2: "Battle of Britain",
+        wrong3: "German surrender",
+        explanation: "Broke Versailles treaty rules",
+        example: "March 1938 Austria becomes part of Germany"
+    },
+    // 33
+    {
+        question: "Define blitzkrieg",
+        answer: "Fast German ‘lightning war’ using tanks, planes and infantry together",
+        wrong1: "Slow trench warfare",
+        wrong2: "Naval blockade only",
+        wrong3: "Defensive static fighting",
+        explanation: "Allowed quick conquest of Europe 1939–1940",
+        example: "Invasion of Poland, France"
+    },
+    // 34
+    {
+        question: "Define Holocaust",
+        answer: "Nazi systematic mass murder of six million Jews and other groups",
+        wrong1: "Military battle losses only",
+        wrong2: "Post-war population decline",
+        wrong3: "Economic depression deaths",
+        explanation: "Genocide based on racist Nazi ideology",
+        example: "Concentration camps, gas chambers"
+    },
+    // 35
+    {
+        question: "Define D-Day 1944",
+        answer: "Allied mass invasion of Nazi-occupied France on Normandy beaches",
+        wrong1: "Start of WWII",
+        wrong2: "End of Cold War",
+        wrong3: "Battle of Stalingrad",
+        explanation: "Largest seaborne invasion in history",
+        example: "6 June 1944, Allied forces land in France"
+    },
+    // 36
+    {
+        question: "Define Yalta Conference 1945",
+        answer: "WWII meeting of USA, Britain, USSR to plan post-war Europe",
+        wrong1: "Peace treaty ending WWI",
+        wrong2: "League of Nations founding",
+        wrong3: "Hitler surrender meeting",
+        explanation: "Agreed Germany division and United Nations",
+        example: "Roosevelt, Stalin, Churchill"
+    },
+    // 37
+    {
+        question: "Define Potsdam Conference 1945",
+        answer: "Post-WWII conference deciding Germany’s future and reparations",
+        wrong1: "Pre-war alliance meeting",
+        wrong2: "League of Nations summit",
+        wrong3: "Colonial independence talks",
+        explanation: "Tensions between USA and USSR began here",
+        example: "Division into East and West Germany planned"
+    },
+    // 38
+    {
+        question: "Define Cold War",
+        answer: "Long period of political tension, rivalry and propaganda between USA and USSR",
+        wrong1: "Direct full military war",
+        wrong2: "Economic friendship agreement",
+        wrong3: "Global disarmament treaty",
+        explanation: "No direct fighting but proxy wars and nuclear fear",
+        example: "1947–1991 US vs Soviet bloc"
+    },
+    // 39
+    {
+        question: "Define capitalism (Cold War)",
+        answer: "Economic system with private ownership, free markets and democracy",
+        wrong1: "State-owned planned economy",
+        wrong2: "Fascist one-party rule",
+        wrong3: "Monarchy controlled economy",
+        explanation: "USA and Western Europe followed capitalism",
+        example: "Businesses owned by individuals"
+    },
+    // 40
+    {
+        question: "Define communism (Cold War)",
+        answer: "System with state ownership of industry, planned economy and one-party rule",
+        wrong1: "Free market private business",
+        wrong2: "Multi-party democracy",
+        wrong3: "Colonial trade system",
+        explanation: "USSR and Eastern Bloc nations",
+        example: "Government controls economy and resources"
+    },
+    // 41
+    {
+        question: "Define Iron Curtain",
+        answer: "Symbolic divide separating democratic Western Europe from communist Eastern Europe",
+        wrong1: "Physical wall around Berlin only",
+        wrong2: "Naval defence line",
+        wrong3: "Trade border only",
+        explanation: "Term used by Churchill 1946",
+        example: "Split Europe into two hostile blocs"
+    },
+    // 42
+    {
+        question: "Define NATO",
+        answer: "Western military alliance led by USA for collective defence",
+        wrong1: "Communist Eastern alliance",
+        wrong2: "Economic trade union only",
+        wrong3: "Global peace organisation",
+        explanation: "Formed 1949; attack on one = attack on all",
+        example: "USA, UK, France, West Germany"
+    },
+    // 43
+    {
+        question: "Define Warsaw Pact",
+        answer: "Communist military alliance of Eastern European countries led by USSR",
+        wrong1: "Western democratic alliance",
+        wrong2: "European economic union",
+        wrong3: "Neutral peace organisation",
+        explanation: "Created to counter NATO",
+        example: "USSR, Poland, Czechoslovakia, East Germany"
+    },
+    // 44
+    {
+        question: "Define containment policy (USA Cold War)",
+        answer: "US strategy to stop communism spreading to new countries",
+        wrong1: "Allow communism to spread freely",
+        wrong2: "Invade USSR immediately",
+        wrong3: "Abandon all foreign alliances",
+        explanation: "Used aid, alliances and proxy wars",
+        example: "Korea, Vietnam, Truman Doctrine"
+    },
+    // 45
+    {
+        question: "Define Truman Doctrine 1947",
+        answer: "US promise to give political and military aid to countries resisting communism",
+        wrong1: "USSR aid to communist states",
+        wrong2: "Disarmament agreement",
+        wrong3: "European free trade deal",
+        explanation: "Key start of official Cold War policy",
+        example: "Aid to Greece and Turkey"
+    },
+    // 46
+    {
+        question: "Define Marshall Plan",
+        answer: "US economic aid programme to rebuild Western Europe after WWII",
+        wrong1: "Soviet aid to Eastern Europe",
+        wrong2: "Military weapons supply only",
+        wrong3: "Colonial investment fund",
+        explanation: "Stopped poverty stopping communist rise in West Europe",
+        example: "Billions in US money for recovery"
+    },
+    // 47
+    {
+        question: "Define Berlin Blockade 1948–49",
+        answer: "USSR blocked road/rail access to West Berlin to force Western powers out",
+        wrong1: "Western powers closing Berlin borders",
+        wrong2: "Building Berlin Wall immediately",
+        wrong3: "Peace treaty negotiation",
+        explanation: "First major Cold War crisis",
+        example: "Allies responded with Berlin Airlift"
+    },
+    // 48
+    {
+        question: "Define Berlin Airlift",
+        answer: "Allied flying of food and supplies into blocked West Berlin",
+        wrong1: "Ground army invasion of East Germany",
+        wrong2: "Naval blockade of USSR ports",
+        wrong3: "Evacuating all civilians",
+        explanation: "Avoided direct war and saved West Berlin",
+        example: "Planes landed every minute for months"
+    },
+    // 49
+    {
+        question: "Define Berlin Wall 1961",
+        answer: "Concrete barrier dividing East and West Berlin to stop escape to West",
+        wrong1: "Border wall around all Germany",
+        wrong2: "Defence wall against invasion",
+        wrong3: "Trade customs barrier",
+        explanation: "Symbol of Cold War division",
+        example: "Separated families for nearly 30 years"
+    },
+    // 50
+    {
+        question: "Define nuclear arms race",
+        answer: "Competition between USA and USSR to build more powerful nuclear weapons",
+        wrong1: "Agreement to ban all nuclear tests",
+        wrong2: "Sharing nuclear technology",
+        wrong3: "Disarmament cooperation",
+        explanation: "Increased fear of global nuclear war",
+        example: "Hydrogen bombs, missile development"
+    },
+    // 51
+    {
+        question: "Define proxy war (Cold War)",
+        answer: "Conflict where USA and USSR support opposite sides without fighting directly",
+        wrong1: "Direct war between USA and USSR",
+        wrong2: "Peace negotiation summit",
+        wrong3: "Economic trade rivalry",
+        explanation: "Avoided World War Three",
+        example: "Korean War, Vietnam War"
+    },
+    // 52
+    {
+        question: "Define Korean War 1950–53",
+        answer: "Cold War proxy war: communist North Korea vs democratic South Korea",
+        wrong1: "WWII battle in Asia",
+        wrong2: "Japanese civil war",
+        wrong3: "Colonial independence fight",
+        explanation: "USA backed South; China/USSR backed North",
+        example: "Ended in stalemate, country still divided"
+    },
+    // 53
+    {
+        question: "Define Vietnam War",
+        answer: "Long Cold War proxy war: communist North Vietnam vs US-backed South",
+        wrong1: "European WWII battle",
+        wrong2: "British colonial civil war only",
+        wrong3: "Peacekeeping operation",
+        explanation: "US failed to stop communist takeover",
+        example: "Guerilla warfare, US domestic opposition"
+    },
+    // 54
+    {
+        question: "Define Cuban Missile Crisis 1962",
+        answer: "13-day Cold War crisis over Soviet nuclear missiles placed in Cuba",
+        wrong1: "Missile treaty signing event",
+        wrong2: "Invasion of Cuba by USSR",
+        wrong3: "US nuclear test in Caribbean",
+        explanation: "Closest world came to nuclear war",
+        example: "US blockade; USSR agreed to remove missiles"
+    },
+    // 55
+    {
+        question: "Define détente",
+        answer: "Period of reduced Cold War tension, cooperation and talks",
+        wrong1: "Sharp increase in military rivalry",
+        wrong2: "Complete breakdown of relations",
+        wrong3: "Nuclear war declaration",
+        explanation: "1970s era of peaceful negotiation",
+        example: "Arms limitation treaties, trade links"
+    },
+    // 56
+    {
+        question: "Define decolonisation",
+        answer: "Process where European colonies gained independence and self-rule",
+        wrong1: "Expanding new empires",
+        wrong2: "Strengthening colonial control",
+        wrong3: "Military occupation forever",
+        explanation: "Major global change after WWII",
+        example: "India, Africa, Southeast Asia independence"
+    },
+    // 57
+    {
+        question: "Define nationalism in decolonisation",
+        answer: "Desire of colonised people for own nation, independence and self-government",
+        wrong1: "Loyalty to European empire",
+        wrong2: "Accepting foreign rule permanently",
+        wrong3: "Global citizenship only",
+        explanation: "Main driving force for independence",
+        example: "Indian National Congress movement"
+    },
+    // 58
+    {
+        question: "Define partition (India 1947)",
+        answer: "Division of British India into independent India (Hindu) and Pakistan (Muslim)",
+        wrong1: "Uniting all South Asia into one state",
+        wrong2: "Keeping full British control",
+        wrong3: "Splitting into many small kingdoms",
+        explanation: "Caused mass migration and violence",
+        example: "1947 independence and border division"
+    },
+    // 59
+    {
+        question: "Define United Nations (UN)",
+        answer: "Global international organisation created to maintain peace and cooperation",
+        wrong1: "Military alliance like NATO",
+        wrong2: "European economic union",
+        wrong3: "Communist bloc organisation",
+        explanation: "Replaced failed League of Nations",
+        example: "General Assembly, Security Council"
+    },
+    // 60
+    {
+        question: "Define Security Council (UN)",
+        answer: "UN body with main responsibility for international peace and security",
+        wrong1: "Organisation for economic aid only",
+        wrong2: "Cultural education branch",
+        wrong3: "Colonial ruling council",
+        explanation: "Has permanent members with veto power",
+        example: "USA, UK, Russia, China, France"
+    },
+    // 61
+    {
+        question: "Define veto power (UN)",
+        answer: "Right of permanent Security Council members to block any resolution",
+        wrong1: "Power to pass laws alone",
+        wrong2: "Control over all UN money",
+        wrong3: "Right to start wars",
+        explanation: "Can stop UN action even if majority agree",
+        example: "USA or Russia vetoing a peace plan"
+    },
+    // 62
+    {
+        question: "Define human rights",
+        answer: "Basic rights and freedoms all people are entitled to by being human",
+        wrong1: "Rights only for citizens of rich nations",
+        wrong2: "Privileges given only by kings",
+        wrong3: "Military rights for soldiers only",
+        explanation: "UN Universal Declaration of Human Rights 1948",
+        example: "Freedom of speech, equality, safety"
+    },
+    // 63
+    {
+        question: "Define terrorism (modern history)",
+        answer: "Violent acts by groups to create fear and achieve political aims",
+        wrong1: "Official army warfare",
+        wrong2: "Peaceful protest",
+        wrong3: "Economic boycott",
+        explanation: "Major global issue late 20th/21st century",
+        example: "9/11 attacks, extremist groups"
+    },
+    // 64
+    {
+        question: "Define glasnost (Gorbachev)",
+        answer: "Soviet policy of openness, free speech and government transparency",
+        wrong1: "Strict censorship and control",
+        wrong2: "Military build-up policy",
+        wrong3: "Closing all borders",
+        explanation: "Allowed public criticism in USSR",
+        example: "Media freedom and public discussion"
+    },
+    // 65
+    {
+        question: "Define perestroika (Gorbachev)",
+        answer: "Soviet economic and political restructuring to reform the system",
+        wrong1: "Keeping old communist system unchanged",
+        wrong2: "Immediate war on NATO",
+        wrong3: "Total isolation from world",
+        explanation: "Attempted reform but led to collapse of USSR",
+        example: "Market-style economic changes"
+    },
+    // 66
+    {
+        question: "Define collapse of USSR 1991",
+        answer: "End of Soviet Union; breakup into independent republics and end of Cold War",
+        wrong1: "USSR joining NATO",
+        wrong2: "Communism spreading globally",
+        wrong3: "Start of new Cold War",
+        explanation: "Marked end of 1947–1991 Cold War era",
+        example: "Russia, Ukraine, Belarus become separate states"
+    },
+    // 67
+    {
+        question: "Define superpower",
+        answer: "Nation with dominant global political, military and economic strength",
+        wrong1: "Small neutral country",
+        wrong2: "Colonial territory",
+        wrong3: "Regional city-state",
+        explanation: "Cold War: USA and USSR were the two superpowers",
+        example: "USA remains sole superpower after 1991"
+    },
+    // 68
+    {
+        question: "Define bipolar world (Cold War)",
+        answer: "Global order dominated by two opposing superpower blocs",
+        wrong1: "One single global power",
+        wrong2: "Many equal small powers",
+        wrong3: "No powerful nations",
+        explanation: "USA-led West vs USSR-led East",
+        example: "1947–1991 global division"
+    },
+    // 69
+    {
+        question: "Define unipolar world (post-Cold War)",
+        answer: "Global order with one dominant superpower (USA)",
+        wrong1: "Two equal powerful blocs",
+        wrong2: "No strong nations at all",
+        wrong3: "EU as world superpower",
+        explanation: "After fall of USSR 1991",
+        example: "USA leads global military and politics"
+    },
+    // 70
+    {
+        question: "Define appeasement failure",
+        answer: "Giving in to Hitler only encouraged further aggression and WWII",
+        wrong1: "Appeasement permanently stopped war",
+        wrong2: "Appeasement had no effect",
+        wrong3: "Appeasement made Germany weaker",
+        explanation: "Key IGCSE judgement question",
+        example: "Hitler took more land after each concession"
+    },
+    // 71
+    {
+        question: "Define propaganda",
+        answer: "Biased information used to influence opinion, shape views and persuade people",
+        wrong1: "Neutral factual news",
+        wrong2: "Official secret records",
+        wrong3: "Eyewitness diary entry",
+        explanation: "Used heavily in WWI, WWII and Cold War",
+        example: "Posters recruiting soldiers or attacking enemies"
+    },
+    // 72
+    {
+        question: "Define conscription",
+        answer: "Compulsory enlistment of civilians into the military",
+        wrong1: "Voluntary army joining",
+        wrong2: "Hiring foreign soldiers only",
+        wrong3: "Peacekeeping volunteer force",
+        explanation: "Used in both World Wars to boost army size",
+        example: "Young men forced to serve in army"
+    },
+    // 73
+    {
+        question: "Define rationing",
+        answer: "Government controlling food and goods supply to share limited resources",
+        wrong1: "Free unlimited supplies for everyone",
+        wrong2: "Only rich people allowed goods",
+        wrong3: "Total ban on all food",
+        explanation: "Used during wartime shortages",
+        example: "Sugar, meat, bread limited per person"
+    },
+    // 74
+    {
+        question: "Define civilian impact of total war",
+        answer: "Civilians face bombing, rationing, labour work, fear and displacement",
+        wrong1: "Civilians unaffected, only soldiers fight",
+        wrong2: "Civilians gain more wealth",
+        wrong3: "Daily life stays completely normal",
+        explanation: "Key essay topic for WWI/WWII",
+        example: "Bombed cities, factory work for women"
+    },
+    // 75
+    {
+        question: "Define economic depression",
+        answer: "Severe long-term economic downturn with high unemployment and poverty",
+        wrong1: "Fast economic growth",
+        wrong2: "Stable low inflation",
+        wrong3: "Boom in industry",
+        explanation: "1929 Wall Street Crash caused global depression",
+        example: "1930s mass unemployment across Europe and USA"
+    },
+    // 76
+    {
+        question: "Define Wall Street Crash 1929",
+        answer: "Collapse of US stock market triggering global Great Depression",
+        wrong1: "End of WWI economic boom",
+        wrong2: "Start of Cold War trade crisis",
+        wrong3: "European bank failure only",
+        explanation: "Led to poverty, unemployment and political instability",
+        example: "Investments lost, businesses closed"
+    },
+    // 77
+    {
+        question: "Define minority persecution",
+        answer: "Unfair treatment, discrimination and oppression of racial/religious groups",
+        wrong1: "Equal rights for all groups",
+        wrong2: "Special privileges for minorities",
+        wrong3: "Ignoring all group differences",
+        explanation: "Central to Nazi Germany history",
+        example: "Jews, Roma, disabled people targeted by Nazis"
+    },
+    // 78
+    {
+        question: "Define concentration camp",
+        answer: "Locked prison camp used to detain, punish and murder minority groups",
+        wrong1: "Military training base",
+        wrong2: "Refugee shelter",
+        wrong3: "Education camp",
+        explanation: "Nazi system of imprisonment and genocide",
+        example: "Auschwitz, Dachau"
+    },
+    // 79
+    {
+        question: "Define collective security",
+        answer: "Countries agreeing to act together to stop aggression and maintain peace",
+        wrong1: "Each country acts alone only",
+        wrong2: "Secret alliances for war",
+        wrong3: "Isolation from global affairs",
+        explanation: "Idea behind League of Nations and UN",
+        example: "If one nation is attacked, all members help"
+    },
+    // 80
+    {
+        question: "Define isolationism",
+        answer: "Policy of staying out of foreign wars and international conflicts",
+        wrong1: "Joining every global alliance",
+        wrong2: "Intervening in all foreign wars",
+        wrong3: "Leading world organisations",
+        explanation: "USA followed isolationism between WWI and WWII",
+        example: "USA avoided European war problems 1920s–30s"
+    },
+    // 81
+    {
+        question: "Define reparations failure (post-WWI)",
+        answer: "Reparations damaged German economy, caused anger and helped Nazi rise",
+        wrong1: "Reparations fixed German economy",
+        wrong2: "Reparations had no impact",
+        wrong3: "Reparations made Germany democratic",
+        explanation: "Key factor in WWII origins",
+        example: "Poverty and public anger exploited by Hitler"
+    },
+    // 82
+    {
+        question: "Define extremist political party",
+        answer: "Party with radical, extreme views outside mainstream politics",
+        wrong1: "Moderate centre political group",
+        wrong2: "Traditional royalist party",
+        wrong3: "Single-issue environmental group",
+        explanation: "Nazi and Communist parties were extremist",
+        example: "Radical policies, street violence, strict control"
+    },
+    // 83
+    {
+        question: "Define coalition government",
+        answer: "Government formed when multiple political parties share power",
+        wrong1: "Single party ruling alone",
+        wrong2: "Dictator taking full control",
+        wrong3: "Rule by military only",
+        explanation: "Common in unstable democratic systems",
+        example: "Weimar Republic often had coalitions"
+    },
+    // 84
+    {
+        question: "Define political instability",
+        answer: "Frequent government collapse, weak leadership and public unrest",
+        wrong1: "Long stable rule by strong government",
+        wrong2: "Permanent one-party control",
+        wrong3: "No changes in government ever",
+        explanation: "Weakens democracy and allows extremism to grow",
+        example: "Weimar governments changed often"
+    },
+    // 85
+    {
+        question: "Define arms limitation treaty",
+        answer: "Agreement between nations to limit nuclear weapons and testing",
+        wrong1: "Agreement to build more weapons",
+        wrong2: "Total ban on all armies",
+        wrong3: "Trade deal for weapons sales",
+        explanation: "Cold War détente key agreement",
+        example: "SALT treaties between USA and USSR"
+    },
+    // 86
+    {
+        question: "Define guerilla warfare",
+        answer: "Irregular fighting using small raids, ambushes and hidden tactics",
+        wrong1: "Large tank and open battle fighting",
+        wrong2: "Trench static warfare",
+        wrong3: "Naval fleet combat",
+        explanation: "Used heavily in Vietnam War",
+        example: "Hidden fighters attacking larger armies"
+    },
+    // 87
+    {
+        question: "Define superpower rivalry",
+        answer: "Competition between USA and USSR in military, technology, space and influence",
+        wrong1: "Full friendship and cooperation",
+        wrong2: "One country surrendering to the other",
+        wrong3: "Ignoring each other completely",
+        explanation: "Drove Cold War global conflicts",
+        example: "Space Race, nuclear race, proxy wars"
+    },
+    // 88
+    {
+        question: "Define Space Race",
+        answer: "Cold War competition between USA and USSR in space technology and exploration",
+        wrong1: "International space cooperation",
+        wrong2: "Tourism space programme",
+        wrong3: "Scientific climate project",
+        explanation: "Symbol of political and technological superiority",
+        example: "Sputnik 1, Moon landing 1969"
+    },
+    // 89
+    {
+        question: "Define domino theory (Cold War)",
+        answer: "US belief if one country falls to communism, neighbouring states will follow",
+        wrong1: "Communism will never spread",
+        wrong2: "Economic collapse spreads between nations",
+        wrong3: "Democracy automatically spreads",
+        explanation: "Justified US involvement in Korea and Vietnam",
+        example: "Fear communism would take over Southeast Asia"
+    },
+    // 90
+    {
+        question: "Define peaceful coexistence",
+        answer: "Cold War idea that capitalist and communist systems could live side by side",
+        wrong1: "Inevitable war between blocs",
+        wrong2: "One system must destroy the other",
+        wrong3: "Total isolation from each other",
+        explanation: "Supported during détente periods",
+        example: "Trade, talks and no direct war"
+    },
+    // 91
+    {
+        question: "Define colonial legacy",
+        answer: "Long-term political, economic and social effects left by European rule",
+        wrong1: "Immediate end of all foreign influence",
+        wrong2: "No changes after independence",
+        wrong3: "Colonies instantly become wealthy",
+        explanation: "Borders, conflict, economy shaped by past empire",
+        example: "Artificial borders causing African ethnic conflict"
+    },
+    // 92
+    {
+        question: "Define ethnic conflict",
+        answer: "Fighting and tension between different cultural, religious or tribal groups",
+        wrong1: "Unity between all groups",
+        wrong2: "Economic trade dispute only",
+        wrong3: "Political party rivalry only",
+        explanation: "Common after decolonisation",
+        example: "Religious violence after India partition"
+    },
+    // 93
+    {
+        question: "Define modern globalisation",
+        answer: "Increasing worldwide connection in trade, culture, media and politics",
+        wrong1: "Countries becoming more isolated",
+        wrong2: "Return to empire building",
+        wrong3: "Global government ruling all nations",
+        explanation: "Accelerated after Cold War ended",
+        example: "Global trade, internet, international brands"
+    },
+    // 94
+    {
+        question: "Define collective human rights responsibility",
+        answer: "Idea the international community must protect people from genocide and abuse",
+        wrong1: "Each nation solves its own problems alone",
+        wrong2: "No interference in any country",
+        wrong3: "Only economic aid allowed",
+        explanation: "Modern UN and international law principle",
+        example: "Intervention to stop mass murder"
+    },
+    // 95
+    {
+        question: "Define historical interpretation",
+        answer: "Different historian views and explanations of the same event",
+        wrong1: "Only one fixed correct version of history",
+        wrong2: "Copying sources with no analysis",
+        wrong3: "Remembering dates only",
+        explanation: "Key higher-level IGCSE/IB skill",
+        example: "Different views on who caused Cold War"
+    },
+    // 96
+    {
+        question: "Define change and continuity (history skill)",
+        answer: "Identifying what changed and what stayed the same over time",
+        wrong1: "Only listing dates",
+        wrong2: "Judging events as good or bad",
+        wrong3: "Only describing battles",
+        explanation: "Core essay structure skill",
+        example: "War technology changed; nationalism stayed constant"
+    },
+    // 97
+    {
+        question: "Define short-term consequence example",
+        answer: "Immediate effect within months or years of an event",
+        wrong1: "Effect lasting 50+ years",
+        wrong2: "Underlying cause before event",
+        wrong3: "Unrelated modern event",
+        explanation: "Clear immediate impact",
+        example: "WWII ended European empire power quickly"
+    },
+    // 98
+    {
+        question: "Define long-term consequence example",
+        answer: "Impact lasting decades or generations after the event",
+        wrong1: "Immediate result straight after",
+        wrong2: "Trigger cause of the event",
+        wrong3: "Temporary small effect",
+        explanation: "Shapes global politics for decades",
+        example: "Cold War created lasting nuclear weapons threat"
+    },
+    // 99
+    {
+        question: "Define turning point in history",
+        answer: "Event that completely changes the course of historical development",
+        wrong1: "Minor event with no impact",
+        wrong2: "Ordinary daily occurrence",
+        wrong3: "Repeating event with no change",
+        explanation: "Alters politics, society and future conflicts",
+        example: "WWI, WWII, fall of Berlin Wall"
+    },
+    // 100
+    {
+        question: "Key skill for Grade 10–11 History top marks",
+        answer: "Analyse causation, consequence, source evaluation and make supported judgements",
+        wrong1: "Only memorise dates",
+        wrong2: "Write personal opinions with no facts",
+        wrong3: "Copy source text without explanation",
+        explanation: "Required for full IGCSE/IB band 6–7",
+        example: "Link causes, effects and use contextual knowledge"
+    }
+];

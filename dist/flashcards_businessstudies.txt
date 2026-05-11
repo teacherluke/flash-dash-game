@@ -1,0 +1,998 @@
+const businessStudiesFlashcards = [
+    // 1
+    {
+        question: "What is the activity of making, buying, or selling goods or services?",
+        answer: "Business",
+        wrong1: "Charity",
+        wrong2: "Education",
+        wrong3: "Environment",
+        explanation: "Aims to make profit or provide value.",
+        example: "Shop, restaurant, online store"
+    },
+    // 2
+    {
+        question: "Money left after total costs are subtracted from revenue?",
+        answer: "Profit",
+        wrong1: "Loss",
+        wrong2: "Debt",
+        wrong3: "Tax",
+        explanation: "Main goal of most businesses.",
+        example: "Earn $500, cost $300 → profit $200"
+    },
+    // 3
+    {
+        question: "When costs are higher than revenue?",
+        answer: "Loss",
+        wrong1: "Profit",
+        wrong2: "Surplus",
+        wrong3: "Asset",
+        explanation: "Business spends more than it earns.",
+        example: "Cost $600, earn $400 → loss $200"
+    },
+    // 4
+    {
+        question: "Person who starts, organizes, and runs a business?",
+        answer: "Entrepreneur",
+        wrong1: "Employee",
+        wrong2: "Customer",
+        wrong3: "Supplier",
+        explanation: "Takes risks for rewards.",
+        example: "Founder of a new café"
+    },
+    // 5
+    {
+        question: "What is a need?",
+        answer: "Something essential for survival",
+        wrong1: "Something you want",
+        wrong2: "Something expensive",
+        wrong3: "Something luxury",
+        explanation: "Basic requirements to live.",
+        example: "Food, water, shelter"
+    },
+    // 6
+    {
+        question: "What is a want?",
+        answer: "Something you desire but not essential",
+        wrong1: "Something you need to live",
+        wrong2: "Something mandatory",
+        wrong3: "Something free",
+        explanation: "Makes life more enjoyable.",
+        example: "New phone, games, jewelry"
+    },
+    // 7
+    {
+        question: "Tangible items sold by businesses?",
+        answer: "Goods",
+        wrong1: "Services",
+        wrong2: "Taxes",
+        wrong3: "Assets",
+        explanation: "Physical products you can touch.",
+        example: "Shoes, books, food"
+    },
+    // 8
+    {
+        question: "Actions done by others for customers?",
+        answer: "Services",
+        wrong1: "Goods",
+        wrong2: "Liabilities",
+        wrong3: "Debts",
+        explanation: "Non-tangible business activities.",
+        example: "Haircut, cleaning, teaching"
+    },
+    // 9
+    {
+        question: "Business owned by one person?",
+        answer: "Sole Trader",
+        wrong1: "Partnership",
+        wrong2: "Company",
+        wrong3: "Franchise",
+        explanation: "Full control, unlimited liability.",
+        example: "Small local shop"
+    },
+    // 10
+    {
+        question: "Business owned by 2–20 people?",
+        answer: "Partnership",
+        wrong1: "Sole Trader",
+        wrong2: "Corporation",
+        wrong3: "Charity",
+        explanation: "Shared profits and risks.",
+        example: "Doctors, lawyers, accountants"
+    },
+    // 11
+    {
+        question: "Legal business entity separate from owners?",
+        answer: "Company / Limited Company",
+        wrong1: "Sole Trader",
+        wrong2: "Partnership",
+        wrong3: "Club",
+        explanation: "Limited liability for owners.",
+        example: "Apple, Nike, local limited firm"
+    },
+    // 12
+    {
+        question: "Business that sells the right to use its brand?",
+        answer: "Franchise",
+        wrong1: "Charity",
+        wrong2: "Partnership",
+        wrong3: "Government firm",
+        explanation: "Franchisor sells to franchisee.",
+        example: "McDonald’s, KFC, Subway"
+    },
+    // 13
+    {
+        question: "Business whose goal is to help people, not profit?",
+        answer: "Charity / Non-profit",
+        wrong1: "Private company",
+        wrong2: "Franchise",
+        wrong3: "Retailer",
+        explanation: "Raises money for good causes.",
+        example: "Red Cross, UNICEF"
+    },
+    // 14
+    {
+        question: "People who work for a business?",
+        answer: "Employees",
+        wrong1: "Employers",
+        wrong2: "Customers",
+        wrong3: "Suppliers",
+        explanation: "Get paid wages or salary.",
+        example: "Workers in a factory"
+    },
+    // 15
+    {
+        question: "People or businesses that buy goods or services?",
+        answer: "Customers",
+        wrong1: "Employees",
+        wrong2: "Employers",
+        wrong3: "Manufacturers",
+        explanation: "The main focus of all businesses.",
+        example: "Someone buying a drink"
+    },
+    // 16
+    {
+        question: "Businesses that provide materials or stock?",
+        answer: "Suppliers",
+        wrong1: "Customers",
+        wrong2: "Employees",
+        wrong3: "Competitors",
+        explanation: "Deliver resources to the business.",
+        example: "Bakery supplier gives flour"
+    },
+    // 17
+    {
+        question: "Businesses selling similar products?",
+        answer: "Competitors",
+        wrong1: "Partners",
+        wrong2: "Suppliers",
+        wrong3: "Investors",
+        explanation: "Fight for the same customers.",
+        example: "Coca-Cola vs Pepsi"
+    },
+    // 18
+    {
+        question: "People or groups with interest in a business?",
+        answer: "Stakeholders",
+        wrong1: "Workers",
+        wrong2: "Buyers",
+        wrong3: "Sellers",
+        explanation: "Affected by business decisions.",
+        example: "Owners, customers, workers"
+    },
+    // 19
+    {
+        question: "What does unlimited liability mean?",
+        answer: "Owner risks personal assets",
+        wrong1: "No risk at all",
+        wrong2: "Only business assets at risk",
+        wrong3: "Government pays debts",
+        explanation: "Personal possessions can be taken.",
+        example: "House, car used to pay debts"
+    },
+    // 20
+    {
+        question: "What does limited liability mean?",
+        answer: "Only investment is at risk",
+        wrong1: "Personal assets at risk",
+        wrong2: "No debts allowed",
+        wrong3: "Unlimited risk",
+        explanation: "Owners don’t lose personal property.",
+        example: "Lose only money invested"
+    },
+    // 21
+    {
+        question: "Business that makes products from raw materials?",
+        answer: "Manufacturer",
+        wrong1: "Retailer",
+        wrong2: "Wholesaler",
+        wrong3: "Consumer",
+        explanation: "Turns resources into finished goods.",
+        example: "Car factory, food processor"
+    },
+    // 22
+    {
+        question: "Business that sells directly to the public?",
+        answer: "Retailer",
+        wrong1: "Manufacturer",
+        wrong2: "Wholesaler",
+        wrong3: "Importer",
+        explanation: "Sells small quantities to customers.",
+        example: "Supermarket, clothes shop"
+    },
+    // 23
+    {
+        question: "Business that sells large quantities to retailers?",
+        answer: "Wholesaler",
+        wrong1: "Retailer",
+        wrong2: "Consumer",
+        wrong3: "Producer",
+        explanation: "Buys bulk from manufacturer.",
+        example: "Food wholesale warehouse"
+    },
+    // 24
+    {
+        question: "Path from producer to consumer?",
+        answer: "Distribution Channel",
+        wrong1: "Supply line",
+        wrong2: "Factory line",
+        wrong3: "Service line",
+        explanation: "How goods reach customers.",
+        example: "Maker → Wholesaler → Retailer → Buyer"
+    },
+    // 25
+    {
+        question: "All activities to promote and sell products?",
+        answer: "Marketing",
+        wrong1: "Production",
+        wrong2: "Accounting",
+        wrong3: "HR",
+        explanation: "Understanding and satisfying customers.",
+        example: "Ads, social media, pricing"
+    },
+    // 26
+    {
+        question: "What are the 4 Ps of marketing?",
+        answer: "Product, Price, Place, Promotion",
+        wrong1: "People, Profit, Plan, Power",
+        wrong2: "Time, Team, Money, Sales",
+        wrong3: "Cost, Cash, Credit, Stock",
+        explanation: "Core marketing mix.",
+        example: "Right product at right price"
+    },
+    // 27
+    {
+        question: "What is a brand?",
+        answer: "Name, logo, or image of a business",
+        wrong1: "Type of product",
+        wrong2: "Type of service",
+        wrong3: "Type of profit",
+        explanation: "Makes business recognizable.",
+        example: "Nike logo, Apple name"
+    },
+    // 28
+    {
+        question: "Making a product stand out from others?",
+        answer: "Differentiation",
+        wrong1: "Duplication",
+        wrong2: "Production",
+        wrong3: "Reduction",
+        explanation: "Unique selling point (USP).",
+        example: "Better quality, lower price"
+    },
+    // 29
+    {
+        question: "Unique reason customers choose a product?",
+        answer: "Unique Selling Point (USP)",
+        wrong1: "Cost price",
+        wrong2: "Market share",
+        wrong3: "Profit margin",
+        explanation: "What makes the product special.",
+        example: "24-hour service, free delivery"
+    },
+    // 30
+    {
+        question: "Group of people likely to buy a product?",
+        answer: "Target Market",
+        wrong1: "General public",
+        wrong2: "All people",
+        wrong3: "Competitors",
+        explanation: "Specific customers a business aims at.",
+        example: "Teenagers, parents, athletes"
+    },
+    // 31
+    {
+        question: "Market research done by the business itself?",
+        answer: "Primary Research",
+        wrong1: "Secondary Research",
+        wrong2: "Online Research",
+        wrong3: "Book Research",
+        explanation: "Original data collection.",
+        example: "Surveys, interviews, questionnaires"
+    },
+    // 32
+    {
+        question: "Research using existing data?",
+        answer: "Secondary Research",
+        wrong1: "Primary Research",
+        wrong2: "Field Research",
+        wrong3: "Direct Research",
+        explanation: "Uses already published information.",
+        example: "Newspapers, internet, reports"
+    },
+    // 33
+    {
+        question: "Setting a high price to show quality?",
+        answer: "Premium Pricing",
+        wrong1: "Penetration Pricing",
+        wrong2: "Competitive Pricing",
+        wrong3: "Cost Plus Pricing",
+        explanation: "Luxury brands use this.",
+        example: "Designer clothes, high-end watches"
+    },
+    // 34
+    {
+        question: "Low price to enter a market quickly?",
+        answer: "Penetration Pricing",
+        wrong1: "Premium Pricing",
+        wrong2: "Skimming Pricing",
+        wrong3: "Psychological Pricing",
+        explanation: "Gain customers fast then raise price.",
+        example: "New app with low launch price"
+    },
+    // 35
+    {
+        question: "High price at launch for early adopters?",
+        answer: "Price Skimming",
+        wrong1: "Penetration Pricing",
+        wrong2: "Competitive Pricing",
+        wrong3: "Loss Leader",
+        explanation: "Lowers price over time.",
+        example: "New phone, new console"
+    },
+    // 36
+    {
+        question: "Pricing matching competitors?",
+        answer: "Competitive Pricing",
+        wrong1: "Premium Pricing",
+        wrong2: "Skimming",
+        wrong3: "Cost Plus",
+        explanation: "Avoid price wars.",
+        example: "Supermarket petrol prices"
+    },
+    // 37
+    {
+        question: "Pricing to look cheaper, like $9.99?",
+        answer: "Psychological Pricing",
+        wrong1: "Premium Pricing",
+        wrong2: "Penetration Pricing",
+        wrong3: "Skimming",
+        explanation: "Customers think it’s cheaper.",
+        example: "$9.99 instead of $10"
+    },
+    // 38
+    question: "Cost plus profit margin equals?",
+    answer: "Selling Price",
+    wrong1: "Cost Price",
+    wrong2: "Loss Price",
+    wrong3: "Wholesale Price",
+    explanation: "Basic pricing formula.",
+    example: "Cost $5 + profit $3 = sell $8"
+    },
+    // 39
+    {
+        question: "Communication to persuade customers to buy?",
+        answer: "Promotion",
+        wrong1: "Production",
+        wrong2: "Distribution",
+        wrong3: "Accounting",
+        explanation: "Part of the 4 Ps.",
+        example: "Ads, posters, social media"
+    },
+    // 40
+    {
+        question: "Paid public message on TV, internet, etc.?",
+        answer: "Advertising",
+        wrong1: "Branding",
+        wrong2: "Pricing",
+        wrong3: "Retailing",
+        explanation: "Reaches large audiences.",
+        example: "YouTube ads, billboards"
+    },
+    // 41
+    {
+        question: "Free promotion through news or stories?",
+        answer: "Publicity (PR)",
+        wrong1: "Paid ads",
+        wrong2: "Sales promotion",
+        wrong3: "Personal selling",
+        explanation: "Free media attention.",
+        example: "Newspaper article about business"
+    },
+    // 42
+    {
+        question: "Short-term incentives to buy quickly?",
+        answer: "Sales Promotion",
+        wrong1: "Advertising",
+        wrong2: "Branding",
+        wrong3: "Pricing",
+        explanation: "Temporary offers.",
+        example: "Discounts, buy one get one free"
+    },
+    // 43
+    {
+        question: "Face-to-face selling to customers?",
+        answer: "Personal Selling",
+        wrong1: "Advertising",
+        wrong2: "Sales promotion",
+        wrong3: "Publicity",
+        explanation: "Direct conversation.",
+        example: "Car salesman, shop assistant"
+    },
+    // 44
+    {
+        question: "Making goods or providing services?",
+        answer: "Production",
+        wrong1: "Marketing",
+        wrong2: "Accounting",
+        wrong3: "HR",
+        explanation: "Creation of products.",
+        example: "Making shoes, baking bread"
+    },
+    // 45
+    {
+        question: "Making products in large quantities?",
+        answer: "Mass Production",
+        wrong2: "Job Production",
+        wrong3: "Batch Production",
+        wrong4: "Custom Production",
+        explanation: "Assembly line, identical products.",
+        example: "Cans, cars, phones"
+    },
+    // 46
+    {
+        question: "Making one unique product for a customer?",
+        answer: "Job Production",
+        wrong1: "Mass Production",
+        wrong2: "Batch Production",
+        wrong3: "Flow Production",
+        explanation: "Bespoke, high quality.",
+        example: "Wedding dress, custom furniture"
+    },
+    // 47
+    {
+        question: "Making groups of the same product?",
+        answer: "Batch Production",
+        wrong1: "Job Production",
+        wrong2: "Mass Production",
+        wrong3: "Single Production",
+        explanation: "One batch finished then next.",
+        example: "Bread, cakes, clothing lines"
+    },
+    // 48
+    {
+        question: "Using machines to do work formerly done by people?",
+        answer: "Automation",
+        wrong1: "Labour",
+        wrong2: "Production",
+        wrong3: "Distribution",
+        explanation: "Faster, cheaper, consistent.",
+        example: "Robots in a car factory"
+    },
+    // 49
+    {
+        question: "Stock of raw materials or finished goods?",
+        answer: "Inventory",
+        wrong1: "Assets",
+        wrong2: "Liabilities",
+        wrong3: "Revenue",
+        explanation: "Goods waiting to be sold or used.",
+        example: "Shop shelves full of stock"
+    },
+    // 50
+    {
+        question: "Keeping enough stock but not too much?",
+        answer: "Stock Control",
+        wrong1: "Profit Control",
+        wrong2: "Price Control",
+        wrong3: "Quality Control",
+        explanation: "Avoid running out or wasting money.",
+        example: "Ordering new stock when low"
+    },
+    // 51
+    {
+        question: "Checking products meet standards?",
+        answer: "Quality Control",
+        wrong1: "Stock Control",
+        wrong2: "Cost Control",
+        wrong3: "Price Control",
+        explanation: "Ensure good quality for customers.",
+        example: "Checking faulty products"
+    },
+    // 52
+    {
+        question: "Making sure products are perfect every time?",
+        answer: "Total Quality Management (TQM)",
+        wrong1: "Stock Control",
+        wrong2: "Cost Control",
+        wrong3: "Profit Control",
+        explanation: "Everyone responsible for quality.",
+        example: "All workers check quality"
+    },
+    // 53
+    {
+        question: "All money coming into a business?",
+        answer: "Revenue",
+        wrong1: "Profit",
+        wrong2: "Loss",
+        wrong3: "Debt",
+        explanation: "Sales × price = revenue.",
+        example: "10 items × $10 = $100 revenue"
+    },
+    // 54
+    {
+        question: "Recording and managing business money?",
+        answer: "Accounting / Finance",
+        wrong1: "Marketing",
+        wrong2: "Production",
+        wrong3: "HR",
+        explanation: "Track income and expenses.",
+        example: "Bookkeeping, financial reports"
+    },
+    // 55
+    {
+        question: "Costs that do not change each month?",
+        answer: "Fixed Costs",
+        wrong1: "Variable Costs",
+        wrong2: "Total Costs",
+        wrong3: "Marginal Costs",
+        explanation: "Same amount regardless of sales.",
+        example: "Rent, insurance, salaries"
+    },
+    // 56
+    {
+        question: "Costs that change with production?",
+        answer: "Variable Costs",
+        wrong1: "Fixed Costs",
+        wrong2: "Hidden Costs",
+        wrong3: "Set Costs",
+        explanation: "More sales = higher cost.",
+        example: "Materials, packaging, fuel"
+    },
+    // 57
+    {
+        question: "Fixed costs + variable costs = ?",
+        answer: "Total Costs",
+        wrong1: "Revenue",
+        wrong2: "Profit",
+        wrong3: "Loss",
+        explanation: "All expenses of the business.",
+        example: "Rent + materials = total cost"
+    },
+    // 58
+    {
+        question: "Shows revenue, costs, and profit over time?",
+        answer: "Income Statement",
+        wrong1: "Balance Sheet",
+        wrong2: "Cash Flow",
+        wrong3: "Inventory Sheet",
+        explanation: "Also called Profit & Loss Account.",
+        example: "Yearly financial statement"
+    },
+    // 59
+    {
+        question: "Shows assets, liabilities, and equity?",
+        answer: "Balance Sheet",
+        wrong1: "Income Statement",
+        wrong2: "Cash Flow Forecast",
+        wrong3: "Sales Report",
+        explanation: "Snapshot of business value.",
+        example: "What business owns and owes"
+    },
+    // 60
+    {
+        question: "Flow of money in and out of business?",
+        answer: "Cash Flow",
+        wrong1: "Profit",
+        wrong2: "Revenue",
+        wrong3: "Debt",
+        explanation: "Cash available to pay bills.",
+        example: "Money in from sales, out to suppliers"
+    },
+    // 61
+    {
+        question: "Predicting future cash flow?",
+        answer: "Cash Flow Forecast",
+        wrong1: "Income Statement",
+        wrong2: "Balance Sheet",
+        wrong3: "Sales Report",
+        explanation: "Plan for shortages or surpluses.",
+        example: "Monthly cash plan"
+    },
+    // 62
+    {
+        question: "When cash out is higher than cash in?",
+        answer: "Cash Flow Problem",
+        wrong1: "Profit",
+        wrong2: "Surplus",
+        wrong3: "Revenue",
+        explanation: "Cannot pay bills on time.",
+        example: "Too much stock, slow payments"
+    },
+    // 63
+    {
+        question: "Things a business owns?",
+        answer: "Assets",
+        wrong1: "Liabilities",
+        wrong2: "Debts",
+        wrong3: "Expenses",
+        explanation: "Have monetary value.",
+        example: "Cash, machines, buildings, stock"
+    },
+    // 64
+    {
+        question: "Things a business owes?",
+        answer: "Liabilities",
+        wrong1: "Assets",
+        wrong2: "Equity",
+        wrong3: "Revenue",
+        explanation: "Debts and obligations.",
+        example: "Loans, bills, unpaid suppliers"
+    },
+    // 65
+    {
+        question: "Money invested by the owner?",
+        answer: "Capital / Equity",
+        wrong1: "Loan",
+        wrong2: "Debt",
+        wrong3: "Revenue",
+        explanation: "Owner’s share of the business.",
+        example: "Savings put into the business"
+    },
+    // 66
+    {
+        question: "Money borrowed and must be repaid?",
+        answer: "Loan",
+        wrong1: "Grant",
+        wrong2: "Investment",
+        wrong3: "Donation",
+        explanation: "Usually with interest.",
+        example: "Bank loan for a shop"
+    },
+    // 67
+    {
+        question: "Free money given to a business, no repayment?",
+        answer: "Grant",
+        wrong1: "Loan",
+        wrong2: "Debt",
+        wrong3: "Overdraft",
+        explanation: "From government or charities.",
+        example: "Grant for a new startup"
+    },
+    // 68
+    question: "Permission to spend more money than in account?",
+    answer: "Overdraft",
+    wrong1: "Loan",
+    wrong2: "Grant",
+    wrong3: "Equity",
+    explanation: "Short-term borrowing.",
+    example: "Bank account goes negative"
+    },
+    // 69
+    {
+        question: "Managing and leading employees?",
+        answer: "Human Resources (HR)",
+        wrong1: "Marketing",
+        wrong2: "Finance",
+        wrong3: "Production",
+        explanation: "Hiring, training, firing staff.",
+        example: "HR department in a company"
+    },
+    // 70
+    {
+        question: "Finding and hiring new employees?",
+        answer: "Recruitment",
+        wrong1: "Training",
+        wrong2: "Promotion",
+        wrong3: "Retirement",
+        explanation: "Selecting the best person for job.",
+        example: "Advertising job, interviewing"
+    },
+    // 71
+    {
+        question: "Teaching employees new skills?",
+        answer: "Training",
+        wrong1: "Recruitment",
+        wrong2: "Selection",
+        wrong3: "Retrenchment",
+        explanation: "Improves performance and efficiency.",
+        example: "Computer training, safety course"
+    },
+    // 72
+    {
+        question: "Fixed regular payment to employees?",
+        answer: "Salary",
+        wrong1: "Wage",
+        wrong2: "Commission",
+        wrong3: "Bonus",
+        explanation: "Paid monthly, not hourly.",
+        example: "Manager’s yearly salary"
+    },
+    // 73
+    {
+        question: "Hourly payment to employees?",
+        answer: "Wage",
+        wrong1: "Salary",
+        wrong2: "Commission",
+        wrong3: "Bonus",
+        explanation: "Paid weekly or monthly.",
+        example: "Factory worker hourly pay"
+    },
+    // 74
+    {
+        question: "Payment based on number of sales?",
+        answer: "Commission",
+        wrong1: "Salary",
+        wrong2: "Wage",
+        wrong3: "Bonus",
+        explanation: "More sales = more pay.",
+        example: "Salesman earns 10% per sale"
+    },
+    // 75
+    {
+        question: "Extra payment for good performance?",
+        answer: "Bonus",
+        wrong1: "Wage",
+        wrong2: "Commission",
+        wrong3: "Salary",
+        explanation: "One-time extra money.",
+        example: "Christmas bonus, target bonus"
+    },
+    // 76
+    {
+        question: "Group of workers protecting rights?",
+        answer: "Trade Union",
+        wrong1: "Management",
+        wrong2: "HR Team",
+        wrong3: "Board",
+        explanation: "Negotiates pay and conditions.",
+        example: "Teachers’ union, nurses’ union"
+    },
+    // 77
+    {
+        question: "Workers refusing to work to protest?",
+        answer: "Strike",
+        wrong1: "Negotiation",
+        wrong2: "Training",
+        wrong3: "Meeting",
+        explanation: "For better pay or conditions.",
+        example: "Factory workers on strike"
+    },
+    // 78
+    {
+        question: "Level of satisfaction of employees?",
+        answer: "Staff Morale",
+        wrong1: "Profit",
+        wrong2: "Sales",
+        wrong3: "Quality",
+        explanation: "Happy workers work better.",
+        example: "High morale = low absence"
+    },
+    // 79
+    {
+        question: "Leaving a job is called?",
+        answer: "Staff Turnover",
+        wrong1: "Recruitment",
+        wrong2: "Training",
+        wrong3: "Promotion",
+        explanation: "Rate workers leave and are replaced.",
+        example: "High turnover = many leavers"
+    },
+    // 80
+    {
+        question: "Moving an employee to a higher job?",
+        answer: "Promotion",
+        wrong1: "Demotion",
+        wrong2: "Training",
+        wrong3: "Recruitment",
+        explanation: "Higher pay and responsibility.",
+        example: "Clerk → Supervisor → Manager"
+    },
+    // 81
+    {
+        question: "Rules for safe and fair work?",
+        answer: "Employment Laws",
+        wrong1: "Business Rules",
+        wrong2: "Company Policy",
+        wrong3: "Safety Tips",
+        explanation: "Government laws protecting workers.",
+        example: "Minimum wage, safety laws"
+    },
+    // 82
+    {
+        question: "Ensuring a safe workplace for employees?",
+        answer: "Health and Safety",
+        wrong1: "Marketing",
+        wrong2: "Accounting",
+        wrong3: "Distribution",
+        explanation: "Prevent accidents and injuries.",
+        example: "First aid, safety equipment"
+    },
+    // 83
+    question: "Planning business goals and actions?",
+    answer: "Business Plan",
+    wrong1: "Sales Plan",
+    wrong2: "Marketing Plan",
+    wrong3: "Cash Plan",
+    explanation: "Written plan for success.",
+    example: "Plan for starting a new shop"
+    },
+    // 84
+    {
+        question: "Short-term tasks to reach long-term goals?",
+        answer: "Objectives",
+        wrong1: "Aims",
+        wrong2: "Dreams",
+        wrong3: "Wishes",
+        explanation: "SMART objectives: Specific, Measurable.",
+        example: "Increase sales by 10% this year"
+    },
+    // 85
+    {
+        question: "Structuring a business into departments?",
+        answer: "Organization Structure",
+        wrong1: "Marketing Plan",
+        wrong2: "Financial Plan",
+        wrong3: "Production Line",
+        explanation: "Shows who reports to whom.",
+        example: "Manager → Supervisor → Worker"
+    },
+    // 86
+    {
+        question: "Person in charge of a department or team?",
+        answer: "Manager",
+        wrong1: "Employee",
+        wrong2: "Owner",
+        wrong3: "Customer",
+        explanation: "Plans, organizes, leads, controls.",
+        example: "Shop manager, office manager"
+    },
+    // 87
+    {
+        question: "Influencing and guiding employees?",
+        answer: "Leadership",
+        wrong1: "Management",
+        wrong2: "Training",
+        wrong3: "Recruitment",
+        explanation: "Inspire workers to achieve goals.",
+        example: "Strong leader motivates team"
+    },
+    // 88
+    {
+        question: "Decision making by top managers only?",
+        answer: "Centralized Decision Making",
+        wrong1: "Decentralized",
+        wrong2: "Democratic",
+        wrong3: "Free",
+        explanation: "Little power for lower staff.",
+        example: "Owner makes all decisions"
+    },
+    // 89
+    question: "Decision making passed to lower managers?",
+    answer: "Decentralized Decision Making",
+    wrong1: "Centralized",
+    wrong2: "Autocratic",
+    wrong3: "Strict",
+    explanation: "More power for local teams.",
+    example: "Branch managers decide locally"
+    },
+    // 90
+    {
+        question: "Working from home or remotely?",
+        answer: "Teleworking / Remote Work",
+        wrong1: "Full-time",
+        wrong2: "Part-time",
+        wrong3: "Shift work",
+        explanation: "Uses internet and computers.",
+        example: "Working from home online"
+    },
+    // 91
+    {
+        question: "Working around the clock in shifts?",
+        answer: "Shift Work",
+        wrong1: "Full-time",
+        wrong2: "Part-time",
+        wrong3: "Remote Work",
+        explanation: "Factory, hospital, 24hr business.",
+        example: "Morning, afternoon, night shifts"
+    },
+    // 92
+    {
+        question: "Doing business using the internet?",
+        answer: "E-commerce",
+        wrong1: "Retail",
+        wrong2: "Wholesale",
+        wrong3: "Manufacturing",
+        explanation: "Online buying and selling.",
+        example: "Amazon, online shops"
+    },
+    // 93
+    {
+        question: "Using social media to sell products?",
+        answer: "Social Media Marketing",
+        wrong1: "TV Advertising",
+        wrong2: "Billboards",
+        wrong3: "Posters",
+        explanation: "Reaches millions cheaply.",
+        example: "Facebook, Instagram, TikTok ads"
+    },
+    // 94
+    {
+        question: "Business acting responsibly towards society?",
+        answer: "Corporate Social Responsibility (CSR)",
+        wrong1: "Profit Making",
+        wrong2: "Sales",
+        wrong3: "Marketing",
+        explanation: "Ethical, green, fair practices.",
+        example: "Recycling, fair wages, charity"
+    },
+    // 95
+    {
+        question: "Rules and moral principles for business?",
+        answer: "Business Ethics",
+        wrong1: "Laws",
+        wrong2: "Rules",
+        wrong3: "Guidelines",
+        explanation: "Doing the right thing.",
+        example: "Honesty, fairness, no cheating"
+    },
+    // 96
+    {
+        question: "Protecting the environment in business?",
+        answer: "Green Business",
+        wrong1: "Red Business",
+        wrong2: "Blue Business",
+        wrong3: "Profit Business",
+        explanation: "Eco-friendly practices.",
+        example: "Solar power, recycling, less waste"
+    },
+    // 97
+    {
+        question: "Expanding a business to other countries?",
+        answer: "Globalization",
+        wrong1: "Localization",
+        wrong2: "Nationalization",
+        wrong3: "Regionalization",
+        explanation: "Worldwide business activity.",
+        example: "Brand sold in many countries"
+    },
+    // 98
+    {
+        question: "Rivalry between businesses?",
+        answer: "Competition",
+        wrong1: "Cooperation",
+        wrong2: "Monopoly",
+        wrong3: "Merger",
+        explanation: "Lowers prices and improves quality.",
+        example: "Many shops selling same product"
+    },
+    // 99
+    {
+        question: "Two businesses joining together?",
+        answer: "Merger",
+        wrong1: "Competition",
+        wrong2: "Takeover",
+        wrong3: "Closure",
+        explanation: "Both agree to become one.",
+        example: "Two banks merge"
+    },
+    // 100
+    {
+        question: "One business buying control of another?",
+        answer: "Takeover / Acquisition",
+        wrong1: "Merger",
+        wrong2: "Competition",
+        wrong3: "Partnership",
+        explanation: "One business buys the other.",
+        example: "Big company buys small company"
+    }
+];

@@ -1,0 +1,1002 @@
+const geographyFlashcards = [
+    // 1
+    {
+        question: "What is the study of Earth’s land, people and places?",
+        answer: "Geography",
+        wrong1: "Biology",
+        wrong2: "Chemistry",
+        wrong3: "Physics",
+        explanation: "Geography examines physical and human features.",
+        example: "Mountains, cities, climate"
+    },
+    // 2
+    {
+        question: "Study of natural landforms and features?",
+        answer: "Physical Geography",
+        wrong1: "Human Geography",
+        wrong2: "Economic Geography",
+        wrong3: "Political Geography",
+        explanation: "Focuses on nature, land and climate.",
+        example: "Rivers, volcanoes, deserts"
+    },
+    // 3
+    {
+        question: "Study of people, cultures and settlements?",
+        answer: "Human Geography",
+        wrong1: "Physical Geography",
+        wrong2: "Weather Geography",
+        wrong3: "Mountain Geography",
+        explanation: "Looks at human activity on Earth.",
+        example: "Towns, migration, population"
+    },
+    // 4
+    {
+        question: "Imaginary line around the middle of Earth?",
+        answer: "Equator",
+        wrong1: "Prime Meridian",
+        wrong2: "Tropic of Cancer",
+        wrong3: "Tropic of Capricorn",
+        explanation: "Divides Earth into Northern and Southern Hemisphere.",
+        example: "0 degrees latitude"
+    },
+    // 5
+    {
+        question: "Line at 0 degrees longitude?",
+        answer: "Prime Meridian",
+        wrong1: "Equator",
+        wrong2: "International Date Line",
+        wrong3: "Arctic Circle",
+        explanation: "Runs through Greenwich, UK.",
+        example: "Separates Eastern and Western Hemisphere"
+    },
+    // 6
+    {
+        question: "Lines running east-west on a map?",
+        answer: "Latitude",
+        wrong1: "Longitude",
+        wrong2: "Grid lines",
+        wrong3: "Contour lines",
+        explanation: "Also called parallels.",
+        example: "Equator is 0° latitude"
+    },
+    // 7
+    {
+        question: "Lines running north-south on a map?",
+        answer: "Longitude",
+        wrong1: "Latitude",
+        wrong2: "Contour lines",
+        wrong3: "Grid lines",
+        explanation: "Also called meridians.",
+        example: "Prime Meridian is 0° longitude"
+    },
+    // 8
+    {
+        question: "Half of the Earth is called?",
+        answer: "Hemisphere",
+        wrong1: "Continent",
+        wrong2: "Region",
+        wrong3: "Country",
+        explanation: "Earth has 4 main hemispheres.",
+        example: "Northern Hemisphere"
+    },
+    // 9
+    {
+        question: "Largest land masses on Earth?",
+        answer: "Continents",
+        wrong1: "Countries",
+        wrong2: "Islands",
+        wrong3: "Regions",
+        explanation: "Seven main continents exist.",
+        example: "Asia, Africa, Europe"
+    },
+    // 10
+    {
+        question: "Largest continent in the world?",
+        answer: "Asia",
+        wrong1: "Africa",
+        wrong2: "Europe",
+        wrong3: "North America",
+        explanation: "Biggest in land size and population.",
+        example: "China, India located here"
+    },
+    // 11
+    {
+        question: "Smallest continent in the world?",
+        answer: "Australia",
+        wrong1: "Europe",
+        wrong2: "Antarctica",
+        wrong3: "South America",
+        explanation: "Also a country and island.",
+        example: "Sydney, Melbourne"
+    },
+    // 12
+    {
+        question: "Coldest continent with no permanent people?",
+        answer: "Antarctica",
+        wrong1: "Europe",
+        wrong2: "North America",
+        wrong3: "Asia",
+        explanation: "Covered in thick ice.",
+        example: "South Pole located here"
+    },
+    // 13
+    {
+        question: "Large body of salt water?",
+        answer: "Ocean",
+        wrong1: "Lake",
+        wrong2: "River",
+        wrong3: "Pond",
+        explanation: "Five main oceans on Earth.",
+        example: "Pacific, Atlantic"
+    },
+    // 14
+    {
+        question: "Largest ocean on Earth?",
+        answer: "Pacific Ocean",
+        wrong1: "Atlantic Ocean",
+        wrong2: "Indian Ocean",
+        wrong3: "Arctic Ocean",
+        explanation: "Covers more area than all land combined.",
+        example: "Between Asia and America"
+    },
+    // 15
+    {
+        question: "Body of water surrounded by land?",
+        answer: "Lake",
+        wrong1: "River",
+        wrong2: "Ocean",
+        wrong3: "Waterfall",
+        explanation: "Still or slow moving water.",
+        example: "Lake Victoria"
+    },
+    // 16
+    {
+        question: "Flowing water moving to the sea?",
+        answer: "River",
+        wrong1: "Lake",
+        wrong2: "Pond",
+        wrong3: "Glacier",
+        explanation: "Starts in hills or mountains.",
+        example: "Nile River, Amazon River"
+    },
+    // 17
+    {
+        question: "Start of a river called?",
+        answer: "Source",
+        wrong1: "Mouth",
+        wrong2: "Tributary",
+        wrong3: "Delta",
+        explanation: "Where the river begins.",
+        example: "Spring or mountain stream"
+    },
+    // 18
+    {
+        question: "End of a river where it meets the sea?",
+        answer: "Mouth",
+        wrong1: "Source",
+        wrong2: "Tributary",
+        wrong3: "Watershed",
+        explanation: "River flows into ocean or lake.",
+        example: "Nile mouth into Mediterranean Sea"
+    },
+    // 19
+    {
+        question: "Small river that joins a larger river?",
+        answer: "Tributary",
+        wrong1: "Delta",
+        wrong2: "Estuary",
+        wrong3: "Source",
+        explanation: "Feeds water into main river.",
+        example: "Small stream joining the Amazon"
+    },
+    // 20
+    {
+        question: "Flat land formed by river silt at its mouth?",
+        answer: "Delta",
+        wrong1: "Plateau",
+        wrong2: "Valley",
+        wrong3: "Plain",
+        explanation: "Fertile triangular land.",
+        example: "Nile Delta"
+    },
+    // 21
+    {
+        question: "High flat area of land?",
+        answer: "Plateau",
+        wrong1: "Mountain",
+        wrong2: "Valley",
+        wrong3: "Plain",
+        explanation: "High ground with flat top.",
+        example: "Tibetan Plateau"
+    },
+    // 22
+    {
+        question: "Tall natural landform with steep sides?",
+        answer: "Mountain",
+        wrong1: "Plateau",
+        wrong2: "Plain",
+        wrong3: "Island",
+        explanation: "Higher than surrounding land.",
+        example: "Mount Everest"
+    },
+    // 23
+    {
+        question: "Low land between hills or mountains?",
+        answer: "Valley",
+        wrong1: "Plateau",
+        wrong2: "Desert",
+        wrong3: "Canyon",
+        explanation: "Often has a river running through.",
+        example: "River valley"
+    },
+    // 24
+    {
+        question: "Wide flat low land?",
+        answer: "Plain",
+        wrong1: "Mountain",
+        wrong2: "Valley",
+        wrong3: "Plateau",
+        explanation: "Good for farming.",
+        example: "Great Plains USA"
+    },
+    // 25
+    {
+        question: "Deep narrow valley with steep rocky walls?",
+        answer: "Canyon",
+        wrong1: "Valley",
+        wrong2: "Gorge",
+        wrong3: "Plateau",
+        explanation: "Carved by river erosion.",
+        example: "Grand Canyon"
+    },
+    // 26
+    {
+        question: "Land surrounded by water on all sides?",
+        answer: "Island",
+        wrong1: "Peninsula",
+        wrong2: "Plateau",
+        wrong3: "Cape",
+        explanation: "Completely surrounded by water.",
+        example: "Greenland, Bali"
+    },
+    // 27
+    {
+        question: "Land surrounded by water on three sides?",
+        answer: "Peninsula",
+        wrong1: "Island",
+        wrong2: "Cape",
+        wrong3: "Bay",
+        explanation: "Connected to mainland on one side.",
+        example: "Arabian Peninsula"
+    },
+    // 28
+    {
+        question: "Curved area of sea into the land?",
+        answer: "Bay",
+        wrong1: "Gulf",
+        wrong2: "Strait",
+        wrong3: "Cape",
+        explanation: "Protected coastal water.",
+        example: "San Francisco Bay"
+    },
+    // 29
+    {
+        question: "Narrow strip of sea between two lands?",
+        answer: "Strait",
+        wrong1: "Bay",
+        wrong2: "Gulf",
+        wrong3: "Delta",
+        explanation: "Connects two larger bodies of water.",
+        example: "Strait of Malacca"
+    },
+    // 30
+    {
+        question: "Dry sandy area with little rainfall?",
+        answer: "Desert",
+        wrong1: "Tundra",
+        wrong2: "Rainforest",
+        wrong3: "Grassland",
+        explanation: "Less than 250mm rain per year.",
+        example: "Sahara Desert"
+    },
+    // 31
+    {
+        question: "Cold treeless region with frozen ground?",
+        answer: "Tundra",
+        wrong1: "Desert",
+        wrong2: "Rainforest",
+        wrong3: "Savanna",
+        explanation: "Found near North Pole.",
+        example: "Arctic Tundra"
+    },
+    // 32
+    {
+        question: "Dense tall trees with heavy rainfall all year?",
+        answer: "Tropical Rainforest",
+        wrong1: "Desert",
+        wrong2: "Tundra",
+        wrong3: "Grassland",
+        explanation: "Hot, wet, biodiverse.",
+        example: "Amazon Rainforest"
+    },
+    // 33
+    {
+        question: "Large open area covered in grass?",
+        answer: "Grassland",
+        wrong1: "Rainforest",
+        wrong2: "Desert",
+        wrong3: "Mountain",
+        explanation: "Few trees, good for grazing animals.",
+        example: "African Savanna"
+    },
+    // 34
+    {
+        question: "Large slow moving mass of ice?",
+        answer: "Glacier",
+        wrong1: "Iceberg",
+        wrong2: "Lake",
+        wrong3: "Frost",
+        explanation: "Moves slowly down mountains.",
+        example: "Alpine glacier"
+    },
+    // 35
+    {
+        question: "Ice floating in the ocean?",
+        answer: "Iceberg",
+        wrong1: "Glacier",
+        wrong2: "Ice sheet",
+        wrong3: "Snowfield",
+        explanation: "Most ice hidden underwater.",
+        example: "North Atlantic iceberg"
+    },
+    // 36
+    {
+        question: "Breaking down rocks by wind/water/ice?",
+        answer: "Weathering",
+        wrong1: "Erosion",
+        wrong2: "Deposition",
+        wrong3: "Volcanism",
+        explanation: "Rocks break in place.",
+        example: "Cracks in rock from freezing water"
+    },
+    // 37
+    {
+        question: "Moving broken rock and soil by wind or water?",
+        answer: "Erosion",
+        wrong1: "Weathering",
+        wrong2: "Deposition",
+        wrong3: "Sedimentation",
+        explanation: "Transport of loose material.",
+        example: "River carrying mud downstream"
+    },
+    // 38
+    {
+        question: "Dropping of eroded material in a new place?",
+        answer: "Deposition",
+        wrong1: "Erosion",
+        wrong2: "Weathering",
+        wrong3: "Faulting",
+        explanation: "Builds new landforms.",
+        example: "River dropping silt to make delta"
+    },
+    // 39
+    {
+        question: "Opening in Earth’s crust that erupts lava?",
+        answer: "Volcano",
+        wrong1: "Earthquake",
+        wrong2: "Fault",
+        wrong3: "Plateau",
+        explanation: "Releases magma, ash and gas.",
+        example: "Mount Fuji"
+    },
+    // 40
+    {
+        question: "Shaking of Earth’s surface suddenly?",
+        answer: "Earthquake",
+        wrong1: "Volcano",
+        wrong2: "Tsunami",
+        wrong3: "Flood",
+        explanation: "Caused by tectonic plate movement.",
+        example: "Ground shaking during quake"
+    },
+    // 41
+    {
+        question: "Huge sea wave caused by underwater earthquake?",
+        answer: "Tsunami",
+        wrong1: "Tide",
+        wrong2: "Wave",
+        wrong3: "Storm surge",
+        explanation: "Destructive tall waves on coasts.",
+        example: "2004 Indian Ocean Tsunami"
+    },
+    // 42
+    {
+        question: "Giant sections of Earth’s crust that move?",
+        answer: "Tectonic Plates",
+        wrong1: "Rock layers",
+        wrong2: "Land blocks",
+        wrong3: "Continental shelves",
+        explanation: "Float on molten mantle.",
+        example: "Pacific Plate, African Plate"
+    },
+    // 43
+    {
+        question: "Place where two tectonic plates meet?",
+        answer: "Plate Boundary",
+        wrong1: "Fault line",
+        wrong2: "Epicentre",
+        wrong3: "Magma chamber",
+        explanation: "Earthquakes and volcanoes happen here.",
+        example: "Ring of Fire"
+    },
+    // 44
+    {
+        question: "Point on ground above earthquake start?",
+        answer: "Epicentre",
+        wrong1: "Focus",
+        wrong2: "Fault",
+        wrong3: "Crater",
+        explanation: "Most damage near epicentre.",
+        example: "Town near earthquake centre"
+    },
+    // 45
+    {
+        question: "Underground point where earthquake starts?",
+        answer: "Focus",
+        wrong1: "Epicentre",
+        wrong2: "Fault",
+        wrong3: "Crater",
+        explanation: "Rocks break underground here.",
+        example: "Deep underground rock shift"
+    },
+    // 46
+    {
+        question: "Molten rock inside the Earth?",
+        answer: "Magma",
+        wrong1: "Lava",
+        wrong2: "Ash",
+        wrong3: "Steam",
+        explanation: "Hot liquid rock below surface.",
+        example: "Inside volcano chamber"
+    },
+    // 47
+    {
+        question: "Molten rock flowing out of a volcano?",
+        answer: "Lava",
+        wrong1: "Magma",
+        wrong2: "Ash",
+        wrong3: "Gas",
+        explanation: "Magma above ground is lava.",
+        example: "Red hot lava flowing downhill"
+    },
+    // 48
+    {
+        question: "Average weather over many years?",
+        answer: "Climate",
+        wrong1: "Weather",
+        wrong2: "Temperature",
+        wrong3: "Season",
+        explanation: "Long term pattern.",
+        example: "Tropical climate is hot and wet"
+    },
+    // 49
+    {
+        question: "Day-to-day conditions of air and sky?",
+        answer: "Weather",
+        wrong1: "Climate",
+        wrong2: "Season",
+        wrong3: "Atmosphere",
+        explanation: "Changes daily.",
+        example: "Rainy morning, sunny afternoon"
+    },
+    // 50
+    {
+        question: "Main layers of gas surrounding Earth?",
+        answer: "Atmosphere",
+        wrong1: "Lithosphere",
+        wrong2: "Hydrosphere",
+        wrong3: "Biosphere",
+        explanation: "Protects Earth and has oxygen.",
+        example: "Air we breathe"
+    },
+    // 51
+    {
+        question: "Water evaporating, rising, cooling, falling again?",
+        answer: "Water Cycle",
+        wrong1: "Weather Cycle",
+        wrong2: "Climate Cycle",
+        wrong3: "Season Cycle",
+        explanation: "Continuous movement of water on Earth.",
+        example: "Evaporation → Clouds → Rain"
+    },
+    // 52
+    {
+        question: "Water turning into gas and rising?",
+        answer: "Evaporation",
+        wrong1: "Condensation",
+        wrong2: "Precipitation",
+        wrong3: "Transpiration",
+        explanation: "Happens mostly from oceans.",
+        example: "Puddle drying up in sun"
+    },
+    // 53
+    {
+        question: "Water vapour turning into clouds?",
+        answer: "Condensation",
+        wrong1: "Evaporation",
+        wrong2: "Precipitation",
+        wrong3: "Runoff",
+        explanation: "Forms tiny water droplets.",
+        example: "Clouds forming in sky"
+    },
+    // 54
+    {
+        question: "Rain, snow, sleet falling from clouds?",
+        answer: "Precipitation",
+        wrong1: "Evaporation",
+        wrong2: "Condensation",
+        wrong3: "Humidity",
+        explanation: "All forms of falling water.",
+        example: "Rain shower, snowfall"
+    },
+    // 55
+    {
+        question: "Water flowing over land back to rivers/sea?",
+        answer: "Runoff",
+        wrong1: "Infiltration",
+        wrong2: "Evaporation",
+        wrong3: "Condensation",
+        explanation: "Surface water movement.",
+        example: "Rain flowing down hills"
+    },
+    // 56
+    {
+        question: "Water soaking into the ground?",
+        answer: "Infiltration",
+        wrong1: "Runoff",
+        wrong2: "Evaporation",
+        wrong3: "Transpiration",
+        explanation: "Recharges underground water.",
+        example: "Rain sinking into soil"
+    },
+    // 57
+    {
+        question: "Plants releasing water vapour into air?",
+        answer: "Transpiration",
+        wrong1: "Evaporation",
+        wrong2: "Condensation",
+        wrong3: "Runoff",
+        explanation: "Water loss from leaves.",
+        example: "Trees adding moisture to air"
+    },
+    // 58
+    {
+        question: "Underground layer of water stored in rock?",
+        answer: "Aquifer",
+        wrong1: "Reservoir",
+        wrong2: "Spring",
+        wrong3: "Well",
+        explanation: "Natural underground water store.",
+        example: "Drinking water pumped from aquifer"
+    },
+    // 59
+    {
+        question: "Place where underground water flows to surface?",
+        answer: "Spring",
+        wrong1: "Well",
+        wrong2: "Aquifer",
+        wrong3: "Lake",
+        explanation: "Natural fresh water source.",
+        example: "Mountain water spring"
+    },
+    // 60
+    {
+        question: "Man-made lake for storing water?",
+        answer: "Reservoir",
+        wrong1: "Lake",
+        wrong2: "Pond",
+        wrong3: "Delta",
+        explanation: "Used for drinking water and farming.",
+        example: "Dam creating a reservoir"
+    },
+    // 61
+    {
+        question: "Lines on a map showing height of land?",
+        answer: "Contour Lines",
+        wrong1: "Latitude Lines",
+        wrong2: "Longitude Lines",
+        wrong3: "Grid Lines",
+        explanation: "Close lines = steep slope.",
+        example: "Mountain shown by curved contours"
+    },
+    // 62
+    {
+        question: "Map showing natural landforms?",
+        answer: "Physical Map",
+        wrong1: "Political Map",
+        wrong2: "Thematic Map",
+        wrong3: "Road Map",
+        explanation: "Shows mountains, rivers, deserts.",
+        example: "Map with green lowland, brown mountains"
+    },
+    // 63
+    {
+        question: "Map showing countries, cities and borders?",
+        answer: "Political Map",
+        wrong1: "Physical Map",
+        wrong2: "Climate Map",
+        wrong3: "Land Use Map",
+        explanation: "Shows human boundaries.",
+        example: "Map with country borders"
+    },
+    // 64
+    {
+        question: "Map showing one special topic like climate?",
+        answer: "Thematic Map",
+        wrong1: "Physical Map",
+        wrong2: "Political Map",
+        wrong3: "Street Map",
+        explanation: "Focuses on one theme.",
+        example: "Population density map"
+    },
+    // 65
+    {
+        question: "Height of land above sea level?",
+        answer: "Altitude / Elevation",
+        wrong1: "Latitude",
+        wrong2: "Longitude",
+        wrong3: "Gradient",
+        explanation: "Measured in metres.",
+        example: "Mountain 3000m above sea level"
+    },
+    // 66
+    {
+        question: "How steep a slope is called?",
+        answer: "Gradient",
+        wrong1: "Elevation",
+        wrong2: "Altitude",
+        wrong3: "Contour",
+        explanation: "Steep or gentle slope.",
+        example: "High gradient = very steep"
+    },
+    // 67
+    {
+        question: "Hot wet climate near the equator?",
+        answer: "Tropical Climate",
+        wrong1: "Temperate Climate",
+        wrong2: "Arid Climate",
+        wrong3: "Polar Climate",
+        explanation: "High rainfall and high temperature.",
+        example: "Indonesia, Brazil"
+    },
+    // 68
+    {
+        question: "Mild climate with four seasons?",
+        answer: "Temperate Climate",
+        wrong1: "Tropical Climate",
+        wrong2: "Desert Climate",
+        wrong3: "Polar Climate",
+        explanation: "Spring, summer, autumn, winter.",
+        example: "UK, France"
+    },
+    // 69
+    {
+        question: "Dry climate with very little rain?",
+        answer: "Arid Climate",
+        wrong1: "Tropical Climate",
+        wrong2: "Temperate Climate",
+        wrong3: "Mountain Climate",
+        explanation: "Desert regions.",
+        example: "Sahara, Arabian Desert"
+    },
+    // 70
+    {
+        question: "Very cold climate all year round?",
+        answer: "Polar Climate",
+        wrong1: "Temperate Climate",
+        wrong2: "Tropical Climate",
+        wrong3: "Arid Climate",
+        explanation: "Ice and snow most of the year.",
+        example: "Antarctica, North Pole"
+    },
+    // 71
+    {
+        question: "Movement of people from place to place?",
+        answer: "Migration",
+        wrong1: "Population",
+        wrong2: "Settlement",
+        wrong3: "Urbanisation",
+        explanation: "Can be inside or between countries.",
+        example: "Moving from village to city"
+    },
+    // 72
+    {
+        question: "Small group of houses in rural area?",
+        answer: "Village",
+        wrong1: "Town",
+        wrong2: "City",
+        wrong3: "Hamlet",
+        explanation: "Rural settlement with basic services.",
+        example: "Countryside village"
+    },
+    // 73
+    {
+        question: "Larger than village, smaller than city?",
+        answer: "Town",
+        wrong1: "Hamlet",
+        wrong2: "Village",
+        wrong3: "Farm",
+        explanation: "More shops and transport links.",
+        example: "Small regional town"
+    },
+    // 74
+    {
+        question: "Large densely populated urban area?",
+        answer: "City",
+        wrong1: "Town",
+        wrong2: "Village",
+        wrong3: "Hamlet",
+        explanation: "Many jobs, tall buildings, services.",
+        example: "London, Tokyo"
+    },
+    // 75
+    {
+        question: "More people moving to cities from rural areas?",
+        answer: "Urbanisation",
+        wrong1: "Migration",
+        wrong2: "Population growth",
+        wrong3: "Settlement change",
+        explanation: "Cities grow bigger over time.",
+        example: "Countryside people moving to cities"
+    },
+    // 76
+    {
+        question: "Number of people living in an area?",
+        answer: "Population",
+        wrong1: "Migration",
+        wrong2: "Settlement",
+        wrong3: "Density",
+        explanation: "Total people count.",
+        example: "Population of a country"
+    },
+    // 77
+    {
+        question: "Number of people per square kilometre?",
+        answer: "Population Density",
+        wrong1: "Population Growth",
+        wrong2: "Migration Rate",
+        wrong3: "Birth Rate",
+        explanation: "Crowded vs empty areas.",
+        example: "Cities have high density"
+    },
+    // 78
+    {
+        question: "People born per 1000 people each year?",
+        answer: "Birth Rate",
+        wrong1: "Death Rate",
+        wrong2: "Growth Rate",
+        wrong3: "Migration Rate",
+        explanation: "Higher birth rate = faster growth.",
+        example: "Many babies born in Africa"
+    },
+    // 79
+    {
+        question: "People dying per 1000 people each year?",
+        answer: "Death Rate",
+        wrong1: "Birth Rate",
+        wrong2: "Growth Rate",
+        wrong3: "Urban Rate",
+        explanation: "Affected by health and food.",
+        example: "Low death rate in wealthy countries"
+    },
+    // 80
+    {
+        question: "Land used for growing crops?",
+        answer: "Farmland / Arable Land",
+        wrong1: "Pasture",
+        wrong2: "Forest",
+        wrong3: "Urban Land",
+        explanation: "Planted with wheat, rice, vegetables.",
+        example: "Rice fields, wheat farms"
+    },
+    // 81
+    {
+        question: "Land used for grazing animals?",
+        answer: "Pasture",
+        wrong1: "Arable",
+        wrong2: "Forest",
+        wrong3: "Desert",
+        explanation: "Grass for cows and sheep.",
+        example: "Sheep grazing on pasture"
+    },
+    // 82
+    {
+        question: "Cutting down large areas of trees?",
+        answer: "Deforestation",
+        wrong1: "Reforestation",
+        wrong2: "Erosion",
+        wrong3: "Weathering",
+        explanation: "Destroys rainforests.",
+        example: "Amazon trees cut for farming"
+    },
+    // 83
+    {
+        question: "Planting new trees to replace lost forests?",
+        answer: "Reforestation",
+        wrong1: "Deforestation",
+        wrong2: "Afforestation",
+        wrong3: "Conservation",
+        explanation: "Helps restore natural environment.",
+        example: "Planting saplings in cleared land"
+    },
+    // 84
+    {
+        question: "Turning fertile land into desert?",
+        answer: "Desertification",
+        wrong1: "Erosion",
+        wrong2: "Weathering",
+        wrong3: "Deposition",
+        explanation: "Caused by drought and over farming.",
+        example: "Grassland turning to sand"
+    },
+    // 85
+    {
+        question: "Long period with no rainfall?",
+        answer: "Drought",
+        wrong1: "Flood",
+        wrong2: "Cyclone",
+        wrong3: "Blizzard",
+        explanation: "Crops die, water shortages happen.",
+        example: "Dry years in Africa"
+    },
+    // 86
+    {
+        question: "Too much water covering dry land?",
+        answer: "Flood",
+        wrong1: "Drought",
+        wrong2: "Landslide",
+        wrong3: "Volcano",
+        explanation: "Heavy rain or river overflow.",
+        example: "River flooding nearby villages"
+    },
+    // 87
+    {
+        question: "Mass of rock and soil sliding down a slope?",
+        answer: "Landslide",
+        wrong1: "Flood",
+        wrong2: "Earthquake",
+        wrong3: "Tsunami",
+        explanation: "Happens on steep hills after rain.",
+        example: "Mud sliding down mountain road"
+    },
+    // 88
+    {
+        question: "Strong rotating storm with very fast winds?",
+        answer: "Cyclone / Hurricane",
+        wrong1: "Tornado",
+        wrong2: "Blizzard",
+        wrong3: "Thunderstorm",
+        explanation: "Forms over warm ocean water.",
+        example: "Pacific cyclone hitting coast"
+    },
+    // 89
+    {
+        question: "Small violent spinning wind on land?",
+        answer: "Tornado",
+        wrong1: "Cyclone",
+        wrong2: "Storm surge",
+        wrong3: "Monsoon",
+        explanation: "Destroys buildings in narrow path.",
+        example: "Tornado in USA plains"
+    },
+    // 90
+    {
+        question: "Seasonal wind bringing heavy rain?",
+        answer: "Monsoon",
+        wrong1: "Cyclone",
+        wrong2: "Trade Wind",
+        wrong3: "Polar Wind",
+        explanation: "Wet season and dry season.",
+        example: "Indian summer monsoon rain"
+    },
+    // 91
+    {
+        question: "Wind that blows steadily in one direction?",
+        answer: "Trade Winds",
+        wrong1: "Monsoon Winds",
+        wrong2: "Polar Winds",
+        wrong3: "Local Winds",
+        explanation: "Helped old ships sail across oceans.",
+        example: "Winds near the equator"
+    },
+    // 92
+    {
+        question: "Day wind blowing from sea to land?",
+        answer: "Sea Breeze",
+        wrong1: "Land Breeze",
+        wrong2: "Monsoon",
+        wrong3: "Trade Wind",
+        explanation: "Cool wind onto coast in daytime.",
+        example: "Feeling cool wind at beach"
+    },
+    // 93
+    {
+        question: "Night wind blowing from land to sea?",
+        answer: "Land Breeze",
+        wrong1: "Sea Breeze",
+        wrong2: "Cyclone",
+        wrong3: "Tornado",
+        explanation: "Land cools faster than sea at night.",
+        example: "Night wind moving out to ocean"
+    },
+    // 94
+    {
+        question: "Resources that can replace themselves naturally?",
+        answer: "Renewable Resources",
+        wrong1: "Non-renewable Resources",
+        wrong2: "Mineral Resources",
+        wrong3: "Capital Resources",
+        explanation: "Never run out quickly.",
+        example: "Solar, wind, water power"
+    },
+    // 95
+    {
+        question: "Resources that run out once used?",
+        answer: "Non-renewable Resources",
+        wrong1: "Renewable Resources",
+        wrong2: "Natural Resources",
+        wrong3: "Human Resources",
+        explanation: "Take millions of years to form.",
+        example: "Oil, coal, natural gas"
+    },
+    // 96
+    {
+        question: "Energy from sunlight?",
+        answer: "Solar Energy",
+        wrong1: "Wind Energy",
+        wrong2: "Hydro Energy",
+        wrong3: "Geothermal Energy",
+        explanation: "Clean renewable power.",
+        example: "Solar panels on rooftops"
+    },
+    // 97
+    {
+        question: "Energy from moving air?",
+        answer: "Wind Energy",
+        wrong1: "Solar Energy",
+        wrong2: "Hydro Energy",
+        wrong3: "Nuclear Energy",
+        explanation: "Wind turbines generate electricity.",
+        example: "Wind farms on hills"
+    },
+    // 98
+    {
+        question: "Energy from flowing water?",
+        answer: "Hydroelectric Energy",
+        wrong1: "Solar Energy",
+        wrong2: "Wind Energy",
+        wrong3: "Geothermal Energy",
+        explanation: "Dams use river water flow.",
+        example: "Hydroelectric power station"
+    },
+    // 99
+    {
+        question: "Energy from heat inside the Earth?",
+        answer: "Geothermal Energy",
+        wrong1: "Solar Energy",
+        wrong2: "Wind Energy",
+        wrong3: "Hydro Energy",
+        explanation: "Uses underground hot rocks and steam.",
+        example: "Hot springs and geysers"
+    },
+    // 100
+    {
+        question: "Protecting natural environment for future?",
+        answer: "Conservation",
+        wrong1: "Exploitation",
+        wrong2: "Deforestation",
+        wrong3: "Urbanisation",
+        explanation: "Save forests, water and wildlife.",
+        example: "National parks and wildlife reserves"
+    }
+];

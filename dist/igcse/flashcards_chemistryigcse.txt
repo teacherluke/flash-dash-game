@@ -1,0 +1,1002 @@
+const chemistryFlashcards = [
+    // 1
+    {
+        question: "Define relative atomic mass (Ar)",
+        answer: "The average mass of one atom of an element relative to 1/12 the mass of a carbon-12 atom",
+        wrong1: "The total number of protons and electrons",
+        wrong2: "The mass of one mole of a compound",
+        wrong3: "The number of isotopes of an element",
+        explanation: "Takes account of relative isotopic abundances; core IGCSE / IBDP definition.",
+        example: "Ar of Cl = 35.5 due to Cl-35 and Cl-37 isotopes"
+    },
+    // 2
+    {
+        question: "Define relative formula mass (Mr)",
+        answer: "Sum of relative atomic masses of all atoms in a chemical formula unit",
+        wrong1: "Average mass of a single electron",
+        wrong2: "Molar volume of a gas at r.t.p",
+        wrong3: "Number of moles per dm³",
+        explanation: "Used for ionic compounds and molecular substances in stoichiometry.",
+        example: "Mr of H₂O = (2×1) + 16 = 18"
+    },
+    // 3
+    {
+        question: "What is one mole of a substance?",
+        answer: "The amount containing 6.02 × 10²³ particles (Avogadro’s constant)",
+        wrong1: "1 gram of any element",
+        wrong2: "224 cm³ of gas at r.t.p",
+        wrong3: "Mass divided by volume",
+        explanation: "Fundamental IGCSE stoichiometry + IBDP mole foundation.",
+        example: "1 mol CO₂ = 6.02×10²³ CO₂ molecules"
+    },
+    // 4
+    {
+        question: "Formula linking moles, mass and Mr",
+        answer: "Moles = mass ÷ Mr",
+        wrong1: "Moles = mass × Mr",
+        wrong2: "Moles = volume × concentration",
+        wrong3: "Moles = Mr ÷ mass",
+        explanation: "Core calculation for IGCSE paper 2 and IBDP stoichiometry.",
+        example: "8g CH₄ = 8 ÷ 16 = 0.5 mol"
+    },
+    // 5
+    {
+        question: "Molar volume of any gas at r.t.p",
+        answer: "24 dm³ per mole",
+        wrong1: "12 dm³ per mole",
+        wrong2: "100 cm³ per mole",
+        wrong3: "224 dm³ per mole",
+        explanation: "Used for gas volume mole calculations IGCSE / DP.",
+        example: "0.5 mol O₂ occupies 12 dm³ at r.t.p"
+    },
+    // 6
+    {
+        question: "Define empirical formula",
+        answer: "Simplest whole-number ratio of atoms of each element in a compound",
+        wrong1: "Actual number of atoms in a molecule",
+        wrong2: "Ratio of ions in a lattice only",
+        wrong3: "Molecular formula multiplied by 2",
+        explanation: "Calculated from mass/composition data; key IGCSE extended question.",
+        example: "C₂H₄ empirical = CH₂"
+    },
+    // 7
+    {
+        question: "Define molecular formula",
+        answer: "Actual number of atoms of each element in one molecule of a compound",
+        wrong1: "Simplest ratio of elements",
+        wrong2: "Ratio of cations to anions",
+        wrong3: "Average isotopic mass ratio",
+        explanation: "Multiple of the empirical formula for simple molecules.",
+        example: "CH₂ molecular = C₂H₄"
+    },
+    // 8
+    {
+        question: "Define isotopes in formal chemical terms",
+        answer: "Atoms of the same element with equal proton number but different nucleon numbers due to extra neutrons",
+        wrong1: "Atoms with equal electrons but different protons",
+        wrong2: "Different elements with identical mass",
+        wrong3: "Charged atoms with full outer shells",
+        explanation: "Formal IGCSE / IBDP wording; covers nucleon number definition.",
+        example: "Carbon-12 and Carbon-14"
+    },
+    // 9
+    {
+        question: "Explain why isotopes have identical chemical properties",
+        answer: "Chemical behaviour depends on electron arrangement; isotopes have the same electron configuration",
+        wrong1: "They have equal mass numbers",
+        wrong2: "Neutrons control chemical bonding",
+        wrong3: "Isotopes always form the same ions",
+        explanation: "Classic 3–4 mark IGCSE explain question.",
+        example: "Cl-35 and Cl-37 react identically"
+    },
+    // 10
+    {
+        question: "Define ionic bonding (exam formal definition)",
+        answer: "The electrostatic attraction between oppositely charged ions formed by electron transfer from metal to non-metal",
+        wrong1: "Shared electron pairs between non-metals",
+        wrong2: "Attraction between delocalised electrons and metal atoms",
+        wrong3: "Forces between neutral molecules",
+        explanation: "Must include electrostatic attraction for full exam marks.",
+        example: "NaCl, MgO, CaF₂"
+    },
+    // 11
+    {
+        question: "Define covalent bonding (exam formal definition)",
+        answer: "The electrostatic attraction between shared pairs of electrons and the nuclei of bonded non-metal atoms",
+        wrong1: "Transfer of electrons forming charged ions",
+        wrong2: "Attraction between metal cations and delocalised electrons",
+        wrong3: "Forces between separate molecules",
+        explanation: "IGCSE extended + IBDP bonding core definition.",
+        example: "H₂O, CO₂, CH₄"
+    },
+    // 12
+    {
+        question: "Define metallic bonding",
+        answer: "Electrostatic attraction between a lattice of positive metal cations and a sea of delocalised valence electrons",
+        wrong1: "Shared electrons between two metals",
+        wrong2: "Transferred electrons forming ionic lattice",
+        wrong3: "Weak intermolecular forces between metal atoms",
+        explanation: "Required for explaining conductivity/malleability at Grade 10–11.",
+        example: "Fe, Cu, Al metallic lattice structure"
+    },
+    // 13
+    {
+        question: "Why do ionic compounds have high melting points?",
+        answer: "Giant ionic lattice with strong electrostatic forces between ions requiring large energy to break",
+        wrong1: "Weak intermolecular forces hold ions together",
+        wrong2: "Simple molecular structure with fixed bonds",
+        wrong3: "Delocalised electrons increase boiling point",
+        explanation: "Standard 4-mark IGCSE structured answer.",
+        example: "MgO higher mp than NaCl due to stronger ionic attraction"
+    },
+    // 14
+    {
+        question: "Why do simple covalent molecules have low melting points?",
+        answer: "Weak intermolecular forces between molecules break easily; strong covalent bonds inside molecules remain intact",
+        wrong1: "Covalent bonds between atoms are weak",
+        wrong2: "They form giant lattice structures",
+        wrong3: "Ionic attraction holds molecules loosely",
+        explanation: "Common misconception trap included in wrong answers.",
+        example: "CO₂, O₂, H₂O have low mp/bp"
+    },
+    // 15
+    {
+        question: "Describe structure and properties of diamond",
+        answer: "Giant covalent lattice, each C bonded to 4 others; very hard, high mp, non-conductor",
+        wrong1: "Layered structure with free electrons conducting electricity",
+        wrong2: "Simple molecular with weak intermolecular forces",
+        wrong3: "Ionic lattice of carbon ions",
+        explanation: "IGCSE required structure–property link.",
+        example: "Used in cutting tools"
+    },
+    // 16
+    {
+        question: "Describe structure and properties of graphite",
+        answer: "Giant covalent layered lattice, each C bonded to 3 others; soft, conducts electricity, high mp",
+        wrong1: "Tetrahedral rigid lattice, non-conductor",
+        wrong2: "Simple molecular gas at room temperature",
+        wrong3: "Ionic compound with mobile ions",
+        explanation: "Free delocalised electrons between layers enable conduction.",
+        example: "Pencil lead, electrodes"
+    },
+    // 17
+    {
+        question: "Explain electrical conductivity in molten ionic compounds",
+        answer: "Ions become mobile when lattice breaks down and can carry charge; solid ions fixed in lattice",
+        wrong1: "Delocalised electrons move through the solid",
+        wrong2: "Covalent bonds break releasing electrons",
+        wrong3: "Neutral molecules split into atoms",
+        explanation: "Classic IGCSE compare/explain question.",
+        example: "Molten NaCl conducts; solid NaCl does not"
+    },
+    // 18
+    {
+        question: "Define oxidation in full IGCSE/IBDP terms",
+        answer: "Loss of electrons, gain of oxygen, increase in oxidation state",
+        wrong1: "Gain of electrons, loss of oxygen",
+        wrong2: "Decrease in oxidation state only",
+        wrong3: "No change in electron arrangement",
+        explanation: "Three defining criteria required for extended level.",
+        example: "Mg → Mg²⁺ + 2e⁻ is oxidation"
+    },
+    // 19
+    {
+        question: "Define reduction in full exam terms",
+        answer: "Gain of electrons, loss of oxygen, decrease in oxidation state",
+        wrong1: "Loss of electrons, gain of oxygen",
+        wrong2: "Increase in oxidation state",
+        wrong3: "Breaking covalent bonds",
+        explanation: "OIL RIG plus oxidation state definition for DP readiness.",
+        example: "Cu²⁺ + 2e⁻ → Cu is reduction"
+    },
+    // 20
+    {
+        question: "Define redox reaction",
+        answer: "A reaction where oxidation and reduction occur simultaneously with electron transfer",
+        wrong1: "Only oxygen gain occurs",
+        wrong2: "Only electron loss occurs",
+        wrong3: "Reaction without any energy change",
+        explanation: "Foundational for IGCSE electrolysis and IBDP redox titrations.",
+        example: "Displacement reactions, metal–acid reactions"
+    },
+    // 21
+    {
+        question: "Trend in Group 1 alkali metals down the group",
+        answer: "Increasing reactivity, larger atomic radius, lower melting point, weaker outer electron attraction",
+        wrong1: "Reactivity decreases down the group",
+        wrong2: "Electrons held more strongly down the group",
+        wrong3: "Melting points increase steadily",
+        explanation: "Must link atomic radius to reactivity for full marks.",
+        example: "K more reactive than Na, Li"
+    },
+    // 22
+    {
+        question: "Trend in Group 7 halogens down the group",
+        answer: "Decreasing reactivity, increasing melting/boiling point, darker colour, stronger intermolecular forces",
+        wrong1: "Reactivity increases down the group",
+        wrong2: "All become gases at room temperature",
+        wrong3: "Electron gain becomes easier down group",
+        explanation: "Displacement reaction predictions rely on this trend.",
+        example: "Cl₂ displaces Br⁻ and I⁻"
+    },
+    // 23
+    {
+        question: "Define displacement reaction of halogens",
+        answer: "A more reactive halogen displaces a less reactive halogen from its halide compound solution",
+        wrong1: "Less reactive halogen replaces a more reactive one",
+        wrong2: "Halogens react with metals to form alloys",
+        wrong3: "Halides decompose by heat alone",
+        explanation: "Standard IGCSE practical and theory question.",
+        example: "Cl₂ + 2KI → 2KCl + I₂"
+    },
+    // 24
+    {
+        question: "Why are noble gases chemically inert?",
+        answer: "Full valence electron shell; no tendency to gain, lose or share electrons",
+        wrong1: "They have no electrons",
+        wrong2: "Low atomic mass prevents reactions",
+        wrong3: "Weak intermolecular forces stabilise atoms",
+        explanation: "Grade 10–11 fundamental chemical stability rule.",
+        example: "He, Ne, Ar do not readily form compounds"
+    },
+    // 25
+    {
+        question: "Define catalyst (formal exam definition)",
+        answer: "A substance that increases reaction rate by lowering activation energy, unchanged chemically and mass at end",
+        wrong1: "Used up completely during reaction",
+        wrong2: "Alters products formed in the reaction",
+        wrong3: "Only works for exothermic reactions",
+        explanation: "Must include activation energy for extended tier marks.",
+        example: "MnO₂ in hydrogen peroxide decomposition"
+    },
+    // 26
+    {
+        question: "Factors affecting rate of chemical reaction",
+        answer: "Concentration, temperature, surface area, catalyst, pressure for gases",
+        wrong1: "Colour, volume, container material",
+        wrong2: "Atomic number only",
+        wrong3: "Isotopic abundance",
+        explanation: "All required for IGCSE rate of reaction graphs and explanations.",
+        example: "Higher concentration = faster reaction"
+    },
+    // 27
+    {
+        question: "Explain temperature effect on reaction rate (collision theory)",
+        answer: "Higher temp increases particle kinetic energy, more frequent and more energetic successful collisions",
+        wrong1: "Particles become larger and collide more",
+        wrong2: "Bond energy decreases automatically",
+        wrong3: "Catalysts activate at higher temperatures only",
+        explanation: "Collision theory mandatory 4-mark IGCSE answer.",
+        example: "Reaction speeds up when heated"
+    },
+    // 28
+    {
+        question: "Define exothermic reaction",
+        answer: "Reaction releasing thermal energy to surroundings; enthalpy change ΔH negative",
+        wrong1: "Absorbs energy; ΔH positive",
+        wrong2: "No energy transfer occurs",
+        wrong3: "Only combustion reactions qualify",
+        explanation: "ΔH notation included for IBDP SL alignment.",
+        example: "Neutralisation, combustion"
+    },
+    // 29
+    {
+        question: "Define endothermic reaction",
+        answer: "Reaction absorbing thermal energy from surroundings; enthalpy change ΔH positive",
+        wrong1: "Releases heat to surroundings",
+        wrong2: "Always fast spontaneous reactions",
+        wrong3: "Only redox reactions are endothermic",
+        explanation: "Grade 11 thermochemistry foundation for DP.",
+        example: "Photosynthesis, thermal decomposition"
+    },
+    // 30
+    {
+        question: "Define strong acid",
+        answer: "An acid that fully ionises/dissociates in aqueous solution to produce H⁺ ions",
+        wrong1: "Partially dissociates in water",
+        wrong2: "Has pH exactly 7",
+        wrong3: "Does not react with carbonates",
+        explanation: "IGCSE / IBDP acid strength definition (not concentration).",
+        example: "HCl, H₂SO₄, HNO₃"
+    },
+    // 31
+    {
+        question: "Define weak acid",
+        answer: "An acid that only partially ionises/dissociates reversibly in aqueous solution",
+        wrong1: "Fully dissociates into ions",
+        wrong2: "Cannot react with bases",
+        wrong3: "Always has pH 1",
+        explanation: "Reversible dissociation key for Grade 11 and DP equilibrium.",
+        example: "Ethanoic acid, citric acid"
+    },
+    // 32
+    {
+        question: "Distinguish between base and alkali",
+        answer: "A base is any metal oxide/hydroxide; an alkali is a soluble base releasing OH⁻ in water",
+        wrong1: "All bases are alkalis",
+        wrong2: "Alkalis are insoluble bases",
+        wrong3: "Bases have pH <7",
+        explanation: "Classic IGCSE distinction exam question.",
+        example: "CuO = base only; NaOH = alkali"
+    },
+    // 33
+    {
+        question: "General equation for neutralisation",
+        answer: "Acid + base → salt + water",
+        wrong1: "Acid + carbonate → salt + water + CO₂",
+        wrong2: "Base + metal → salt + hydrogen",
+        wrong3: "Acid + gas → salt only",
+        explanation: "Ionic basis: H⁺ + OH⁻ → H₂O",
+        example: "HCl + NaOH → NaCl + H₂O"
+    },
+    // 34
+    {
+        question: "Define salt in chemical terms",
+        answer: "Ionic compound formed when acidic H⁺ is replaced by a metal or ammonium ion",
+        wrong1: "Only sodium chloride compound",
+        wrong2: "Covalent compound soluble in all solvents",
+        wrong3: "Neutral liquid with pH 7",
+        explanation: "Broad IGCSE definition covering all salts.",
+        example: "CuSO₄, KNO₃, NH₄Cl"
+    },
+    // 35
+    {
+        question: "Purpose of titration",
+        answer: "To accurately measure the volume of solution needed to exactly neutralise another solution",
+        wrong1: "Separate insoluble solids from liquids",
+        wrong2: "Determine boiling point of mixtures",
+        wrong3: "Test for presence of gases",
+        explanation: "Core Grade 11 practical + IBDP volumetric analysis.",
+        example: "Finding concentration of an unknown acid"
+    },
+    // 36
+    {
+        question: "Define electrolysis",
+        answer: "The decomposition of an ionic compound using a direct electric current in molten or aqueous state",
+        wrong1: "Mixing two solutions to form a precipitate",
+        wrong2: "Heating compounds to break bonds",
+        wrong3: "Reaction of metals with oxygen",
+        explanation: "Formal IGCSE / DP definition including state conditions.",
+        example: "Electrolysis of molten lead bromide"
+    },
+    // 37
+    {
+        question: "Define electrolyte",
+        answer: "A molten or aqueous ionic compound containing mobile ions that conduct electricity",
+        wrong1: "Solid ionic lattice with fixed ions",
+        wrong2: "Any covalent molecular substance",
+        wrong3: "Metal wire carrying current",
+        explanation: "Must specify mobile ions for full marks.",
+        example: "Molten NaCl, dilute sulfuric acid"
+    },
+    // 38
+    {
+        question: "Define cathode and anode",
+        answer: "Cathode = negative electrode; Anode = positive electrode",
+        wrong1: "Cathode positive; Anode negative",
+        wrong2: "Both electrodes always neutral",
+        wrong3: "Cathode only for gas production",
+        explanation: "Ion attraction rules depend on this definition.",
+        example: "Cations migrate to cathode"
+    },
+    // 39
+    {
+        question: "Rules for ion discharge at electrodes (aqueous)",
+        answer: "Cations: less reactive metal discharged first; Anions: halide > OH⁻ > sulfate/nitrate",
+        wrong1: "Most reactive metal always discharged first",
+        wrong2: "Sulfate ions discharge before halides",
+        wrong3: "All ions discharge simultaneously",
+        explanation: "IGCSE electrolysis prediction key rule set.",
+        example: "In NaCl(aq): H₂ at cathode, Cl₂ at anode"
+    },
+    // 40
+    {
+        question: "Define corrosion of metals",
+        answer: "The chemical reaction of a metal with oxygen and/or water in the environment forming metal oxides/hydroxides",
+        wrong1: "Physical wear and scratching of metal surface",
+        wrong2: "Melting of metal at high temperature",
+        wrong3: "Alloy formation with non-metals",
+        explanation: "Formal Grade 10–11 definition extending beyond just rusting.",
+        example: "Iron rusting, copper tarnishing"
+    },
+    // 41
+    {
+        question: "State conditions required for iron rusting",
+        answer: "Oxygen and water must both be present",
+        wrong1: "Only water required",
+        wrong2: "Only oxygen required",
+        wrong3: "Carbon dioxide alone causes rusting",
+        explanation: "Exam standard condition recall.",
+        example: "Iron does not rust in dry air"
+    },
+    // 42
+    {
+        question: "Explain sacrificial protection (rust prevention)",
+        answer: "More reactive metal attached to iron corrodes first, protecting iron as the cathode",
+        wrong1: "Painting iron to block air only",
+        wrong2: "Coating with less reactive metal",
+        wrong3: "Treating iron with acid to form a layer",
+        explanation: "IGCSE classic explain + application question.",
+        example: "Zinc or magnesium attached to iron pipelines"
+    },
+    // 43
+    {
+        question: "Define alloy",
+        answer: "A homogeneous mixture of a metal with another metal or non-metal to modify properties",
+        wrong1: "Pure element with metallic properties",
+        wrong2: "Ionic compound of metal and non-metal",
+        wrong3: "Covalent giant lattice substance",
+        explanation: "Property modification core concept for Grade 11.",
+        example: "Brass = Cu + Zn; Steel = Fe + C"
+    },
+    // 44
+    {
+        question: "Why are alloys harder than pure metals?",
+        answer: "Different sized atoms disrupt regular metal lattice layers, preventing easy sliding",
+        wrong1: "Alloys form strong ionic bonds",
+        wrong2: "Delocalised electrons increase in number",
+        wrong3: "Alloys have higher melting points always",
+        explanation: "Lattice distortion explanation required for full marks.",
+        example: "Steel harder than pure iron"
+    },
+    // 45
+    {
+        question: "Define crude oil",
+        answer: "Complex mixture of naturally occurring hydrocarbons formed over geological time from organic remains",
+        wrong1: "Pure compound of methane only",
+        wrong2: "Elemental mixture of carbon and oxygen",
+        wrong3: "Synthetic polymer raw material",
+        explanation: "IGCSE organic chemistry opening definition.",
+        example: "Extracted from underground reservoirs"
+    },
+    // 46
+    {
+        question: "Define hydrocarbon",
+        answer: "Organic compound composed exclusively of hydrogen and carbon atoms only",
+        wrong1: "Compound containing C, H and O",
+        wrong2: "Mixture of carbon and hydrogen elements",
+        wrong3: "Any covalent compound with carbon",
+        explanation: "Strict 'only C and H' exam wording.",
+        example: "CH₄, C₂H₆, C₂H₄"
+    },
+    // 47
+    {
+        question: "Define fractional distillation of crude oil",
+        answer: "Separation process dividing crude oil into fractions based on different boiling points",
+        wrong1: "Chemical breakdown of large hydrocarbons",
+        wrong2: "Filtering solid impurities from oil",
+        wrong3: "Separating by density only",
+        explanation: "Relates boiling point to chain length — key IGCSE link.",
+        example: "Refinery fractions: petrol, diesel, bitumen"
+    },
+    // 48
+    {
+        question: "Trend in boiling point with hydrocarbon chain length",
+        answer: "Longer carbon chains have higher boiling points due to stronger intermolecular forces",
+        wrong1: "Longer chains have lower boiling points",
+        wrong2: "Chain length has no effect on boiling point",
+        wrong3: "Branched chains always have higher bp",
+        explanation: "Directly tested in paper 2 IGCSE.",
+        example: "C₁₂H₂₆ bp > C₄H₁₀ bp"
+    },
+    // 49
+    {
+        question: "Define cracking of hydrocarbons",
+        answer: "Thermal or catalytic breakdown of large alkane molecules into smaller alkanes and alkenes",
+        wrong1: "Joining small molecules into large chains",
+        wrong2: "Complete combustion of hydrocarbons",
+        wrong3: "Dissolving crude oil fractions",
+        explanation: "Supplies demand for shorter chain fuels and alkene monomers.",
+        example: "Decane → octane + ethene"
+    },
+    // 50
+    {
+        question: "Define saturated hydrocarbon",
+        answer: "Contains only single carbon–carbon bonds; no C=C double bonds",
+        wrong1: "Contains at least one C=C double bond",
+        wrong2: "Dissolves fully in water",
+        wrong3: "Reacts readily with bromine water",
+        explanation: "Alkanes = saturated core IGCSE classification.",
+        example: "Methane, ethane, propane"
+    },
+    // 51
+    {
+        question: "Define unsaturated hydrocarbon",
+        answer: "Contains at least one carbon–carbon double (or triple) covalent bond",
+        wrong1: "Only single C–C bonds present",
+        wrong2: "Full hydrogen saturation around carbons",
+        wrong3: "Ionic organic compound",
+        explanation: "Alkenes = unsaturated foundational definition.",
+        example: "Ethene, propene"
+    },
+    // 52
+    {
+        question: "Bromine water test for unsaturation result",
+        answer: "Orange bromine water decolourises rapidly with unsaturated alkenes",
+        wrong1: "Turns deep blue immediately",
+        wrong2: "Remains permanently orange",
+        wrong3: "Forms white precipitate",
+        explanation: "Addition reaction mechanism introduced for DP readiness.",
+        example: "Ethene decolourises bromine water"
+    },
+    // 53
+    {
+        question: "Define addition polymerisation",
+        answer: "Many unsaturated alkene monomer molecules add together to form a long polymer chain with no by-products",
+        wrong1: "Monomers join with loss of small molecules like water",
+        wrong2: "Saturated alkanes polymerise spontaneously",
+        wrong3: "Ionic bonding forms polymer chains",
+        explanation: "IGCSE organic polymer mandatory definition.",
+        example: "Ethene → poly(ethene)"
+    },
+    // 54
+    {
+        question: "Define condensation polymerisation",
+        answer: "Monomers join forming a polymer plus a small by-product molecule such as water",
+        wrong1: "No small molecules formed during polymerisation",
+        wrong2: "Only alkenes undergo this process",
+        wrong3: "Occurs only in crude oil fractions",
+        explanation: "Introduces polyesters/polyamides for Grade 11 / IBDP.",
+        example: "Polyesters, nylon"
+    },
+    // 55
+    {
+        question: "Complete combustion of hydrocarbon products",
+        answer: "Carbon dioxide and water only",
+        wrong1: "Carbon monoxide and water",
+        wrong2: "Carbon and hydrogen gas",
+        wrong3: "CO₂ and hydrogen only",
+        explanation: "Requires plentiful oxygen supply.",
+        example: "CH₄ + 2O₂ → CO₂ + 2H₂O"
+    },
+    // 56
+    {
+        question: "Incomplete combustion of hydrocarbon products",
+        answer: "Carbon monoxide, carbon soot and water",
+        wrong1: "CO₂ and water only",
+        wrong2: "Hydrogen and oxygen gas",
+        wrong3: "Alkenes and carbon dioxide",
+        explanation: "Pollution and toxicity context tested in IGCSE.",
+        example: "Burn fuel in limited oxygen"
+    },
+    // 57
+    {
+        question: "Environmental source and effect of carbon monoxide",
+        answer: "Incomplete combustion; toxic gas binds to haemoglobin reducing oxygen transport",
+        wrong1: "From plant photosynthesis; causes global warming",
+        wrong2: "Released by volcanoes; causes acid rain",
+        wrong3: "From halide reactions; damages ozone layer",
+        explanation: "Standard 3-mark IGCSE environmental question.",
+        example: "Car engines with poor oxygen supply"
+    },
+    // 58
+    {
+        question: "Source and effect of sulfur dioxide pollution",
+        answer: "Combustion of sulfur-containing fossil fuels; causes acid rain",
+        wrong1: "Photosynthesis; greenhouse gas effect",
+        wrong2: "Metal corrosion; ozone depletion",
+        wrong3: "Fermentation; smog formation only",
+        explanation: "Acid rain chemical consequences examined at Grade 11.",
+        example: "Coal power stations releasing SO₂"
+    },
+    // 59
+    {
+        question: "Define greenhouse gas",
+        answer: "Atmospheric gas that absorbs infrared radiation, trapping heat and warming the atmosphere",
+        wrong1: "Gas that reflects all sunlight away from Earth",
+        wrong2: "Only oxygen and nitrogen qualify",
+        wrong3: "Toxic gases causing acid rain",
+        explanation: "IGCSE + IBDP climate science foundational definition.",
+        example: "CO₂, methane, water vapour"
+    },
+    // 60
+    {
+        question: "Chemical test for hydrogen gas",
+        answer: "Lit splint produces a characteristic squeaky pop sound",
+        wrong1: "Relights a glowing splint",
+        wrong2: "Turns limewater milky",
+        wrong3: "Damp red litmus turns blue",
+        explanation: "Required practical test knowledge.",
+        example: "Metal + acid gas test"
+    },
+    // 61
+    {
+        question: "Chemical test for oxygen gas",
+        answer: "Relights a glowing splint",
+        wrong1: "Squeaky pop with lit splint",
+        wrong2: "Turns limewater cloudy",
+        wrong3: "Decolourises bromine water",
+        explanation: "Classic IGCSE identification test.",
+        example: "Decomposition of hydrogen peroxide gas"
+    },
+    // 62
+    {
+        question: "Chemical test for carbon dioxide gas",
+        answer: "Bubbling gas through limewater turns it milky/cloudy white",
+        wrong1: "Relights glowing splint",
+        wrong2: "Burns with pop sound",
+        wrong3: "Turns universal indicator red",
+        explanation: "Reaction forms insoluble calcium carbonate precipitate.",
+        example: "Acid + carbonate gas test"
+    },
+    // 63
+    {
+        question: "Method to separate insoluble solid from liquid",
+        answer: "Filtration",
+        wrong1: "Crystallisation",
+        wrong2: "Fractional distillation",
+        wrong3: "Chromatography",
+        explanation: "Basic separation technique with exam application.",
+        example: "Separate sand from water"
+    },
+    // 64
+    {
+        question: "Method to separate soluble solid from solution",
+        answer: "Crystallisation / evaporation",
+        wrong1: "Filtration",
+        wrong2: "Distillation",
+        wrong3: "Magnetic separation",
+        explanation: "Produces pure solid crystals.",
+        example: "Obtain copper sulfate crystals"
+    },
+    // 65
+    {
+        question: "Method to separate miscible liquids",
+        answer: "Fractional distillation",
+        wrong1: "Filtration",
+        wrong2: "Separating funnel",
+        wrong3: "Crystallisation",
+        explanation: "Different boiling points enable separation.",
+        example: "Ethanol and water mixture"
+    },
+    // 66
+    {
+        question: "Method to separate immiscible liquids",
+        answer: "Separating funnel",
+        wrong1: "Fractional distillation",
+        wrong2: "Evaporation",
+        wrong3: "Paper chromatography",
+        explanation: "Layer density difference used for separation.",
+        example: "Oil and water"
+    },
+    // 67
+    {
+        question: "Define paper chromatography",
+        answer: "Separation technique based on different solubilities and attractions of components to stationary and mobile phase",
+        wrong1: "Separation by boiling point differences",
+        wrong2: "Separation by particle size only",
+        wrong3: "Chemical reaction separating mixtures",
+        explanation: "IGCSE chromatography formal definition + DP phase terminology.",
+        example: "Separate food colouring dyes"
+    },
+    // 68
+    {
+        question: "Calculate Rf value in chromatography",
+        answer: "Distance moved by spot ÷ distance moved by solvent front",
+        wrong1: "Solvent front distance × spot distance",
+        wrong2: "Spot distance minus solvent front distance",
+        wrong3: "Total paper length ÷ spot height",
+        explanation: "Fixed formula required for exam calculations.",
+        example: "Spot 3 cm, solvent 6 cm → Rf = 0.5"
+    },
+    // 69
+    {
+        question: "Define solute, solvent and solution",
+        answer: "Solute = dissolved substance; Solvent = dissolving medium; Solution = homogeneous mixture",
+        wrong1: "Solvent dissolves in solute",
+        wrong2: "Solution is always a heterogeneous mixture",
+        wrong3: "Solute must be a liquid always",
+        explanation: "Grade 10 foundational solution terminology.",
+        example: "Salt = solute, water = solvent"
+    },
+    // 70
+    {
+        question: "Define solubility of a solid",
+        answer: "Maximum mass of solute that dissolves in 100 g solvent at a specified temperature",
+        wrong1: "Speed of dissolving a solid",
+        wrong2: "Volume of solvent needed to dissolve any mass",
+        wrong3: "Concentration of a saturated solution in mol/dm³",
+        explanation: "IGCSE solubility curve interpretation relies on this definition.",
+        example: "36 g NaCl dissolves in 100 g water at 20°C"
+    },
+    // 71
+    {
+        question: "Trend of solid solubility with temperature",
+        answer: "Most solid solutes increase in solubility as temperature rises",
+        wrong1: "Solubility decreases with higher temperature",
+        wrong2: "Temperature has no effect on solubility",
+        wrong3: "All solids become insoluble at high temp",
+        explanation: "Used to plot and interpret solubility graphs.",
+        example: "Potassium nitrate much more soluble in hot water"
+    },
+    // 72
+    {
+        question: "Trend of gas solubility with temperature",
+        answer: "Gas solubility decreases as temperature increases",
+        wrong1: "Increases with temperature",
+        wrong2: "Constant at all temperatures",
+        wrong3: "Gases only dissolve in hot solvents",
+        explanation: "Environmental and industrial application topic.",
+        example: "CO₂ escapes from warm fizzy drinks"
+    },
+    // 73
+    {
+        question: "Define hard water",
+        answer: "Water containing dissolved calcium and magnesium ions that prevents lather formation with soap",
+        wrong1: "Water with high pH >10",
+        wrong2: "Turbid contaminated water",
+        wrong3: "Water containing only sodium ions",
+        explanation: "IGCSE water chemistry standard definition.",
+        example: "Groundwater in limestone regions"
+    },
+    // 74
+    {
+        question: "Temporary vs permanent hard water cause",
+        answer: "Temporary = dissolved hydrogencarbonates; Permanent = dissolved sulfate/chloride salts",
+        wrong1: "Both caused by identical carbonate salts",
+        wrong2: "Permanent hard water contains no metal ions",
+        wrong3: "Temporary hard water cannot be softened",
+        explanation: "Distinction tested in extended IGCSE.",
+        example: "Boiling removes temporary hardness only"
+    },
+    // 75
+    {
+        question: "Reactivity series metal order (key subset)",
+        answer: "K, Na, Ca, Mg, Al, Zn, Fe, Pb, Cu, Ag, Au",
+        wrong1: "Cu highest reactivity, K lowest",
+        wrong2: "Fe more reactive than Mg",
+        wrong3: "Au more reactive than Ag",
+        explanation: "Required memorisation for displacement and extraction.",
+        example: "Zn displaces Cu from copper sulfate"
+    },
+    // 76
+    {
+        question: "Metal extraction method for high reactivity metals",
+        answer: "Electrolysis of molten ore",
+        wrong1: "Reduction with carbon",
+        wrong2: "Heating ore alone",
+        wrong3: "Displacement with less reactive metal",
+        explanation: "Metals above carbon in series need electrolysis.",
+        example: "Aluminium from bauxite"
+    },
+    // 77
+    {
+        question: "Metal extraction method for mid reactivity metals",
+        answer: "Reduction of metal oxide with carbon/coke",
+        wrong1: "Electrolysis mandatory",
+        wrong2: "Oxidation by heating in air",
+        wrong3: "Dissolving ore in acid",
+        explanation: "Iron blast furnace core process.",
+        example: "Iron oxide + carbon → iron + CO₂"
+    },
+    // 78
+    {
+        question: "Extraction of unreactive metals (Cu, Ag, Au)",
+        answer: "Found native as pure element; simple physical extraction",
+        wrong1: "Electrolysis required always",
+        wrong2: "Reduction with hydrogen",
+        wrong3: "Thermal decomposition of carbonates",
+        explanation: "Low reactivity means no compound formation naturally.",
+        example: "Gold nuggets found uncombined"
+    },
+    // 79
+    {
+        question: "Define thermal decomposition",
+        answer: "Breakdown of a single compound into simpler substances by heat energy alone",
+        wrong1: "Reaction with oxygen releasing heat",
+        wrong2: "Breaking down using electricity",
+        wrong3: "Mixing two solutions to form precipitate",
+        explanation: "One reactant only; heat driven reaction.",
+        example: "CaCO₃(s) → CaO(s) + CO₂(g)"
+    },
+    // 80
+    {
+        question: "Define precipitation reaction",
+        answer: "A reaction in solution forming an insoluble solid product from soluble reactants",
+        wrong1: "Gas bubbles forming from solution",
+        wrong2: "Heat released mixing two liquids",
+        wrong3: "Solid dissolving completely in solvent",
+        explanation: "Ionic precipitation key IGCSE reaction type.",
+        example: "Silver nitrate + sodium chloride → AgCl precipitate"
+    },
+    // 81
+    {
+        question: "Flame colour test for lithium",
+        answer: "Crimson red flame",
+        wrong1: "Yellow flame",
+        wrong2: "Lilac flame",
+        wrong3: "Brick red flame",
+        explanation: "Qualitative analysis required knowledge.",
+        example: "Li⁺ ions in compound flame test"
+    },
+    // 82
+    {
+        question: "Flame colour test for sodium",
+        answer: "Bright yellow flame",
+        wrong1: "Lilac flame",
+        wrong2: "Green flame",
+        wrong3: "Crimson red flame",
+        explanation: "Intense yellow masks other flame colours.",
+        example: "NaCl flame test"
+    },
+    // 83
+    {
+        question: "Flame colour test for potassium",
+        answer: "Lilac (pale purple) flame",
+        wrong1: "Yellow flame",
+        wrong2: "Blue-green flame",
+        wrong3: "Brick red flame",
+        explanation: "View through blue glass to mask sodium yellow.",
+        example: "K₂CO₃ flame test"
+    },
+    // 84
+    {
+        question: "Flame colour test for calcium",
+        answer: "Brick red flame",
+        wrong1: "Lilac flame",
+        wrong2: "Yellow flame",
+        wrong3: "Green flame",
+        explanation: "Common Group 2 cation test.",
+        example: "Ca(NO₃)₂ flame test"
+    },
+    // 85
+    {
+        question: "Flame colour test for copper(II)",
+        answer: "Blue-green flame",
+        wrong1: "Bright red flame",
+        wrong2: "Lilac flame",
+        wrong3: "Yellow flame",
+        explanation: "Distinct transition metal flame colour.",
+        example: "CuSO₄ flame test"
+    },
+    // 86
+    {
+        question: "Test for ammonium ions (NH₄⁺)",
+        answer: "Add NaOH and heat; damp red litmus turns blue from ammonia gas",
+        wrong1: "Turns limewater milky",
+        wrong2: "Decolourises bromine water",
+        wrong3: "Forms yellow precipitate",
+        explanation: "Classic IGCSE cation test procedure.",
+        example: "Ammonium chloride + sodium hydroxide heated"
+    },
+    // 87
+    {
+        question: "Test for carbonate ions (CO₃²⁻)",
+        answer: "Add dilute acid; gas produced turns limewater milky",
+        wrong1: "Forms blue precipitate with NaOH",
+        wrong2: "Burns with squeaky pop",
+        wrong3: "Turns damp litmus blue",
+        explanation: "Relies on CO₂ gas identification.",
+        example: "Na₂CO₃ + HCl reaction"
+    },
+    // 88
+    {
+        question: "Test for chloride ions (Cl⁻)",
+        answer: "Acidify with nitric acid, add silver nitrate; white precipitate forms",
+        wrong1: "Yellow precipitate with silver nitrate",
+        wrong2: "Blue precipitate with NaOH",
+        wrong3: "Gas turns litmus blue",
+        explanation: "Acidification removes interfering carbonate ions.",
+        example: "NaCl solution anion test"
+    },
+    // 89
+    {
+        question: "Test for sulfate ions (SO₄²⁻)",
+        answer: "Acidify with hydrochloric acid, add barium chloride; white precipitate",
+        wrong1: "Yellow precipitate immediately",
+        wrong2: "Decolourises bromine water",
+        wrong3: "Lilac flame produced",
+        explanation: "Insoluble barium sulfate precipitate.",
+        example: "Na₂SO₄ solution test"
+    },
+    // 90
+    {
+        question: "Define oxidation state number",
+        answer: "A number representing the degree of oxidation of an atom in a compound or ion",
+        wrong1: "Total electrons in the atom",
+        wrong2: "Proton number minus neutron number",
+        wrong3: "Fixed value identical for all elements",
+        explanation: "IBDP foundational concept embedded for Grade 11 prep.",
+        example: "O = −2, H = +1 in most compounds"
+    },
+    // 91
+    {
+        question: "Oxidation state rule for uncombined elements",
+        answer: "Oxidation state = 0",
+        wrong1: "Always +1",
+        wrong2: "Always −1",
+        wrong3: "Equal to group number",
+        explanation: "Critical rule for redox half-equations.",
+        example: "O₂, Fe, Cu all oxidation state 0"
+    },
+    // 92
+    {
+        question: "Oxidation state of oxygen and hydrogen in typical compounds",
+        answer: "O = −2, H = +1 (excluding peroxides and metal hydrides)",
+        wrong1: "O = +2, H = −1 always",
+        wrong2: "Both always 0",
+        wrong3: "O = −1, H = +2",
+        explanation: "Standard rules for IGCSE and DP redox calculations.",
+        example: "H₂O: H +1, O −2"
+    },
+    // 93
+    {
+        question: "Define dynamic chemical equilibrium",
+        answer: "Forward and reverse reactions occur at equal rates; concentrations of reactants and products remain constant",
+        wrong1: "Reaction stops completely at balance",
+        wrong2: "Only forward reaction continues",
+        wrong3: "Concentrations become equal",
+        explanation: "Grade 11 / IBDP equilibrium core definition.",
+        example: "Haber process closed system equilibrium"
+    },
+    // 94
+    {
+        question: "Le Chatelier’s principle basic statement",
+        answer: "If a change is applied to a system at equilibrium, the system shifts to counteract the change",
+        wrong1: "Equilibrium does not respond to temperature changes",
+        wrong2: "Concentrations always equalise after disturbance",
+        wrong3: "Catalysts shift equilibrium position",
+        explanation: "Foundational for IGCSE industrial chemistry and DP.",
+        example: "Increase pressure shifts equilibrium to fewer gas moles"
+    },
+    // 95
+    {
+        question: "Effect of catalyst on equilibrium position",
+        answer: "Catalyst speeds up reaching equilibrium but does NOT shift equilibrium position",
+        wrong1: "Shifts equilibrium to product side",
+        wrong2: "Shifts equilibrium to reactant side",
+        wrong3: "Changes concentration of products permanently",
+        explanation: "Common exam misconception tested repeatedly.",
+        example: "Iron catalyst in Haber process no yield change"
+    },
+    // 96
+    {
+        question: "Define molar concentration formula",
+        answer: "Concentration = moles ÷ volume (dm³)",
+        wrong1: "Concentration = mass × volume",
+        wrong2: "Concentration = Mr × moles",
+        wrong3: "Concentration = volume ÷ moles",
+        explanation: "Core volumetric analysis formula Grade 10–11.",
+        example: "0.2 mol in 0.5 dm³ = 0.4 mol/dm³"
+    },
+    // 97
+    {
+        question: "Percentage yield formula",
+        answer: "Percentage yield = (actual mass ÷ theoretical mass) × 100",
+        wrong1: "Theoretical mass ÷ actual mass × 100",
+        wrong2: "Moles × Mr × 100",
+        wrong3: "Volume × concentration × 100",
+        explanation: "IGCSE paper 2 calculation mandatory skill.",
+        example: "Actual 8g, theoretical 10g → 80% yield"
+    },
+    // 98
+    {
+        question: "Reasons actual yield always less than theoretical yield",
+        answer: "Reversible reactions, side reactions, product loss during separation, incomplete reactions",
+        wrong1: "Balanced equations overestimate mass always",
+        wrong2: "Avogadro’s constant changes experimentally",
+        wrong3: "Temperature affects Mr values",
+        explanation: "4-mark explain question standard answer.",
+        example: "Some product left on filter paper"
+    },
+    // 99
+    {
+        question: "Define atom economy",
+        answer: "Percentage of total mass of reactants converted into desired useful product",
+        wrong1: "Same as percentage yield",
+        wrong2: "Reaction rate efficiency percentage",
+        wrong3: "Solubility efficiency of products",
+        explanation: "Green chemistry IGCSE extended + DP sustainability topic.",
+        example: "High atom economy = less waste by-products"
+    },
+    // 100
+    {
+        question: "Why high atom economy is important industrially",
+        answer: "Reduces waste, lowers raw material cost, minimises environmental pollution and energy use",
+        wrong1: "Makes reactions happen faster",
+        wrong2: "Changes equilibrium position",
+        wrong3: "Increases boiling point of products",
+        explanation: "Structured 3–4 mark IGCSE / IBDP essay answer.",
+        example: "Addition polymerisation has high atom economy"
+    }
+];

@@ -1,0 +1,1002 @@
+const biologyFlashcards = [
+    // 1
+    {
+        question: "Define diffusion (IGCSE/IBDP formal)",
+        answer: "Net passive movement of particles down a concentration gradient from high to low concentration",
+        wrong1: "Movement of water only",
+        wrong2: "Movement against gradient using ATP",
+        wrong3: "Bulk transport via vesicles",
+        explanation: "Passive, no energy required; random Brownian motion",
+        example: "Gas exchange in alveoli"
+    },
+    // 2
+    {
+        question: "Define osmosis (exam-standard)",
+        answer: "Net movement of water across a partially permeable membrane down a water potential gradient",
+        wrong1: "Diffusion of solute molecules",
+        wrong2: "Active uptake of minerals",
+        wrong3: "Movement of food molecules",
+        explanation: "Water potential = tendency of water to move; critical for marks",
+        example: "Water entering plant root hair cells"
+    },
+    // 3
+    {
+        question: "Define active transport",
+        answer: "Energy-requiring movement of molecules against a concentration gradient using ATP and carrier proteins",
+        wrong1: "Passive movement down gradient",
+        wrong2: "Water movement only",
+        wrong3: "Simple diffusion of gases",
+        explanation: "Occurs in mitochondria; requires respiration",
+        example: "Absorption of glucose in ileum"
+    },
+    // 4
+    {
+        question: "Define partially permeable membrane",
+        answer: "Membrane allowing small molecules to pass but blocking large solute molecules",
+        wrong1: "Allows all molecules freely",
+        wrong2: "Blocks all water movement",
+        wrong3: "Only allows gases through",
+        explanation: "Cell surface membrane is partially permeable",
+        example: "Allows water; blocks starch/proteins"
+    },
+    // 5
+    {
+        question: "Define enzyme (biological catalyst)",
+        answer: "Globular protein that speeds up metabolic reactions without being altered or consumed",
+        wrong1: "Provides energy for reactions",
+        wrong2: "Carries oxygen in blood",
+        wrong3: "Stores genetic information",
+        explanation: "Lowers activation energy; IGCSE + IBDP core",
+        example: "Amylase, catalase, pepsin"
+    },
+    // 6
+    {
+        question: "Define active site of enzyme",
+        answer: "Specific region on enzyme where substrate binds and reaction occurs",
+        wrong1: "Area for ATP production",
+        wrong2: "Site of protein synthesis",
+        wrong3: "Region for DNA replication",
+        explanation: "Shape determines enzyme-substrate specificity",
+        example: "Lock and key mechanism"
+    },
+    // 7
+    {
+        question: "Effect of temperature above optimum on enzymes",
+        answer: "Enzyme denatures; active site permanently loses shape and function",
+        wrong1: "Reaction speeds up indefinitely",
+        wrong2: "Enzyme becomes more specific",
+        wrong3: "No change in activity",
+        explanation: "Hydrogen bonds break; irreversible above 45°C for most",
+        example: "Boiling destroys catalase completely"
+    },
+    // 8
+    {
+        question: "Define denaturation",
+        answer: "Permanent loss of specific 3D structure of protein/active site due to heat/pH",
+        wrong1: "Temporary slowdown of reaction",
+        wrong2: "Increase in enzyme activity",
+        wrong3: "Breakdown of substrate molecules",
+        explanation: "Cannot be reversed; critical exam term",
+        example: "Cooking egg white permanently denatures protein"
+    },
+    // 9
+    {
+        question: "Define balanced diet",
+        answer: "Diet containing correct proportions of all nutrients, fiber, and water for health",
+        wrong1: "High protein only diet",
+        wrong2: "No fat or carbohydrate diet",
+        wrong3: "Only fruit and vegetables",
+        explanation: "Meets metabolic needs; prevents malnutrition",
+        example: "Carbohydrates, proteins, lipids, vitamins, minerals"
+    },
+    // 10
+    {
+        question: "Function of carbohydrates",
+        answer: "Primary source of immediate and short-term energy for respiration",
+        wrong1: "Build and repair tissues",
+        wrong2: "Insulation and long-term energy store",
+        wrong3: "Catalyse metabolic reactions",
+        explanation: "Glucose = main respiratory substrate",
+        example: "Starch, glycogen, sugars"
+    },
+    // 11
+    {
+        question: "Function of lipids (fats)",
+        answer: "Long-term energy store, insulation, buoyancy, and component of cell membranes",
+        wrong1: "Immediate energy source",
+        wrong2: "Catalyse chemical reactions",
+        wrong3: "Transport oxygen",
+        explanation: "Energy-dense; 2x more energy than carbs",
+        example: "Fats, oils, cholesterol"
+    },
+    // 12
+    {
+        question: "Function of proteins",
+        answer: "Growth and repair of tissues; enzymes, antibodies, hormones, structure",
+        wrong1: "Primary energy source",
+        wrong2: "Insulation only",
+        wrong3: "Store genetic material",
+        explanation: "Made of amino acids; essential for growth",
+        example: "Muscle, enzymes, hemoglobin"
+    },
+    // 13
+    {
+        question: "Define ingestion",
+        answer: "Process of taking food or liquids into the body through the mouth",
+        wrong1: "Breakdown of food into small molecules",
+        wrong2: "Absorption of nutrients into blood",
+        wrong3: "Removal of undigested waste",
+        explanation: "First stage of nutrition",
+        example: "Eating and swallowing food"
+    },
+    // 14
+    {
+        question: "Define digestion",
+        answer: "Mechanical and chemical breakdown of large insoluble food into small soluble molecules",
+        wrong1: "Absorption into bloodstream",
+        wrong2: "Eating food",
+        wrong3: "Removal of faeces",
+        explanation: "Allows absorption across gut wall",
+        example: "Starch → glucose; protein → amino acids"
+    },
+    // 15
+    {
+        question: "Define absorption",
+        answer: "Movement of digested food molecules into blood or lymph from small intestine",
+        wrong1: "Chewing food into smaller pieces",
+        wrong2: "Removal of waste",
+        wrong3: "Transport of nutrients around body",
+        explanation: "Occurs mainly in ileum via villi",
+        example: "Glucose and amino acids into blood capillaries"
+    },
+    // 16
+    {
+        question: "Define assimilation",
+        answer: "Use of absorbed nutrients by cells for energy, growth, or repair",
+        wrong1: "Breakdown of food",
+        wrong2: "Removal of undigested food",
+        wrong3: "Uptake into blood",
+        explanation: "Nutrients become part of body tissue",
+        example: "Amino acids used to make enzymes"
+    },
+    // 17
+    {
+        question: "Define egestion",
+        answer: "Removal of undigested waste (faeces) from the body via the anus",
+        wrong1: "Removal of metabolic waste",
+        wrong2: "Exhalation of carbon dioxide",
+        wrong3: "Sweating to remove urea",
+        explanation: "NOT excretion; faeces never in cells",
+        example: "Defecation of fibre and waste"
+    },
+    // 18
+    {
+        question: "Adaptations of small intestine for absorption",
+        answer: "Long, folded, villi/microvilli, rich blood supply, thin walls",
+        wrong1: "Thick walls, slow movement, no blood supply",
+        wrong2: "Short length, smooth surface, large lumen",
+        wrong3: "Only mechanical digestion occurs",
+        explanation: "Maximises surface area and rate of absorption",
+        example: "Villi increase surface area by 600x"
+    },
+    // 19
+    {
+        question: "Function of hydrochloric acid in stomach",
+        answer: "Kills pathogens; provides low pH for pepsin activity",
+        wrong1: "Digests carbohydrates",
+        wrong2: "Emulsifies fats",
+        wrong3: "Absorbs nutrients",
+        explanation: "Pepsin works optimally at pH 1.5–2",
+        example: "Destroys bacteria in food"
+    },
+    // 20
+    {
+        question: "Function of bile",
+        answer: "Neutralises stomach acid; emulsifies fats into small droplets",
+        wrong1: "Digests fats chemically",
+        wrong2: "Absorbs glucose",
+        wrong3: "Kills bacteria in stomach",
+        explanation: "Made in liver; stored in gall bladder; NO enzymes",
+        example: "Increases surface area for lipase action"
+    },
+    // 21
+    {
+        question: "Define aerobic respiration",
+        answer: "Breakdown of glucose using oxygen to release large amounts of ATP",
+        wrong1: "Anaerobic respiration without oxygen",
+        wrong2: "Production of glucose from CO2 and water",
+        wrong3: "Diffusion of oxygen into cells",
+        explanation: "Occurs in mitochondria; IGCSE/IBDP core",
+        example: "Glucose + O2 → CO2 + H2O + ATP"
+    },
+    // 22
+    {
+        question: "Word equation for aerobic respiration",
+        answer: "Glucose + oxygen → carbon dioxide + water + energy (ATP)",
+        wrong1: "Glucose → lactic acid + energy",
+        wrong2: "CO2 + water → glucose + oxygen",
+        wrong3: "Glucose → ethanol + CO2 + energy",
+        explanation: "Must include energy/ATP for full marks",
+        example: "Continuous cellular energy release"
+    },
+    // 23
+    {
+        question: "Define anaerobic respiration (humans)",
+        answer: "Incomplete breakdown of glucose without oxygen producing lactic acid and small ATP",
+        wrong1: "Produces ethanol and CO2",
+        wrong2: "Releases more energy than aerobic",
+        wrong3: "Occurs in lungs",
+        explanation: "Causes oxygen debt; muscle fatigue",
+        example: "During intense exercise"
+    },
+    // 24
+    {
+        question: "Define gas exchange",
+        answer: "Diffusion of oxygen and carbon dioxide across respiratory surfaces",
+        wrong1: "Breathing in and out",
+        wrong2: "Cellular release of energy",
+        wrong3: "Transport of gases in blood",
+        explanation: "Physical exchange; not breathing/respiration",
+        example: "Alveoli in lungs; gills in fish"
+    },
+    // 25
+    {
+        question: "Adaptations of alveoli for gas exchange",
+        answer: "Large surface area, thin walls, moist, dense capillary network",
+        wrong1: "Thick walls, dry surface, small area",
+        wrong2: "Large lumen, slow diffusion",
+        wrong3: "Muscular walls for pumping blood",
+        explanation: "Maximises rapid diffusion of O2/CO2",
+        example: "Millions of tiny air sacs in lungs"
+    },
+    // 26
+    {
+        question: "Function of hemoglobin",
+        answer: "Red protein in red blood cells that binds and transports oxygen",
+        wrong1: "Fights infection",
+        wrong2: "Clots blood",
+        wrong3: "Transports glucose",
+        explanation: "Forms oxyhemoglobin in lungs",
+        example: "Carries O2 to respiring tissues"
+    },
+    // 27
+    {
+        question: "Define double circulatory system",
+        answer: "Blood passes through heart twice in one full circuit: pulmonary + systemic",
+        wrong1: "Blood flows once through heart",
+        wrong2: "Open system with no vessels",
+        wrong3: "Only oxygenated blood flows",
+        explanation: "Found in birds and mammals; efficient",
+        example: "Heart → lungs → heart → body"
+    },
+    // 28
+    {
+        question: "Function of arteries",
+        answer: "Carry oxygenated blood away from heart at high pressure",
+        wrong1: "Carry deoxygenated blood to heart",
+        wrong2: "Allow exchange of materials",
+        wrong3: "Store blood volume",
+        explanation: "Thick muscular, elastic walls; narrow lumen",
+        example: "Aorta, pulmonary artery"
+    },
+    // 29
+    {
+        question: "Function of veins",
+        answer: "Carry deoxygenated blood to heart at low pressure; have valves",
+        wrong1: "Carry blood away from heart",
+        wrong2: "Thick elastic walls",
+        wrong3: "Site of material exchange",
+        explanation: "Thin walls; large lumen; valves prevent backflow",
+        example: "Vena cava, pulmonary vein"
+    },
+    // 30
+    {
+        question: "Function of capillaries",
+        answer: "Microscopic vessels where exchange of materials between blood and tissues occurs",
+        wrong1: "Carry blood at high pressure",
+        wrong2: "Have thick muscular walls",
+        wrong3: "Pump blood around body",
+        explanation: "One-cell thick walls; extremely thin",
+        example: "Surround alveoli and body cells"
+    },
+    // 31
+    {
+        question: "Define transpiration",
+        answer: "Loss of water vapour from plant leaves via stomata by evaporation and diffusion",
+        wrong1: "Absorption of water by roots",
+        wrong2: "Transport of sugars in phloem",
+        wrong3: "Photosynthesis in leaves",
+        explanation: "Creates transpiration pull",
+        example: "Water loss through stomata"
+    },
+    // 32
+    {
+        question: "Define translocation",
+        answer: "Movement of sucrose and amino acids in phloem from source to sink",
+        wrong1: "Water movement in xylem",
+        wrong2: "Loss of water from leaves",
+        wrong3: "Diffusion of CO2 into leaves",
+        explanation: "Requires energy; active process",
+        example: "Leaves → roots/fruits/flowers"
+    },
+    // 33
+    {
+        question: "Function of xylem",
+        answer: "Transports water and mineral ions from roots to leaves; supports plant",
+        wrong1: "Transports sugars",
+        wrong2: "Carries out photosynthesis",
+        wrong3: "Stores food",
+        explanation: "Dead hollow cells; lignified walls",
+        example: "Root → stem → leaf flow"
+    },
+    // 34
+    {
+        question: "Function of phloem",
+        answer: "Transports dissolved food (sucrose) and amino acids around plant",
+        wrong1: "Transports water only",
+        wrong2: "Supports stem with lignin",
+        wrong3: "Prevents water loss",
+        explanation: "Living cells; sieve tube elements",
+        example: "Translocation up and down plant"
+    },
+    // 35
+    {
+        question: "Define photosynthesis",
+        answer: "Process by which plants make glucose from CO2 and H2O using light energy and chlorophyll",
+        wrong1: "Breakdown of glucose for energy",
+        wrong2: "Loss of water from leaves",
+        wrong3: "Transport of minerals",
+        explanation: "Endothermic; occurs in chloroplasts",
+        example: "CO2 + H2O → C6H12O6 + O2"
+    },
+    // 36
+    {
+        question: "Word equation for photosynthesis",
+        answer: "Carbon dioxide + water → glucose + oxygen (light, chlorophyll)",
+        wrong1: "Glucose + oxygen → CO2 + water",
+        wrong2: "Glucose → lactic acid + energy",
+        wrong3: "Oxygen + CO2 → glucose",
+        explanation: "Light and chlorophyll are essential conditions",
+        example: "Leaf palisade cells"
+    },
+    // 37
+    {
+        question: "Define limiting factor (photosynthesis)",
+        answer: "Factor in shortest supply that restricts rate of photosynthesis",
+        wrong1: "Factor that speeds up reaction indefinitely",
+        wrong2: "Always light intensity",
+        wrong3: "Only temperature affects rate",
+        explanation: "CO2, light, temperature are main factors",
+        example: "Low CO2 limits rate even with high light"
+    },
+    // 38
+    {
+        question: "Define excretion",
+        answer: "Removal of metabolic waste products from chemical reactions in cells",
+        wrong1: "Removal of undigested food (faeces)",
+        wrong2: "Eating food",
+        wrong3: "Absorption of nutrients",
+        explanation: "Urea, CO2, excess water/salts",
+        example: "Kidneys remove urea; lungs remove CO2"
+    },
+    // 39
+    {
+        question: "Function of kidneys",
+        answer: "Filter blood, remove urea, regulate water and ion concentration (osmoregulation)",
+        wrong1: "Produce insulin",
+        wrong2: "Store urine",
+        wrong3: "Pump blood around body",
+        explanation: "Excretory + homeostatic organ",
+        example: "Make urine by filtration and reabsorption"
+    },
+    // 40
+    {
+        question: "Define homeostasis",
+        answer: "Maintenance of constant internal environment despite external changes",
+        wrong1: "Breakdown of glucose for energy",
+        wrong2: "Movement of water by osmosis",
+        wrong3: "Growth and development",
+        explanation: "Core IBDP/IGCSE definition",
+        example: "Temperature, blood glucose, water balance"
+    },
+    // 41
+    {
+        question: "Define negative feedback",
+        answer: "Mechanism reversing a change to restore optimum level in homeostasis",
+        wrong1: "Amplifies a change away from normal",
+        wrong2: "No response to change",
+        wrong3: "Permanent change in conditions",
+        explanation: "Controls all homeostatic processes",
+        example: "Temperature regulation"
+    },
+    // 42
+    {
+        question: "Function of insulin",
+        answer: "Hormone that lowers blood glucose concentration by converting glucose to glycogen",
+        wrong1: "Raises blood glucose",
+        wrong2: "Digests carbohydrates",
+        wrong3: "Transports oxygen",
+        explanation: "Made in pancreas; stored in liver/muscles",
+        example: "After meal: glucose → glycogen"
+    },
+    // 43
+    {
+        question: "Function of glucagon",
+        answer: "Raises blood glucose by converting glycogen back to glucose in liver",
+        wrong1: "Lowers blood glucose",
+        wrong2: "Makes proteins",
+        wrong3: "Stores fat",
+        explanation: "Antagonistic to insulin",
+        example: "Between meals: glycogen → glucose"
+    },
+    // 44
+    {
+        question: "Define neuron (nerve cell)",
+        answer: "Specialised cell that transmits electrical impulses rapidly",
+        wrong1: "Carries oxygen",
+        wrong2: "Contracts for movement",
+        wrong3: "Transports sugars",
+        explanation: "Electrochemical signals; 100m/s speed",
+        example: "Sensory, relay, motor neurons"
+    },
+    // 45
+    {
+        question: "Define reflex action",
+        answer: "Rapid, automatic, involuntary response to a stimulus to protect body",
+        wrong1: "Slow conscious decision",
+        wrong2: "Voluntary movement",
+        wrong3: "Learning a new skill",
+        explanation: "Reflex arc: no brain processing",
+        example: "Pulling hand from hot object"
+    },
+    // 46
+    {
+        question: "Define synapse",
+        answer: "Junction between two neurons where impulses pass via neurotransmitters",
+        wrong1: "Direct electrical connection",
+        wrong2: "Part of muscle fibre",
+        wrong3: "Site of photosynthesis",
+        explanation: "Chemical transmission; one-way only",
+        example: "Between sensory and relay neuron"
+    },
+    // 47
+    {
+        question: "Define hormone",
+        answer: "Chemical messenger made in endocrine gland, transported in blood, target specific organs",
+        wrong1: "Electrical impulse",
+        wrong2: "Enzyme that digests food",
+        wrong3: "Structural protein",
+        explanation: "Slow, long-lasting effects vs nervous system",
+        example: "Insulin, adrenaline, testosterone"
+    },
+    // 48
+    {
+        question: "Compare nervous and endocrine systems",
+        answer: "Nervous: fast, electrical, short-lived; Endocrine: slow, chemical, long-lasting",
+        wrong1: "Both use electrical impulses",
+        wrong2: "Endocrine is faster",
+        wrong3: "No difference between them",
+        explanation: "Key exam comparison question",
+        example: "Reflex vs growth hormone"
+    },
+    // 49
+    {
+        question: "Function of adrenaline",
+        answer: "Prepares body for fight/flight: increases heart/breathing rate, blood flow to muscles",
+        wrong1: "Lowers blood glucose",
+        wrong2: "Slows heart rate",
+        wrong3: "Promotes digestion",
+        explanation: "Stress hormone; emergency response",
+        example: "Released during danger/excitement"
+    },
+    // 50
+    {
+        question: "Define tropism",
+        answer: "Directional growth response of plant to external stimulus",
+        wrong1: "Rapid plant movement",
+        wrong2: "Loss of water by transpiration",
+        wrong3: "Transport of sugars",
+        explanation: "Controlled by auxins",
+        example: "Phototropism, geotropism"
+    },
+    // 51
+    {
+        question: "Define phototropism",
+        answer: "Plant growth towards or away from light stimulus",
+        wrong1: "Growth response to gravity",
+        wrong2: "Response to touch",
+        wrong3: "Water uptake response",
+        explanation: "Positive = towards light (shoots)",
+        example: "Shoots grow up towards sunlight"
+    },
+    // 52
+    {
+        question: "Define geotropism (gravitropism)",
+        answer: "Plant growth response to gravity stimulus",
+        wrong1: "Growth to light",
+        wrong2: "Response to water",
+        wrong3: "Response to touch",
+        explanation: "Roots positive; shoots negative",
+        example: "Roots grow down into soil"
+    },
+    // 53
+    {
+        question: "Function of auxin",
+        answer: "Plant hormone that controls cell elongation and tropisms",
+        wrong1: "Photosynthesises in leaves",
+        wrong2: "Transports water",
+        wrong3: "Stores food",
+        explanation: "Unequal distribution causes bending",
+        example: "Causes shoot cells to elongate"
+    },
+    // 54
+    {
+        question: "Define asexual reproduction",
+        answer: "Reproduction involving one parent; genetically identical offspring (clones)",
+        wrong1: "Two parents; genetic variation",
+        wrong2: "Fertilisation and gametes",
+        wrong3: "Meiosis cell division",
+        explanation: "Mitosis only; no gametes",
+        example: "Binary fission, bulbs, runners"
+    },
+    // 55
+    {
+        question: "Define sexual reproduction",
+        answer: "Fusion of male and female gametes to form zygote; genetically varied offspring",
+        wrong1: "One parent; clones",
+        wrong2: "Mitosis only",
+        wrong3: "No fertilisation",
+        explanation: "Meiosis produces gametes; variation",
+        example: "Animals, flowering plants"
+    },
+    // 56
+    {
+        question: "Define gamete",
+        answer: "Haploid sex cell specialised for fertilisation",
+        wrong1: "Diploid body cell",
+        wrong2: "Fertilised egg cell",
+        wrong3: "Embryonic stem cell",
+        explanation: "Sperm, egg; pollen, ovum in plants",
+        example: "Human sperm and ovum"
+    },
+    // 57
+    {
+        question: "Define fertilisation",
+        answer: "Fusion of male and female gamete nuclei to form diploid zygote",
+        wrong1: "Implantation of embryo",
+        wrong2: "Development of fetus",
+        wrong3: "Release of egg from ovary",
+        explanation: "Restores diploid chromosome number",
+        example: "Sperm + egg → zygote"
+    },
+    // 58
+    {
+        question: "Define zygote",
+        answer: "Diploid cell formed by fusion of two haploid gametes",
+        wrong1: "Haploid sex cell",
+        wrong2: "Mature adult organism",
+        wrong3: "Undeveloped seed",
+        explanation: "First cell of new organism",
+        example: "Fertilised human egg"
+    },
+    // 59
+    {
+        question: "Define pollination",
+        answer: "Transfer of pollen from anther to stigma of a flower",
+        wrong1: "Fusion of gametes",
+        wrong2: "Seed germination",
+        wrong3: "Fruit formation",
+        explanation: "Insect or wind pollinated",
+        example: "Bee carries pollen between flowers"
+    },
+    // 60
+    {
+        question: "Define germination",
+        answer: "Growth of embryonic plant from seed when conditions are suitable",
+        wrong1: "Fusion of gametes",
+        wrong2: "Transfer of pollen",
+        wrong3: "Photosynthesis in leaves",
+        explanation: "Requires water, O2, warmth",
+        example: "Seed → seedling"
+    },
+    // 61
+    {
+        question: "Define mitosis",
+        answer: "Nuclear division producing two genetically identical diploid daughter cells",
+        wrong1: "Produces four haploid gametes",
+        wrong2: "Causes genetic variation",
+        wrong3: "Only in sex organs",
+        explanation: "Growth, repair, asexual reproduction",
+        example: "Skin cell replacement"
+    },
+    // 62
+    {
+        question: "Define meiosis",
+        answer: "Reduction division producing four genetically different haploid gametes",
+        wrong1: "Identical diploid body cells",
+        wrong2: "Growth and repair",
+        wrong3: "Asexual reproduction",
+        explanation: "Halves chromosome number; variation",
+        example: "Sperm/egg production in testes/ovaries"
+    },
+    // 63
+    {
+        question: "Define chromosome",
+        answer: "Structure of DNA wrapped around proteins carrying genetic information",
+        wrong1: "Single strand of RNA",
+        wrong2: "Simple sugar molecule",
+        wrong3: "Enzyme catalyst",
+        explanation: "Found in nucleus; human = 46",
+        example: "X and Y sex chromosomes"
+    },
+    // 64
+    {
+        question: "Define gene",
+        answer: "Short length of DNA that codes for a specific protein/trait",
+        wrong1: "Whole chromosome",
+        wrong2: "Gamete cell",
+        wrong3: "Cell organelle",
+        explanation: "Unit of inheritance; IGCSE/IBDP core",
+        example: "Gene for eye colour"
+    },
+    // 65
+    {
+        question: "Define allele",
+        answer: "Alternative form of a gene occupying same locus on homologous chromosomes",
+        wrong1: "Single nucleotide",
+        wrong2: "Entire DNA molecule",
+        wrong3: "Protein product",
+        explanation: "Dominant or recessive",
+        example: "Brown or blue eye alleles"
+    },
+    // 66
+    {
+        question: "Define genotype",
+        answer: "Genetic makeup of an organism (combination of alleles)",
+        wrong1: "Physical appearance",
+        wrong2: "Environmental traits",
+        wrong3: "Behavioural characteristics",
+        explanation: "BB, Bb, bb",
+        example: "Homozygous dominant"
+    },
+    // 67
+    {
+        question: "Define phenotype",
+        answer: "Observable physical or biochemical characteristics of organism",
+        wrong1: "Genetic allele combination",
+        wrong2: "DNA sequence",
+        wrong3: "Chromosome number",
+        explanation: "Genotype + environment",
+        example: "Brown eyes, tall height"
+    },
+    // 68
+    {
+        question: "Define dominant allele",
+        answer: "Allele expressed in phenotype even when present with recessive allele",
+        wrong1: "Only expressed if two copies present",
+        wrong2: "Always masked by recessive",
+        wrong3: "Only on X chromosome",
+        explanation: "Represented by capital letter",
+        example: "B = brown eyes"
+    },
+    // 69
+    {
+        question: "Define recessive allele",
+        answer: "Allele only expressed when homozygous; masked by dominant",
+        wrong1: "Always expressed",
+        wrong2: "Dominates over other alleles",
+        wrong3: "Only in males",
+        explanation: "Lowercase letter",
+        example: "b = blue eyes"
+    },
+    // 70
+    {
+        question: "Define homozygous",
+        answer: "Having two identical alleles for a particular trait",
+        wrong1: "Two different alleles",
+        wrong2: "Only one allele present",
+        wrong3: "No alleles present",
+        explanation: "True breeding; BB or bb",
+        example: "Homozygous recessive for cystic fibrosis"
+    },
+    // 71
+    {
+        question: "Define heterozygous",
+        answer: "Having two different alleles for a trait; carrier of recessive",
+        wrong1: "Two identical alleles",
+        wrong2: "No recessive allele",
+        wrong3: "Only dominant alleles",
+        explanation: "Bb; hybrid",
+        example: "Carrier for genetic disorder"
+    },
+    // 72
+    {
+        question: "Define mutation",
+        answer: "Random change in DNA base sequence or chromosome structure/number",
+        wrong1: "Normal cell division",
+        wrong2: "Inheritance of traits",
+        wrong3: "Protein synthesis",
+        explanation: "Source of new genetic variation",
+        example: "Down syndrome, sickle cell anemia"
+    },
+    // 73
+    {
+        question: "Define natural selection",
+        answer: "Process where organisms best adapted survive, reproduce, and pass favourable alleles",
+        wrong1: "Random change in DNA",
+        wrong2: "Artificial breeding by humans",
+        wrong3: "Inheritance of acquired traits",
+        explanation: "Darwin's theory; survival of fittest",
+        example: "Peppered moth, antibiotic resistance"
+    },
+    // 74
+    {
+        question: "Define species",
+        answer: "Group of similar organisms that interbreed to produce fertile offspring",
+        wrong1: "Organisms living in same area",
+        wrong2: "Organisms with same colour",
+        wrong3: "Group with same diet",
+        explanation: "Biological species concept; IGCSE/IBDP",
+        example: "Homo sapiens (humans)"
+    },
+    // 75
+    {
+        question: "Define food chain",
+        answer: "Linear feeding relationship showing energy transfer from producer to consumers",
+        wrong1: "Network of interconnected food chains",
+        wrong2: "Recycling of nutrients",
+        wrong3: "Water cycle process",
+        explanation: "Arrow = energy flow",
+        example: "Grass → rabbit → fox"
+    },
+    // 76
+    {
+        question: "Define food web",
+        answer: "Complex network of interconnected food chains in an ecosystem",
+        wrong1: "Linear feeding sequence only",
+        wrong2: "Energy flow in one direction",
+        wrong3: "Water recycling system",
+        explanation: "Shows interdependence of organisms",
+        example: "Multiple predators and prey"
+    },
+    // 77
+    {
+        question: "Define trophic level",
+        answer: "Feeding position in a food chain/web (producer, primary consumer...)",
+        wrong1: "Number of organisms in chain",
+        wrong2: "Total biomass of ecosystem",
+        wrong3: "Type of habitat",
+        explanation: "Energy decreases up trophic levels",
+        example: "1st = producer; 2nd = primary consumer"
+    },
+    // 78
+    {
+        question: "Define producer",
+        answer: "Autotroph that makes organic food via photosynthesis",
+        wrong1: "Eats plants for energy",
+        wrong2: "Breaks down dead matter",
+        wrong3: "Hunts other animals",
+        explanation: "Base of all food chains",
+        example: "Green plants, algae"
+    },
+    // 79
+    {
+        question: "Define consumer",
+        answer: "Heterotroph that obtains energy by eating other organisms",
+        wrong1: "Makes own food",
+        wrong2: "Decomposes dead material",
+        wrong3: "Photosynthesises",
+        explanation: "Primary, secondary, tertiary",
+        example: "Herbivores, carnivores, omnivores"
+    },
+    // 80
+    {
+        question: "Define decomposer",
+        answer: "Microorganism that breaks down dead organic matter and recycles nutrients",
+        wrong1: "Eats living plants",
+        wrong2: "Makes food via photosynthesis",
+        wrong3: "Top carnivore",
+        explanation: "Bacteria and fungi; nutrient cycle critical",
+        example: "Saprophytic bacteria/fungi"
+    },
+    // 81
+    {
+        question: "Energy transfer between trophic levels efficiency",
+        answer: "Only ~10% of energy transferred; 90% lost as heat, movement, waste",
+        wrong1: "100% transferred",
+        wrong2: "50% transferred",
+        wrong3: "Energy increases up chain",
+        explanation: "Limits food chain length; IGCSE/IBDP",
+        example: "Grass (100%) → rabbit (10%) → fox (1%)"
+    },
+    // 82
+    {
+        question: "Define ecosystem",
+        answer: "Community of organisms interacting with each other and abiotic environment",
+        wrong1: "Group of same species",
+        wrong2: "Single population only",
+        wrong3: "Non-living factors only",
+        explanation: "Biotic + abiotic components",
+        example: "Forest, pond, desert"
+    },
+    // 83
+    {
+        question: "Define population",
+        answer: "Group of individuals of same species living in same habitat at same time",
+        wrong1: "All species in area",
+        wrong2: "Living + non-living parts",
+        wrong3: "Interacting food chains",
+        explanation: "Measured in ecology surveys",
+        example: "Pine trees in forest"
+    },
+    // 84
+    {
+        question: "Define community",
+        answer: "All populations of different species living in a habitat at same time",
+        wrong1: "Single species only",
+        wrong2: "Non-living environment",
+        wrong3: "Global ecological system",
+        explanation: "All biotic components",
+        example: "Plants, animals, microbes in pond"
+    },
+    // 85
+    {
+        question: "Define habitat",
+        answer: "Place where an organism lives and finds resources",
+        wrong1: "Role of organism in ecosystem",
+        wrong2: "Feeding level in food chain",
+        wrong3: "Group of same species",
+        explanation: "Address of organism",
+        example: "Under a log, leaf litter"
+    },
+    // 86
+    {
+        question: "Define niche",
+        answer: "Role and position of organism in ecosystem including feeding and interactions",
+        wrong1: "Physical location only",
+        wrong2: "Number of organisms",
+        wrong3: "Type of food eaten only",
+        explanation: "Job of organism",
+        example: "Decomposer, pollinator, predator"
+    },
+    // 87
+    {
+        question: "Define biodegradable",
+        answer: "Substance broken down naturally by decomposers",
+        wrong1: "Non-breakable pollutant",
+        wrong2: "Toxic metal",
+        wrong3: "Plastic that persists forever",
+        explanation: "Organic materials; recycled naturally",
+        example: "Food waste, paper, wood"
+    },
+    // 88
+    {
+        question: "Define eutrophication",
+        answer: "Enrichment of water with nitrates/phosphates causing algal bloom and oxygen depletion",
+        wrong1: "Increase in fish population",
+        wrong2: "Purification of water",
+        wrong3: "Increase in water clarity",
+        explanation: "Fertiliser runoff; kills aquatic life",
+        example: "Pond killed by fertiliser pollution"
+    },
+    // 89
+    {
+        question: "Define acid rain",
+        answer: "Rain with low pH from SO2/NOx; damages ecosystems, buildings, water",
+        wrong1: "Normal clean rain",
+        wrong2: "Rain with high pH",
+        wrong3: "Rain with high oxygen",
+        explanation: "Fossil fuel combustion causes",
+        example: "Kills trees; lakes acidic"
+    },
+    // 90
+    {
+        question: "Define greenhouse effect",
+        answer: "Gases trap heat in atmosphere maintaining Earth temperature",
+        wrong1: "Ozone layer depletion",
+        wrong2: "Acid rain formation",
+        wrong3: "Water pollution",
+        explanation: "Natural + enhanced by human activity",
+        example: "CO2, methane, water vapour"
+    },
+    // 91
+    {
+        question: "Define global warming",
+        answer: "Increase in Earth’s average temperature due to enhanced greenhouse effect",
+        wrong1: "Cooling of planet",
+        wrong2: "Acid rain increase",
+        wrong3: "Ozone hole",
+        explanation: "Caused by fossil fuels, deforestation",
+        example: "Melting polar ice caps"
+    },
+    // 92
+    {
+        question: "Define deforestation",
+        answer: "Large-scale removal of trees and destruction of forest habitats",
+        wrong1: "Planting new forests",
+        wrong2: "Sustainable logging",
+        wrong3: "Wildlife conservation",
+        explanation: "Causes CO2 increase, soil erosion",
+        example: "Rainforest clearance for farming"
+    },
+    // 93
+    {
+        question: "Define pathogen",
+        answer: "Disease-causing microorganism",
+        wrong1: "Beneficial gut bacteria",
+        wrong2: "Decomposer fungus",
+        wrong3: "Photosynthetic algae",
+        explanation: "Bacteria, viruses, fungi, protoctists",
+        example: "Influenza virus, Salmonella"
+    },
+    // 94
+    {
+        question: "Define antibody",
+        answer: "Protein made by lymphocytes that targets specific antigens on pathogens",
+        wrong1: "Disease-causing microbe",
+        wrong2: "Toxin released by bacteria",
+        wrong3: "Medicine killing bacteria",
+        explanation: "Specific immune response",
+        example: "Antibodies fight COVID-19 virus"
+    },
+    // 95
+    {
+        question: "Define antibiotic",
+        answer: "Drug that kills or inhibits growth of bacteria; NOT effective on viruses",
+        wrong1: "Kills all pathogens including viruses",
+        wrong2: "Cures genetic diseases",
+        wrong3: "Vaccine for immunity",
+        explanation: "Overuse causes antibiotic resistance",
+        example: "Penicillin, amoxicillin"
+    },
+    // 96
+    {
+        question: "Define vaccination",
+        answer: "Administration of weakened/dead pathogen to stimulate immune system and memory cells",
+        wrong1: "Antibiotic treatment",
+        wrong2: "Treatment of active infection",
+        wrong3: "Direct injection of antibodies",
+        explanation: "Provides artificial active immunity",
+        example: "MMR, polio vaccine"
+    },
+    // 97
+    {
+        question: "Define active immunity",
+        answer: "Immunity where body produces own antibodies and memory cells",
+        wrong1: "Receiving antibodies from external source",
+        wrong2: "Temporary passive protection",
+        wrong3: "No memory cells formed",
+        explanation: "Long-lasting; infection or vaccine",
+        example: "Recovery from chickenpox"
+    },
+    // 98
+    {
+        question: "Define passive immunity",
+        answer: "Temporary immunity from receiving ready-made antibodies",
+        wrong1: "Body makes own antibodies",
+        wrong2: "Long-term protection",
+        wrong3: "Memory cells produced",
+        explanation: "Short-term; no memory",
+        example: "Mother to baby via breast milk"
+    },
+    // 99
+    {
+        question: "Define DNA",
+        answer: "Double-stranded nucleic acid carrying genetic code for proteins",
+        wrong1: "Single-stranded RNA",
+        wrong2: "Energy molecule",
+        wrong3: "Carbohydrate storage",
+        explanation: "Deoxyribonucleic acid; A-T C-G base pairs",
+        example: "Nuclear DNA in chromosomes"
+    },
+    // 100
+    {
+        question: "Define ATP (adenosine triphosphate)",
+        answer: "Universal energy currency molecule for all cellular processes",
+        wrong1: "Genetic material",
+        wrong2: "Structural protein",
+        wrong3: "Respiratory substrate",
+        explanation: "Produced in respiration; used for active transport, movement",
+        example: "Energy for cell work"
+    }
+];

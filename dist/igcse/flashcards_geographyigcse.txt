@@ -1,0 +1,1002 @@
+const geographyFlashcards = [
+  // 1
+  {
+    question: "Define ecosystem",
+    answer: "A community of living organisms interacting with each other and their non-living environment",
+    wrong1: "Only plants in a forest",
+    wrong2: "Daily weather conditions",
+    wrong3: "Human-built cities",
+    explanation: "Includes biotic (living) and abiotic (non-living) parts",
+    example: "Rainforest, pond, desert"
+  },
+  // 2
+  {
+    question: "Define biotic factors",
+    answer: "Living components of an ecosystem (plants, animals, bacteria)",
+    wrong1: "Temperature and rainfall",
+    wrong2: "Soil type and rock",
+    wrong3: "Wind and sunlight",
+    explanation: "All living things in a habitat",
+    example: "Trees, insects, birds, fungi"
+  },
+  // 3
+  {
+    question: "Define abiotic factors",
+    answer: "Non-living components of an ecosystem (climate, soil, water)",
+    wrong1: "Predators and prey",
+    wrong2: "Plants and animals",
+    wrong3: "Food chains",
+    explanation: "Physical and chemical conditions",
+    example: "Temperature, slope, rainfall, soil pH"
+  },
+  // 4
+  {
+    question: "Define food chain",
+    answer: "Linear sequence showing energy transfer from producer to consumers",
+    wrong1: "Map of animal migration",
+    wrong2: "Seasonal growth cycle",
+    wrong3: "Water cycle process",
+    explanation: "One simple feeding path",
+    example: "Grass → Rabbit → Fox"
+  },
+  // 5
+  {
+    question: "Define food web",
+    answer: "Interconnected network of many food chains in an ecosystem",
+    wrong1: "Single feeding line",
+    wrong2: "Rainfall pattern",
+    wrong3: "River flow path",
+    explanation: "Shows complex feeding relationships",
+    example: "Multiple animals eating many plants/animals"
+  },
+  // 6
+  {
+    question: "Define producer",
+    answer: "Organism that makes its own food via photosynthesis (base of food chain)",
+    wrong1: "Animal that hunts",
+    wrong2: "Organism that eats dead matter",
+    wrong3: "Bacterium in soil",
+    explanation: "Converts sunlight into energy",
+    example: "Grass, trees, algae"
+  },
+  // 7
+  {
+    question: "Define consumer",
+    answer: "Organism that eats other organisms for energy",
+    wrong1: "Plant that makes food",
+    wrong2: "Decomposer",
+    wrong3: "Rock in soil",
+    explanation: "Herbivores, carnivores, omnivores",
+    example: "Deer, lion, human"
+  },
+  // 8
+  {
+    question: "Define decomposer",
+    answer: "Organism that breaks down dead matter and recycles nutrients into soil",
+    wrong1: "Top predator",
+    wrong2: "Large tree",
+    wrong3: "Desert cactus",
+    explanation: "Returns nutrients to ecosystem",
+    example: "Fungi, bacteria, worms"
+  },
+  // 9
+  {
+    question: "Define biome",
+    answer: "Large global ecosystem with unique climate, plants and animals",
+    wrong1: "Small local park",
+    wrong2: "Single river",
+    wrong3: "One farm",
+    explanation: "Covers huge geographic areas",
+    example: "Rainforest, desert, tundra"
+  },
+  // 10
+  {
+    question: "Define tropical rainforest",
+    answer: "Hot, wet equatorial biome with dense evergreen trees and high biodiversity",
+    wrong1: "Dry, sparse vegetation",
+    wrong2: "Cold, treeless plain",
+    wrong3: "Seasonal grassland",
+    explanation: "2000mm+ rain/year, constant high temp",
+    example: "Amazon, Congo Basin"
+  },
+  // 11
+  {
+    question: "Define desert",
+    answer: "Arid biome with <250mm annual rain, extreme temperatures",
+    wrong1: "Heavy rainfall daily",
+    wrong2: "Cold frozen ground",
+    wrong3: "Dense forest",
+    explanation: "Plants adapted to low water",
+    example: "Sahara, Arabian Desert"
+  },
+  // 12
+  {
+    question: "Define tundra",
+    answer: "Cold, treeless biome with permafrost and low-growing plants",
+    wrong1: "Hot and wet",
+    wrong2: "Sandy and dry",
+    wrong3: "Deciduous forest",
+    explanation: "Short growing season, permafrost",
+    example: "Arctic tundra"
+  },
+  // 13
+  {
+    question: "Define weather",
+    answer: "Short-term, day-to-day atmospheric conditions",
+    wrong1: "30-year average conditions",
+    wrong2: "Global warming trend",
+    wrong3: "Permanent landscape",
+    explanation: "Changes hourly/daily",
+    example: "Sunny, rainy, windy"
+  },
+  // 14
+  {
+    question: "Define climate",
+    answer: "Average weather over a 30+ year period",
+    wrong1: "One day’s rain",
+    wrong2: "Week of wind",
+    wrong3: "Hourly temperature",
+    explanation: "Long-term atmospheric pattern",
+    example: "Tropical wet climate"
+  },
+  // 15
+  {
+    question: "Define precipitation",
+    answer: "Water falling from clouds (rain, snow, hail, sleet)",
+    wrong1: "Humidity",
+    wrong2: "Wind speed",
+    wrong3: "Air pressure",
+    explanation: "All forms of moisture reaching ground",
+    example: "Heavy rain, snowfall"
+  },
+  // 16
+  {
+    question: "Define relief rainfall",
+    answer: "Rain from air rising over mountains, cooling and condensing",
+    wrong1: "Rain from heating",
+    wrong2: "Rain from fronts",
+    wrong3: "Rain everywhere equally",
+    explanation: "Windward = wet, leeward = rain shadow",
+    example: "Western slopes of the Andes"
+  },
+  // 17
+  {
+    question: "Define convectional rainfall",
+    answer: "Rain from intense heating causing air to rise, cool and form rain",
+    wrong1: "Mountain rainfall",
+    wrong2: "Frontal rainfall",
+    wrong3: "Monsoon rainfall",
+    explanation: "Common in tropics – afternoon storms",
+    example: "Amazon daily rain"
+  },
+  // 18
+  {
+    question: "Define frontal rainfall",
+    answer: "Rain when warm air rises over cold air at a front",
+    wrong1: "Mountain-caused rain",
+    wrong2: "Heating-caused rain",
+    wrong3: "Dry wind rain",
+    explanation: "Common in temperate zones",
+    example: "Rain in the UK"
+  },
+  // 19
+  {
+    question: "Define air pressure",
+    answer: "Weight of air pressing down on Earth’s surface",
+    wrong1: "Amount of rain",
+    wrong2: "Wind direction",
+    wrong3: "Humidity",
+    explanation: "Low = wet/cloudy; High = dry/sunny",
+    example: "Anticyclone (high pressure)"
+  },
+  // 20
+  {
+    question: "Define wind",
+    answer: "Air moving from high to low pressure",
+    wrong1: "Water vapour",
+    wrong2: "Heat from ground",
+    wrong3: "Cloud type",
+    explanation: "Wind named by where it comes FROM",
+    example: "Trade winds, westerlies"
+  },
+  // 21
+  {
+    question: "Define river basin",
+    answer: "Area of land drained by a river and its tributaries",
+    wrong1: "Start of a river",
+    wrong2: "End of a river",
+    wrong3: "Deep river valley",
+    explanation: "Also called a drainage basin",
+    example: "Amazon Basin"
+  },
+  // 22
+  {
+    question: "Define source",
+    answer: "Starting point of a river (spring, lake, melting snow)",
+    wrong1: "Mouth of river",
+    wrong2: "Middle course",
+    wrong3: "Flood plain",
+    explanation: "Upper course of river",
+    example: "Mountain spring"
+  },
+  // 23
+  {
+    question: "Define mouth",
+    answer: "End of a river where it enters the sea/lake",
+    wrong1: "Start of river",
+    wrong2: "Waterfall",
+    wrong3: "Tributary",
+    explanation: "Often forms a delta",
+    example: "Nile Delta"
+  },
+  // 24
+  {
+    question: "Define tributary",
+    answer: "Smaller river that flows into a larger main river",
+    wrong1: "Main river channel",
+    wrong2: "River mouth",
+    wrong3: "Flood wall",
+    explanation: "Adds water to main channel",
+    example: "Tributaries joining the Amazon"
+  },
+  // 25
+  {
+    question: "Define waterfall",
+    answer: "Vertical drop in a river over hard rock above soft rock",
+    wrong1: "Gentle slope",
+    wrong2: "Wide flat valley",
+    wrong3: "Meander",
+    explanation: "Forms from erosion of soft rock",
+    example: "Niagara Falls"
+  },
+  // 26
+  {
+    question: "Define meander",
+    answer: "Bend or curve in a river (middle/lower course)",
+    wrong1: "Straight river",
+    wrong2: "Waterfall",
+    wrong3: "Steep valley",
+    explanation: "Eroded on outside, deposited on inside",
+    example: "Bends in the Thames"
+  },
+  // 27
+  {
+    question: "Define floodplain",
+    answer: "Wide flat area of land either side of a river, prone to flooding",
+    wrong1: "Steep mountain valley",
+    wrong2: "Desert dry area",
+    wrong3: "Upper course",
+    explanation: "Covered in fertile alluvium",
+    example: "Ganges floodplain"
+  },
+  // 28
+  {
+    question: "Define delta",
+    answer: "Triangular landform at river mouth from deposited sediment",
+    wrong1: "Steep valley",
+    wrong2: "Waterfall",
+    wrong3: "Lake",
+    explanation: "Fertile, low-lying land",
+    example: "Ganges-Brahmaputra Delta"
+  },
+  // 29
+  {
+    question: "Define river erosion",
+    answer: "Wearing away of river banks and bed by water and sediment",
+    wrong1: "Building up of land",
+    wrong2: "Drying up of river",
+    wrong3: "Freezing of water",
+    explanation: "4 types: hydraulic action, abrasion, attrition, solution",
+    example: "River widening its valley"
+  },
+  // 30
+  {
+    question: "Define river deposition",
+    answer: "Dropping of sediment when river slows down and loses energy",
+    wrong1: "Wearing away rock",
+    wrong2: "Deepening channel",
+    wrong3: "Increasing speed",
+    explanation: "Occurs on inside of meanders, at mouth",
+    example: "Sand bars, deltas"
+  },
+  // 31
+  {
+    question: "Define urbanisation",
+    answer: "Growth in percentage of people living in towns and cities",
+    wrong1: "Growth of farming",
+    wrong2: "Decline of factories",
+    wrong3: "Loss of industry",
+    explanation: "Movement from rural to urban areas",
+    example: "Mega-cities in Asia"
+  },
+  // 32
+  {
+    question: "Define rural-urban migration",
+    answer: "Movement of people from countryside to cities",
+    wrong1: "City to countryside",
+    wrong2: "Country to country",
+    wrong3: "North to south",
+    explanation: "Push (rural) and pull (urban) factors",
+    example: "People moving to Mumbai for jobs"
+  },
+  // 33
+  {
+    question: "Define push factor",
+    answer: "Negative reason that makes people LEAVE an area",
+    wrong1: "Positive reason to move to an area",
+    wrong2: "Tourist attraction",
+    wrong3: "Job opportunity",
+    explanation: "Problems forcing people away",
+    example: "Poverty, war, drought"
+  },
+  // 34
+  {
+    question: "Define pull factor",
+    answer: "Positive reason that attracts people TO an area",
+    wrong1: "Negative reason to leave",
+    wrong2: "Natural disaster",
+    wrong3: "Unemployment",
+    explanation: "Benefits drawing migrants",
+    example: "Jobs, schools, hospitals"
+  },
+  // 35
+  {
+    question: "Define shanty town / squatter settlement",
+    answer: "Unofficial housing with no services, built on city edges",
+    wrong1: "Luxury housing",
+    wrong2: "Planned government housing",
+    wrong3: "Rural farm village",
+    explanation: "Lack clean water, electricity, roads",
+    example: "Favelas in Rio"
+  },
+  // 36
+  {
+    question: "Define urban sprawl",
+    answer: "Unplanned spread of city into surrounding rural land",
+    wrong1: "Planned city centre",
+    wrong2: "High-rise apartments",
+    wrong3: "Urban renewal",
+    explanation: "Low-density, car-dependent growth",
+    example: "Suburban spread of Los Angeles"
+  },
+  // 37
+  {
+    question: "Define sustainable city",
+    answer: "City that meets present needs without harming future generations",
+    wrong1: "City with maximum pollution",
+    wrong2: "City with no green space",
+    wrong3: "Wasteful city",
+    explanation: "Green transport, renewable energy, recycling",
+    example: "Copenhagen, Singapore"
+  },
+  // 38
+  {
+    question: "Define population distribution",
+    answer: "How people are spread out across an area",
+    wrong1: "Number of births",
+    wrong2: "Number of deaths",
+    wrong3: "Population change",
+    explanation: "Clustered, scattered, linear",
+    example: "Dense in cities, sparse in mountains"
+  },
+  // 39
+  {
+    question: "Define population density",
+    answer: "Number of people per square kilometre",
+    wrong1: "Total population",
+    wrong2: "Birth rate minus death rate",
+    wrong3: "Migration total",
+    explanation: "Dense = many people/km²; Sparse = few",
+    example: "Bangladesh = high density; Canada = low"
+  },
+  // 40
+  {
+    question: "Define birth rate",
+    answer: "Number of live births per 1000 people per year",
+    wrong1: "Number of deaths per 1000",
+    wrong2: "Total babies born",
+    wrong3: "Population increase",
+    explanation: "High in LEDCs, low in MEDCs",
+    example: "40/1000 in some African countries"
+  },
+  // 41
+  {
+    question: "Define death rate",
+    answer: "Number of deaths per 1000 people per year",
+    wrong1: "Number of births per 1000",
+    wrong2: "Total deaths",
+    wrong3: "Migration rate",
+    explanation: "Falls first in DTM",
+    example: "10/1000 in developed countries"
+  },
+  // 42
+  {
+    question: "Define natural increase",
+    answer: "Birth rate minus death rate (population growth)",
+    wrong1: "Migration total",
+    wrong2: "Total population",
+    wrong3: "Life expectancy",
+    explanation: "Does not include migration",
+    example: "BR 30, DR 10 = 20 natural increase"
+  },
+  // 43
+  {
+    question: "Define life expectancy",
+    answer: "Average age a person is expected to live",
+    wrong1: "Maximum age lived",
+    wrong2: "Age of retirement",
+    wrong3: "Child mortality",
+    explanation: "Higher in developed countries",
+    example: "82 years in Japan"
+  },
+  // 44
+  {
+    question: "Define infant mortality rate",
+    answer: "Deaths of babies under 1 year old per 1000 live births",
+    wrong1: "Deaths of children under 5",
+    wrong2: "Maternal deaths",
+    wrong3: "Elderly deaths",
+    explanation: "Indicator of healthcare quality",
+    example: "2/1000 in Iceland; 50/1000 in some LEDCs"
+  },
+  // 45
+  {
+    question: "Define population pyramid",
+    answer: "Graph showing age and gender structure of a population",
+    wrong1: "Map of population density",
+    wrong2: "Chart of migration",
+    wrong3: "Birth/death line graph",
+    explanation: "Wide base = high birth rate",
+    example: "LEDCS have wide base; MEDCs narrow"
+  },
+  // 46
+  {
+    question: "Define DTM (Demographic Transition Model)",
+    answer: "Model showing how population changes as a country develops",
+    wrong1: "Climate model",
+    wrong2: "River model",
+    wrong3: "Urban model",
+    explanation: "5 stages based on BR, DR, economy",
+    example: "Stage 1: high BR/DR; Stage 5: aging population"
+  },
+  // 47
+  {
+    question: "Define migration",
+    answer: "Movement of people from one place to another",
+    wrong1: "Population growth",
+    wrong2: "Birth rate increase",
+    wrong3: "Life expectancy rise",
+    explanation: "Immigration = in; Emigration = out",
+    example: "Moving from Syria to Germany"
+  },
+  // 48
+  {
+    question: "Define refugee",
+    answer: "Person forced to flee their country due to war/persecution",
+    wrong1: "Person moving for jobs",
+    wrong2: "Person moving for education",
+    wrong3: "Retiree abroad",
+    explanation: "Forced migration",
+    example: "Ukrainian refugees"
+  },
+  // 49
+  {
+    question: "Define economic migrant",
+    answer: "Person who moves voluntarily to find work/better income",
+    wrong1: "Person fleeing war",
+    wrong2: "Displaced person",
+    wrong3: "Natural disaster victim",
+    explanation: "Voluntary migration",
+    example: "Worker moving to Dubai for jobs"
+  },
+  // 50
+  {
+    question: "Define deforestation",
+    answer: "Large-scale cutting down of forests",
+    wrong1: "Planting new trees",
+    wrong2: "Protecting forests",
+    wrong3: "Sustainable logging",
+    explanation: "Causes habitat loss, climate change",
+    example: "Amazon rainforest clearance"
+  },
+  // 51
+  {
+    question: "Define soil erosion",
+    answer: "Removal of topsoil by wind or water",
+    wrong1: "Building up soil",
+    wrong2: "Fertilising soil",
+    wrong3: "Planting grass",
+    explanation: "Worse on bare, steep land",
+    example: "Gullying after heavy rain"
+  },
+  // 52
+  {
+    question: "Define climate change",
+    answer: "Long-term shift in global weather patterns due to human activity",
+    wrong1: "One hot summer",
+    wrong2: "Daily weather",
+    wrong3: "Natural storm",
+    explanation: "Caused by greenhouse gases",
+    example: "Global temperature rise"
+  },
+  // 53
+  {
+    question: "Define greenhouse effect",
+    answer: "Gases trapping heat in atmosphere, keeping Earth warm",
+    wrong1: "Cooling of Earth",
+    wrong2: "Ozone hole",
+    wrong3: "Acid rain",
+    explanation: "Natural + enhanced (human) version",
+    example: "CO2, methane trapping heat"
+  },
+  // 54
+  {
+    question: "Define enhanced greenhouse effect",
+    answer: "Human-caused increase in gases leading to global warming",
+    wrong1: "Natural warming",
+    wrong2: "Cooling cycle",
+    wrong3: "Ozone repair",
+    explanation: "From fossil fuels, deforestation",
+    example: "Industrial CO2 emissions"
+  },
+  // 55
+  {
+    question: "Define fossil fuels",
+    answer: "Non-renewable fuels from ancient plants/animals (coal, oil, gas)",
+    wrong1: "Solar/wind energy",
+    wrong2: "Hydroelectric power",
+    wrong3: "Biomass",
+    explanation: "Produce CO2 when burned",
+    example: "Coal power stations"
+  },
+  // 56
+  {
+    question: "Define renewable energy",
+    answer: "Energy that can be replaced naturally (will not run out)",
+    wrong1: "Finite fuel",
+    wrong2: "Fossil fuel",
+    wrong3: "Nuclear fuel",
+    explanation: "Sustainable, low carbon",
+    example: "Solar, wind, hydro, tidal"
+  },
+  // 57
+  {
+    question: "Define non-renewable energy",
+    answer: "Finite energy source that will run out",
+    wrong1: "Infinite energy",
+    wrong2: "Solar/wind",
+    wrong3: "Always replaceable",
+    explanation: "Takes millions of years to form",
+    example: "Coal, oil, gas, nuclear"
+  },
+  // 58
+  {
+    question: "Define global warming",
+    answer: "Gradual rise in Earth’s average temperature",
+    wrong1: "Cooling trend",
+    wrong2: "One heatwave",
+    wrong3: "Local cold snap",
+    explanation: "Causes climate change",
+    example: "1.1°C rise since 1880"
+  },
+  // 59
+  {
+    question: "Define mitigation",
+    answer: "Actions to REDUCE or prevent climate change",
+    wrong1: "Adapting to change",
+    wrong2: "Ignoring change",
+    wrong3: "Building flood walls only",
+    explanation: "Cut emissions, renewable energy",
+    example: "Using solar panels, planting trees"
+  },
+  // 60
+  {
+    question: "Define adaptation",
+    answer: "Actions to DEAL with effects of climate change",
+    wrong1: "Stopping climate change",
+    wrong2: "Cutting emissions",
+    wrong3: "Closing factories",
+    explanation: "Adjust to existing changes",
+    example: "Flood defences, drought-resistant crops"
+  },
+  // 61
+  {
+    question: "Define earthquake",
+    answer: "Sudden shaking of ground from tectonic plate movement",
+    wrong1: "Volcanic lava flow",
+    wrong2: "Tropical cyclone",
+    wrong3: "Drought",
+    explanation: "Occurs at plate boundaries",
+    example: "Turkey-Syria 2023 earthquake"
+  },
+  // 62
+  {
+    question: "Define volcano",
+    answer: "Opening in Earth’s crust where lava, ash and gas erupt",
+    wrong1: "Mountain with no activity",
+    wrong2: "Flood plain",
+    wrong3: "Cave system",
+    explanation: "Found at plate boundaries/hotspots",
+    example: "Mount Fuji, Hawaii volcanoes"
+  },
+  // 63
+  {
+    question: "Define tectonic plates",
+    answer: "Large slabs of Earth’s crust that move slowly",
+    wrong1: "Soil layers",
+    wrong2: "Rock layers",
+    wrong3: "River basins",
+    explanation: "Cause earthquakes, volcanoes, mountains",
+    example: "Pacific Plate, Eurasian Plate"
+  },
+  // 64
+  {
+    question: "Define plate boundary",
+    answer: "Where two tectonic plates meet",
+    wrong1: "Middle of a plate",
+    wrong2: "Flat plain",
+    wrong3: "City centre",
+    explanation: "Most hazards occur here",
+    example: "San Andreas Fault"
+  },
+  // 65
+  {
+    question: "Define tsunami",
+    answer: "Large sea wave caused by underwater earthquake/volcano",
+    wrong1: "Tidal wave",
+    wrong2: "Wind wave",
+    wrong3: "River flood",
+    explanation: "Travels fast, huge height on land",
+    example: "2004 Indian Ocean tsunami"
+  },
+  // 66
+  {
+    question: "Define tropical cyclone (hurricane/typhoon)",
+    answer: "Violent low-pressure storm with strong winds and rain",
+    wrong1: "Mild rainstorm",
+    wrong2: "Drought",
+    wrong3: "Earthquake",
+    explanation: "Forms over warm oceans",
+    example: "Hurricane Katrina"
+  },
+  // 67
+  {
+    question: "Define drought",
+    answer: "Long period of abnormally low rainfall",
+    wrong1: "Heavy rain",
+    wrong2: "Flood",
+    wrong3: "Snowstorm",
+    explanation: "Crops fail, water shortage",
+    example: "Horn of Africa drought"
+  },
+  // 68
+  {
+    question: "Define flood",
+    answer: "Water covering land that is normally dry",
+    wrong1: "Prolonged dryness",
+    wrong2: "Strong winds",
+    wrong3: "Landslide",
+    explanation: "River, coastal, flash floods",
+    example: "Pakistan 2022 floods"
+  },
+  // 69
+  {
+    question: "Define LEDC (Less Economically Developed Country)",
+    answer: "Poorer country with low income, basic services",
+    wrong1: "Wealthy developed country",
+    wrong2: "High-tech country",
+    wrong3: "Service economy country",
+    explanation: "High birth rate, low life expectancy",
+    example: "Ethiopia, Haiti"
+  },
+  // 70
+  {
+    question: "Define MEDC (More Economically Developed Country)",
+    answer: "Wealthy country with high income, good services",
+    wrong1: "Poor developing country",
+    wrong2: "Agrarian economy",
+    wrong3: "High poverty",
+    explanation: "Low birth rate, high life expectancy",
+    example: "USA, Germany, UK"
+  },
+  // 71
+  {
+    question: "Define NEE (Newly Emerging Economy)",
+    answer: "Country rapidly developing industry and wealth",
+    wrong1: "Poor least developed country",
+    wrong2: "Fully developed country",
+    wrong3: "Agrarian country",
+    explanation: "Fast growth, rising middle class",
+    example: "India, Brazil, China"
+  },
+  // 72
+  {
+    question: "Define primary industry",
+    answer: "Extracting natural resources (farming, mining, fishing)",
+    wrong1: "Manufacturing goods",
+    wrong2: "Providing services",
+    wrong3: "IT/tech",
+    explanation: "First stage of production",
+    example: "Coal mining, subsistence farming"
+  },
+  // 73
+  {
+    question: "Define secondary industry",
+    answer: "Manufacturing and processing raw materials into goods",
+    wrong1: "Extracting resources",
+    wrong2: "Services",
+    wrong3: "Research",
+    explanation: "Factory work",
+    example: "Car manufacturing, food processing"
+  },
+  // 74
+  {
+    question: "Define tertiary industry",
+    answer: "Providing services to people/businesses",
+    wrong1: "Mining/farming",
+    wrong2: "Factory work",
+    wrong3: "Raw material extraction",
+    explanation: "Largest sector in MEDCs",
+    example: "Teaching, nursing, retail"
+  },
+  // 75
+  {
+    question: "Define quaternary industry",
+    answer: "Knowledge-based IT, research and high-tech services",
+    wrong1: "Mining",
+    wrong2: "Manufacturing",
+    wrong3: "Basic services",
+    explanation: "High-skill innovation",
+    example: "Software development, AI research"
+  },
+  // 76
+  {
+    question: "Define tourism",
+    answer: "Travelling for pleasure/leisure",
+    wrong1: "Business work travel",
+    wrong2: "Migration",
+    wrong3: "Daily commute",
+    explanation: "Major global industry",
+    example: "Beach tourism, adventure tourism"
+  },
+  // 77
+  {
+    question: "Define ecotourism",
+    answer: "Sustainable, low-impact tourism supporting nature/local people",
+    wrong1: "Mass tourism",
+    wrong2: "Luxury resort tourism",
+    wrong3: "Polluting tourism",
+    explanation: "Protects environment",
+    example: "Rainforest guided tours"
+  },
+  // 78
+  {
+    question: "Define mass tourism",
+    answer: "Large numbers of tourists visiting popular destinations",
+    wrong1: "Small-scale tourism",
+    wrong2: "Ecotourism",
+    wrong3: "Remote tourism",
+    explanation: "High impact, cheap packages",
+    example: "Spanish coast resorts"
+  },
+  // 79
+  {
+    question: "Define farming / agriculture",
+    answer: "Growing crops and raising animals for food",
+    wrong1: "Mining minerals",
+    wrong2: "Manufacturing goods",
+    wrong3: "Selling services",
+    explanation: "Subsistence or commercial",
+    example: "Wheat farming, cattle ranching"
+  },
+  // 80
+  {
+    question: "Define subsistence farming",
+    answer: "Farming to feed only the farmer’s family",
+    wrong1: "Farming for profit/sale",
+    wrong2: "Large-scale commercial farm",
+    wrong3: "Factory farming",
+    explanation: "Small scale, low technology",
+    example: "African village farming"
+  },
+  // 81
+  {
+    question: "Define commercial farming",
+    answer: "Farming to sell crops/animals for profit",
+    wrong1: "Farming for family only",
+    wrong2: "Small plot farming",
+    wrong3: "Low-input farming",
+    explanation: "Large scale, high technology",
+    example: "Palm oil plantations, wheat farms"
+  },
+  // 82
+  {
+    question: "Define intensive farming",
+    answer: "Farming with high inputs on small land for high output",
+    wrong1: "Large land, low inputs",
+    wrong2: "Nomadic herding",
+    wrong3: "Shifting cultivation",
+    explanation: "High labour/fertiliser/machinery",
+    example: "Rice paddy farming"
+  },
+  // 83
+  {
+    question: "Define extensive farming",
+    answer: "Farming with low inputs on large land for low output/ha",
+    wrong1: "Small land, high inputs",
+    wrong2: "Greenhouse farming",
+    wrong3: "Intensive crop growing",
+    explanation: "Low cost per hectare",
+    example: "Australian sheep stations"
+  },
+  // 84
+  {
+    question: "Define mineral resource",
+    answer: "Valuable resource extracted from Earth (rock, metal, fossil fuel)",
+    wrong1: "Crop food",
+    wrong2: "Livestock",
+    wrong3: "Manufactured good",
+    explanation: "Non-renewable in human time",
+    example: "Iron ore, gold, coal"
+  },
+  // 85
+  {
+    question: "Define industrialisation",
+    answer: "Growth of manufacturing industries in a country",
+    wrong1: "Growth of farming",
+    wrong2: "Decline of cities",
+    wrong3: "Service sector only",
+    explanation: "Leads to urbanisation and development",
+    example: "UK Industrial Revolution"
+  },
+  // 86
+  {
+    question: "Define deindustrialisation",
+    answer: "Decline of manufacturing industry in a country",
+    wrong1: "Growth of factories",
+    wrong2: "Rise in mining",
+    wrong3: "Increase in farming",
+    explanation: "Shift to service/tech economy",
+    example: "UK factory decline since 1970s"
+  },
+  // 87
+  {
+    question: "Define globalisation",
+    answer: "Increasing connections between countries through trade/tech",
+    wrong1: "Isolation of countries",
+    wrong2: "Local trade only",
+    wrong3: "Closed borders",
+    explanation: "Goods, money, people move freely",
+    example: "MNCs, social media, fast fashion"
+  },
+  // 88
+  {
+    question: "Define MNC (Multinational Company)",
+    answer: "Company operating in many countries",
+    wrong1: "Small local shop",
+    wrong2: "National firm only",
+    wrong3: "Charity organisation",
+    explanation: "Global production/sales",
+    example: "Apple, Nike, Coca-Cola"
+  },
+  // 89
+  {
+    question: "Define fair trade",
+    answer: "Guaranteed fair price for farmers in developing countries",
+    wrong1: "Cheap mass-produced goods",
+    wrong2: "Low-wage exploitation",
+    wrong3: "Maximum profit for brands",
+    explanation: "Ethical, sustainable supply chain",
+    example: "Fair trade coffee, chocolate"
+  },
+  // 90
+  {
+    question: "Define aid",
+    answer: "Help given from one country/organisation to another",
+    wrong1: "Trade profit",
+    wrong2: "Investment",
+    wrong3: "Loan with interest",
+    explanation: "Emergency or development aid",
+    example: "Food aid, medical aid, money aid"
+  },
+  // 91
+  {
+    question: "Define development",
+    answer: "Improvement in quality of life, wealth and services",
+    wrong1: "Population increase",
+    wrong2: "Factory growth only",
+    wrong3: "Urbanisation only",
+    explanation: "Measured by HDI",
+    example: "Better schools, hospitals, income"
+  },
+  // 92
+  {
+    question: "Define HDI (Human Development Index)",
+    answer: "Measure of development using life expectancy, education, income",
+    wrong1: "Only GDP measure",
+    wrong2: "Only population count",
+    wrong3: "Only factory output",
+    explanation: "0.0 (low) to 1.0 (high)",
+    example: "Norway = 0.96; Niger = 0.39"
+  },
+  // 93
+  {
+    question: "Define GDP (Gross Domestic Product)",
+    answer: "Total value of goods/services produced in a country per year",
+    wrong1: "Total population",
+    wrong2: "Birth rate",
+    wrong3: "Farm output only",
+    explanation: "Per capita = per person",
+    example: "USA high GDP; Somalia low GDP"
+  },
+  // 94
+  {
+    question: "Define relief",
+    answer: "Shape and height of the land (mountains, plains, valleys)",
+    wrong1: "Rainfall amount",
+    wrong2: "Temperature",
+    wrong3: "Vegetation type",
+    explanation: "Describes physical landscape",
+    example: "Steep mountains, flat plains"
+  },
+  // 95
+  {
+    question: "Define contour line",
+    answer: "Line on a map joining points of equal height above sea level",
+    wrong1: "Line showing temperature",
+    wrong2: "Line showing rainfall",
+    wrong3: "Road line",
+    explanation: "Close lines = steep; wide = gentle",
+    example: "100m contour line"
+  },
+  // 96
+  {
+    question: "Define coastal erosion",
+    answer: "Wearing away of coast by waves/wind",
+    wrong1: "Building up of beaches",
+    wrong2: "Coral growth",
+    wrong3: "Sand deposition",
+    explanation: "Destroys cliffs/land",
+    example: "Holderness Coast, UK"
+  },
+  // 97
+  {
+    question: "Define coastal deposition",
+    answer: "Dropping of sand/pebbles by waves to form landforms",
+    wrong1: "Wearing away cliffs",
+    wrong2: "Sea level rise",
+    wrong3: "Storm damage",
+    explanation: "Forms beaches, spits, bars",
+    example: "Sand beach, spit at Dawlish Warren"
+  },
+  // 98
+  {
+    question: "Define sustainable development",
+    answer: "Development that meets needs now without harming future generations",
+    wrong1: "Maximum short-term profit",
+    wrong2: "Wasting resources",
+    wrong3: "Polluting freely",
+    explanation: "Environmental + social + economic balance",
+    example: "Renewable energy, recycling"
+  },
+  // 99
+  {
+    question: "Define biodiversity",
+    answer: "Variety of plants and animals in an ecosystem",
+    wrong1: "Number of humans",
+    wrong2: "Amount of rainfall",
+    wrong3: "Height of mountains",
+    explanation: "High in rainforests; low in deserts",
+    example: "Amazon has 10% of world’s species"
+  },
+  // 100
+  {
+    question: "Core Grade 10–11 Geography Exam Skill",
+    answer: "Define terms, use case studies, explain causes/effects/ solutions",
+    wrong1: "Memorise lists only",
+    wrong2: "Guess answers",
+    wrong3: "Write vague opinions",
+    explanation: "Top marks need LOCATION + KNOWLEDGE + ANALYSIS",
+    example: "Explain why deserts are dry + name an example"
+  }
+];

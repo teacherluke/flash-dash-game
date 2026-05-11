@@ -1,0 +1,1002 @@
+const physicsFlashcards = [
+  // 1
+  {
+    question: "Define physical quantity",
+    answer: "A property of an object or phenomenon that can be measured",
+    wrong1: "A subjective opinion",
+    wrong2: "A guess about an object",
+    wrong3: "A qualitative description only",
+    explanation: "All physical quantities have a numerical value and a unit",
+    example: "Mass, length, time, temperature"
+  },
+  // 2
+  {
+    question: "Define scalar quantity",
+    answer: "A quantity with magnitude (size) only, no direction",
+    wrong1: "A quantity with direction only",
+    wrong2: "A quantity with size and direction",
+    wrong3: "A quantity with no units",
+    explanation: "Scalars are added/subtracted normally",
+    example: "Mass, time, speed, energy"
+  },
+  // 3
+  {
+    question: "Define vector quantity",
+    answer: "A quantity with both magnitude (size) and direction",
+    wrong1: "Size only",
+    wrong2: "Direction only",
+    wrong3: "No units",
+    explanation: "Vectors require direction for full description",
+    example: "Velocity, force, acceleration, displacement"
+  },
+  // 4
+  {
+    question: "Define distance",
+    answer: "Total length of the path travelled by an object",
+    wrong1: "Straight line from start to finish",
+    wrong2: "Speed divided by time",
+    wrong3: "Change in velocity",
+    explanation: "Scalar quantity",
+    example: "Walking 10m left then 10m right = 20m distance"
+  },
+  // 5
+  {
+    question: "Define displacement",
+    answer: "Straight-line distance from start to finish in a given direction",
+    wrong1: "Total path length",
+    wrong2: "Speed × time",
+    wrong3: "Change in speed",
+    explanation: "Vector quantity",
+    example: "10m left then 10m right = 0 displacement"
+  },
+  // 6
+  {
+    question: "Define speed",
+    answer: "Distance travelled per unit time",
+    wrong1: "Displacement per unit time",
+    wrong2: "Change in velocity",
+    wrong3: "Force per unit area",
+    explanation: "Scalar quantity; v = d/t",
+    example: "5 meters per second (m/s)"
+  },
+  // 7
+  {
+    question: "Define velocity",
+    answer: "Displacement per unit time in a specific direction",
+    wrong1: "Distance per unit time",
+    wrong2: "Change in speed",
+    wrong3: "Energy per unit mass",
+    explanation: "Vector quantity",
+    example: "5 m/s to the north"
+  },
+  // 8
+  {
+    question: "Define acceleration",
+    answer: "Rate of change of velocity per unit time",
+    wrong1: "Rate of change of distance",
+    wrong2: "Speed × time",
+    wrong3: "Force × mass",
+    explanation: "Vector quantity; a = Δv/t",
+    example: "A car speeding up at 2 m/s²"
+  },
+  // 9
+  {
+    question: "Define uniform motion",
+    answer: "Motion with constant velocity (zero acceleration)",
+    wrong1: "Motion with increasing speed",
+    wrong2: "Motion with changing direction",
+    wrong3: "Motion with constant acceleration",
+    explanation: "Speed and direction do not change",
+    example: "A car moving straight at steady speed"
+  },
+  // 10
+  {
+    question: "Define Newton's First Law",
+    answer: "An object remains at rest or constant velocity unless acted on by a net force",
+    wrong1: "Force = mass × acceleration",
+    wrong2: "Every action has an equal reaction",
+    wrong3: "Gravity acts on all masses",
+    explanation: "Law of inertia",
+    example: "A book stays on a table until pushed"
+  },
+  // 11
+  {
+    question: "Define inertia",
+    answer: "The tendency of an object to resist changes in its motion",
+    wrong1: "A type of force",
+    wrong2: "A type of energy",
+    wrong3: "Rate of acceleration",
+    explanation: "Depends only on mass; more mass = more inertia",
+    example: "Heavy box harder to push than light one"
+  },
+  // 12
+  {
+    question: "Define Newton's Second Law",
+    answer: "Net force = mass × acceleration (F = ma)",
+    wrong1: "Force = mass + acceleration",
+    wrong2: "Force = mass ÷ acceleration",
+    wrong3: "Force is independent of mass",
+    explanation: "Acceleration is directly proportional to force",
+    example: "10N force on 2kg mass → 5m/s² acceleration"
+  },
+  // 13
+  {
+    question: "Define Newton's Third Law",
+    answer: "Every action force has an equal and opposite reaction force",
+    wrong1: "Force = mass × acceleration",
+    wrong2: "Objects resist motion change",
+    wrong3: "Gravity pulls all objects down",
+    explanation: "Forces act on different objects",
+    example: "Rocket pushes gas down; gas pushes rocket up"
+  },
+  // 14
+  {
+    question: "Define mass",
+    answer: "Amount of matter in an object",
+    wrong1: "Force of gravity on an object",
+    wrong2: "Volume of an object",
+    wrong3: "Density of an object",
+    explanation: "Scalar, constant everywhere; unit = kg",
+    example: "5kg mass on Earth = 5kg on Moon"
+  },
+  // 15
+  {
+    question: "Define weight",
+    answer: "Force of gravity acting on an object's mass",
+    wrong1: "Amount of matter in object",
+    wrong2: "Volume of object",
+    wrong3: "Speed of falling object",
+    explanation: "Vector, changes with gravity; W = mg",
+    example: "5kg mass weighs ~50N on Earth"
+  },
+  // 16
+  {
+    question: "Define gravitational field strength (g)",
+    answer: "Force per unit mass due to gravity",
+    wrong1: "Acceleration due to speed",
+    wrong2: "Mass per unit volume",
+    wrong3: "Energy per unit mass",
+    explanation: "On Earth, g ≈ 10 N/kg",
+    example: "1kg mass feels 10N weight on Earth"
+  },
+  // 17
+  {
+    question: "Define friction",
+    answer: "A force opposing motion between two touching surfaces",
+    wrong1: "A force causing motion",
+    wrong2: "A type of energy",
+    wrong3: "A type of acceleration",
+    explanation: "Always acts opposite to direction of motion",
+    example: "Sliding a box across floor"
+  },
+  // 18
+  {
+    question: "Define air resistance",
+    answer: "Frictional force exerted by air on a moving object",
+    wrong1: "Gravitational pull",
+    wrong2: "Magnetic force",
+    wrong3: "Electrostatic force",
+    explanation: "Increases with speed and surface area",
+    example: "Parachute slowing a fall"
+  },
+  // 19
+  {
+    question: "Define balanced forces",
+    answer: "Forces equal in size and opposite in direction; net force = 0",
+    wrong1: "Forces causing acceleration",
+    wrong2: "Forces in same direction",
+    wrong3: "Single force acting on object",
+    explanation: "Object remains at rest or constant velocity",
+    example: "Book on table; weight = support force"
+  },
+  // 20
+  {
+    question: "Define unbalanced forces",
+    answer: "Forces with a non-zero resultant; causes acceleration",
+    wrong1: "Forces cancelling each other",
+    wrong2: "Forces with no motion",
+    wrong3: "Equal and opposite forces",
+    explanation: "Object speeds up, slows down or changes direction",
+    example: "Kicking a stationary ball"
+  },
+  // 21
+  {
+    question: "Define momentum",
+    answer: "Mass × velocity; p = mv",
+    wrong1: "Mass + velocity",
+    wrong2: "Force × time",
+    wrong3: "Energy per unit mass",
+    explanation: "Vector quantity; depends on speed and mass",
+    example: "Heavy fast truck has large momentum"
+  },
+  // 22
+  {
+    question: "Define principle of conservation of momentum",
+    answer: "Total momentum before collision = total after if no external forces",
+    wrong1: "Momentum is always lost",
+    wrong2: "Momentum depends on gravity",
+    wrong3: "Only kinetic energy conserved",
+    explanation: "True for explosions and collisions",
+    example: "Cannon and cannonball recoil"
+  },
+  // 23
+  {
+    question: "Define work done",
+    answer: "Energy transferred when a force moves an object; W = Fd",
+    wrong1: "Force × time",
+    wrong2: "Mass × acceleration",
+    wrong3: "Speed × distance",
+    explanation: "Scalar quantity; unit = joule (J)",
+    example: "10N force moving 2m = 20J work"
+  },
+  // 24
+  {
+    question: "Define energy",
+    answer: "Capacity to do work",
+    wrong1: "A type of force",
+    wrong2: "Rate of motion",
+    wrong3: "Type of acceleration",
+    explanation: "Cannot be created or destroyed; only converted",
+    example: "Chemical, kinetic, gravitational potential"
+  },
+  // 25
+  {
+    question: "Define kinetic energy (KE)",
+    answer: "Energy of a moving object; KE = ½mv²",
+    wrong1: "Energy stored due to height",
+    wrong2: "Energy stored in bonds",
+    wrong3: "Energy from heat",
+    explanation: "Increases with mass and speed squared",
+    example: "Moving car, running person"
+  },
+  // 26
+  {
+    question: "Define gravitational potential energy (GPE)",
+    answer: "Energy stored due to height above ground; GPE = mgh",
+    wrong1: "Energy of motion",
+    wrong2: "Energy from heat",
+    wrong3: "Energy in chemicals",
+    explanation: "Increases with mass, height and g",
+    example: "Book on high shelf"
+  },
+  // 27
+  {
+    question: "Define principle of conservation of energy",
+    answer: "Energy cannot be created or destroyed; only converted or transferred",
+    wrong1: "Energy is always lost as heat",
+    wrong2: "Energy can be created from nothing",
+    wrong3: "Only mechanical energy conserved",
+    explanation: "Total energy in closed system is constant",
+    example: "GPE converts to KE when falling"
+  },
+  // 28
+  {
+    question: "Define power",
+    answer: "Rate of energy transfer or rate of work done; P = E/t",
+    wrong1: "Total energy stored",
+    wrong2: "Total work done",
+    wrong3: "Force × distance",
+    explanation: "Unit = watt (W); 1W = 1J/s",
+    example: "100J in 10s = 10W power"
+  },
+  // 29
+  {
+    question: "Define efficiency",
+    answer: "Useful energy output ÷ total energy input × 100%",
+    wrong1: "Total energy ÷ useful energy",
+    wrong2: "Useful power × total power",
+    wrong3: "Energy lost ÷ energy input",
+    explanation: "Always less than 100% due to heat loss",
+    example: "Bulb converting 10J light from 100J = 10% efficient"
+  },
+  // 30
+  {
+    question: "Define pressure",
+    answer: "Force per unit area; P = F/A",
+    wrong1: "Force × area",
+    wrong2: "Mass ÷ volume",
+    wrong3: "Energy ÷ time",
+    explanation: "Unit = pascal (Pa); 1Pa = 1N/m²",
+    example: "Sharp knife exerts high pressure"
+  },
+  // 31
+  {
+    question: "Define density",
+    answer: "Mass per unit volume; ρ = m/V",
+    wrong1: "Weight per unit volume",
+    wrong2: "Force per unit area",
+    wrong3: "Energy per unit mass",
+    explanation: "Measure of compactness of matter",
+    example: "Lead has higher density than foam"
+  },
+  // 32
+  {
+    question: "Define thermal expansion",
+    answer: "Increase in size of a substance when heated",
+    wrong1: "Decrease in size when heated",
+    wrong2: "Change in mass when heated",
+    wrong3: "Change in density only",
+    explanation: "Particles move faster and spread out",
+    example: "Bimetallic strip in thermostat"
+  },
+  // 33
+  {
+    question: "Define conduction",
+    answer: "Heat transfer through solids by particle vibration",
+    wrong1: "Heat transfer by fluid movement",
+    wrong2: "Heat transfer by waves",
+    wrong3: "Heat transfer by radiation",
+    explanation: "Metals are best conductors",
+    example: "Spoon getting hot in hot tea"
+  },
+  // 34
+  {
+    question: "Define convection",
+    answer: "Heat transfer in fluids by movement of heated particles",
+    wrong1: "Heat transfer in solids only",
+    wrong2: "Heat transfer by waves",
+    wrong3: "Heat transfer by direct contact",
+    explanation: "Hot fluid rises, cold fluid sinks",
+    example: "Hot water rising in a kettle"
+  },
+  // 35
+  {
+    question: "Define radiation",
+    answer: "Heat transfer by infrared electromagnetic waves",
+    wrong1: "Heat transfer by particle contact",
+    wrong2: "Heat transfer by fluid flow",
+    wrong3: "Heat transfer only in solids",
+    explanation: "Can travel through vacuum; no particles needed",
+    example: "Sun warming Earth through space"
+  },
+  // 36
+  {
+    question: "Define temperature",
+    answer: "Measure of average kinetic energy of particles in a substance",
+    wrong1: "Total heat energy in substance",
+    wrong2: "Mass of substance",
+    wrong3: "Density of substance",
+    explanation: "Hotter = faster moving particles",
+    example: "100°C boiling water"
+  },
+  // 37
+  {
+    question: "Define thermal capacity",
+    answer: "Energy required to raise temperature of a substance by 1°C",
+    wrong1: "Energy to boil 1kg substance",
+    wrong2: "Energy to melt 1kg substance",
+    wrong3: "Density × volume",
+    explanation: "Depends on mass and material",
+    example: "Large bucket of water needs lots of energy to heat"
+  },
+  // 38
+  {
+    question: "Define specific heat capacity",
+    answer: "Energy to raise 1kg of substance by 1°C; Q = mcΔT",
+    wrong1: "Energy to boil 1kg",
+    wrong2: "Energy to melt 1kg",
+    wrong3: "Density of substance",
+    explanation: "Property unique to each material",
+    example: "Water has high specific heat capacity"
+  },
+  // 39
+  {
+    question: "Define specific latent heat",
+    answer: "Energy to change state of 1kg without temperature change",
+    wrong1: "Energy to raise temperature",
+    wrong2: "Energy to increase pressure",
+    wrong3: "Energy to increase volume",
+    explanation: "Latent heat = hidden heat; no temp change",
+    example: "Melting ice or boiling water"
+  },
+  // 40
+  {
+    question: "Define wave",
+    answer: "Disturbance transferring energy without transferring matter",
+    wrong1: "Transfer of matter only",
+    wrong2: "Transfer of force only",
+    wrong3: "Stationary object",
+    explanation: "Waves carry energy; particles oscillate",
+    example: "Light, sound, water waves"
+  },
+  // 41
+  {
+    question: "Define transverse wave",
+    answer: "Oscillations perpendicular to direction of wave travel",
+    wrong1: "Oscillations parallel to travel",
+    wrong2: "No oscillations",
+    wrong3: "Only sound waves",
+    explanation: "All electromagnetic waves are transverse",
+    example: "Light wave, water wave"
+  },
+  // 42
+  {
+    question: "Define longitudinal wave",
+    answer: "Oscillations parallel to direction of wave travel",
+    wrong1: "Oscillations perpendicular to travel",
+    wrong2: "Only light waves",
+    wrong3: "No particle movement",
+    explanation: "Sound is the main example",
+    example: "Sound wave in air"
+  },
+  // 43
+  {
+    question: "Define amplitude",
+    answer: "Maximum displacement from rest position in a wave",
+    wrong1: "Distance between two peaks",
+    wrong2: "Number of waves per second",
+    wrong3: "Speed of wave",
+    explanation: "Determines loudness (sound) or brightness (light)",
+    example: "Tall wave has large amplitude"
+  },
+  // 44
+  {
+    question: "Define wavelength",
+    answer: "Distance between two identical consecutive wave points",
+    wrong1: "Maximum height of wave",
+    wrong2: "Number of waves per second",
+    wrong3: "Wave speed",
+    explanation: "Symbol = λ (lambda)",
+    example: "Distance between two wave crests"
+  },
+  // 45
+  {
+    question: "Define frequency",
+    answer: "Number of waves passing a point per second",
+    wrong1: "Distance between waves",
+    wrong2: "Maximum wave height",
+    wrong3: "Wave speed",
+    explanation: "Unit = hertz (Hz)",
+    example: "10 waves per second = 10Hz"
+  },
+  // 46
+  {
+    question: "Define wave speed",
+    answer: "Distance travelled by wave per unit time; v = fλ",
+    wrong1: "Number of waves per second",
+    wrong2: "Maximum wave height",
+    wrong3: "Distance between waves",
+    explanation: "Speed = frequency × wavelength",
+    example: "Light travels at 3×10⁸ m/s"
+  },
+  // 47
+  {
+    question: "Define reflection of waves",
+    answer: "Wave bouncing off a surface",
+    wrong1: "Wave bending through medium",
+    wrong2: "Wave spreading out",
+    wrong3: "Wave being absorbed",
+    explanation: "Angle of incidence = angle of reflection",
+    example: "Echo, mirror reflection"
+  },
+  // 48
+  {
+    question: "Define refraction of waves",
+    answer: "Wave bending when entering a new medium at an angle",
+    wrong1: "Wave bouncing off surface",
+    wrong2: "Wave spreading out",
+    wrong3: "Wave being destroyed",
+    explanation: "Caused by change in wave speed",
+    example: "Stick appearing bent in water"
+  },
+  // 49
+  {
+    question: "Define diffraction of waves",
+    answer: "Wave spreading out after passing through gap or around obstacle",
+    wrong1: "Wave bouncing off surface",
+    wrong2: "Wave bending through medium",
+    wrong3: "Wave being absorbed",
+    explanation: "Greatest when gap ≈ wavelength",
+    example: "Sound bending around a corner"
+  },
+  // 50
+  {
+    question: "Define sound wave",
+    answer: "Longitudinal wave of compression and rarefaction in a medium",
+    wrong1: "Transverse wave",
+    wrong2: "Can travel through vacuum",
+    wrong3: "Electromagnetic wave",
+    explanation: "Needs matter to travel; no sound in space",
+    example: "Voice, music"
+  },
+  // 51
+  {
+    question: "Define pitch of sound",
+    answer: "Determined by frequency of sound wave",
+    wrong1: "Determined by amplitude",
+    wrong2: "Determined by speed",
+    wrong3: "Determined by medium",
+    explanation: "Higher frequency = higher pitch",
+    example: "Whistle high pitch; drum low pitch"
+  },
+  // 52
+  {
+    question: "Define loudness of sound",
+    answer: "Determined by amplitude of sound wave",
+    wrong1: "Determined by frequency",
+    wrong2: "Determined by wavelength",
+    wrong3: "Determined by speed",
+    explanation: "Larger amplitude = louder sound",
+    example: "Shouting = large amplitude"
+  },
+  // 53
+  {
+    question: "Define electromagnetic spectrum",
+    answer: "Family of transverse waves travelling at speed of light in vacuum",
+    wrong1: "Longitudinal waves only",
+    wrong2: "Waves needing medium",
+    wrong3: "Only sound waves",
+    explanation: "All travel at 3×10⁸ m/s in space",
+    example: "Radio, microwave, light, UV, X-ray"
+  },
+  // 54
+  {
+    question: "Define convex lens",
+    answer: "Lens thicker in middle, converges light rays to a point",
+    wrong1: "Thinner in middle, diverges light",
+    wrong2: "Flat glass sheet",
+    wrong3: "Mirrored surface",
+    explanation: "Used in magnifying glass, camera, eye",
+    example: "Magnifying glass"
+  },
+  // 55
+  {
+    question: "Define concave lens",
+    answer: "Lens thinner in middle, diverges light rays",
+    wrong1: "Thicker in middle, converges light",
+    wrong2: "Curved mirror",
+    wrong3: "Flat glass",
+    explanation: "Used to correct short sight",
+    example: "Myopia glasses"
+  },
+  // 56
+  {
+    question: "Define electric charge",
+    answer: "Property causing electrostatic force; positive or negative",
+    wrong1: "Flow of electrons",
+    wrong2: "Energy per unit charge",
+    wrong3: "Resistance to flow",
+    explanation: "Like charges repel; opposite attract",
+    example: "Static electricity on balloon"
+  },
+  // 57
+  {
+    question: "Define electric current",
+    answer: "Rate of flow of electric charge; I = Q/t",
+    wrong1: "Energy per unit charge",
+    wrong2: "Opposition to flow",
+    wrong3: "Work done per second",
+    explanation: "Unit = ampere (A); flows in circuits",
+    example: "Current through a bulb"
+  },
+  // 58
+  {
+    question: "Define voltage (potential difference)",
+    answer: "Energy transferred per unit charge; V = E/Q",
+    wrong1: "Flow of charge",
+    wrong2: "Opposition to flow",
+    wrong3: "Power per unit time",
+    explanation: "Pushes charge around circuit; unit = volt (V)",
+    example: "1.5V battery cell"
+  },
+  // 59
+  {
+    question: "Define resistance",
+    answer: "Opposition to electric current flow; R = V/I",
+    wrong1: "Energy per unit charge",
+    wrong2: "Flow of charge",
+    wrong3: "Power per unit time",
+    explanation: "Unit = ohm (Ω)",
+    example: "Resistor in a circuit"
+  },
+  // 60
+  {
+    question: "Define Ohm's Law",
+    answer: "Current proportional to voltage if temperature constant",
+    wrong1: "Current constant always",
+    wrong2: "Voltage equals resistance",
+    wrong3: "Resistance increases with voltage",
+    explanation: "True for ohmic resistors",
+    example: "Fixed resistor at constant temp"
+  },
+  // 61
+  {
+    question: "Define series circuit",
+    answer: "Single path for current; components connected end to end",
+    wrong1: "Multiple parallel paths",
+    wrong2: "Branched circuit",
+    wrong3: "Separate loops",
+    explanation: "Current same everywhere; voltage splits",
+    example: "Two bulbs in one loop"
+  },
+  // 62
+  {
+    question: "Define parallel circuit",
+    answer: "Multiple branches; current splits, voltage same across all",
+    wrong1: "Single path only",
+    wrong2: "Current same everywhere",
+    wrong3: "Voltage splits between components",
+    explanation: "Bulbs stay bright if one fails",
+    example: "Household lighting circuits"
+  },
+  // 63
+  {
+    question: "Define fuse",
+    answer: "Safety device melting to break circuit when current too high",
+    wrong1: "Device storing charge",
+    wrong2: "Device increasing voltage",
+    wrong3: "Device measuring current",
+    explanation: "Prevents fire and damage",
+    example: "3A, 5A, 13A fuses in plugs"
+  },
+  // 64
+  {
+    question: "Define circuit breaker",
+    answer: "Electromagnetic switch tripping to break circuit safely",
+    wrong1: "Thin wire that melts",
+    wrong2: "Stores electrical energy",
+    wrong3: "Increases resistance",
+    explanation: "Resettable; faster than fuse",
+    example: "Household circuit protection"
+  },
+  // 65
+  {
+    question: "Define earth wire",
+    answer: "Safety wire conducting current to ground if appliance faults",
+    wrong1: "Carries normal working current",
+    wrong2: "Insulates plastic parts",
+    wrong3: "Controls voltage",
+    explanation: "Prevents electric shock",
+    example: "Green-yellow wire in plug"
+  },
+  // 66
+  {
+    question: "Define magnet",
+    answer: "Object producing magnetic field attracting iron/steel",
+    wrong1: "Attracts all metals",
+    wrong2: "Produces electric field",
+    wrong3: "Stores heat energy",
+    explanation: "Has north and south pole",
+    example: "Bar magnet, fridge magnet"
+  },
+  // 67
+  {
+    question: "Define magnetic field",
+    answer: "Region around magnet where magnetic force acts",
+    wrong1: "Region of electric force",
+    wrong2: "Region of gravity",
+    wrong3: "Region of sound",
+    explanation: "Lines go from North to South pole",
+    example: "Field around bar magnet"
+  },
+  // 68
+  {
+    question: "Define electromagnet",
+    answer: "Temporary magnet made by current through coil around iron core",
+    wrong1: "Permanent magnet",
+    wrong2: "Natural magnet",
+    wrong3: "Static magnet",
+    explanation: "Can be switched on/off; used in motors",
+    example: "Lifting electromagnet in scrapyard"
+  },
+  // 69
+  {
+    question: "Define motor effect",
+    answer: "Force on current-carrying wire in magnetic field",
+    wrong1: "Voltage from magnetism",
+    wrong2: "Magnet from current",
+    wrong3: "Heat from resistance",
+    explanation: "Used in electric motors",
+    example: "Electric fan motor"
+  },
+  // 70
+  {
+    question: "Define electromagnetic induction",
+    answer: "Voltage produced by moving conductor in magnetic field",
+    wrong1: "Force on current in field",
+    wrong2: "Magnet from current",
+    wrong3: "Heat from friction",
+    explanation: "Used in generators",
+    example: "Dynamo, power station generator"
+  },
+  // 71
+  {
+    question: "Define nucleus of atom",
+    answer: "Central core containing protons and neutrons",
+    wrong1: "Orbiting electrons",
+    wrong2: "Empty space",
+    wrong3: "Negative charge only",
+    explanation: "Contains almost all atomic mass",
+    example: "Protons + neutrons in centre"
+  },
+  // 72
+  {
+    question: "Define proton",
+    answer: "Positive particle in nucleus; mass 1, charge +1",
+    wrong1: "Negative particle",
+    wrong2: "Neutral particle",
+    wrong3: "Orbiting particle",
+    explanation: "Atomic number = number of protons",
+    example: "Hydrogen has 1 proton"
+  },
+  // 73
+  {
+    question: "Define neutron",
+    answer: "Neutral particle in nucleus; mass 1, charge 0",
+    wrong1: "Positive particle",
+    wrong2: "Negative particle",
+    wrong3: "Orbiting particle",
+    explanation: "Mass number = protons + neutrons",
+    example: "Carbon has 6 neutrons"
+  },
+  // 74
+  {
+    question: "Define electron",
+    answer: "Negative particle orbiting nucleus; mass negligible, charge -1",
+    wrong1: "Positive particle",
+    wrong2: "Nuclear particle",
+    wrong3: "Heavy particle",
+    explanation: "Determines chemical and electrical properties",
+    example: "Outer electrons cause static charge"
+  },
+  // 75
+  {
+    question: "Define atomic number",
+    answer: "Number of protons in an atom",
+    wrong1: "Number of neutrons",
+    wrong2: "Protons + neutrons",
+    wrong3: "Number of electrons only",
+    explanation: "Defines the element",
+    example: "Oxygen atomic number = 8"
+  },
+  // 76
+  {
+    question: "Define mass number",
+    answer: "Total number of protons + neutrons in nucleus",
+    wrong1: "Number of protons only",
+    wrong2: "Number of electrons",
+    wrong3: "Total mass of atom",
+    explanation: "Nucleon number",
+    example: "Carbon-12 has mass number 12"
+  },
+  // 77
+  {
+    question: "Define isotope",
+    answer: "Same element, same protons, different number of neutrons",
+    wrong1: "Different element same mass",
+    wrong2: "Same electrons different protons",
+    wrong3: "Different charge same mass",
+    explanation: "Same chemical properties; different mass",
+    example: "Carbon-12 and Carbon-14"
+  },
+  // 78
+  {
+    question: "Define radioactive decay",
+    answer: "Unstable nucleus emitting radiation to become stable",
+    wrong1: "Chemical reaction",
+    wrong2: "Melting of substance",
+    wrong3: "Burning of fuel",
+    explanation: "Random and spontaneous process",
+    example: "Uranium decaying to lead"
+  },
+  // 79
+  {
+    question: "Define alpha particle",
+    answer: "Helium nucleus; 2 protons + 2 neutrons; charge +2",
+    wrong1: "High speed electron",
+    wrong2: "Electromagnetic wave",
+    wrong3: "Neutral particle",
+    explanation: "Low penetration; stopped by paper",
+    example: "α radiation"
+  },
+  // 80
+  {
+    question: "Define beta particle",
+    answer: "High speed electron emitted from nucleus",
+    wrong1: "Helium nucleus",
+    wrong2: "Gamma ray",
+    wrong3: "Neutral wave",
+    explanation: "Medium penetration; stopped by aluminium",
+    example: "β radiation"
+  },
+  // 81
+  {
+    question: "Define gamma ray",
+    answer: "High energy electromagnetic radiation from nucleus",
+    wrong1: "Helium nucleus",
+    wrong2: "High speed electron",
+    wrong3: "Charged particle",
+    explanation: "High penetration; stopped by lead/concrete",
+    example: "γ radiation"
+  },
+  // 82
+  {
+    question: "Define half-life",
+    answer: "Time for half radioactive nuclei in sample to decay",
+    wrong1: "Time for all nuclei to decay",
+    wrong2: "Time for radiation to double",
+    wrong3: "Time for mass to double",
+    explanation: "Constant for each isotope",
+    example: "Carbon-14 half-life ≈ 5730 years"
+  },
+  // 83
+  {
+    question: "Define background radiation",
+    answer: "Low-level radiation from natural and man-made sources",
+    wrong1: "Radiation from nuclear bomb",
+    wrong2: "Radiation from X-ray machine",
+    wrong3: "Radiation from power plant",
+    explanation: "Always present; rocks, cosmic rays, food",
+    example: "Radon gas from ground"
+  },
+  // 84
+  {
+    question: "Define moment (turning effect)",
+    answer: "Force × perpendicular distance from pivot; M = Fd",
+    wrong1: "Force × mass",
+    wrong2: "Force × speed",
+    wrong3: "Energy × distance",
+    explanation: "Causes rotation; unit = Nm",
+    example: "Spanner turning a nut"
+  },
+  // 85
+  {
+    question: "Define principle of moments",
+    answer: "Sum of clockwise moments = sum of anticlockwise moments in equilibrium",
+    wrong1: "Forces are equal on both sides",
+    wrong2: "Distances are equal",
+    wrong3: "Mass is equal on both sides",
+    explanation: "Balanced seesaw",
+    example: "Seesaw balanced with two children"
+  },
+  // 86
+  {
+    question: "Define centre of mass",
+    answer: "Point where entire mass of object can be considered to act",
+    wrong1: "Centre of volume",
+    wrong2: "Lightest point",
+    wrong3: "Midpoint of shape",
+    explanation: "Object balances at this point",
+    example: "Centre of a uniform ruler"
+  },
+  // 87
+  {
+    question: "Define equilibrium",
+    answer: "State of balance; no resultant force and no resultant moment",
+    wrong1: "State of constant acceleration",
+    wrong2: "State of rotation",
+    wrong3: "State of motion change",
+    explanation: "Object at rest or constant velocity",
+    example: "Book on table, balanced seesaw"
+  },
+  // 88
+  {
+    question: "Define terminal velocity",
+    answer: "Constant maximum velocity when air resistance = weight",
+    wrong1: "Speed when falling freely",
+    wrong2: "Speed in vacuum",
+    wrong3: "Accelerating speed",
+    explanation: "Net force = 0; no acceleration",
+    example: "Parachutist falling at steady speed"
+  },
+  // 89
+  {
+    question: "Define elastic deformation",
+    answer: "Material returns to original shape after force removed",
+    wrong1: "Permanent change in shape",
+    wrong2: "Material breaks",
+    wrong3: "Material melts",
+    explanation: "Reversible change",
+    example: "Stretched rubber band"
+  },
+  // 90
+  {
+    question: "Define plastic deformation",
+    answer: "Material stays deformed after force removed",
+    wrong1: "Returns to original shape",
+    wrong2: "Material contracts",
+    wrong3: "Material expands",
+    explanation: "Permanent change",
+    example: "Bent paper clip"
+  },
+  // 91
+  {
+    question: "Define Hooke's Law",
+    answer: "Extension proportional to force up to elastic limit",
+    wrong1: "Extension constant always",
+    wrong2: "Force equals extension",
+    wrong3: "Extension increases exponentially",
+    explanation: "True for springs and elastic materials",
+    example: "Spring stretches twice as much with double force"
+  },
+  // 92
+  {
+    question: "Define elastic limit",
+    answer: "Point beyond which material is permanently deformed",
+    wrong1: "Point where material breaks",
+    wrong2: "Point of maximum extension",
+    wrong3: "Point of minimum force",
+    explanation: "Hooke's Law no longer applies",
+    example: "Overstretched spring"
+  },
+  // 93
+  {
+    question: "Define renewable energy",
+    answer: "Energy source that can be replenished naturally",
+    wrong1: "Finite energy source",
+    wrong2: "Fossil fuel source",
+    wrong3: "Source that runs out",
+    explanation: "Sustainable long-term",
+    example: "Solar, wind, hydroelectric"
+  },
+  // 94
+  {
+    question: "Define non-renewable energy",
+    answer: "Finite energy source that cannot be replaced once used",
+    wrong1: "Infinite energy source",
+    wrong2: "Replenished naturally",
+    wrong3: "Sustainable forever",
+    explanation: "Will run out eventually",
+    example: "Coal, oil, natural gas, nuclear"
+  },
+  // 95
+  {
+    question: "Define convection current",
+    answer: "Circular flow of fluid due to temperature and density difference",
+    wrong1: "Heat transfer in solids",
+    wrong2: "Heat transfer by waves",
+    wrong3: "Heat transfer by contact",
+    explanation: "Hot rises, cold sinks",
+    example: "Room heater warming air"
+  },
+  // 96
+  {
+    question: "Define vacuum flask",
+    answer: "Container reducing conduction, convection and radiation heat loss",
+    wrong1: "Container producing heat",
+    wrong2: "Container increasing heat loss",
+    wrong3: "Container conducting heat fast",
+    explanation: "Double walled, vacuum, silvered",
+    example: "Thermos keeping drink hot"
+  },
+  // 97
+  {
+    question: "Define critical angle",
+    answer: "Angle of incidence causing refraction at 90°",
+    wrong1: "Angle of reflection",
+    wrong2: "Angle of diffraction",
+    wrong3: "Maximum refraction angle",
+    explanation: "Beyond this = total internal reflection",
+    example: "49° for water"
+  },
+  // 98
+  {
+    question: "Define total internal reflection",
+    answer: "Light reflects inside medium when angle > critical angle",
+    wrong1: "Light bends into air",
+    wrong2: "Light is absorbed",
+    wrong3: "Light refracts normally",
+    explanation: "Used in optical fibres",
+    example: "Endoscope, fibre internet"
+  },
+  // 99
+  {
+    question: "Define transformer",
+    answer: "Device changing AC voltage using electromagnetic induction",
+    wrong1: "Changes DC voltage",
+    wrong2: "Stores charge",
+    wrong3: "Produces current",
+    explanation: "Step-up (increase) or step-down (decrease)",
+    example: "Mains adapter for phone"
+  },
+  // 100
+  {
+    question: "Core Grade 10–11 Physics exam skill",
+    answer: "Apply formulae, laws and definitions to solve practical and theoretical problems",
+    wrong1: "Memorise facts only",
+    wrong2: "Guess answers",
+    wrong3: "Only draw diagrams",
+    explanation: "Top marks require calculation + explanation",
+    example: "Solve motion, energy, electricity and wave problems"
+  }
+];

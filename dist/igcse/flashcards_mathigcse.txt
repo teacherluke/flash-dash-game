@@ -1,0 +1,1002 @@
+const mathFlashcards = [
+  // 1
+  {
+    question: "Define integer",
+    answer: "Any positive, negative whole number or zero with no fractional or decimal part",
+    wrong1: "Numbers containing decimal points",
+    wrong2: "Positive numbers only",
+    wrong3: "Fractional values only",
+    explanation: "Integers include negative values, zero and positive whole numbers",
+    example: "-7, 0, 19"
+  },
+  // 2
+  {
+    question: "Define rational number",
+    answer: "A number that can be written as a fraction p/q where p, q are integers and q ≠ 0",
+    wrong1: "Cannot be written as a simple fraction",
+    wrong2: "Only non-recurring decimals",
+    wrong3: "Only positive whole numbers",
+    explanation: "Includes integers, fractions, terminating and recurring decimals",
+    example: "0.75, 2/3, 5"
+  },
+  // 3
+  {
+    question: "Define irrational number",
+    answer: "A non-terminating, non-recurring decimal that cannot be written as a simple fraction",
+    wrong1: "Any decimal with fixed digits",
+    wrong2: "Recurring decimal value",
+    wrong3: "Whole integer value",
+    explanation: "Exact value cannot be expressed as a fraction of two integers",
+    example: "π, √2, √5"
+  },
+  // 4
+  {
+    question: "Define prime number",
+    answer: "A whole number greater than 1 with exactly two distinct factors: 1 and itself",
+    wrong1: "Any odd whole number",
+    wrong2: "Number with more than two factors",
+    wrong3: "Number divisible by 1 only",
+    explanation: "1 is not a prime number",
+    example: "2, 3, 5, 7, 11"
+  },
+  // 5
+  {
+    question: "Define composite number",
+    answer: "A whole number greater than 1 that has more than two distinct factors",
+    wrong1: "Has exactly two factors only",
+    wrong2: "All even numbers are composite",
+    wrong3: "Negative whole numbers",
+    explanation: "All non-prime integers greater than 1 are composite",
+    example: "4, 6, 8, 9, 12"
+  },
+  // 6
+  {
+    question: "Define factor",
+    answer: "An integer that divides exactly into another number with no remainder",
+    wrong1: "A larger multiple of the number",
+    wrong2: "Sum of two integers",
+    wrong3: "Product of two numbers",
+    explanation: "Factors are always less than or equal to the original number",
+    example: "Factors of 18: 1, 2, 3, 6, 9, 18"
+  },
+  // 7
+  {
+    question: "Define multiple",
+    answer: "The result of multiplying a number by any integer",
+    wrong1: "A value that divides exactly into the number",
+    wrong2: "Square root of a number",
+    wrong3: "Half of the original value",
+    explanation: "Multiples are always greater than or equal to the original number",
+    example: "Multiples of 7: 7, 14, 21, 28"
+  },
+  // 8
+  {
+    question: "Define HCF (Highest Common Factor)",
+    answer: "The largest whole number that divides exactly into two or more given numbers",
+    wrong1: "Smallest shared multiple of two numbers",
+    wrong2: "Average value of two numbers",
+    wrong3: "Product of two numbers",
+    explanation: "Used to simplify fractions to lowest terms",
+    example: "HCF of 24 and 36 = 12"
+  },
+  // 9
+  {
+    question: "Define LCM (Lowest Common Multiple)",
+    answer: "The smallest positive integer that is a multiple of two or more given numbers",
+    wrong1: "Largest shared factor of two numbers",
+    wrong2: "Difference between two numbers",
+    wrong3: "Sum of two number multiples",
+    explanation: "Used for adding fractions with different denominators",
+    example: "LCM of 5 and 8 = 40"
+  },
+  // 10
+  {
+    question: "Define index (exponent)",
+    answer: "A number showing how many times the base value is multiplied by itself",
+    wrong1: "Square root of the base number",
+    wrong2: "Base number multiplied by one",
+    wrong3: "Decimal part of a number",
+    explanation: "Written in the form base^index",
+    example: "4³ = 4 × 4 × 4"
+  },
+  // 11
+  {
+    question: "Index law: Multiplying same bases",
+    answer: "Add the indices: aᵐ × aⁿ = aᵐ⁺ⁿ",
+    wrong1: "Multiply the indices",
+    wrong2: "Subtract the indices",
+    wrong3: "Divide the indices",
+    explanation: "Only applies when base numbers are identical",
+    example: "3² × 3⁴ = 3⁶"
+  },
+  // 12
+  {
+    question: "Index law: Dividing same bases",
+    answer: "Subtract the indices: aᵐ ÷ aⁿ = aᵐ⁻ⁿ",
+    wrong1: "Add the indices",
+    wrong2: "Multiply the indices",
+    wrong3: "Keep indices unchanged",
+    explanation: "Larger index minus smaller index for positive results",
+    example: "7⁵ ÷ 7² = 7³"
+  },
+  // 13
+  {
+    question: "Index law: Power of a power",
+    answer: "Multiply the indices: (aᵐ)ⁿ = aᵐⁿ",
+    wrong1: "Add the indices",
+    wrong2: "Subtract the indices",
+    wrong3: "Divide the indices",
+    explanation: "Raise a power to another power by multiplication",
+    example: "(2³)² = 2⁶"
+  },
+  // 14
+  {
+    question: "Define zero index",
+    answer: "Any non-zero number raised to the power 0 equals 1",
+    wrong1: "Always equals 0",
+    wrong2: "Equals the base number",
+    wrong3: "Undefined value",
+    explanation: "Does not apply to 0⁰ which is undefined",
+    example: "9⁰ = 1"
+  },
+  // 15
+  {
+    question: "Define negative index",
+    answer: "A⁻ⁿ = 1 / Aⁿ, the reciprocal of the positive index value",
+    wrong1: "Negative of the base number",
+    wrong2: "Divide base by n",
+    wrong3: "Equals zero",
+    explanation: "Negative power flips the number to its reciprocal",
+    example: "5⁻² = 1/25"
+  },
+  // 16
+  {
+    question: "Define fractional index",
+    answer: "a^(1/n) means the nth root of a",
+    wrong1: "One divided by the base number",
+    wrong2: "Multiply base by n",
+    wrong3: "Subtract n from base",
+    explanation: "Denominator of fraction = root value",
+    example: "16^(1/2) = √16 = 4"
+  },
+  // 17
+  {
+    question: "Define standard form",
+    answer: "A number written as A × 10ⁿ where 1 ≤ A < 10 and n is an integer",
+    wrong1: "Any decimal multiplied by 10",
+    wrong2: "Fraction multiplied by 100",
+    wrong3: "Large whole number with no decimal",
+    explanation: "Used for very large or very small values",
+    example: "6200 = 6.2 × 10³"
+  },
+  // 18
+  {
+    question: "Define algebraic expression",
+    answer: "A combination of numbers, variables and operations with no equals sign",
+    wrong1: "Contains an equals sign to solve",
+    wrong2: "Only fixed numbers with no variables",
+    wrong3: "A completed numerical answer",
+    explanation: "Expressions can only be simplified, not solved",
+    example: "5x - 3y + 7"
+  },
+  // 19
+  {
+    question: "Define algebraic equation",
+    answer: "A mathematical statement with an equals sign balancing two expressions",
+    wrong1: "Algebra with no equals symbol",
+    wrong2: "Random list of variables",
+    wrong3: "Geometric shape formula",
+    explanation: "Equations can be solved to find unknown values",
+    example: "4x + 6 = 22"
+  },
+  // 20
+  {
+    question: "Define like terms",
+    answer: "Terms with the same variable raised to the exact same power",
+    wrong1: "Any terms containing numbers",
+    wrong2: "Terms with different letter variables",
+    wrong3: "All constant numerical terms",
+    explanation: "Only like terms can be added or subtracted",
+    example: "7x² and 2x²"
+  },
+  // 21
+  {
+    question: "Define expand brackets",
+    answer: "Multiply the term outside the bracket by every individual term inside",
+    wrong1: "Add all terms inside the bracket only",
+    wrong2: "Divide each inside term by the outside value",
+    wrong3: "Remove brackets without calculation",
+    explanation: "Uses the distributive rule of algebra",
+    example: "4(x - 5) = 4x - 20"
+  },
+  // 22
+  {
+    question: "Define factorise",
+    answer: "Rewrite an expression as a product of two or more bracketed terms",
+    wrong1: "Expand all brackets fully",
+    wrong2: "Combine all like terms",
+    wrong3: "Solve for the unknown variable",
+    explanation: "Factorising is the reverse of expanding brackets",
+    example: "6x + 9 = 3(2x + 3)"
+  },
+  // 23
+  {
+    question: "Define linear equation",
+    answer: "An equation where the highest power of the unknown variable is 1",
+    wrong1: "Contains x squared terms",
+    wrong2: "Contains x cubed terms",
+    wrong3: "Only uses fractional powers",
+    explanation: "Linear graphs produce a straight line",
+    example: "3x - 7 = 8"
+  },
+  // 24
+  {
+    question: "Define quadratic equation",
+    answer: "An equation where the highest power of x is 2, general form ax²+bx+c=0",
+    wrong1: "Highest variable power is 1",
+    wrong2: "Highest variable power is 3",
+    wrong3: "No squared variable terms",
+    explanation: "Quadratic graphs form a parabola curve",
+    example: "x² + 5x + 6 = 0"
+  },
+  // 25
+  {
+    question: "Define simultaneous equations",
+    answer: "Two or more equations sharing the same unknown variables solved together",
+    wrong1: "One single equation with one variable",
+    wrong2: "Quadratic equations only",
+    wrong3: "Inequality comparison statements",
+    explanation: "Solution satisfies every equation in the set",
+    example: "x + y = 10, x - y = 4"
+  },
+  // 26
+  {
+    question: "Define inequality",
+    answer: "A statement comparing values using <, >, ≤ or ≥ symbols",
+    wrong1: "Statement using an equals sign",
+    wrong2: "An unsimplified algebraic expression",
+    wrong3: "Fixed standard form number",
+    explanation: "Inequalities show relative size not exact equality",
+    example: "3x + 2 > 11"
+  },
+  // 27
+  {
+    question: "Define function",
+    answer: "A relation where every input value maps to exactly one output value",
+    wrong1: "One input can have multiple outputs",
+    wrong2: "Random set of unordered numbers",
+    wrong3: "A curved graph with no pattern",
+    explanation: "Each x value has only one matching y value",
+    example: "f(x) = 3x - 2"
+  },
+  // 28
+  {
+    question: "Define sequence",
+    answer: "An ordered list of numbers following a fixed mathematical rule",
+    wrong1: "Random unordered set of numbers",
+    wrong2: "Single fraction calculation",
+    wrong3: "Unsolved algebraic equation",
+    explanation: "Each number is called a term of the sequence",
+    example: "1, 3, 5, 7, 9..."
+  },
+  // 29
+  {
+    question: "Define arithmetic sequence",
+    answer: "A sequence with a constant difference between consecutive terms",
+    wrong1: "Constant ratio between terms",
+    wrong2: "No pattern between terms",
+    wrong3: "Only square number patterns",
+    explanation: "Add or subtract the same value each step",
+    example: "4, 7, 10, 13..."
+  },
+  // 30
+  {
+    question: "Define geometric sequence",
+    answer: "A sequence with a constant ratio multiplied between consecutive terms",
+    wrong1: "Fixed difference added each term",
+    wrong2: "Random increasing values",
+    wrong3: "Prime number ordered list",
+    explanation: "Multiply by a fixed common ratio each step",
+    example: "2, 6, 18, 54..."
+  },
+  // 31
+  {
+    question: "Define percentage",
+    answer: "A proportion measured out of one hundred, represented by the % symbol",
+    wrong1: "Fraction measured out of 10",
+    wrong2: "Decimal rounded to two places",
+    wrong3: "Whole number divided by 10",
+    explanation: "Percent means per hundred parts",
+    example: "35% = 35/100"
+  },
+  // 32
+  {
+    question: "Define percentage increase",
+    answer: "The rise in value calculated as (increase ÷ original value) × 100",
+    wrong1: "Increase ÷ new value × 100",
+    wrong2: "Original value ÷ increase × 100",
+    wrong3: "Subtract values and ignore original",
+    explanation: "Always uses original starting value for calculation",
+    example: "$50 to $60 = 20% increase"
+  },
+  // 33
+  {
+    question: "Define percentage decrease",
+    answer: "The fall in value calculated as (decrease ÷ original value) × 100",
+    wrong1: "Decrease ÷ new value × 100",
+    wrong2: "New value ÷ original value × 100",
+    wrong3: "Subtract percentages directly",
+    explanation: "Original value is always the denominator",
+    example: "$80 to $60 = 25% decrease"
+  },
+  // 34
+  {
+    question: "Define ratio",
+    answer: "A comparison of two or more quantities measured in the same unit",
+    wrong1: "Sum of two different quantities",
+    wrong2: "Difference between two numbers",
+    wrong3: "Approximate decimal value",
+    explanation: "Ratios can be simplified by dividing by a common factor",
+    example: "Simplify 4:6 to 2:3"
+  },
+  // 35
+  {
+    question: "Define direct proportion",
+    answer: "As one quantity increases, the other increases at a constant rate",
+    wrong1: "One rises while the other falls",
+    wrong2: "No relationship between quantities",
+    wrong3: "Fixed difference between values",
+    explanation: "Written as y ∝ x",
+    example: "More litres of fuel = higher cost"
+  },
+  // 36
+  {
+    question: "Define inverse proportion",
+    answer: "As one quantity increases, the other decreases at a constant rate",
+    wrong1: "Both quantities increase together",
+    wrong2: "Both quantities decrease together",
+    wrong3: "Straight line linear relationship",
+    explanation: "Written as y ∝ 1/x",
+    example: "More workers = less time to complete a job"
+  },
+  // 37
+  {
+    question: "Define speed",
+    answer: "Distance travelled divided by time taken",
+    wrong1: "Time divided by distance",
+    wrong2: "Distance multiplied by time",
+    wrong3: "Distance minus time value",
+    explanation: "Speed = distance / time",
+    example: "150km in 3 hours = 50km/h"
+  },
+  // 38
+  {
+    question: "Define density",
+    answer: "Mass of a substance divided by its volume",
+    wrong1: "Volume divided by mass",
+    wrong2: "Mass multiplied by volume",
+    wrong3: "Mass plus volume total",
+    explanation: "Density = mass / volume",
+    example: "20g in 5cm³ = 4g/cm³"
+  },
+  // 39
+  {
+    question: "Define midpoint of a line segment",
+    answer: "The average of the x-coordinates and average of the y-coordinates",
+    wrong1: "Sum of coordinates only",
+    wrong2: "Difference of coordinates",
+    wrong3: "Product of x and y values",
+    explanation: "Midpoint formula: ((x₁+x₂)/2 , (y₁+y₂)/2)",
+    example: "Midpoint (2,4) and (6,8) = (4,6)"
+  },
+  // 40
+  {
+    question: "Define gradient of a straight line",
+    answer: "Change in y divided by change in x between two points on the line",
+    wrong1: "Change in x divided by change in y",
+    wrong2: "Sum of x and y values",
+    wrong3: "Difference of intercepts",
+    explanation: "Measures steepness and direction of a line",
+    example: "Rise 4, run 2 = gradient 2"
+  },
+  // 41
+  {
+    question: "Define y-intercept",
+    answer: "The point where a straight line crosses the y-axis on a graph",
+    wrong1: "Point where line crosses x-axis",
+    wrong2: "Maximum value on the curve",
+    wrong3: "Minimum value on the curve",
+    explanation: "In y=mx+c, c is the y-intercept",
+    example: "Line y=2x+3 crosses y-axis at (0,3)"
+  },
+  // 42
+  {
+    question: "Define parallel lines",
+    answer: "Lines with identical gradients that never meet",
+    wrong1: "Lines that cross at right angles",
+    wrong2: "Lines with different equal intercepts",
+    wrong3: "Curved lines overlapping each other",
+    explanation: "Parallel lines have same m value in y=mx+c",
+    example: "y=3x+2 and y=3x-5"
+  },
+  // 43
+  {
+    question: "Define perpendicular lines",
+    answer: "Lines that cross at 90 degrees; product of gradients = -1",
+    wrong1: "Identical gradients never meeting",
+    wrong2: "Same y-intercept only",
+    wrong3: "Gradients add to 1",
+    explanation: "Perpendicular gradients are negative reciprocals",
+    example: "Gradient 2 and gradient -1/2"
+  },
+  // 44
+  {
+    question: "Define polygon",
+    answer: "A closed 2D shape with straight sides only",
+    wrong1: "Open shape with straight sides",
+    wrong2: "Shape containing curved edges",
+    wrong3: "3D solid geometric shape",
+    explanation: "All sides straight, all angles internal",
+    example: "Triangle, square, pentagon"
+  },
+  // 45
+  {
+    question: "Define regular polygon",
+    answer: "Polygon with all sides equal length and all internal angles equal",
+    wrong1: "Only equal sides, different angles",
+    wrong2: "Only equal angles, different sides",
+    wrong3: "Curved sided closed shape",
+    explanation: "Symmetrical equal-sided polygon",
+    example: "Square, regular hexagon"
+  },
+  // 46
+  {
+    question: "Define interior angle",
+    answer: "An angle inside a closed polygon shape",
+    wrong1: "Angle outside the shape edge",
+    wrong2: "Right angle only",
+    wrong3: "Reflex angle over 180°",
+    explanation: "Sum of interior angles formula: (n-2)×180°",
+    example: "90° inside a square corner"
+  },
+  // 47
+  {
+    question: "Define exterior angle",
+    answer: "Angle formed outside a polygon by extending one side",
+    wrong1: "Angle inside the polygon vertex",
+    wrong2: "Straight line 180° angle",
+    wrong3: "Reflex angle greater than 180°",
+    explanation: "Sum of exterior angles of any polygon = 360°",
+    example: "External angle of regular pentagon = 72°"
+  },
+  // 48
+  {
+    question: "Define congruent shapes",
+    answer: "Identical shape and identical size, can be rotated or reflected",
+    wrong1: "Same shape different size",
+    wrong2: "Same size different shape",
+    wrong3: "Similar ratio but not equal",
+    explanation: "All corresponding sides and angles equal",
+    example: "Two identical triangles"
+  },
+  // 49
+  {
+    question: "Define similar shapes",
+    answer: "Same shape, different size; corresponding sides in equal ratio",
+    wrong1: "Exact same size and shape",
+    wrong2: "Random shape with equal area",
+    wrong3: "Parallel sides only",
+    explanation: "Angles identical, sides scaled by scale factor",
+    example: "Small and large equilateral triangle"
+  },
+  // 50
+  {
+    question: "Define scale factor",
+    answer: "The ratio of corresponding sides between two similar shapes",
+    wrong1: "Difference between side lengths",
+    wrong2: "Sum of matching sides",
+    wrong3: "Area divided by perimeter",
+    explanation: "Used to enlarge or reduce a shape",
+    example: "Scale factor 2 makes all sides double length"
+  },
+  // 51
+  {
+    question: "Define perimeter",
+    answer: "Total distance around the outside of a 2D shape",
+    wrong1: "Space inside a flat shape",
+    wrong2: "Total surface of a 3D object",
+    wrong3: "Longest side measurement",
+    explanation: "Add all side lengths together",
+    example: "Square side 4cm perimeter = 16cm"
+  },
+  // 52
+  {
+    question: "Define area",
+    answer: "The amount of flat space inside a 2D closed shape",
+    wrong1: "Distance around the shape edge",
+    wrong2: "Volume of a 3D solid",
+    wrong3: "Sum of all side lengths",
+    explanation: "Measured in square units",
+    example: "Rectangle 5cm×3cm area = 15cm²"
+  },
+  // 53
+  {
+    question: "Define circumference",
+    answer: "The perimeter total distance around a circle",
+    wrong1: "Diameter of the circle",
+    wrong2: "Radius doubled",
+    wrong3: "Area inside the circle",
+    explanation: "Circumference = πd or 2πr",
+    example: "Circle radius 3cm circumference = 6π cm"
+  },
+  // 54
+  {
+    question: "Define radius of a circle",
+    answer: "Straight line from circle centre to any point on the edge",
+    wrong1: "Line across circle passing through centre",
+    wrong2: "Total curved edge length",
+    wrong3: "Half the circle area",
+    explanation: "Radius = half the diameter",
+    example: "Diameter 10cm → radius 5cm"
+  },
+  // 55
+  {
+    question: "Define diameter of a circle",
+    answer: "Straight line across a circle passing exactly through the centre",
+    wrong1: "Line from centre to edge",
+    wrong2: "Curved outer circle length",
+    wrong3: "Quarter circle arc length",
+    explanation: "Diameter = 2 × radius",
+    example: "Radius 7cm → diameter 14cm"
+  },
+  // 56
+  {
+    question: "Define arc of a circle",
+    answer: "A curved portion of the circumference of a circle",
+    wrong1: "Straight line chord inside circle",
+    wrong2: "Full circle perimeter",
+    wrong3: "Sector area inside circle",
+    explanation: "Minor arc = shorter curve, major arc = longer curve",
+    example: "Quarter circle curved edge"
+  },
+  // 57
+  {
+    question: "Define sector of a circle",
+    answer: "Wedge-shaped region bounded by two radii and an arc",
+    wrong1: "Straight line cutting the circle",
+    wrong2: "Half the circle circumference",
+    wrong3: "Full circle inner area",
+    explanation: "Like a slice of pizza",
+    example: "60° sector of a circle"
+  },
+  // 58
+  {
+    question: "Define chord of a circle",
+    answer: "Straight line joining two points on the circle edge",
+    wrong1: "Curved arc along circumference",
+    wrong2: "Line from centre to edge",
+    wrong3: "Line passing through centre only",
+    explanation: "Diameter is the longest possible chord",
+    example: "Any straight line across the circle not through centre"
+  },
+  // 59
+  {
+    question: "Define tangent to a circle",
+    answer: "Straight line that touches the circle at exactly one point only",
+    wrong1: "Line cutting circle at two points",
+    wrong2: "Line passing through circle centre",
+    wrong3: "Curved line along circle edge",
+    explanation: "Tangent is perpendicular to radius at point of contact",
+    example: "Line grazing the circle edge once"
+  },
+  // 60
+  {
+    question: "Define volume",
+    answer: "The amount of 3D space occupied by a solid object",
+    wrong1: "Flat area of a 2D shape",
+    wrong2: "Total outer surface area",
+    wrong3: "Perimeter around a solid",
+    explanation: "Measured in cubic units",
+    example: "Cube side 2cm volume = 8cm³"
+  },
+  // 61
+  {
+    question: "Define surface area",
+    answer: "Total area of all outer faces of a 3D solid shape",
+    wrong1: "Internal volume of the solid",
+    wrong2: "Area of one face only",
+    wrong3: "Perimeter of the base shape",
+    explanation: "Sum the area of every external face",
+    example: "Cube 6 faces each 4cm² total SA = 24cm²"
+  },
+  // 62
+  {
+    question: "Define mean average",
+    answer: "Sum of all values divided by the number of values",
+    wrong1: "Middle value when ordered",
+    wrong2: "Most frequent repeating value",
+    wrong3: "Difference between highest and lowest",
+    explanation: "The calculated average used for grouped and ungrouped data",
+    example: "2,4,6 mean = (2+4+6)/3 = 4"
+  },
+  // 63
+  {
+    question: "Define median average",
+    answer: "The middle value when all data is ordered smallest to largest",
+    wrong1: "Total sum divided by count",
+    wrong2: "Most common data value",
+    wrong3: "Half the range of data",
+    explanation: "Median is unaffected by extreme outliers",
+    example: "1,3,5,7,9 median = 5"
+  },
+  // 64
+  {
+    question: "Define mode average",
+    answer: "The value that appears most frequently in a data set",
+    wrong1: "Middle ordered value",
+    wrong2: "Sum divided by number of items",
+    wrong3: "Average of highest and lowest",
+    explanation: "There can be no mode, one mode or multiple modes",
+    example: "2,3,3,4,5 mode = 3"
+  },
+  // 65
+  {
+    question: "Define range in statistics",
+    answer: "Difference between the highest value and lowest value in data",
+    wrong1: "Average of highest and lowest",
+    wrong2: "Sum of all data values",
+    wrong3: "Middle ordered value",
+    explanation: "Measures spread of raw data",
+    example: "Data 4,7,9,15 range = 11"
+  },
+  // 66
+  {
+    question: "Define discrete data",
+    answer: "Data that can only take specific separate values, usually counted",
+    wrong1: "Data that can take any value within a range",
+    wrong2: "Only decimal measurement data",
+    wrong3: "Continuous measured values",
+    explanation: "You count discrete data, you measure continuous data",
+    example: "Number of students, shoe sizes"
+  },
+  // 67
+  {
+    question: "Define continuous data",
+    answer: "Data that can take any value within a range, usually measured",
+    wrong1: "Fixed separate counted values",
+    wrong2: "Only whole number values",
+    wrong3: "Categorical non-numerical data",
+    explanation: "Can have infinite decimal values",
+    example: "Height, weight, time"
+  },
+  // 68
+  {
+    question: "Define categorical data",
+    answer: "Non-numerical data grouped by qualities or categories",
+    wrong1: "Numerical counted values",
+    wrong2: "Measured continuous values",
+    wrong3: "Ordered number sequence",
+    explanation: "Descriptive labels not numbers",
+    example: "Eye colour, favourite subject"
+  },
+  // 69
+  {
+    question: "Define probability",
+    answer: "A numerical value between 0 and 1 measuring likelihood of an event happening",
+    wrong1: "Value greater than 1 only",
+    wrong2: "Negative decimal value",
+    wrong3: "Random guess with no scale",
+    explanation: "0 = impossible, 1 = certain",
+    example: "Probability of rolling a 6 = 1/6"
+  },
+  // 70
+  {
+    question: "Define mutually exclusive events",
+    answer: "Two events that cannot happen at the exact same time",
+    wrong1: "Two events always happening together",
+    wrong2: "Events with equal probability",
+    wrong3: "Independent unrelated events",
+    explanation: "Add probabilities for combined chance",
+    example: "Rolling a 2 and rolling a 3 on one dice throw"
+  },
+  // 71
+  {
+    question: "Define independent events",
+    answer: "One event happening does not affect the probability of the other",
+    wrong1: "Cannot occur at the same time",
+    wrong2: "One event guarantees the other",
+    wrong3: "Probabilities must be added",
+    explanation: "Multiply probabilities for combined outcome",
+    example: "Flipping a coin and rolling a dice"
+  },
+  // 72
+  {
+    question: "Define bearing",
+    answer: "A three-digit angle measured clockwise from north",
+    wrong1: "Angle measured anti-clockwise from north",
+    wrong2: "Two-digit random compass angle",
+    wrong3: "Straight line distance on map",
+    explanation: "Always written as 3 digits e.g. 045°",
+    example: "Due east bearing = 090°"
+  },
+  // 73
+  {
+    question: "Define Pythagoras’ theorem",
+    answer: "In right-angled triangle: a² + b² = c² where c is hypotenuse",
+    wrong1: "a² - b² = c²",
+    wrong2: "a + b = c",
+    wrong3: "ab = c²",
+    explanation: "Only works for right-angled triangles",
+    example: "3cm,4cm,5cm right triangle"
+  },
+  // 74
+  {
+    question: "Define hypotenuse",
+    answer: "The longest side opposite the right angle in a right-angled triangle",
+    wrong1: "Shortest side of the triangle",
+    wrong2: "Side adjacent to the right angle",
+    wrong3: "Any slanted side in any triangle",
+    explanation: "Always opposite the 90° corner",
+    example: "5cm side in 3,4,5 triangle"
+  },
+  // 75
+  {
+    question: "Define trigonometry ratio Sine",
+    answer: "sin(angle) = opposite side ÷ hypotenuse",
+    wrong1: "Adjacent ÷ hypotenuse",
+    wrong2: "Opposite ÷ adjacent",
+    wrong3: "Adjacent ÷ opposite",
+    explanation: "SOHCAHTOA: Sine = Opposite / Hypotenuse",
+    example: "sin(30°) = 0.5"
+  },
+  // 76
+  {
+    question: "Define trigonometry ratio Cosine",
+    answer: "cos(angle) = adjacent side ÷ hypotenuse",
+    wrong1: "Opposite ÷ hypotenuse",
+    wrong2: "Opposite ÷ adjacent",
+    wrong3: "Hypotenuse ÷ opposite",
+    explanation: "SOHCAHTOA: Cosine = Adjacent / Hypotenuse",
+    example: "cos(60°) = 0.5"
+  },
+  // 77
+  {
+    question: "Define trigonometry ratio Tangent",
+    answer: "tan(angle) = opposite side ÷ adjacent side",
+    wrong1: "Adjacent ÷ hypotenuse",
+    wrong2: "Opposite ÷ hypotenuse",
+    wrong3: "Hypotenuse ÷ adjacent",
+    explanation: "SOHCAHTOA: Tangent = Opposite / Adjacent",
+    example: "tan(45°) = 1"
+  },
+  // 78
+  {
+    question: "Define enlargement transformation",
+    answer: "Changing the size of a shape by a fixed scale factor from a centre point",
+    wrong1: "Sliding shape without rotation",
+    wrong2: "Turning shape around a point",
+    wrong3: "Flipping shape over a line",
+    explanation: "Can make shape larger or smaller",
+    example: "Enlarge by scale factor 3"
+  },
+  // 79
+  {
+    question: "Define translation transformation",
+    answer: "Sliding a shape to a new position without rotating, resizing or flipping",
+    wrong1: "Changing shape size",
+    wrong2: "Turning shape about a point",
+    wrong3: "Reflecting over a mirror line",
+    explanation: "Described by vector (x move, y move)",
+    example: "Move 2 right, 3 up"
+  },
+  // 80
+  {
+    question: "Define rotation transformation",
+    answer: "Turning a shape around a fixed centre point by a set angle",
+    wrong1: "Sliding shape across the grid",
+    wrong2: "Flipping shape over a line",
+    wrong3: "Increasing shape size",
+    explanation: "Defined by centre, angle and clockwise/anti-clockwise",
+    example: "Rotate 90° clockwise about origin"
+  },
+  // 81
+  {
+    question: "Define reflection transformation",
+    answer: "Flipping a shape over a mirror line to create a mirror image",
+    wrong1: "Turning shape around a point",
+    wrong2: "Sliding shape to new coordinates",
+    wrong3: "Scaling shape up or down",
+    explanation: "Each point is same distance on opposite side of mirror line",
+    example: "Reflect over the x-axis"
+  },
+  // 82
+  {
+    question: "Define vector",
+    answer: "A quantity with both magnitude (size) and direction",
+    wrong1: "Quantity with size only no direction",
+    wrong2: "Whole integer number only",
+    wrong3: "Fixed decimal value",
+    explanation: "Used for movement, velocity, force",
+    example: "Column vector (3 over -2)"
+  },
+  // 83
+  {
+    question: "Define scalar quantity",
+    answer: "A quantity with magnitude (size) but no direction",
+    wrong1: "Has size and direction",
+    wrong2: "Only negative numerical values",
+    wrong3: "Geometric angle measurement",
+    explanation: "Scalar only has value, no direction",
+    example: "Mass, time, temperature"
+  },
+  // 84
+  {
+    question: "Define quadratic factorisation",
+    answer: "Writing ax²+bx+c as a product of two linear bracketed terms",
+    wrong1: "Expanding two brackets into a quadratic",
+    wrong2: "Simplifying linear expressions",
+    wrong3: "Solving simultaneous linear equations",
+    explanation: "Reverse of expanding double brackets",
+    example: "x²+7x+12 = (x+3)(x+4)"
+  },
+  // 85
+  {
+    question: "Define trial and improvement",
+    answer: "Method of solving equations by testing approximate integer values",
+    wrong1: "Exact algebraic solving method",
+    wrong2: "Graph plotting only",
+    wrong3: "Using index laws to simplify",
+    explanation: "Used for equations with no simple exact solution",
+    example: "Finding cube root by testing values"
+  },
+  // 86
+  {
+    question: "Define cumulative frequency",
+    answer: "Running total of frequencies added up class by class",
+    wrong1: "Individual frequency of one class only",
+    wrong2: "Average of all frequency values",
+    wrong3: "Difference between highest and lowest frequency",
+    explanation: "Used to draw cumulative frequency curves",
+    example: "Add frequency 5 then 7 to get cumulative 12"
+  },
+  // 87
+  {
+    question: "Define quartiles",
+    answer: "Values dividing ordered data into four equal parts",
+    wrong1: "Three equal data divisions",
+    wrong2: "Five equal data groups",
+    wrong3: "Random split of data values",
+    explanation: "Lower quartile, median, upper quartile",
+    example: "Q1, Q2, Q3 split data into quarters"
+  },
+  // 88
+  {
+    question: "Define interquartile range",
+    answer: "Difference between upper quartile and lower quartile",
+    wrong1: "Difference between highest and lowest value",
+    wrong2: "Average of Q1 and Q3",
+    wrong3: "Median subtracted from mean",
+    explanation: "Measures spread ignoring extreme outliers",
+    example: "IQR = Q3 - Q1"
+  },
+  // 89
+  {
+    question: "Define outlier in statistics",
+    answer: "A data value significantly different from the rest of the set",
+    wrong1: "Middle value of ordered data",
+    wrong2: "Most frequent repeated value",
+    wrong3: "Average of highest and lowest",
+    explanation: "Lies outside the typical pattern of results",
+    example: "Data 2,3,4,5,20 → 20 is an outlier"
+  },
+  // 90
+  {
+    question: "Define formula",
+    answer: "A rule written in symbols showing relationship between variables",
+    wrong1: "Unsimplified algebraic expression",
+    wrong2: "Random list of number values",
+    wrong3: "Geometric shape drawing",
+    explanation: "Formulas are used to calculate unknown values",
+    example: "Area of circle A = πr²"
+  },
+  // 91
+  {
+    question: "Define rearranging formula",
+    answer: "Changing the subject of a formula to isolate a different variable",
+    wrong1: "Solving formula for a fixed number",
+    wrong2: "Expanding all brackets only",
+    wrong3: "Simplifying into like terms",
+    explanation: "Use inverse operations to move terms",
+    example: "Rearrange v = u+at to make t the subject"
+  },
+  // 92
+  {
+    question: "Define approximate estimation",
+    answer: "Rounding values to simple numbers to calculate a rough answer",
+    wrong1: "Calculating exact decimal answer",
+    wrong2: "Guessing with no rounding",
+    wrong3: "Using standard form for all values",
+    explanation: "Rounding to 1 significant figure for quick estimates",
+    example: "48 × 31 ≈ 50 × 30 = 1500"
+  },
+  // 93
+  {
+    question: "Define significant figures",
+    answer: "Digits that carry meaning contributing to measurement precision",
+    wrong1: "All decimal place zeros only",
+    wrong2: "Trailing zeros at end of decimal",
+    wrong3: "Only whole number digits",
+    explanation: "Leading zeros are not significant",
+    example: "0.0452 has 3 significant figures"
+  },
+  // 94
+  {
+    question: "Define decimal places",
+    answer: "Number of digits counted after the decimal point",
+    wrong1: "All significant digits in the number",
+    wrong2: "Whole number part only",
+    wrong3: "Rounded whole number value",
+    explanation: "Count only digits after .",
+    example: "2.375 to 2 decimal places = 2.38"
+  },
+  // 95
+  {
+    question: "Define bounds of measurement",
+    answer: "Upper and lower limits between which an exact measurement lies",
+    wrong1: "Fixed exact measured value",
+    wrong2: "Average of rounded numbers",
+    wrong3: "Range of unrelated data",
+    explanation: "Half the rounding unit added/subtracted",
+    example: "12cm nearest cm → bound 11.5cm to 12.5cm"
+  },
+  // 96
+  {
+    question: "Define upper bound",
+    answer: "The maximum possible true value of a rounded measurement",
+    wrong1: "Minimum possible true value",
+    wrong2: "Exact rounded number itself",
+    wrong3: "Average of all bounds",
+    explanation: "Add half the rounding interval",
+    example: "25m nearest m upper bound = 25.5m"
+  },
+  // 97
+  {
+    question: "Define lower bound",
+    answer: "The minimum possible true value of a rounded measurement",
+    wrong1: "Maximum possible true value",
+    wrong2: "Exact rounded value",
+    wrong3: "Double the rounded value",
+    explanation: "Subtract half the rounding interval",
+    example: "25m nearest m lower bound = 24.5m"
+  },
+  // 98
+  {
+    question: "Define algebraic proof",
+    answer: "Using algebra to show a mathematical statement is always true",
+    wrong1: "Testing one example to prove rule",
+    wrong2: "Guessing pattern from sequence",
+    wrong3: "Solving a quadratic equation",
+    explanation: "Must work for all values not just one case",
+    example: "Prove sum of two even numbers is even"
+  },
+  // 99
+  {
+    question: "Define loci in geometry",
+    answer: "Set of all points satisfying a given geometric rule",
+    wrong1: "Single fixed coordinate point",
+    wrong2: "Random shape with no rule",
+    wrong3: "Straight line gradient only",
+    explanation: "Locus = path of points following a rule",
+    example: "All points 4cm from a fixed centre = circle"
+  },
+  // 100
+  {
+    question: "Core Grade 10–11 Math exam skill",
+    answer: "Apply definitions, formulae and rules to solve worded and abstract problems",
+    wrong1: "Memorise definitions only with no application",
+    wrong2: "Guess answers without working",
+    wrong3: "Only calculate basic arithmetic",
+    explanation: "Top marks require applying knowledge to unfamiliar questions",
+    example: "Use ratio, proportion and algebra to solve real-life problems"
+  }
+];
