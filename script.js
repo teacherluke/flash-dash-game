@@ -48,6 +48,196 @@ const LEVEL_SUBJECTS = {
 
 let flashcardData = {};
 let loadedSubjects = new Set();
+let currentUser = null;
+let userProgress = {
+    totalPoints: 0,
+    gamesPlayed: 0,
+    totalCorrect: 0,
+    totalWrong: 0,
+    subjects: {}
+};
+
+function initUser() {
+    const savedUser = localStorage.getItem('flashdash_user');
+    const savedProgress = localStorage.getItem('flashdash_progress');
+    
+    if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        userProgress = savedProgress ? JSON.parse(savedProgress) : {
+            totalPoints: 0,
+            gamesPlayed: 0,
+            totalCorrect: 0,
+            totalWrong: 0,
+            subjects: {}
+        };
+        updateUserInfo();
+    } else {
+        showLoginModal();
+    }
+}
+
+function showLoginModal() {
+    document.getElementById('login-modal').classList.add('show');
+}
+
+function closeLoginModal() {
+    document.getElementById('login-modal').classList.remove('show');
+}
+
+function login() {
+    const username = document.getElementById('username-input').value.trim();
+    if (!username) {
+        alert('Please enter your name');
+        return;
+    }
+    
+    currentUser = {
+        id: Date.now().toString(),
+        name: username,
+        isGuest: false
+    };
+    
+    localStorage.setItem('flashdash_user', JSON.stringify(currentUser));
+    
+    if (!localStorage.getItem('flashdash_progress')) {
+        userProgress = {
+            totalPoints: 0,
+            gamesPlayed: 0,
+            totalCorrect: 0,
+            totalWrong: 0,
+            subjects: {}
+        };
+        localStorage.setItem('flashdash_progress', JSON.stringify(userProgress));
+    } else {
+        userProgress = JSON.parse(localStorage.getItem('flashdash_progress'));
+    }
+    
+    closeLoginModal();
+    updateUserInfo();
+    updateProgressDisplay();
+}
+
+function loginAsGuest() {
+    currentUser = {
+        id: 'guest_' + Date.now().toString(),
+        name: 'Guest',
+        isGuest: true
+    };
+    
+    userProgress = {
+        totalPoints: 0,
+        gamesPlayed: 0,
+        totalCorrect: 0,
+        totalWrong: 0,
+        subjects: {}
+    };
+    
+    closeLoginModal();
+    updateUserInfo();
+}
+
+function logout() {
+    localStorage.removeItem('flashdash_user');
+    localStorage.removeItem('flashdash_progress');
+    currentUser = null;
+    userProgress = {
+        totalPoints: 0,
+        gamesPlayed: 0,
+        totalCorrect: 0,
+        totalWrong: 0,
+        subjects: {}
+    };
+    
+    updateUserInfo();
+    updateProgressDisplay();
+    showLoginModal();
+}
+
+function updateUserInfo() {
+    if (currentUser) {
+        document.getElementById('user-name').textContent = currentUser.name;
+        document.getElementById('total-points').textContent = userProgress.totalPoints;
+        document.getElementById('logout-btn').style.display = currentUser.isGuest ? 'none' : 'block';
+    } else {
+        document.getElementById('user-name').textContent = 'Player';
+        document.getElementById('total-points').textContent = '0';
+        document.getElementById('logout-btn').style.display = 'none';
+    }
+}
+
+function updateProgress(subject, isCorrect, points) {
+    if (!currentUser || currentUser.isGuest) return;
+    
+    userProgress.totalPoints += points;
+    userProgress.gamesPlayed++;
+    
+    if (isCorrect) {
+        userProgress.totalCorrect++;
+    } else {
+        userProgress.totalWrong++;
+    }
+    
+    if (!userProgress.subjects[subject]) {
+        userProgress.subjects[subject] = {
+            correct: 0,
+            wrong: 0,
+            totalPoints: 0
+        };
+    }
+    
+    if (isCorrect) {
+        userProgress.subjects[subject].correct++;
+    } else {
+        userProgress.subjects[subject].wrong++;
+    }
+    userProgress.subjects[subject].totalPoints += points;
+    
+    localStorage.setItem('flashdash_progress', JSON.stringify(userProgress));
+    updateUserInfo();
+    updateProgressDisplay();
+}
+
+function updateProgressDisplay() {
+    if (!currentUser) {
+        document.getElementById('progress-total-points').textContent = '0';
+        document.getElementById('progress-games-played').textContent = '0';
+        document.getElementById('progress-total-correct').textContent = '0';
+        document.getElementById('progress-accuracy').textContent = '0%';
+        document.getElementById('progress-subjects-content').innerHTML = '<div class="progress-subject-row"><span colspan="4" style="grid-column: 1 / -1; text-align: center;">Please login to track progress</span></div>';
+        return;
+    }
+    
+    document.getElementById('progress-total-points').textContent = userProgress.totalPoints;
+    document.getElementById('progress-games-played').textContent = userProgress.gamesPlayed;
+    document.getElementById('progress-total-correct').textContent = userProgress.totalCorrect;
+    
+    const totalAnswers = userProgress.totalCorrect + userProgress.totalWrong;
+    const accuracy = totalAnswers > 0 ? Math.round((userProgress.totalCorrect / totalAnswers) * 100) : 0;
+    document.getElementById('progress-accuracy').textContent = accuracy + '%';
+    
+    let content = '';
+    const subjects = Object.keys(userProgress.subjects);
+    
+    if (subjects.length === 0) {
+        content = '<div class="progress-subject-row"><span style="grid-column: 1 / -1; text-align: center; color: var(--apple-gray);">No progress yet. Start playing!</span></div>';
+    } else {
+        subjects.forEach(subject => {
+            const subjProgress = userProgress.subjects[subject];
+            const subjTotal = subjProgress.correct + subjProgress.wrong;
+            const subjAccuracy = subjTotal > 0 ? Math.round((subjProgress.correct / subjTotal) * 100) : 0;
+            content += `
+                <div class="progress-subject-row">
+                    <span class="progress-subject-name">${SUBJECT_NAMES[subject] || subject}</span>
+                    <span class="progress-subject-score">${subjAccuracy}%</span>
+                    <span class="progress-subject-correct">${subjProgress.correct}</span>
+                    <span class="progress-subject-wrong">${subjProgress.wrong}</span>
+                </div>
+            `;
+        });
+    }
+    
+    document.getElementById('progress-subjects-content').innerHTML = content;
+}
 let currentLevel = 'preigcse';
 
 function transformQuestion(question) {
@@ -1062,6 +1252,8 @@ function selectAnswer(optionIndex) {
         if (cardIndex !== -1) {
             wrongFlashcards.splice(cardIndex, 1);
         }
+        
+        updateProgress(currentSubject, true, basePoints * multiplier);
     } else {
         trackEvent('answer_incorrect', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
         soundManager.playWrong();
@@ -1078,6 +1270,8 @@ function selectAnswer(optionIndex) {
         if (correctIndex !== -1) {
             document.getElementById(`option-${correctIndex}`).classList.add('correct');
         }
+        
+        updateProgress(currentSubject, false, 0);
     }
     
     setTimeout(() => {
@@ -1789,4 +1983,5 @@ function initDraggableCards() {
     
     updateSubjectDisplay();
     showSection('home');
+    initUser();
 });

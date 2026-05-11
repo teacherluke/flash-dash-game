@@ -40,6 +40,21 @@
         </div>
     </div>
 
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome to FLASH DASH</h2>
+                <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your name to track your progress</p>
+                <input type="text" id="username-input" placeholder="Enter your name" maxlength="20">
+                <button class="login-btn" onclick="login()">Continue</button>
+                <p class="guest-option" onclick="loginAsGuest()">Continue as Guest</p>
+            </div>
+        </div>
+    </div>
+
     <div id="app">
         <header class="header">
             <nav class="nav">
@@ -50,6 +65,7 @@
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#subjects" class="nav-link">Subjects</a>
                     <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                    <a href="#progress" class="nav-link">My Progress</a>
                 </div>
                 <div class="nav-right">
                     <div class="user-info">
@@ -58,6 +74,7 @@
                             <span id="total-points">0</span>
                         </span>
                         <span id="user-name">Player</span>
+                        <button class="logout-btn" onclick="logout()" id="logout-btn">Logout</button>
                     </div>
                 </div>
             </nav>
@@ -303,6 +320,44 @@
                         <span>Subject</span>
                     </div>
                     <div class="leaderboard-content" id="leaderboard-rows"></div>
+                </div>
+            </section>
+
+            <section id="progress" class="section">
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <h2>My Progress</h2>
+                        <p>Track your learning journey and see your improvement</p>
+                    </div>
+                    
+                    <div class="progress-cards">
+                        <div class="progress-card">
+                            <div class="progress-value" id="progress-total-points">0</div>
+                            <div class="progress-label">Total Points</div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-value" id="progress-games-played">0</div>
+                            <div class="progress-label">Games Played</div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-value" id="progress-total-correct">0</div>
+                            <div class="progress-label">Total Correct</div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-value" id="progress-accuracy">0%</div>
+                            <div class="progress-label">Overall Accuracy</div>
+                        </div>
+                    </div>
+
+                    <div class="progress-subjects">
+                        <div class="progress-subjects-header">
+                            <span>Subject</span>
+                            <span>Score</span>
+                            <span>Correct</span>
+                            <span>Wrong</span>
+                        </div>
+                        <div class="progress-subjects-content" id="progress-subjects-content"></div>
+                    </div>
                 </div>
             </section>
         </main>
