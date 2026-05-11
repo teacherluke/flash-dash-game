@@ -1811,20 +1811,20 @@ function initLoadingScreen() {
     }, 1500);
     
     try {
-        if (window.DrawSVGPlugin && window.gsap) {
-            gsap.from('#loading-bolt', {
-                drawSVG: 0,
-                duration: 1.5,
-                ease: "power2.out",
-                repeat: -1,
-                repeatDelay: 0.5
+        if (window.gsap) {
+            gsap.from('.loading-title', {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                ease: "power2.out"
             });
             
-            gsap.from('#loading-ring', {
-                drawSVG: 0,
-                duration: 2,
-                ease: "linear",
-                repeat: -1
+            gsap.from('.loading-bar-container', {
+                opacity: 0,
+                scaleX: 0,
+                duration: 0.6,
+                delay: 0.3,
+                ease: "power2.out"
             });
         }
     } catch (e) {
