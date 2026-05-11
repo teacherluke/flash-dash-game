@@ -2048,11 +2048,10 @@ function initDraggableCards() {
       return inertiaObserver;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-      initLoadingScreen();
-      loadUserProgress();
-      renderLeaderboard();
-      initDraggableCards();
+document.addEventListener('DOMContentLoaded', () => {
+    initLoadingScreen();
+    loadUserProgress();
+    renderLeaderboard();
     
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
