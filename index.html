@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard Learning Game - Cambridge & IB</title>
+    <title>FLASH DASH | Cambridge & IB</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script type="module">
@@ -34,43 +35,60 @@
                 <nav class="nav-links" role="navigation" aria-label="Main navigation">
                     <a href="#home" class="nav-link active" aria-label="Go to Home page">Home</a>
                     <a href="#subjects" class="nav-link" aria-label="Go to Subjects page">Subjects</a>
-                    <a href="#leaderboard" class="nav-link" aria-label="Go to Leaderboard page">Leaderboard</a>
                 </nav>
                 <div class="user-section">
-                                <div class="points-display">
-                                    <i class="fas fa-trophy"></i>
-                                    <span id="total-points">0</span>
-                                </div>
-                                <div class="user-info" id="user-info">
-                                    <span id="user-name">Player</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="points-display">
+                        <i class="fas fa-trophy"></i>
+                        <span id="total-points">0</span>
+                    </div>
+                    <div class="user-info" id="user-info">
+                        <span id="user-name">Player</span>
+                    </div>
+                </div>
             </div>
         </header>
 
         <main>
             <section id="home" class="section active">
                 <div class="hero">
-                    <h1>Master Cambridge & IB Topics</h1>
-                    <p>Interactive flashcard learning with real-time scoring</p>
-                    <button class="cta-btn" onclick="showSubjects()" aria-label="Start learning - go to subjects page">Start Learning</button>
+                    <div class="hero-image">
+                        <div class="hero-illustration">
+                            <i class="fas fa-book-open"></i>
+                            <div class="floating-element element-1"><i class="fas fa-atom"></i></div>
+                            <div class="floating-element element-2"><i class="fas fa-dna"></i></div>
+                            <div class="floating-element element-3"><i class="fas fa-calculator"></i></div>
+                        </div>
+                    </div>
+                    <div class="hero-content">
+                        <h1>Master Cambridge & IB Topics</h1>
+                        <p>Interactive flashcard learning designed for students aiming for top grades in Cambridge IGCSE and IB examinations.</p>
+                        <button class="cta-btn" onclick="showSubjects()" aria-label="Start learning - go to subjects page">Start Learning</button>
+                    </div>
                 </div>
-                <div class="features">
-                    <div class="feature-card">
-                        <i class="fas fa-clock"></i>
-                        <h3>15 Second Timer</h3>
-                        <p>Answer quickly to earn bonus points</p>
+
+                <div class="features-section">
+                    <div class="feature-row row-1">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>15 Second Timer</h3>
+                                <p>Answer quickly to earn bonus points and improve your speed.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <i class="fas fa-star"></i>
-                        <h3>Score Tracking</h3>
-                        <p>Track your progress and improve</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-coins"></i>
-                        <h3>Point Banking</h3>
-                        <p>Bank points every 3 correct answers</p>
+                    
+                    <div class="feature-row row-2">
+                        <div class="feature-card alt">
+                            <div class="feature-content">
+                                <h3>Progress Tracking</h3>
+                                <p>Monitor your performance across subjects and identify areas for improvement.</p>
+                            </div>
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
