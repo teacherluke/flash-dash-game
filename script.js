@@ -1580,10 +1580,41 @@ function initLoadingScreen() {
     }, 300);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initLoadingScreen();
-    loadUserProgress();
-    renderLeaderboard();
+function initDraggableCards() {
+      const heroGraphic = document.querySelector('.hero-graphic');
+      if (!heroGraphic) return;
+      
+      const cards = heroGraphic.querySelectorAll('.floating-card');
+      const snapValue = 20;
+      
+      cards.forEach((card, index) => {
+          Draggable.create(card, {
+              type: "x,y",
+              bounds: heroGraphic,
+              inertia: true,
+              snap: {
+                  x: function(value) {
+                      return Math.round(value / snapValue) * snapValue;
+                  },
+                  y: function(value) {
+                      return Math.round(value / snapValue) * snapValue;
+                  }
+              },
+              onDrag: function() {
+                  gsap.to(this.target, { scale: 1.1, duration: 0.2 });
+              },
+              onRelease: function() {
+                  gsap.to(this.target, { scale: 1, duration: 0.3 });
+              }
+          });
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      initLoadingScreen();
+      loadUserProgress();
+      renderLeaderboard();
+      initDraggableCards();
     
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {

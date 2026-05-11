@@ -6,8 +6,9 @@
     <title>FLASH DASH | Cambridge & IB</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
 
     <script type="module">
         import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@2.0.0';
@@ -17,89 +18,101 @@
 <body>
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
-            <div class="logo-container">
-                <i class="fas fa-bolt loading-icon"></i>
-                <h1 class="loading-title">FLASH DASH</h1>
-                <p class="loading-subtitle">Cambridge & IB Learning Game</p>
-            </div>
-            <div class="loading-bar-container">
-                <div class="loading-bar" id="loading-bar"></div>
-            </div>
-            <p class="loading-text">Loading knowledge...</p>
+            <i class="fas fa-bolt loading-icon"></i>
+            <h1 class="loading-title">FLASH DASH</h1>
         </div>
     </div>
+
     <div id="app">
         <header class="header">
-            <div class="header-content">
-                <div class="logo-text">FLASH DASH</div>
-                <nav class="nav-links" role="navigation" aria-label="Main navigation">
-                    <a href="#home" class="nav-link active" aria-label="Go to Home page">Home</a>
-                    <a href="#subjects" class="nav-link" aria-label="Go to Subjects page">Subjects</a>
-                </nav>
-                <div class="user-section">
-                    <div class="points-display">
-                        <i class="fas fa-trophy"></i>
-                        <span id="total-points">0</span>
-                    </div>
-                    <div class="user-info" id="user-info">
+            <nav class="nav">
+                <div class="nav-left">
+                    <div class="logo">FLASH DASH</div>
+                </div>
+                <div class="nav-center">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#subjects" class="nav-link">Subjects</a>
+                    <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                </div>
+                <div class="nav-right">
+                    <div class="user-info">
+                        <span class="points">
+                            <i class="fas fa-trophy"></i>
+                            <span id="total-points">0</span>
+                        </span>
                         <span id="user-name">Player</span>
                     </div>
                 </div>
-            </div>
+            </nav>
         </header>
 
         <main>
             <section id="home" class="section active">
                 <div class="hero">
-                    <div class="hero-image">
-                        <div class="hero-illustration">
-                            <i class="fas fa-book-open"></i>
-                            <div class="floating-element element-1"><i class="fas fa-atom"></i></div>
-                            <div class="floating-element element-2"><i class="fas fa-dna"></i></div>
-                            <div class="floating-element element-3"><i class="fas fa-calculator"></i></div>
-                        </div>
-                    </div>
                     <div class="hero-content">
-                        <h1>Master Cambridge & IB Topics</h1>
-                        <p>Interactive flashcard learning designed for students aiming for top grades in Cambridge IGCSE and IB examinations.</p>
-                        <button class="cta-btn" onclick="showSubjects()" aria-label="Start learning - go to subjects page">Start Learning</button>
+                        <h1 class="hero-title">Master Cambridge & IB</h1>
+                        <p class="hero-subtitle">Interactive flashcard learning designed for academic excellence</p>
+                        <button class="hero-button" onclick="showSubjects()">Start Learning</button>
+                    </div>
+                    <div class="hero-graphic">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="floating-card card-4">
+                            <i class="fas fa-book-open"></i>
+                        </div>
                     </div>
                 </div>
 
-                <div class="features-section">
-                    <div class="feature-row row-1">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>15 Second Timer</h3>
-                                <p>Answer quickly to earn bonus points and improve your speed.</p>
-                            </div>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>15 Second Timer</h3>
+                            <p>Answer quickly to earn bonus points and improve your speed</p>
                         </div>
                     </div>
-                    
-                    <div class="feature-row row-2">
-                        <div class="feature-card alt">
-                            <div class="feature-content">
-                                <h3>Progress Tracking</h3>
-                                <p>Monitor your performance across subjects and identify areas for improvement.</p>
-                            </div>
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Progress Tracking</h3>
+                            <p>Monitor your performance across subjects and identify areas for improvement</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Leaderboard</h3>
+                            <p>Compete with peers and climb the ranks</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="subjects" class="section">
-                <h2>Choose Your Level</h2>
-                <div class="level-buttons" role="group" aria-label="Select level">
-                    <button class="level-btn active" id="pre-igcse-btn" onclick="setLevel('preigcse')" aria-label="Select Pre-IGCSE level">Pre-IGCSE</button>
-                    <button class="level-btn" id="igcse-btn" onclick="setLevel('igcse')" aria-label="Select IGCSE level">IGCSE</button>
+                <div class="section-header">
+                    <h2>Choose Your Level</h2>
                 </div>
-                <h3>Choose Your Subject</h3>
+                <div class="level-tabs">
+                    <button class="level-tab active" id="pre-igcse-btn" onclick="setLevel('preigcse')">Pre-IGCSE</button>
+                    <button class="level-tab" id="igcse-btn" onclick="setLevel('igcse')">IGCSE</button>
+                </div>
+                
+                <div class="section-header">
+                    <h2>Choose Your Subject</h2>
+                </div>
                 <div class="subject-grid">
                     <div class="subject-card" data-subject="maths">
                         <i class="fas fa-calculator"></i>
@@ -161,30 +174,30 @@
 
             <section id="game" class="section">
                 <div class="game-header">
-                    <div class="game-info">
-                        <span class="subject-tag" id="game-subject"></span>
-                        <span class="question-count">Question <span id="current-question">1</span> of <span id="total-questions">10</span></span>
+                    <div class="game-meta">
+                        <span class="game-subject" id="game-subject"></span>
+                        <span class="game-progress">Question <span id="current-question">1</span> of <span id="total-questions">10</span></span>
                     </div>
                     <div class="game-stats">
-                        <div class="stat-item">
+                        <span class="stat timer">
                             <i class="fas fa-timer"></i>
                             <span id="timer">15</span>s
-                        </div>
-                        <div class="stat-item">
+                        </span>
+                        <span class="stat points">
                             <i class="fas fa-star"></i>
                             <span id="round-points">0</span>
-                        </div>
+                        </span>
                     </div>
                 </div>
 
-                <div class="flashcard-container">
+                <div class="flashcard-wrapper">
                     <div class="flashcard" id="flashcard">
                         <div class="flashcard-front">
                             <div class="flashcard-icon">
                                 <i class="fas fa-question-circle"></i>
                             </div>
-                            <h3 id="question"></h3>
-                            <button class="audio-btn" id="audio-btn" onclick="playQuestionAudio()" aria-label="Play audio pronunciation of the question">
+                            <h2 id="question"></h2>
+                            <button class="audio-button" id="audio-btn" onclick="playQuestionAudio()">
                                 <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
@@ -192,70 +205,68 @@
                             <div class="flashcard-icon">
                                 <i class="fas fa-lightbulb"></i>
                             </div>
-                            <h3 id="answer"></h3>
-                            <p class="explanation" id="explanation"></p>
-                            <p class="example" id="example"></p>
+                            <h2 id="answer"></h2>
+                            <p class="flashcard-explanation" id="explanation"></p>
+                            <p class="flashcard-example" id="example"></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="options-container" role="group" aria-label="Answer options">
-                    <button class="option-btn" id="option-0" aria-label="Select option A">
+                <div class="options-grid">
+                    <button class="option-button" id="option-0" aria-label="Option A">
                         <span class="option-letter">A</span>
                         <span class="option-text" id="option-text-0"></span>
                     </button>
-                    <button class="option-btn" id="option-1" aria-label="Select option B">
+                    <button class="option-button" id="option-1" aria-label="Option B">
                         <span class="option-letter">B</span>
                         <span class="option-text" id="option-text-1"></span>
                     </button>
-                    <button class="option-btn" id="option-2" aria-label="Select option C">
+                    <button class="option-button" id="option-2" aria-label="Option C">
                         <span class="option-letter">C</span>
                         <span class="option-text" id="option-text-2"></span>
                     </button>
-                    <button class="option-btn" id="option-3" aria-label="Select option D">
+                    <button class="option-button" id="option-3" aria-label="Option D">
                         <span class="option-letter">D</span>
                         <span class="option-text" id="option-text-3"></span>
                     </button>
                 </div>
 
-                <div class="timer-bar-container">
-                    <div class="timer-bar" id="timer-bar"></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="timer-bar"></div>
                 </div>
 
                 <div class="confetti-container" id="confetti-container"></div>
             </section>
 
             <section id="results" class="section">
-                <div class="results-container">
+                <div class="results-wrapper">
                     <div class="results-header">
-                        <h2>Game Over!</h2>
-                        <div class="results-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
+                        <h1>Game Over</h1>
+                        <i class="fas fa-trophy results-icon"></i>
                     </div>
                     <div class="results-stats">
                         <div class="result-item">
-                            <span class="result-label">Correct Answers</span>
                             <span class="result-value" id="correct-count">0</span>
+                            <span class="result-label">Correct</span>
                         </div>
                         <div class="result-item">
-                            <span class="result-label">Wrong Answers</span>
                             <span class="result-value" id="wrong-count">0</span>
+                            <span class="result-label">Wrong</span>
                         </div>
                         <div class="result-item">
-                            <span class="result-label">Accuracy</span>
                             <span class="result-value" id="accuracy">0%</span>
+                            <span class="result-label">Accuracy</span>
                         </div>
-                        <div class="result-item">
-                            <span class="result-label">Total Points Earned</span>
-                            <span class="result-value highlight" id="earned-points">0</span>
+                        <div class="result-item highlight">
+                            <span class="result-value" id="earned-points">0</span>
+                            <span class="result-label">Points Earned</span>
                         </div>
                     </div>
-                    <div id="redemption-info" class="redemption-info"></div>
-                    <div class="results-actions" role="group" aria-label="Result actions">
-                        <button class="action-btn primary" onclick="playAgain()" aria-label="Play the same subject again">Play Again</button>
-                        <button class="action-btn secondary" onclick="goHome()" aria-label="Go back to home page">Back to Home</button>
-                        <button class="action-btn redemption" id="redemption-btn" style="display: none;" aria-label="Start redemption quiz for missed questions">
+                    <div id="redemption-info" class="redemption-notice"></div>
+                    <div class="results-actions">
+                        <button class="action-button primary" onclick="playAgain()">Play Again</button>
+                        <button class="action-button secondary" onclick="goHome()">Back to Home</button>
+                        <button class="action-button redemption" id="redemption-btn" style="display: none;" onclick="startRedemption()">
                             <i class="fas fa-redo"></i>
                             Redemption Quiz
                         </button>
@@ -264,16 +275,17 @@
             </section>
 
             <section id="leaderboard" class="section">
-                <h2>Leaderboard</h2>
-                <div class="leaderboard-container">
+                <div class="section-header">
+                    <h2>Leaderboard</h2>
+                </div>
+                <div class="leaderboard-wrapper">
                     <div class="leaderboard-header">
                         <span>Rank</span>
                         <span>Player</span>
                         <span>Points</span>
                         <span>Subject</span>
                     </div>
-                    <div class="leaderboard-rows" id="leaderboard-rows">
-                    </div>
+                    <div class="leaderboard-content" id="leaderboard-rows"></div>
                 </div>
             </section>
         </main>
