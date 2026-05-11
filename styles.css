@@ -95,6 +95,17 @@ body {
     margin-top: 10px;
 }
 
+.loading-screen.fading-out {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.loading-screen.fading-out .loading-content {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s ease;
+}
+
 .loading-title {
     font-size: 2.5rem;
     font-weight: 600;

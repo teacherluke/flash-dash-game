@@ -1810,86 +1810,42 @@ function initLoadingScreen() {
         loadingText.textContent = texts[textIndex];
     }, 1500);
     
-    try {
-        if (window.gsap) {
-            gsap.from('.loading-title', {
-                opacity: 0,
-                y: 20,
-                duration: 0.8,
-                ease: "power2.out"
-            });
-            
-            gsap.from('.loading-bar-container', {
-                opacity: 0,
-                scaleX: 0,
-                duration: 0.6,
-                delay: 0.3,
-                ease: "power2.out"
-            });
-        }
-    } catch (e) {
-        console.log('GSAP animation error:', e);
-    }
-    
     const completeLoading = () => {
         clearInterval(progressInterval);
         clearInterval(textInterval);
         
-        try {
-            if (window.gsap) {
-                gsap.to('.loading-content', {
-                    opacity: 0,
-                    y: -30,
-                    duration: 0.8,
-                    delay: 0.5
-                });
-                
-                gsap.to(loadingScreen, {
-                    opacity: 0,
-                    duration: 0.8,
-                    delay: 1,
-                    onComplete: () => {
-                        loadingScreen.style.display = 'none';
-                        document.getElementById('app').classList.add('visible');
-                        try {
-                            initDraggableCards();
-                            initSplitTextAnimation();
-                            initScrollAnimations();
-                        } catch (e) {
-                            console.log('Animation init error:', e);
-                        }
-                    }
-                });
-            } else {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    document.getElementById('app').classList.add('visible');
-                }, 500);
-            }
-        } catch (e) {
-            console.log('Loading complete error:', e);
+        loadingScreen.classList.add('fading-out');
+        
+        setTimeout(() => {
             loadingScreen.style.display = 'none';
             document.getElementById('app').classList.add('visible');
-        }
+            
+            try {
+                initDraggableCards();
+                initSplitTextAnimation();
+                initScrollAnimations();
+            } catch (e) {
+                console.log('Animation init error:', e);
+            }
+        }, 800);
     };
     
     let progress = 0;
     const progressInterval = setInterval(() => {
-        progress += Math.random() * 20;
+        progress += Math.random() * 25;
         if (progress > 100) progress = 100;
         loadingBar.style.width = `${progress}%`;
         
         if (progress >= 100) {
             completeLoading();
         }
-    }, 200);
+    }, 150);
     
     setTimeout(() => {
-        if (loadingScreen.style.display !== 'none') {
+        if (loadingScreen && loadingScreen.style.display !== 'none') {
             completeLoading();
         }
-    }, 5000);
+    }, 3000);
 }
 
 function initDraggableCards() {
