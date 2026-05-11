@@ -48,10 +48,19 @@
                 <button class="modal-close" onclick="closeLoginModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Please enter your name to track your progress</p>
-                <input type="text" id="username-input" placeholder="Enter your name" maxlength="20">
-                <button class="login-btn" onclick="login()">Continue</button>
-                <p class="guest-option" onclick="loginAsGuest()">Continue as Guest</p>
+                <div id="loginSection">
+                    <h3>Login to Save Progress</h3>
+                    <button id="googleBtn" class="login-btn google" onclick="loginWithGoogle()">Login with Google</button>
+                    <button id="msBtn" class="login-btn microsoft" onclick="loginWithMicrosoft()">Login with Microsoft</button>
+                    <button id="wechatBtn" class="login-btn wechat" onclick="loginWithWeChat()">Login with WeChat</button>
+                </div>
+                
+                <div style="border-top: 1px solid #f0f0f0; margin: 20px 0; padding-top: 20px;">
+                    <p>Or enter your name</p>
+                    <input type="text" id="username-input" placeholder="Enter your name" maxlength="20">
+                    <button class="login-btn" onclick="login()">Continue</button>
+                    <p class="guest-option" onclick="loginAsGuest()">Continue as Guest</p>
+                </div>
             </div>
         </div>
     </div>

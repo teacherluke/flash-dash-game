@@ -238,6 +238,72 @@ function updateProgressDisplay() {
     
     document.getElementById('progress-subjects-content').innerHTML = content;
 }
+
+function loginWithGoogle() {
+    window.location.href = '/auth/google';
+}
+
+function loginWithMicrosoft() {
+    window.location.href = '/auth/microsoft';
+}
+
+function loginWithWeChat() {
+    window.location.href = '/auth/wechat';
+}
+
+async function loadUser() {
+    try {
+        const res = await fetch('/api/me');
+        const user = await res.json();
+        
+        if (user) {
+            currentUser = {
+                id: user.id,
+                name: user.name,
+                isGuest: false
+            };
+            
+            localStorage.setItem('flashdash_user', JSON.stringify(currentUser));
+            
+            userProgress = {
+                totalPoints: user.score || 0,
+                gamesPlayed: user.gamesPlayed || 0,
+                totalCorrect: user.totalCorrect || 0,
+                totalWrong: user.totalWrong || 0,
+                subjects: user.subjects || {}
+            };
+            
+            localStorage.setItem('flashdash_progress', JSON.stringify(userProgress));
+            
+            document.getElementById('loginSection').style.display = 'none';
+            
+            closeLoginModal();
+            updateUserInfo();
+            updateProgressDisplay();
+        }
+    } catch (err) {
+        console.log('Not logged in via OAuth');
+    }
+}
+
+async function saveUserProgress(score, progressPercent, cardsCompleted) {
+    try {
+        await fetch('/api/save-progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                score: score,
+                progress: progressPercent,
+                completedCards: cardsCompleted
+            })
+        });
+        console.log('✅ Progress saved!');
+        loadUser();
+    } catch (err) {
+        console.log('Backend not available, using localStorage');
+    }
+}
+
 let currentLevel = 'preigcse';
 
 function transformQuestion(question) {

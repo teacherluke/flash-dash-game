@@ -1034,6 +1034,44 @@ main {
     text-decoration: underline;
 }
 
+#loginSection {
+    margin-bottom: 10px;
+}
+
+#loginSection h3 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--apple-gray);
+    margin-bottom: 12px;
+}
+
+.login-btn.google {
+    background: #4285F4;
+    color: white;
+}
+
+.login-btn.google:hover {
+    background: #3367D6;
+}
+
+.login-btn.microsoft {
+    background: #0078D4;
+    color: white;
+}
+
+.login-btn.microsoft:hover {
+    background: #0067B8;
+}
+
+.login-btn.wechat {
+    background: #07C160;
+    color: white;
+}
+
+.login-btn.wechat:hover {
+    background: #06AD56;
+}
+
 .logout-btn {
     padding: 6px 12px;
     background: rgba(255, 59, 48, 0.1);
