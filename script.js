@@ -1960,9 +1960,9 @@ function initDraggableCards() {
         });
     });
     
-    document.querySelectorAll('.level-btn').forEach(btn => {
+    document.querySelectorAll('.level-tab').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.level-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         });
     });
