@@ -843,10 +843,8 @@ main {
     transition: all 0.3s;
     text-align: left;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
-    min-height: 100px;
-    justify-content: flex-start;
 }
 
 .option-btn:hover:not(.disabled) {

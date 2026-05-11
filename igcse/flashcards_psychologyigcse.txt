@@ -142,10 +142,10 @@ const psychologyFlashcards = [
   // 15
   {
     question: "Define qualitative data",
-    answer: "Descriptive non-numerical data",
+    answer: "Non-numerical, descriptive, word-based data",
     wrong1: "Numerical statistical data",
-    wrong2: "Visual graphs and charts",
-    wrong3: "Calculated averages/percentages",
+    wrong2: "Graphs and charts",
+    wrong3: "Averages and percentages",
     explanation: "Rich detail; subjective interpretation",
     example: "Interview responses, diary entries"
   },
