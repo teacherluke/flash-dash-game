@@ -2,10 +2,10 @@
   "name": "flash-dash-game",
   "version": "1.0.0",
   "description": "Cambridge & IB Flashcard Learning Game",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
-    "dev": "node server.js",
-    "build": "mkdir -p dist && cp index.html styles.css script.js server.js package.json dist/ && cp -r flashcards_*.txt igcse/ dist/ 2>/dev/null || cp flashcards_*.txt dist/",
+    "dev": "python3 -m http.server 8080",
+    "build": "mkdir -p dist && cp index.html styles.css script.js dist/ && cp flashcards_*.txt dist/",
     "deploy": "vercel --prod"
   },
   "keywords": [
@@ -18,8 +18,6 @@
   "author": "A-STUDENT",
   "license": "MIT",
   "dependencies": {
-    "@vercel/speed-insights": "^2.0.0",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3"
+    "@vercel/speed-insights": "^2.0.0"
   }
 }

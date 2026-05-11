@@ -48,262 +48,6 @@ const LEVEL_SUBJECTS = {
 
 let flashcardData = {};
 let loadedSubjects = new Set();
-let currentUser = null;
-let userProgress = {
-    totalPoints: 0,
-    gamesPlayed: 0,
-    totalCorrect: 0,
-    totalWrong: 0,
-    subjects: {}
-};
-
-function initUser() {
-    const savedUser = localStorage.getItem('flashdash_user');
-    const savedProgress = localStorage.getItem('flashdash_progress');
-    
-    if (savedUser) {
-        currentUser = JSON.parse(savedUser);
-        userProgress = savedProgress ? JSON.parse(savedProgress) : {
-            totalPoints: 0,
-            gamesPlayed: 0,
-            totalCorrect: 0,
-            totalWrong: 0,
-            subjects: {}
-        };
-        updateUserInfo();
-    } else {
-        showLoginModal();
-    }
-}
-
-function showLoginModal() {
-    document.getElementById('login-modal').classList.add('show');
-}
-
-function closeLoginModal() {
-    document.getElementById('login-modal').classList.remove('show');
-}
-
-function login() {
-    const username = document.getElementById('username-input').value.trim();
-    if (!username) {
-        alert('Please enter your name');
-        return;
-    }
-    
-    currentUser = {
-        id: Date.now().toString(),
-        name: username,
-        isGuest: false
-    };
-    
-    localStorage.setItem('flashdash_user', JSON.stringify(currentUser));
-    
-    if (!localStorage.getItem('flashdash_progress')) {
-        userProgress = {
-            totalPoints: 0,
-            gamesPlayed: 0,
-            totalCorrect: 0,
-            totalWrong: 0,
-            subjects: {}
-        };
-        localStorage.setItem('flashdash_progress', JSON.stringify(userProgress));
-    } else {
-        userProgress = JSON.parse(localStorage.getItem('flashdash_progress'));
-    }
-    
-    closeLoginModal();
-    updateUserInfo();
-    updateProgressDisplay();
-}
-
-function loginAsGuest() {
-    currentUser = {
-        id: 'guest_' + Date.now().toString(),
-        name: 'Guest',
-        isGuest: true
-    };
-    
-    userProgress = {
-        totalPoints: 0,
-        gamesPlayed: 0,
-        totalCorrect: 0,
-        totalWrong: 0,
-        subjects: {}
-    };
-    
-    closeLoginModal();
-    updateUserInfo();
-}
-
-function logout() {
-    localStorage.removeItem('flashdash_user');
-    localStorage.removeItem('flashdash_progress');
-    currentUser = null;
-    userProgress = {
-        totalPoints: 0,
-        gamesPlayed: 0,
-        totalCorrect: 0,
-        totalWrong: 0,
-        subjects: {}
-    };
-    
-    updateUserInfo();
-    updateProgressDisplay();
-    showLoginModal();
-}
-
-function updateUserInfo() {
-    if (currentUser) {
-        document.getElementById('user-name').textContent = currentUser.name;
-        document.getElementById('total-points').textContent = userProgress.totalPoints;
-        document.getElementById('logout-btn').style.display = currentUser.isGuest ? 'none' : 'block';
-    } else {
-        document.getElementById('user-name').textContent = 'Player';
-        document.getElementById('total-points').textContent = '0';
-        document.getElementById('logout-btn').style.display = 'none';
-    }
-}
-
-function updateProgress(subject, isCorrect, points) {
-    if (!currentUser || currentUser.isGuest) return;
-    
-    userProgress.totalPoints += points;
-    userProgress.gamesPlayed++;
-    
-    if (isCorrect) {
-        userProgress.totalCorrect++;
-    } else {
-        userProgress.totalWrong++;
-    }
-    
-    if (!userProgress.subjects[subject]) {
-        userProgress.subjects[subject] = {
-            correct: 0,
-            wrong: 0,
-            totalPoints: 0
-        };
-    }
-    
-    if (isCorrect) {
-        userProgress.subjects[subject].correct++;
-    } else {
-        userProgress.subjects[subject].wrong++;
-    }
-    userProgress.subjects[subject].totalPoints += points;
-    
-    localStorage.setItem('flashdash_progress', JSON.stringify(userProgress));
-    updateUserInfo();
-    updateProgressDisplay();
-}
-
-function updateProgressDisplay() {
-    if (!currentUser) {
-        document.getElementById('progress-total-points').textContent = '0';
-        document.getElementById('progress-games-played').textContent = '0';
-        document.getElementById('progress-total-correct').textContent = '0';
-        document.getElementById('progress-accuracy').textContent = '0%';
-        document.getElementById('progress-subjects-content').innerHTML = '<div class="progress-subject-row"><span colspan="4" style="grid-column: 1 / -1; text-align: center;">Please login to track progress</span></div>';
-        return;
-    }
-    
-    document.getElementById('progress-total-points').textContent = userProgress.totalPoints;
-    document.getElementById('progress-games-played').textContent = userProgress.gamesPlayed;
-    document.getElementById('progress-total-correct').textContent = userProgress.totalCorrect;
-    
-    const totalAnswers = userProgress.totalCorrect + userProgress.totalWrong;
-    const accuracy = totalAnswers > 0 ? Math.round((userProgress.totalCorrect / totalAnswers) * 100) : 0;
-    document.getElementById('progress-accuracy').textContent = accuracy + '%';
-    
-    let content = '';
-    const subjects = Object.keys(userProgress.subjects);
-    
-    if (subjects.length === 0) {
-        content = '<div class="progress-subject-row"><span style="grid-column: 1 / -1; text-align: center; color: var(--apple-gray);">No progress yet. Start playing!</span></div>';
-    } else {
-        subjects.forEach(subject => {
-            const subjProgress = userProgress.subjects[subject];
-            const subjTotal = subjProgress.correct + subjProgress.wrong;
-            const subjAccuracy = subjTotal > 0 ? Math.round((subjProgress.correct / subjTotal) * 100) : 0;
-            content += `
-                <div class="progress-subject-row">
-                    <span class="progress-subject-name">${SUBJECT_NAMES[subject] || subject}</span>
-                    <span class="progress-subject-score">${subjAccuracy}%</span>
-                    <span class="progress-subject-correct">${subjProgress.correct}</span>
-                    <span class="progress-subject-wrong">${subjProgress.wrong}</span>
-                </div>
-            `;
-        });
-    }
-    
-    document.getElementById('progress-subjects-content').innerHTML = content;
-}
-
-function loginWithGoogle() {
-    window.location.href = '/auth/google';
-}
-
-function loginWithMicrosoft() {
-    window.location.href = '/auth/microsoft';
-}
-
-function loginWithWeChat() {
-    window.location.href = '/auth/wechat';
-}
-
-async function loadUser() {
-    try {
-        const res = await fetch('/api/me');
-        const user = await res.json();
-        
-        if (user) {
-            currentUser = {
-                id: user.id,
-                name: user.name,
-                isGuest: false
-            };
-            
-            localStorage.setItem('flashdash_user', JSON.stringify(currentUser));
-            
-            userProgress = {
-                totalPoints: user.score || 0,
-                gamesPlayed: user.gamesPlayed || 0,
-                totalCorrect: user.totalCorrect || 0,
-                totalWrong: user.totalWrong || 0,
-                subjects: user.subjects || {}
-            };
-            
-            localStorage.setItem('flashdash_progress', JSON.stringify(userProgress));
-            
-            document.getElementById('loginSection').style.display = 'none';
-            
-            closeLoginModal();
-            updateUserInfo();
-            updateProgressDisplay();
-        }
-    } catch (err) {
-        console.log('Not logged in via OAuth');
-    }
-}
-
-async function saveUserProgress(score, progressPercent, cardsCompleted) {
-    try {
-        await fetch('/api/save-progress', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                score: score,
-                progress: progressPercent,
-                completedCards: cardsCompleted
-            })
-        });
-        console.log('✅ Progress saved!');
-        loadUser();
-    } catch (err) {
-        console.log('Backend not available, using localStorage');
-    }
-}
-
 let currentLevel = 'preigcse';
 
 function transformQuestion(question) {
@@ -1318,8 +1062,6 @@ function selectAnswer(optionIndex) {
         if (cardIndex !== -1) {
             wrongFlashcards.splice(cardIndex, 1);
         }
-        
-        updateProgress(currentSubject, true, basePoints * multiplier);
     } else {
         trackEvent('answer_incorrect', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
         soundManager.playWrong();
@@ -1336,8 +1078,6 @@ function selectAnswer(optionIndex) {
         if (correctIndex !== -1) {
             document.getElementById(`option-${correctIndex}`).classList.add('correct');
         }
-        
-        updateProgress(currentSubject, false, 0);
     }
     
     setTimeout(() => {
@@ -1810,199 +1550,35 @@ function initLoadingScreen() {
         loadingText.textContent = texts[textIndex];
     }, 1500);
     
-    const completeLoading = () => {
-        clearInterval(progressInterval);
-        clearInterval(textInterval);
-        
-        loadingScreen.classList.add('fading-out');
-        
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-            document.getElementById('app').classList.add('visible');
-            
-            try {
-                initDraggableCards();
-                initSplitTextAnimation();
-                initScrollAnimations();
-            } catch (e) {
-                console.log('Animation init error:', e);
-            }
-        }, 800);
-    };
-    
     let progress = 0;
     const progressInterval = setInterval(() => {
-        progress += Math.random() * 25;
+        progress += Math.random() * 15;
         if (progress > 100) progress = 100;
         loadingBar.style.width = `${progress}%`;
         
         if (progress >= 100) {
-            completeLoading();
+            clearInterval(progressInterval);
+            clearInterval(textInterval);
+            
+            gsap.to('.loading-content', {
+                opacity: 0,
+                y: -30,
+                duration: 0.8,
+                delay: 1.5
+            });
+            
+            gsap.to(loadingScreen, {
+                opacity: 0,
+                duration: 0.8,
+                delay: 2,
+                onComplete: () => {
+                    loadingScreen.style.display = 'none';
+                    document.getElementById('app').style.opacity = '1';
+                }
+            });
         }
-    }, 150);
-    
-    setTimeout(() => {
-        if (loadingScreen && loadingScreen.style.display !== 'none') {
-            completeLoading();
-        }
-    }, 3000);
+    }, 300);
 }
-
-function initDraggableCards() {
-      const heroGraphic = document.querySelector('.hero-graphic');
-      if (!heroGraphic) return;
-      
-      const cards = heroGraphic.querySelectorAll('.floating-card');
-      const snapValue = 20;
-      
-      cards.forEach((card, index) => {
-          Draggable.create(card, {
-              type: "x,y",
-              bounds: heroGraphic,
-              inertia: true,
-              snap: {
-                  x: function(value) {
-                      return Math.round(value / snapValue) * snapValue;
-                  },
-                  y: function(value) {
-                      return Math.round(value / snapValue) * snapValue;
-                  }
-              },
-              onDrag: function() {
-                  gsap.to(this.target, { scale: 1.1, duration: 0.2 });
-              },
-              onRelease: function() {
-                  gsap.to(this.target, { scale: 1, duration: 0.3 });
-              }
-          });
-      });
-  }
-
-  function initSplitTextAnimation() {
-      const heroTitle = document.querySelector('.hero-title');
-      if (!heroTitle || !window.SplitText) return;
-      
-      const splitTitle = new SplitText(heroTitle, { 
-          type: "words, chars",
-          charsClass: "char"
-      });
-      
-      gsap.from(splitTitle.chars, {
-          y: 50,
-          opacity: 0,
-          stagger: 0.03,
-          duration: 0.8,
-          ease: "back.out(1.7)",
-          delay: 0.5
-      });
-      
-      const heroSubtitle = document.querySelector('.hero-subtitle');
-      if (heroSubtitle) {
-          gsap.from(heroSubtitle, {
-              y: 30,
-              opacity: 0,
-              duration: 0.6,
-              delay: 0.8,
-              ease: "power2.out"
-          });
-      }
-      
-      const heroButton = document.querySelector('.hero-button');
-      if (heroButton) {
-          gsap.from(heroButton, {
-              scale: 0.9,
-              opacity: 0,
-              duration: 0.5,
-              delay: 1,
-              ease: "back.out(1.5)"
-          });
-      }
-  }
-
-  function initScrollAnimations() {
-      if (!window.Observer) return;
-      
-      const features = document.querySelectorAll('.feature');
-      const subjectCards = document.querySelectorAll('.subject-card');
-      
-      features.forEach((feature, index) => {
-          gsap.set(feature, { opacity: 0, y: 50 });
-      });
-      
-      subjectCards.forEach((card, index) => {
-          gsap.set(card, { opacity: 0, y: 30 });
-      });
-      
-      const observer = new Observer({
-          target: window,
-          type: "wheel,touch,scroll",
-          onScroll: (self) => {
-              const scrollY = self.scrollY;
-              
-              features.forEach((feature, index) => {
-                  const rect = feature.getBoundingClientRect();
-                  const windowHeight = window.innerHeight;
-                  const triggerPoint = windowHeight * 0.7;
-                  
-                  if (rect.top < triggerPoint && gsap.getProperty(feature, "opacity") === 0) {
-                      gsap.to(feature, {
-                          opacity: 1,
-                          y: 0,
-                          duration: 0.8,
-                          delay: index * 0.1,
-                          ease: "power3.out"
-                      });
-                  }
-              });
-              
-              subjectCards.forEach((card, index) => {
-                  const rect = card.getBoundingClientRect();
-                  const windowHeight = window.innerHeight;
-                  const triggerPoint = windowHeight * 0.8;
-                  
-                  if (rect.top < triggerPoint && gsap.getProperty(card, "opacity") === 0) {
-                      gsap.to(card, {
-                          opacity: 1,
-                          y: 0,
-                          duration: 0.6,
-                          delay: (index % 4) * 0.1,
-                          ease: "power3.out"
-                      });
-                  }
-              });
-          }
-      });
-      
-      return observer;
-  }
-
-  function initInertiaScroll() {
-      if (!window.InertiaPlugin || !window.Observer) return;
-      
-      let scrollVelocity = 0;
-      let animationId = null;
-      
-      const inertiaObserver = new Observer({
-          target: window,
-          type: "wheel,touch",
-          onUp: () => {
-              if (animationId) cancelAnimationFrame(animationId);
-              
-              const applyInertia = () => {
-                  if (Math.abs(scrollVelocity) > 0.5) {
-                      window.scrollBy(0, scrollVelocity);
-                      scrollVelocity *= 0.95;
-                      animationId = requestAnimationFrame(applyInertia);
-                  }
-              };
-              
-              applyInertia();
-          },
-          tolerance: 1
-      });
-      
-      return inertiaObserver;
-  }
 
 document.addEventListener('DOMContentLoaded', () => {
     initLoadingScreen();
@@ -2016,9 +1592,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    document.querySelectorAll('.level-tab').forEach(btn => {
+    document.querySelectorAll('.level-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.level-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         });
     });
@@ -2039,5 +1615,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     updateSubjectDisplay();
     showSection('home');
-    initUser();
 });
