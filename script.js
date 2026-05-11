@@ -1850,7 +1850,10 @@ function initLoadingScreen() {
                 delay: 2,
                 onComplete: () => {
                     loadingScreen.style.display = 'none';
-                    document.getElementById('app').style.opacity = '1';
+                    document.getElementById('app').classList.add('visible');
+                    initDraggableCards();
+                    initSplitTextAnimation();
+                    initScrollAnimations();
                 }
             });
         }
