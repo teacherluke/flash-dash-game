@@ -1810,54 +1810,86 @@ function initLoadingScreen() {
         loadingText.textContent = texts[textIndex];
     }, 1500);
     
-    if (window.DrawSVGPlugin) {
-        gsap.from('#loading-bolt', {
-            drawSVG: 0,
-            duration: 1.5,
-            ease: "power2.out",
-            repeat: -1,
-            repeatDelay: 0.5
-        });
-        
-        gsap.from('#loading-ring', {
-            drawSVG: 0,
-            duration: 2,
-            ease: "linear",
-            repeat: -1
-        });
+    try {
+        if (window.DrawSVGPlugin && window.gsap) {
+            gsap.from('#loading-bolt', {
+                drawSVG: 0,
+                duration: 1.5,
+                ease: "power2.out",
+                repeat: -1,
+                repeatDelay: 0.5
+            });
+            
+            gsap.from('#loading-ring', {
+                drawSVG: 0,
+                duration: 2,
+                ease: "linear",
+                repeat: -1
+            });
+        }
+    } catch (e) {
+        console.log('GSAP animation error:', e);
     }
+    
+    const completeLoading = () => {
+        clearInterval(progressInterval);
+        clearInterval(textInterval);
+        
+        try {
+            if (window.gsap) {
+                gsap.to('.loading-content', {
+                    opacity: 0,
+                    y: -30,
+                    duration: 0.8,
+                    delay: 0.5
+                });
+                
+                gsap.to(loadingScreen, {
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: 1,
+                    onComplete: () => {
+                        loadingScreen.style.display = 'none';
+                        document.getElementById('app').classList.add('visible');
+                        try {
+                            initDraggableCards();
+                            initSplitTextAnimation();
+                            initScrollAnimations();
+                        } catch (e) {
+                            console.log('Animation init error:', e);
+                        }
+                    }
+                });
+            } else {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    document.getElementById('app').classList.add('visible');
+                }, 500);
+            }
+        } catch (e) {
+            console.log('Loading complete error:', e);
+            loadingScreen.style.display = 'none';
+            document.getElementById('app').classList.add('visible');
+        }
+    };
     
     let progress = 0;
     const progressInterval = setInterval(() => {
-        progress += Math.random() * 15;
+        progress += Math.random() * 20;
         if (progress > 100) progress = 100;
         loadingBar.style.width = `${progress}%`;
         
         if (progress >= 100) {
-            clearInterval(progressInterval);
-            clearInterval(textInterval);
-            
-            gsap.to('.loading-content', {
-                opacity: 0,
-                y: -30,
-                duration: 0.8,
-                delay: 1.5
-            });
-            
-            gsap.to(loadingScreen, {
-                opacity: 0,
-                duration: 0.8,
-                delay: 2,
-                onComplete: () => {
-                    loadingScreen.style.display = 'none';
-                    document.getElementById('app').classList.add('visible');
-                    initDraggableCards();
-                    initSplitTextAnimation();
-                    initScrollAnimations();
-                }
-            });
+            completeLoading();
         }
-    }, 300);
+    }, 200);
+    
+    setTimeout(() => {
+        if (loadingScreen.style.display !== 'none') {
+            completeLoading();
+        }
+    }, 5000);
 }
 
 function initDraggableCards() {
