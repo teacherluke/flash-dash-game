@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Observer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/DrawSVGPlugin.min.js"></script>
 
     <script type="module">
         import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@2.0.0';
@@ -18,7 +22,16 @@
 <body>
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
-            <i class="fas fa-bolt loading-icon"></i>
+            <svg class="loading-svg" viewBox="0 0 120 120">
+                <defs>
+                    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0071e3" />
+                        <stop offset="100%" style="stop-color:#0077ed" />
+                    </linearGradient>
+                </defs>
+                <path id="loading-bolt" d="M60 10 L45 50 L20 50 L50 75 L35 110 L60 85 L85 110 L70 75 L100 50 L75 50 Z" fill="none" stroke="url(#boltGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle id="loading-ring" cx="60" cy="60" r="55" fill="none" stroke="#0071e3" stroke-width="2" stroke-dasharray="10 5" opacity="0.3"/>
+            </svg>
             <h1 class="loading-title">FLASH DASH</h1>
         </div>
     </div>

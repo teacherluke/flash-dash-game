@@ -1550,6 +1550,23 @@ function initLoadingScreen() {
         loadingText.textContent = texts[textIndex];
     }, 1500);
     
+    if (window.DrawSVGPlugin) {
+        gsap.from('#loading-bolt', {
+            drawSVG: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            repeat: -1,
+            repeatDelay: 0.5
+        });
+        
+        gsap.from('#loading-ring', {
+            drawSVG: 0,
+            duration: 2,
+            ease: "linear",
+            repeat: -1
+        });
+    }
+    
     let progress = 0;
     const progressInterval = setInterval(() => {
         progress += Math.random() * 15;
@@ -1608,6 +1625,132 @@ function initDraggableCards() {
               }
           });
       });
+  }
+
+  function initSplitTextAnimation() {
+      const heroTitle = document.querySelector('.hero-title');
+      if (!heroTitle || !window.SplitText) return;
+      
+      const splitTitle = new SplitText(heroTitle, { 
+          type: "words, chars",
+          charsClass: "char"
+      });
+      
+      gsap.from(splitTitle.chars, {
+          y: 50,
+          opacity: 0,
+          stagger: 0.03,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          delay: 0.5
+      });
+      
+      const heroSubtitle = document.querySelector('.hero-subtitle');
+      if (heroSubtitle) {
+          gsap.from(heroSubtitle, {
+              y: 30,
+              opacity: 0,
+              duration: 0.6,
+              delay: 0.8,
+              ease: "power2.out"
+          });
+      }
+      
+      const heroButton = document.querySelector('.hero-button');
+      if (heroButton) {
+          gsap.from(heroButton, {
+              scale: 0.9,
+              opacity: 0,
+              duration: 0.5,
+              delay: 1,
+              ease: "back.out(1.5)"
+          });
+      }
+  }
+
+  function initScrollAnimations() {
+      if (!window.Observer) return;
+      
+      const features = document.querySelectorAll('.feature');
+      const subjectCards = document.querySelectorAll('.subject-card');
+      
+      features.forEach((feature, index) => {
+          gsap.set(feature, { opacity: 0, y: 50 });
+      });
+      
+      subjectCards.forEach((card, index) => {
+          gsap.set(card, { opacity: 0, y: 30 });
+      });
+      
+      const observer = new Observer({
+          target: window,
+          type: "wheel,touch,scroll",
+          onScroll: (self) => {
+              const scrollY = self.scrollY;
+              
+              features.forEach((feature, index) => {
+                  const rect = feature.getBoundingClientRect();
+                  const windowHeight = window.innerHeight;
+                  const triggerPoint = windowHeight * 0.7;
+                  
+                  if (rect.top < triggerPoint && gsap.getProperty(feature, "opacity") === 0) {
+                      gsap.to(feature, {
+                          opacity: 1,
+                          y: 0,
+                          duration: 0.8,
+                          delay: index * 0.1,
+                          ease: "power3.out"
+                      });
+                  }
+              });
+              
+              subjectCards.forEach((card, index) => {
+                  const rect = card.getBoundingClientRect();
+                  const windowHeight = window.innerHeight;
+                  const triggerPoint = windowHeight * 0.8;
+                  
+                  if (rect.top < triggerPoint && gsap.getProperty(card, "opacity") === 0) {
+                      gsap.to(card, {
+                          opacity: 1,
+                          y: 0,
+                          duration: 0.6,
+                          delay: (index % 4) * 0.1,
+                          ease: "power3.out"
+                      });
+                  }
+              });
+          }
+      });
+      
+      return observer;
+  }
+
+  function initInertiaScroll() {
+      if (!window.InertiaPlugin || !window.Observer) return;
+      
+      let scrollVelocity = 0;
+      let animationId = null;
+      
+      const inertiaObserver = new Observer({
+          target: window,
+          type: "wheel,touch",
+          onUp: () => {
+              if (animationId) cancelAnimationFrame(animationId);
+              
+              const applyInertia = () => {
+                  if (Math.abs(scrollVelocity) > 0.5) {
+                      window.scrollBy(0, scrollVelocity);
+                      scrollVelocity *= 0.95;
+                      animationId = requestAnimationFrame(applyInertia);
+                  }
+              };
+              
+              applyInertia();
+          },
+          tolerance: 1
+      });
+      
+      return inertiaObserver;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
