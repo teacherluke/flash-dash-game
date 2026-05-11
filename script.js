@@ -1580,10 +1580,74 @@ function initLoadingScreen() {
     }, 300);
 }
 
+function checkCookieConsent() {
+    const consent = localStorage.getItem('flashDashCookieConsent');
+    if (!consent) {
+        document.getElementById('cookie-consent').style.display = 'block';
+    }
+}
+
+function acceptCookies() {
+    localStorage.setItem('flashDashCookieConsent', JSON.stringify({
+        accepted: true,
+        analytics: true,
+        preferences: true,
+        marketing: false,
+        timestamp: new Date().toISOString()
+    }));
+    document.getElementById('cookie-consent').style.display = 'none';
+}
+
+function rejectCookies() {
+    localStorage.setItem('flashDashCookieConsent', JSON.stringify({
+        accepted: false,
+        analytics: false,
+        preferences: false,
+        marketing: false,
+        timestamp: new Date().toISOString()
+    }));
+    document.getElementById('cookie-consent').style.display = 'none';
+    document.getElementById('cookie-settings-modal').style.display = 'none';
+}
+
+function showCookieSettings() {
+    document.getElementById('cookie-consent').style.display = 'none';
+    document.getElementById('cookie-settings-modal').style.display = 'flex';
+    
+    const consent = localStorage.getItem('flashDashCookieConsent');
+    if (consent) {
+        try {
+            const settings = JSON.parse(consent);
+            document.getElementById('analytics-cookie').checked = settings.analytics || false;
+            document.getElementById('preferences-cookie').checked = settings.preferences || false;
+            document.getElementById('marketing-cookie').checked = settings.marketing || false;
+        } catch (e) {
+            console.error('Error loading cookie settings:', e);
+        }
+    }
+}
+
+function closeCookieSettings() {
+    document.getElementById('cookie-settings-modal').style.display = 'none';
+    document.getElementById('cookie-consent').style.display = 'block';
+}
+
+function saveCookieSettings() {
+    localStorage.setItem('flashDashCookieConsent', JSON.stringify({
+        accepted: true,
+        analytics: document.getElementById('analytics-cookie').checked,
+        preferences: document.getElementById('preferences-cookie').checked,
+        marketing: document.getElementById('marketing-cookie').checked,
+        timestamp: new Date().toISOString()
+    }));
+    document.getElementById('cookie-settings-modal').style.display = 'none';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initLoadingScreen();
     loadUserProgress();
     renderLeaderboard();
+    checkCookieConsent();
     
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {

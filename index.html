@@ -14,6 +14,59 @@
     </script>
 </head>
 <body>
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-consent-content">
+            <div class="cookie-icon">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="cookie-text">
+                <h3>Accept cookies from FlashDash!</h3>
+                <p>By clicking "Accept all cookies", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. Please refer to our cookie notice for more information about the way we use cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn settings-btn" onclick="showCookieSettings()">Cookies settings</button>
+                <button class="cookie-btn reject-btn" onclick="rejectCookies()">Reject all cookies</button>
+                <button class="cookie-btn accept-btn" onclick="acceptCookies()">Accept all cookies</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookie-settings-modal" class="cookie-modal" style="display: none;">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>Cookie Settings</h3>
+                <button class="close-btn" onclick="closeCookieSettings()">&times;</button>
+            </div>
+            <div class="cookie-modal-body">
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="analytics-cookie" checked>
+                        <span>Analytics cookies</span>
+                    </label>
+                    <p>Help us understand how visitors interact with our website.</p>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="preferences-cookie" checked>
+                        <span>Preferences cookies</span>
+                    </label>
+                    <p>Remember your preferences and settings.</p>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="marketing-cookie">
+                        <span>Marketing cookies</span>
+                    </label>
+                    <p>Track your browsing activity for marketing purposes.</p>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button class="cookie-btn reject-btn" onclick="rejectCookies()">Reject all</button>
+                <button class="cookie-btn accept-btn" onclick="saveCookieSettings()">Save settings</button>
+            </div>
+        </div>
+    </div>
+
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="logo-container">
