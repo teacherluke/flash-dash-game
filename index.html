@@ -8,9 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <!-- Google & Microsoft Login Libraries -->
+    <!-- Google Login Library -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://alcdn.msauth.net/browser/2.0.0/js/msal-browser.min.js"></script>
 
     <script type="module">
         import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@2.0.0';
@@ -70,10 +69,7 @@
             background: #F5F0E6;
             color: #222;
         }
-        .ms-btn {
-            background: #E9E0D0;
-            color: #222;
-        }
+
         .login-btn:hover {
             opacity: 0.9;
             transform: translateY(-2px);
@@ -91,10 +87,6 @@
 
         <button class="login-btn google-btn" id="google-login-btn">
             <i class="fab fa-google"></i> Continue with Google
-        </button>
-
-        <button class="login-btn ms-btn" id="microsoft-login-btn">
-            <i class="fab fa-microsoft"></i> Continue with Microsoft
         </button>
     </div>
 </div>
@@ -432,9 +424,9 @@
             }
         };
 
-        // Google Login (you will add your Google Client ID later)
+        // Google Login
         google.accounts.id.initialize({
-            client_id: "YOUR_GOOGLE_CLIENT_ID_HERE",
+            client_id: "57697451938-bl8gsll2hf7qvbphfsdvrm86h5cnbgba.apps.googleusercontent.com",
             callback: handleGoogleLogin
         });
 
@@ -451,25 +443,6 @@
                 showApp();
             }
         }
-
-        // Microsoft Login (you will add your Microsoft Client ID later)
-        const msalInstance = new msal.PublicClientApplication({
-            auth: { 
-                clientId: "YOUR_MICROSOFT_CLIENT_ID_HERE", 
-                redirectUri: window.location.href 
-            }
-        });
-
-        document.getElementById("microsoft-login-btn").addEventListener("click", async () => {
-            const res = await msalInstance.loginPopup({ scopes: ["user.read"] });
-            const userRes = await fetch(`${APPS_SCRIPT_URL}?action=verifyMicrosoft&token=${res.accessToken}`);
-            const user = await userRes.json();
-            if (user.status === "success") {
-                saveUser(user);
-                setUserProfile(user);
-                showApp();
-            }
-        });
 
         // Save & display user
         function saveUser(user) {
