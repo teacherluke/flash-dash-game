@@ -1636,6 +1636,85 @@ function hideCookieConsent() {
     }
 }
 
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+    });
+
+    setTimeout(() => {
+        const heroTitle = document.querySelector('.hero-title');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        const ctaBtn = document.querySelector('.cta-btn');
+        
+        if (heroTitle) {
+            gsap.to(heroTitle, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+        }
+        
+        if (heroSubtitle) {
+            gsap.to(heroSubtitle, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.2,
+                ease: 'power3.out'
+            });
+        }
+        
+        if (ctaBtn) {
+            gsap.from(ctaBtn, {
+                scale: 0.9,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.4,
+                ease: 'back.out(1.7)'
+            });
+        }
+    }, 500);
+
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card, index) => {
+        gsap.from(card, {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            delay: 1 + index * 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    floatingIcons.forEach((icon, index) => {
+        gsap.to(icon, {
+            opacity: 0.3,
+            duration: 1,
+            delay: 0.8 + index * 0.2
+        });
+    });
+}
+
 function showCookieSettings() {
     const cookieConsent = document.getElementById('cookie-consent');
     const cookieModal = document.getElementById('cookie-settings-modal');
@@ -1704,6 +1783,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadUserProgress();
     renderLeaderboard();
     checkCookieConsent();
+    initScrollAnimations();
     
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
