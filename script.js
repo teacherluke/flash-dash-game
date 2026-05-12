@@ -1,1 +1,1739 @@
-const t={preigcse:{biology:"flashcards_biology.txt",maths:"flashcards_math.txt",physics:"flashcards_physics.txt",chemistry:"flashcards_chemistry.txt",english:"flashcards_english.txt",history:"flashcards_history.txt",geography:"flashcards_geography.txt",economics:"flashcards_economics.txt",businessstudies:"flashcards_businessstudies.txt",psychology:"flashcards_psychology.txt",chinese:"flashcards_chinese_firstlanguage.txt"},igcse:{biology:"igcse/flashcards_biologyigcse.txt",maths:"igcse/flashcards_mathigcse.txt",physics:"igcse/flashcards_physicsigcse.txt",chemistry:"igcse/flashcards_chemistryigcse.txt",english:"igcse/flashcards_englishigcse.txt",history:"igcse/flashcards_historyigcse.txt",geography:"igcse/flashcards_geographyigcse.txt",economics:"igcse/flashcards_economicsigcse.txt",businessstudies:"igcse/flashcards_businessstudiesigcse.txt",psychology:"igcse/flashcards_psychologyigcse.txt",chinese:"igcse/flashcards_chinese_firstlanguage_igcse.txt"}},e={biology:"Biology",maths:"Mathematics",physics:"Physics",chemistry:"Chemistry",english:"English",history:"History",geography:"Geography",economics:"Economics",businessstudies:"Business Studies",psychology:"Psychology",chinese:"Chinese (First Language)"},s={preigcse:["biology","maths","physics","chemistry","english","history","geography","economics","businessstudies","psychology","chinese"],igcse:["biology","maths","physics","chemistry","english","history","geography","economics","businessstudies","psychology","chinese"]};let n={},o=new Set,i="preigcse";function c(t){if(!t)return t;let e=t.trim();const s=[{regex:/^Define\s+(.+)/i,replace:"What does $1 mean?"},{regex:/^What is\s+(.+)\?$/i,replace:"What is $1?"},{regex:/^Explain\s+(.+)/i,replace:"Explain what $1 is."},{regex:/^Describe\s+(.+)/i,replace:"Describe what $1 is."},{regex:/^State\s+(.+)/i,replace:"State what $1 is."},{regex:/^Name\s+(.+)/i,replace:"Name $1."},{regex:/^List\s+(.+)/i,replace:"List $1."},{regex:/^Compare\s+(.+)/i,replace:"Compare $1."},{regex:/^Contrast\s+(.+)/i,replace:"Contrast $1."},{regex:/^Analyze\s+(.+)/i,replace:"Analyze $1."},{regex:/^Evaluate\s+(.+)/i,replace:"Evaluate $1."},{regex:/^Discuss\s+(.+)/i,replace:"Discuss $1."},{regex:/^Solve\s+(.+)/i,replace:"Solve: $1"},{regex:/^Calculate\s+(.+)/i,replace:"Calculate: $1"},{regex:/^Find\s+(.+)/i,replace:"Find: $1"}];for(const{regex:t,replace:n}of s)if(t.test(e)){e=e.replace(t,n);break}return e}async function a(s){const a=`${i}_${s}`;if(o.has(a))return n[a];const r=t[i]?.[s];if(!r)return null;try{const t=await fetch(r),i=await t.text(),l=i.indexOf("["),h=i.lastIndexOf("]")+1;if(-1!==l&&-1!==h){let t=i.substring(l,h);t=t.replace(/\/\/.*$/gm,""),t=t.replace(/,\s*]/g,"]"),t=t.replace(/,\s*}/g,"}"),t=t.replace(/,\s*\n\s*\n\s*question:/g,",\n    {\n        question:");const r=t.split("\n");t=r.map(t=>t.replace(/^\s*(\w+):/,'    "$1":')).join("\n");try{let i=JSON.parse(t);return i=i.map(t=>({...t,question:c(t.question)})),n[a]={name:e[s]||s,flashcards:i},o.add(a),n[a]}catch(t){return null}}}catch(t){return null}return null}function r(t){i=t,l()}function l(){const t=document.querySelector(".subject-grid"),n=s[i];t.innerHTML="",n.forEach(s=>{const n=document.createElement("div");n.className="subject-card",n.setAttribute("data-subject",s);const o=h(s);n.innerHTML=`\n            ${o}\n            <h3>${e[s]}</h3>\n        `,n.addEventListener("click",()=>Q(s)),t.appendChild(n)})}function h(t){return{biology:'<i class="fas fa-dna"></i>',maths:'<i class="fas fa-calculator"></i>',physics:'<i class="fas fa-atom"></i>',chemistry:'<i class="fas fa-flask"></i>',english:'<i class="fas fa-book-open"></i>',history:'<i class="fas fa-history"></i>',geography:'<i class="fas fa-globe"></i>',economics:'<i class="fas fa-chart-line"></i>',businessstudies:'<i class="fas fa-briefcase"></i>',psychology:'<i class="fas fa-brain"></i>',chinese:'<i class="fas fa-language"></i>'}[t]||'<i class="fas fa-question-circle"></i>'}let u=null,d=[],p=[],m=[],f=0,g=15,y=null,b=0,w=0,v=0,$=0,k=0,x=!1,_=!1,S=!1,M=!1,j=!1,C={name:"Player",isLoggedIn:!0};const P=20;class D{constructor(){this.audioContext=null}init(){this.audioContext||(this.audioContext=new(window.AudioContext||window.webkitAudioContext))}playCorrect(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createOscillator(),s=this.audioContext.createGain();t.connect(s),e.connect(s),s.connect(this.audioContext.destination),t.type="sine",e.type="sine",t.frequency.setValueAtTime(523.25,this.audioContext.currentTime),t.frequency.setValueAtTime(659.25,this.audioContext.currentTime+.1),t.frequency.setValueAtTime(783.99,this.audioContext.currentTime+.2),t.frequency.setValueAtTime(1046.5,this.audioContext.currentTime+.3),e.frequency.setValueAtTime(659.25,this.audioContext.currentTime),e.frequency.setValueAtTime(783.99,this.audioContext.currentTime+.1),e.frequency.setValueAtTime(880,this.audioContext.currentTime+.2),s.gain.setValueAtTime(.25,this.audioContext.currentTime),s.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.5),t.start(this.audioContext.currentTime),e.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.5),e.stop(this.audioContext.currentTime+.5)}playWrong(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createGain();t.connect(e),e.connect(this.audioContext.destination),t.type="sawtooth",t.frequency.setValueAtTime(200,this.audioContext.currentTime),t.frequency.setValueAtTime(150,this.audioContext.currentTime+.15),t.frequency.setValueAtTime(100,this.audioContext.currentTime+.3),e.gain.setValueAtTime(.2,this.audioContext.currentTime),e.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.6),t.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.6)}playCountdown(t){this.init();const e=this.audioContext.createOscillator(),s=this.audioContext.createGain();e.connect(s),s.connect(this.audioContext.destination);e.type="sine",e.frequency.setValueAtTime({5:523.25,4:587.33,3:659.25,2:783.99,1:1046.5}[t]||523.25,this.audioContext.currentTime),s.gain.setValueAtTime(.4,this.audioContext.currentTime),s.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.15),e.start(this.audioContext.currentTime),e.stop(this.audioContext.currentTime+.15)}playBuzzer(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createOscillator(),s=this.audioContext.createGain();t.connect(s),e.connect(s),s.connect(this.audioContext.destination),t.type="square",e.type="sawtooth",t.frequency.setValueAtTime(100,this.audioContext.currentTime),e.frequency.setValueAtTime(150,this.audioContext.currentTime),s.gain.setValueAtTime(.5,this.audioContext.currentTime),s.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.8),t.start(this.audioContext.currentTime),e.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.8),e.stop(this.audioContext.currentTime+.8)}playCheer(){this.init();const t=()=>{const t=this.audioContext.createBuffer(1,.1*this.audioContext.sampleRate,this.audioContext.sampleRate),e=t.getChannelData(0);for(let s=0;s<t.length;s++)e[s]=2*Math.random()-1;const s=this.audioContext.createBufferSource();s.buffer=t;const n=this.audioContext.createBiquadFilter();n.type="bandpass",n.frequency.value=800,n.Q.value=.5;const o=this.audioContext.createGain();o.gain.setValueAtTime(.3,this.audioContext.currentTime),o.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.1),s.connect(n),n.connect(o),o.connect(this.audioContext.destination),s.start()};for(let e=0;e<12;e++)setTimeout(t,150*e);const e=this.audioContext.createOscillator(),s=this.audioContext.createGain();e.connect(s),s.connect(this.audioContext.destination),e.type="sine",e.frequency.setValueAtTime(440,this.audioContext.currentTime),e.frequency.setValueAtTime(554.37,this.audioContext.currentTime+.2),e.frequency.setValueAtTime(659.25,this.audioContext.currentTime+.4),e.frequency.setValueAtTime(880,this.audioContext.currentTime+.6),s.gain.setValueAtTime(.2,this.audioContext.currentTime),s.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+2),e.start(this.audioContext.currentTime),e.stop(this.audioContext.currentTime+2)}playCardFlip(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createGain(),s=this.audioContext.createBiquadFilter();t.connect(s),s.connect(e),e.connect(this.audioContext.destination),t.type="sine",t.frequency.setValueAtTime(800,this.audioContext.currentTime),t.frequency.exponentialRampToValueAtTime(400,this.audioContext.currentTime+.2),s.type="lowpass",s.frequency.setValueAtTime(2e3,this.audioContext.currentTime),s.frequency.exponentialRampToValueAtTime(500,this.audioContext.currentTime+.2),e.gain.setValueAtTime(.15,this.audioContext.currentTime),e.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.2),t.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.2)}playPowerUpUnlock(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createGain();t.connect(e),e.connect(this.audioContext.destination),t.type="sine",t.frequency.setValueAtTime(440,this.audioContext.currentTime),t.frequency.setValueAtTime(554.37,this.audioContext.currentTime+.1),t.frequency.setValueAtTime(659.25,this.audioContext.currentTime+.2),t.frequency.setValueAtTime(880,this.audioContext.currentTime+.3),e.gain.setValueAtTime(.3,this.audioContext.currentTime),e.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.5),t.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.5)}playPowerUpUse(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createGain();t.connect(e),e.connect(this.audioContext.destination),t.type="square",t.frequency.setValueAtTime(1200,this.audioContext.currentTime),t.frequency.setValueAtTime(1500,this.audioContext.currentTime+.1),t.frequency.setValueAtTime(1800,this.audioContext.currentTime+.2),e.gain.setValueAtTime(.2,this.audioContext.currentTime),e.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.3),t.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.3)}playButtonClick(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createGain();t.connect(e),e.connect(this.audioContext.destination),t.type="sine",t.frequency.setValueAtTime(800,this.audioContext.currentTime),t.frequency.exponentialRampToValueAtTime(400,this.audioContext.currentTime+.05),e.gain.setValueAtTime(.1,this.audioContext.currentTime),e.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.05),t.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.05)}playScoreIncrease(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createGain();t.connect(e),e.connect(this.audioContext.destination),t.type="sine",t.frequency.setValueAtTime(600,this.audioContext.currentTime),t.frequency.setValueAtTime(700,this.audioContext.currentTime+.08),t.frequency.setValueAtTime(800,this.audioContext.currentTime+.16),t.frequency.setValueAtTime(900,this.audioContext.currentTime+.24),e.gain.setValueAtTime(.2,this.audioContext.currentTime),e.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.3),t.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.3)}playRoundComplete(){this.init();[523.25,659.25,783.99,1046.5,1244.51].forEach((t,e)=>{const s=this.audioContext.createOscillator(),n=this.audioContext.createGain();s.connect(n),n.connect(this.audioContext.destination),s.type="sine",s.frequency.setValueAtTime(t,this.audioContext.currentTime+.15*e),n.gain.setValueAtTime(.25,this.audioContext.currentTime+.15*e),n.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.15*e+.3),s.start(this.audioContext.currentTime+.15*e),s.stop(this.audioContext.currentTime+.15*e+.3)})}playGameStart(){this.init();const t=this.audioContext.createOscillator(),e=this.audioContext.createOscillator(),s=this.audioContext.createGain();t.connect(s),e.connect(s),s.connect(this.audioContext.destination),t.type="sine",e.type="sine",t.frequency.setValueAtTime(440,this.audioContext.currentTime),t.frequency.setValueAtTime(554.37,this.audioContext.currentTime+.15),t.frequency.setValueAtTime(659.25,this.audioContext.currentTime+.3),e.frequency.setValueAtTime(880,this.audioContext.currentTime),e.frequency.setValueAtTime(1108.73,this.audioContext.currentTime+.15),e.frequency.setValueAtTime(1318.51,this.audioContext.currentTime+.3),s.gain.setValueAtTime(.2,this.audioContext.currentTime),s.gain.exponentialRampToValueAtTime(.01,this.audioContext.currentTime+.5),t.start(this.audioContext.currentTime),e.start(this.audioContext.currentTime),t.stop(this.audioContext.currentTime+.5),e.stop(this.audioContext.currentTime+.5)}}const T=new D;function U(t,e={}){"undefined"!=typeof posthog&&posthog.capture(t,e)}let O=!1;function q(){if(O)return;O=!0;const t=document.getElementById("game");t&&t.classList.add("red-flash")}function E(){O=!1;const t=document.getElementById("game");t&&t.classList.remove("red-flash")}const N={elevenlabs:{apiKey:"",voiceId:"21m00Tcm4TlvDq8ikWAM",url:"https://api.elevenlabs.io/v1/text-to-speech"},openai:{apiKey:"",url:"https://api.openai.com/v1/audio/speech"},google:{apiKey:"",url:"https://texttospeech.googleapis.com/v1/text:synthesize"}};async function I(){const t=document.getElementById("question").textContent;if(!t||""===t.trim())return;const e=document.getElementById("audio-btn");e.classList.add("active");let s=!1;N.elevenlabs.apiKey&&(s=await B(t,e)),!s&&N.openai.apiKey&&(s=await J(t,e)),!s&&N.google.apiKey&&(s=await L(t,e)),!s&&"speechSynthesis"in window?A(t,e):s||e.classList.remove("active")}async function B(t,e){try{const s=await fetch(`${N.elevenlabs.url}/${N.elevenlabs.voiceId}`,{method:"POST",headers:{"Content-Type":"application/json","xi-api-key":N.elevenlabs.apiKey},body:JSON.stringify({text:t,model_id:"eleven_monolingual_v1",voice_settings:{stability:.5,similarity_boost:.5}})});if(s.ok){const t=await s.blob();return await G(t,e),!0}}catch(t){}return!1}async function J(t,e){try{const s=await fetch(N.openai.url,{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${N.openai.apiKey}`},body:JSON.stringify({model:"tts-1",input:t,voice:"nova",response_format:"mp3"})});if(s.ok){const t=await s.blob();return await G(t,e),!0}}catch(t){}return!1}async function L(t,e){try{const s=await fetch(`${N.google.url}?key=${N.google.apiKey}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({input:{text:t},voice:{languageCode:"en-US",name:"en-US-Standard-C",ssmlGender:"FEMALE"},audioConfig:{audioEncoding:"MP3",speakingRate:.8}})});if(s.ok){const t=await s.json(),n=W(t.audioContent,"audio/mp3");return await G(n,e),!0}}catch(t){}return!1}function A(t,e){window.speechSynthesis.cancel();const s=new SpeechSynthesisUtterance(t);s.lang="en-GB",s.rate=.8,s.pitch=.9,s.volume=1;const n=window.speechSynthesis.getVoices(),o=["Google UK English Male","Microsoft David - English (United Kingdom)","Google English (UK, male)","Microsoft George - English (United Kingdom)","Brian","Daniel","Oliver","William","James","Harry"];let i=n.find(t=>o.some(e=>t.name.toLowerCase().includes(e.toLowerCase())));i||(i=n.find(t=>t.lang.startsWith("en-GB")&&"male"===t.gender)),i||(i=n.find(t=>t.lang.startsWith("en-GB")&&t.name.toLowerCase().includes("male"))),i||(i=n.find(t=>t.lang.startsWith("en-GB"))),i||(i=n.find(t=>t.lang.startsWith("en")&&"male"===t.gender)),i||(i=n.find(t=>t.lang.startsWith("en"))),i&&(s.voice=i),s.onend=()=>{e.classList.remove("active")},s.onerror=()=>{e.classList.remove("active")},window.speechSynthesis.speak(s)}async function G(t,e){return new Promise(s=>{const n=URL.createObjectURL(t),o=new Audio(n);o.onended=()=>{URL.revokeObjectURL(n),e.classList.remove("active"),s()},o.onerror=()=>{URL.revokeObjectURL(n),e.classList.remove("active"),s()},o.play()})}function W(t,e){const s=atob(t),n=new ArrayBuffer(s.length),o=new Uint8Array(n);for(let t=0;t<s.length;t++)o[t]=s.charCodeAt(t);return new Blob([o],{type:e})}function F(t){document.querySelectorAll(".section").forEach(t=>t.classList.remove("active")),document.getElementById(t).classList.add("active"),document.querySelectorAll(".nav-link").forEach(t=>t.classList.remove("active")),document.querySelector(`[href="#${t}"]`)?.classList.add("active")}function R(){F("subjects")}function K(){F("home")}function z(t="Loading..."){const e=document.createElement("div");return e.className="loading-overlay",e.innerHTML=`\n        <div class="loading-content">\n            <div class="loading-spinner"></div>\n            <p>${t}</p>\n        </div>\n    `,document.body.appendChild(e),e}function Y(t){t&&t.parentNode&&t.remove()}function H(t,e){const s=document.createElement("div");s.className="error-overlay",s.innerHTML=`\n        <div class="error-content">\n            <div class="error-icon">\n                <i class="fas fa-exclamation-circle"></i>\n            </div>\n            <h3>${t}</h3>\n            <p>${e}</p>\n            <button class="error-close-btn" onclick="this.parentElement.parentElement.remove()">\n                OK\n            </button>\n        </div>\n    `,document.body.appendChild(s)}async function Q(t){const s=z(`Loading ${e[t]}...`);try{const n=await a(t);if(!n)return Y(s),void H("Flashcards Not Found",`Sorry, we couldn't load the ${e[t]} flashcards. Please try again later.`);if(0===n.flashcards.length)return Y(s),void H("No Flashcards Available",`There are no flashcards available for ${e[t]} yet. Please check back later.`);U("subject_selected",{subject:t,subject_name:n.name}),u=t,p=[...n.flashcards],d=V(p,P),f=0,b=0,v=0,$=0,k=0,x=!1,_=!1,S=!1,M=!1,j=!1,document.getElementById("game-subject").textContent=n.name,document.getElementById("current-question").textContent="1",document.getElementById("total-questions").textContent=d.length,document.getElementById("round-points").textContent="0",Y(s),nt(),Z(),F("game")}catch(t){Y(s),H("Unexpected Error","Something went wrong while loading the flashcards. Please try again.")}}function V(t,e){const s=[...t];return X(s),s.slice(0,Math.min(e,s.length))}function X(t){for(let e=t.length-1;e>0;e--){const s=Math.floor(Math.random()*(e+1));[t[e],t[s]]=[t[s],t[e]]}}function Z(){if(f>=d.length)return void ut();const t=document.getElementById("flashcard");t.style.opacity="1",t.style.transform="rotateY(0deg)";const e=d[f];document.getElementById("question").textContent=e.question,document.getElementById("answer").textContent=e.answer,document.getElementById("explanation").textContent=e.explanation?`💡 ${e.explanation}`:"",document.getElementById("example").textContent=e.example?`📝 ${e.example}`:"",t.classList.remove("flipped"),et(e),st()}let tt=[];function et(e){const s=e.answer,o=[e.wrong1,e.wrong2,e.wrong3].filter(Boolean);for(tt=[s,...o];tt.length<4;){const e=Object.keys(t)[Math.floor(Math.random()*Object.keys(t).length)];if(n[e]&&n[e].flashcards.length>0){const t=n[e].flashcards[Math.floor(Math.random()*n[e].flashcards.length)];tt.includes(t.answer)||tt.push(t.answer)}}X(tt);for(let t=0;t<4;t++)document.getElementById(`option-text-${t}`).textContent=tt[t]}function st(){for(let t=0;t<4;t++){const e=document.getElementById(`option-${t}`);e.classList.remove("correct","wrong","disabled","selected"),e.style.opacity="1",e.style.pointerEvents="auto"}}function nt(){g=15,E(),document.getElementById("timer").textContent=g,document.getElementById("timer").classList.remove("timer-warning");const t=document.getElementById("timer-bar");t.style.width="100%",t.classList.remove("warning"),y&&clearInterval(y),y=setInterval(()=>{g--,document.getElementById("timer").textContent=g,t.style.width=g/15*100+"%",g<=5&&(document.getElementById("timer").classList.add("timer-warning"),t.classList.add("warning"),q()),g<=0&&lt()},1e3)}function ot(){document.getElementById("flashcard").classList.toggle("flipped")}function it(){const t=d[f].answer,e=tt.filter(e=>e!==t),s=[];for(;s.length<2&&e.length>0;){const t=Math.floor(Math.random()*e.length);s.push(e.splice(t,1)[0])}document.querySelectorAll(".option-btn").forEach((t,e)=>{s.includes(tt[e])&&(t.style.opacity="0.3",t.style.pointerEvents="none")})}function ct(t){clearInterval(y);const e=tt[t],s=d[f],n=e===s.answer;if(document.querySelectorAll(".option-btn").forEach(t=>t.classList.add("disabled")),n){U("answer_correct",{subject:u,question_index:f,time_remaining:g}),T.playCorrect(),v++,k++;const e=Math.max(10,2*g);b+=e*(x?2:1),document.getElementById("round-points").textContent=b,d.length===P&&k>=3&&!_&&(_=!0,at(),U("powerups_unlocked",{subject:u})),k>=3&&(w+=100,document.getElementById("total-points").textContent=w,k=0),document.getElementById(`option-${t}`).classList.add("correct"),Pt();const n=m.findIndex(t=>t.question===s.question&&t.subject===u);-1!==n&&m.splice(n,1)}else{U("answer_incorrect",{subject:u,question_index:f,time_remaining:g}),T.playWrong(),$++,k=0,m.some(t=>t.question===s.question)||m.push({...s,subject:u}),document.getElementById(`option-${t}`).classList.add("wrong");const e=tt.indexOf(s.answer);-1!==e&&document.getElementById(`option-${e}`).classList.add("correct")}setTimeout(()=>{ot()},200),setTimeout(()=>{const t=document.getElementById("flashcard");t.style.opacity="0",t.style.transform="translateY(-20px) rotateY(180deg)"},2e3),setTimeout(()=>ht(),3e3)}function at(){const t=document.createElement("div");t.className="powerup-notification",t.innerHTML=`\n        <div class="powerup-content">\n            <span class="powerup-title">🎉 Power-Ups Unlocked!</span>\n            <div class="powerup-buttons">\n                <button class="powerup-btn" id="powerup-double" onclick="usePowerUp('double')" ${S?"disabled":""}>\n                    <span>⚡</span> Double Points\n                </button>\n                <button class="powerup-btn" id="powerup-skip" onclick="usePowerUp('skip')" ${M?"disabled":""}>\n                    <span>➡️</span> Skip Question\n                </button>\n                <button class="powerup-btn" id="powerup-hint" onclick="usePowerUp('hint')" ${j?"disabled":""}>\n                    <span>🎯</span> 50/50 Split\n                </button>\n            </div>\n        </div>\n    `,document.getElementById("game").appendChild(t),setTimeout(()=>t.remove(),8e3)}function rt(t){switch(t){case"double":S||(S=!0,x=!0,document.getElementById("powerup-double").disabled=!0,U("powerup_used",{powerup_type:"double_points",subject:u}),setTimeout(()=>x=!1,3e4));break;case"skip":M||(M=!0,document.getElementById("powerup-skip").disabled=!0,U("powerup_used",{powerup_type:"skip",subject:u}),ht());break;case"hint":j||(j=!0,document.getElementById("powerup-hint").disabled=!0,U("powerup_used",{powerup_type:"5050_split",subject:u}),it())}const e=document.querySelector(".powerup-notification");e&&e.remove()}function lt(){clearInterval(y),document.querySelectorAll(".option-btn").forEach(t=>t.classList.add("disabled")),setTimeout(()=>{ot()},200),setTimeout(()=>{$++,k=0;const t=d[f];m.some(e=>e.question===t.question)||m.push({...t,subject:u});const e=tt.indexOf(t.answer);-1!==e&&document.getElementById(`option-${e}`).classList.add("correct");const s=document.getElementById("flashcard");s.style.opacity="0",s.style.transform="translateY(-20px) rotateY(180deg)"},2e3),setTimeout(()=>ht(),3e3)}function ht(){f++,document.getElementById("current-question").textContent=f+1,nt(),Z()}function ut(){clearInterval(y);const t=v+$,e=t>0?Math.round(v/t*100):0;U("game_ended",{subject:u,correct_count:v,wrong_count:$,accuracy:e,points_earned:b,is_full_game:d.length===P}),d.length===P&&(T.playCheer(),Dt()),w+=b,document.getElementById("total-points").textContent=w,document.getElementById("correct-count").textContent=v,document.getElementById("wrong-count").textContent=$,document.getElementById("accuracy").textContent=`${e}%`,document.getElementById("earned-points").textContent=b,vt(v,$,e,b);const s=document.getElementById("redemption-btn"),n=document.getElementById("redemption-info"),o=m.filter(t=>t.subject===u);o.length>0?(n.textContent=`${o.length} questions need review`,s.style.display="inline-block"):(n.textContent="",s.style.display="none"),$t(),F("results")}function dt(){const t=m.filter(t=>t.subject===u);0!==t.length&&(d=[...t],X(d),f=0,b=0,v=0,$=0,k=0,x=!1,_=!1,S=!1,M=!1,j=!1,document.getElementById("game-subject").textContent=`Redemption - ${e[u]||"Review"}`,document.getElementById("current-question").textContent="1",document.getElementById("total-questions").textContent=d.length,document.getElementById("round-points").textContent="0",nt(),Z(),F("game"))}function pt(){Q(u)}let mt=null;function ft(){mt&&clearInterval(mt),mt=setInterval(()=>{yt()},1e4)}function gt(){mt&&(clearInterval(mt),mt=null)}function yt(){const t=document.querySelector("#leaderboard-table tbody");t&&(t.innerHTML="",wt.forEach((e,s)=>{const n=document.createElement("tr");n.innerHTML=`\n            <td class="rank">${s+1}</td>\n            <td class="player-name">${e.name}</td>\n            <td class="player-subject">${e.subject}</td>\n            <td class="player-points">${e.points}</td>\n        `,t.appendChild(n)}))}function bt(){let t="Rank,Name,Subject,Points\n";wt.forEach((e,s)=>{t+=`${s+1},${e.name},${e.subject},${e.points}\n`});const e=new Blob([t],{type:"text/csv;charset=utf-8;"}),s=document.createElement("a"),n=URL.createObjectURL(e);s.setAttribute("href",n),s.setAttribute("download",`flash-dash-scores-${(new Date).toISOString().split("T")[0]}.csv`),s.style.visibility="hidden",document.body.appendChild(s),s.click(),document.body.removeChild(s),U("scores_exported",{count:wt.length})}const wt=[{name:"Alex Johnson",points:2500,subject:"Mathematics"},{name:"Sarah Williams",points:2200,subject:"Physics"},{name:"Michael Chen",points:1900,subject:"Chemistry"},{name:"Emma Davis",points:1750,subject:"Biology"},{name:"James Wilson",points:1600,subject:"History"},{name:"Olivia Brown",points:1450,subject:"Geography"},{name:"William Taylor",points:1300,subject:"Economics"},{name:"Sophia Martinez",points:1150,subject:"English"},{name:"David Anderson",points:1e3,subject:"Mathematics"},{name:"Isabella Thomas",points:850,subject:"Physics"}];function vt(t,s,n,o){wt.push({name:C?.name||"Player",points:o,subject:e[u]||"Unknown"}),wt.sort((t,e)=>e.points-t.points),wt.length>10&&wt.pop()}function $t(){const t={totalPoints:w,wrongFlashcards:m,lastPlayedSubject:u,lastPlayedDate:(new Date).toISOString(),gamesPlayed:xt()+1,totalCorrect:_t()+v,totalWrong:St()+$};localStorage.setItem("flashDashProgress",JSON.stringify(t))}function kt(){const t=localStorage.getItem("flashDashProgress");if(t)try{const e=JSON.parse(t);if(void 0!==e.totalPoints&&(w=e.totalPoints,document.getElementById("total-points").textContent=w),e.wrongFlashcards&&Array.isArray(e.wrongFlashcards)&&(m=e.wrongFlashcards),e.lastPlayedDate){const t=new Date(e.lastPlayedDate),s=new Date;Math.floor((s-t)/864e5)>7&&Mt()}}catch(t){}}function xt(){const t=localStorage.getItem("flashDashProgress");if(t)try{return JSON.parse(t).gamesPlayed||0}catch(t){return 0}return 0}function _t(){const t=localStorage.getItem("flashDashProgress");if(t)try{return JSON.parse(t).totalCorrect||0}catch(t){return 0}return 0}function St(){const t=localStorage.getItem("flashDashProgress");if(t)try{return JSON.parse(t).totalWrong||0}catch(t){return 0}return 0}function Mt(){localStorage.removeItem("flashDashProgress"),w=0,m=[],document.getElementById("total-points").textContent="0"}function jt(){localStorage.removeItem("flashDashProgress"),w=0,m=[],document.getElementById("total-points").textContent="0"}function Ct(){const t=document.getElementById("leaderboard-rows");t.innerHTML="",wt.forEach((e,s)=>{const n=document.createElement("div");n.className="leaderboard-row",n.innerHTML=`\n            <span class="rank">#${s+1}</span>\n            <span class="player-name">${e.name}</span>\n            <span class="player-points">${e.points}</span>\n            <span class="player-subject">${e.subject}</span>\n        `,t.appendChild(n)})}function Pt(){const t=document.getElementById("confetti-container"),e=["#ffd700","#ff6b6b","#4ecdc4","#45b7d1","#96ceb4","#ffeaa7","#dfe6e9","#a29bfe","#fd79a8","#00b894"],s=["circle","square","triangle"];for(let n=0;n<100;n++){const n=document.createElement("div");n.className=`confetti ${s[Math.floor(Math.random()*s.length)]}`;const o=e[Math.floor(Math.random()*e.length)];n.classList.contains("triangle")?n.style.borderBottomColor=o:n.style.background=o;const i=8+12*Math.random();n.style.width=`${i}px`,n.style.height=`${i}px`,n.style.left=100*Math.random()+"%",n.style.animationDuration=2+3*Math.random()+"s",n.style.animationDelay=.3*Math.random()+"s",n.style.transform=`rotate(${360*Math.random()}deg)`,n.style.opacity=.8+.2*Math.random(),t.appendChild(n)}setTimeout(()=>{t.querySelectorAll(".confetti").forEach(t=>t.remove())},6e3)}function Dt(){const t=document.getElementById("confetti-container"),e=["#ffd700","#ff6b6b","#4ecdc4","#45b7d1","#96ceb4","#ffeaa7","#a29bfe","#fd79a8"];for(let s=0;s<8;s++)setTimeout(()=>{const s=20+60*Math.random(),n=20+40*Math.random(),o=30+Math.floor(20*Math.random()),i=e[Math.floor(Math.random()*e.length)];for(let e=0;e<o;e++){const c=document.createElement("div");c.className="firework-particle",c.style.background=i,c.style.left=`${s}%`,c.style.top=`${n}%`,c.style.width="6px",c.style.height="6px",c.style.borderRadius="50%";const a=2*Math.PI*e/o,r=3+4*Math.random(),l=80+120*Math.random();c.style.setProperty("--angle",`${a}rad`),c.style.setProperty("--velocity",`${r}s`),c.style.setProperty("--distance",`${l}px`),c.style.setProperty("--delay",.1*Math.random()+"s"),t.appendChild(c)}const c=document.createElement("div");c.className="firework-burst",c.style.left=`${s}%`,c.style.top=`${n}%`,c.style.background=`radial-gradient(circle, ${i} 0%, transparent 70%)`,t.appendChild(c)},300*s);setTimeout(()=>{t.querySelectorAll(".firework-particle, .firework-burst").forEach(t=>t.remove())},5e3)}function Tt(){const t=document.getElementById("loading-screen"),e=document.getElementById("loading-bar"),s=document.querySelector(".loading-text"),n=["Loading knowledge...","Preparing questions...","Almost ready...","Let's start!"];let o=0;const i=setInterval(()=>{o=(o+1)%n.length,s.textContent=n[o]},1500);let c=0;const a=setInterval(()=>{c+=15*Math.random(),c>100&&(c=100),e.style.width=`${c}%`,c>=100&&(clearInterval(a),clearInterval(i),gsap.to(".loading-content",{opacity:0,y:-30,duration:.8,delay:1.5}),gsap.to(t,{opacity:0,duration:.8,delay:2,onComplete:()=>{t.style.display="none",document.getElementById("app").style.opacity="1"}}))},300)}function Ut(){localStorage.getItem("flashDashCookieConsent")||(document.getElementById("cookie-consent").style.display="block")}function Ot(){localStorage.setItem("flashDashCookieConsent",JSON.stringify({accepted:!0,analytics:!0,preferences:!0,marketing:!1,timestamp:(new Date).toISOString()})),document.getElementById("cookie-consent").style.display="none"}function qt(){localStorage.setItem("flashDashCookieConsent",JSON.stringify({accepted:!1,analytics:!1,preferences:!1,marketing:!1,timestamp:(new Date).toISOString()})),document.getElementById("cookie-consent").style.display="none",document.getElementById("cookie-settings-modal").style.display="none"}function Et(){document.getElementById("cookie-consent").style.display="none",document.getElementById("cookie-settings-modal").style.display="flex";const t=localStorage.getItem("flashDashCookieConsent");if(t)try{const e=JSON.parse(t);document.getElementById("analytics-cookie").checked=e.analytics||!1,document.getElementById("preferences-cookie").checked=e.preferences||!1,document.getElementById("marketing-cookie").checked=e.marketing||!1}catch(t){}}function Nt(){document.getElementById("cookie-settings-modal").style.display="none",document.getElementById("cookie-consent").style.display="block"}function It(){localStorage.setItem("flashDashCookieConsent",JSON.stringify({accepted:!0,analytics:document.getElementById("analytics-cookie").checked,preferences:document.getElementById("preferences-cookie").checked,marketing:document.getElementById("marketing-cookie").checked,timestamp:(new Date).toISOString()})),document.getElementById("cookie-settings-modal").style.display="none"}document.addEventListener("DOMContentLoaded",()=>{Tt(),kt(),Ct(),Ut(),document.querySelectorAll(".nav-link").forEach(t=>{t.addEventListener("click",e=>{e.preventDefault(),F(t.getAttribute("href").substring(1))})}),document.querySelectorAll(".level-btn").forEach(t=>{t.addEventListener("click",()=>{document.querySelectorAll(".level-btn").forEach(t=>t.classList.remove("active")),t.classList.add("active")})}),document.querySelectorAll(".option-btn").forEach((t,e)=>{t.addEventListener("click",()=>ct(e))}),document.getElementById("redemption-btn").addEventListener("click",dt),document.addEventListener("keydown",t=>{if(t.key>="1"&&t.key<="4"){const e=parseInt(t.key)-1,s=document.getElementById(`option-${e}`);s&&!s.classList.contains("disabled")&&ct(e)}}),l(),F("home")});
+const SUBJECT_FILES = {
+    preigcse: {
+        biology: 'flashcards_biology.txt',
+        maths: 'flashcards_math.txt',
+        physics: 'flashcards_physics.txt',
+        chemistry: 'flashcards_chemistry.txt',
+        english: 'flashcards_english.txt',
+        history: 'flashcards_history.txt',
+        geography: 'flashcards_geography.txt',
+        economics: 'flashcards_economics.txt',
+        businessstudies: 'flashcards_businessstudies.txt',
+        psychology: 'flashcards_psychology.txt',
+        chinese: 'flashcards_chinese_firstlanguage.txt'
+    },
+    igcse: {
+        biology: 'igcse/flashcards_biologyigcse.txt',
+        maths: 'igcse/flashcards_mathigcse.txt',
+        physics: 'igcse/flashcards_physicsigcse.txt',
+        chemistry: 'igcse/flashcards_chemistryigcse.txt',
+        english: 'igcse/flashcards_englishigcse.txt',
+        history: 'igcse/flashcards_historyigcse.txt',
+        geography: 'igcse/flashcards_geographyigcse.txt',
+        economics: 'igcse/flashcards_economicsigcse.txt',
+        businessstudies: 'igcse/flashcards_businessstudiesigcse.txt',
+        psychology: 'igcse/flashcards_psychologyigcse.txt',
+        chinese: 'igcse/flashcards_chinese_firstlanguage_igcse.txt'
+    }
+};
+
+const SUBJECT_NAMES = {
+    biology: 'Biology',
+    maths: 'Mathematics',
+    physics: 'Physics',
+    chemistry: 'Chemistry',
+    english: 'English',
+    history: 'History',
+    geography: 'Geography',
+    economics: 'Economics',
+    businessstudies: 'Business Studies',
+    psychology: 'Psychology',
+    chinese: 'Chinese (First Language)'
+};
+
+const LEVEL_SUBJECTS = {
+    preigcse: ['biology', 'maths', 'physics', 'chemistry', 'english', 'history', 'geography', 'economics', 'businessstudies', 'psychology', 'chinese'],
+    igcse: ['biology', 'maths', 'physics', 'chemistry', 'english', 'history', 'geography', 'economics', 'businessstudies', 'psychology', 'chinese']
+};
+
+let flashcardData = {};
+let loadedSubjects = new Set();
+let currentLevel = 'preigcse';
+
+function transformQuestion(question) {
+    if (!question) return question;
+    
+    let transformed = question.trim();
+    
+    const transformations = [
+        { regex: /^Define\s+(.+)/i, replace: 'What does $1 mean?' },
+        { regex: /^What is\s+(.+)\?$/i, replace: 'What is $1?' },
+        { regex: /^Explain\s+(.+)/i, replace: 'Explain what $1 is.' },
+        { regex: /^Describe\s+(.+)/i, replace: 'Describe what $1 is.' },
+        { regex: /^State\s+(.+)/i, replace: 'State what $1 is.' },
+        { regex: /^Name\s+(.+)/i, replace: 'Name $1.' },
+        { regex: /^List\s+(.+)/i, replace: 'List $1.' },
+        { regex: /^Compare\s+(.+)/i, replace: 'Compare $1.' },
+        { regex: /^Contrast\s+(.+)/i, replace: 'Contrast $1.' },
+        { regex: /^Analyze\s+(.+)/i, replace: 'Analyze $1.' },
+        { regex: /^Evaluate\s+(.+)/i, replace: 'Evaluate $1.' },
+        { regex: /^Discuss\s+(.+)/i, replace: 'Discuss $1.' },
+        { regex: /^Solve\s+(.+)/i, replace: 'Solve: $1' },
+        { regex: /^Calculate\s+(.+)/i, replace: 'Calculate: $1' },
+        { regex: /^Find\s+(.+)/i, replace: 'Find: $1' }
+    ];
+    
+    for (const { regex, replace } of transformations) {
+        if (regex.test(transformed)) {
+            transformed = transformed.replace(regex, replace);
+            break;
+        }
+    }
+    
+    return transformed;
+}
+
+async function loadSubjectData(subjectId) {
+    const levelKey = `${currentLevel}_${subjectId}`;
+    if (loadedSubjects.has(levelKey)) {
+        return flashcardData[levelKey];
+    }
+    
+    const fileName = SUBJECT_FILES[currentLevel]?.[subjectId];
+    if (!fileName) {
+        console.error(`No file found for subject: ${subjectId} at level: ${currentLevel}`);
+        return null;
+    }
+    
+    try {
+        const response = await fetch(fileName);
+        const text = await response.text();
+        
+        const startIndex = text.indexOf('[');
+        const endIndex = text.lastIndexOf(']') + 1;
+        
+        if (startIndex !== -1 && endIndex !== -1) {
+            let jsonString = text.substring(startIndex, endIndex);
+            
+            jsonString = jsonString.replace(/\/\/.*$/gm, '');
+            jsonString = jsonString.replace(/,\s*]/g, ']');
+            jsonString = jsonString.replace(/,\s*}/g, '}');
+            
+            jsonString = jsonString.replace(/,\s*\n\s*\n\s*question:/g, ',\n    {\n        question:');
+            
+            const lines = jsonString.split('\n');
+            const quotedLines = lines.map(line => {
+                return line.replace(/^\s*(\w+):/, '    "$1":');
+            });
+            jsonString = quotedLines.join('\n');
+            
+            try {
+                let flashcards = JSON.parse(jsonString);
+                
+                flashcards = flashcards.map(card => ({
+                    ...card,
+                    question: transformQuestion(card.question)
+                }));
+                
+                flashcardData[levelKey] = {
+                    name: SUBJECT_NAMES[subjectId] || subjectId,
+                    flashcards: flashcards
+                };
+                loadedSubjects.add(levelKey);
+                return flashcardData[levelKey];
+            } catch (parseError) {
+                console.error(`JSON parse error in ${fileName}:`, parseError);
+                return null;
+            }
+        }
+    } catch (error) {
+        console.error(`Error loading ${fileName}:`, error);
+        return null;
+    }
+    
+    return null;
+}
+
+function setLevel(level) {
+    currentLevel = level;
+    updateSubjectDisplay();
+}
+
+function updateSubjectDisplay() {
+    const subjectsContainer = document.querySelector('.subject-grid');
+    const subjects = LEVEL_SUBJECTS[currentLevel];
+    
+    subjectsContainer.innerHTML = '';
+    
+    subjects.forEach(subjectId => {
+        const card = document.createElement('div');
+        card.className = 'subject-card';
+        card.setAttribute('data-subject', subjectId);
+        
+        const icon = getSubjectIcon(subjectId);
+        
+        card.innerHTML = `
+            ${icon}
+            <h3>${SUBJECT_NAMES[subjectId]}</h3>
+        `;
+        
+        card.addEventListener('click', () => selectSubject(subjectId));
+        subjectsContainer.appendChild(card);
+    });
+}
+
+function getSubjectIcon(subjectId) {
+    const icons = {
+        biology: '<i class="fas fa-dna"></i>',
+        maths: '<i class="fas fa-calculator"></i>',
+        physics: '<i class="fas fa-atom"></i>',
+        chemistry: '<i class="fas fa-flask"></i>',
+        english: '<i class="fas fa-book-open"></i>',
+        history: '<i class="fas fa-history"></i>',
+        geography: '<i class="fas fa-globe"></i>',
+        economics: '<i class="fas fa-chart-line"></i>',
+        businessstudies: '<i class="fas fa-briefcase"></i>',
+        psychology: '<i class="fas fa-brain"></i>',
+        chinese: '<i class="fas fa-language"></i>'
+    };
+    
+    return icons[subjectId] || '<i class="fas fa-question-circle"></i>';
+}
+
+let currentSubject = null;
+let currentFlashcards = [];
+let originalFlashcards = [];
+let wrongFlashcards = [];
+let currentIndex = 0;
+let timer = 15;
+let timerInterval = null;
+let roundPoints = 0;
+let totalPoints = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let consecutiveCorrect = 0;
+let doublePointsActive = false;
+let powerUpsAvailable = false;
+let powerUpDoublePointsUsed = false;
+let powerUpSkipUsed = false;
+let powerUpHintUsed = false;
+let currentUser = { name: 'Player', isLoggedIn: true };
+
+const MAX_QUESTIONS_PER_ROUND = 20;
+
+class SoundManager {
+    constructor() {
+        this.audioContext = null;
+    }
+
+    init() {
+        if (!this.audioContext) {
+            this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+
+    playCorrect() {
+        this.init();
+        const oscillator1 = this.audioContext.createOscillator();
+        const oscillator2 = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator1.type = 'sine';
+        oscillator2.type = 'sine';
+        
+        oscillator1.frequency.setValueAtTime(523.25, this.audioContext.currentTime);
+        oscillator1.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.1);
+        oscillator1.frequency.setValueAtTime(783.99, this.audioContext.currentTime + 0.2);
+        oscillator1.frequency.setValueAtTime(1046.50, this.audioContext.currentTime + 0.3);
+        
+        oscillator2.frequency.setValueAtTime(659.25, this.audioContext.currentTime);
+        oscillator2.frequency.setValueAtTime(783.99, this.audioContext.currentTime + 0.1);
+        oscillator2.frequency.setValueAtTime(880, this.audioContext.currentTime + 0.2);
+        
+        gainNode.gain.setValueAtTime(0.25, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        
+        oscillator1.start(this.audioContext.currentTime);
+        oscillator2.start(this.audioContext.currentTime);
+        oscillator1.stop(this.audioContext.currentTime + 0.5);
+        oscillator2.stop(this.audioContext.currentTime + 0.5);
+    }
+
+    playWrong() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sawtooth';
+        oscillator.frequency.setValueAtTime(200, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(150, this.audioContext.currentTime + 0.15);
+        oscillator.frequency.setValueAtTime(100, this.audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.6);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.6);
+    }
+
+    playCountdown(number) {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        const frequencies = {
+            5: 523.25,
+            4: 587.33,
+            3: 659.25,
+            2: 783.99,
+            1: 1046.50
+        };
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(frequencies[number] || 523.25, this.audioContext.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.4, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.15);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.15);
+    }
+
+    playBuzzer() {
+        this.init();
+        
+        const oscillator1 = this.audioContext.createOscillator();
+        const oscillator2 = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator1.type = 'square';
+        oscillator2.type = 'sawtooth';
+        
+        oscillator1.frequency.setValueAtTime(100, this.audioContext.currentTime);
+        oscillator2.frequency.setValueAtTime(150, this.audioContext.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.5, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.8);
+        
+        oscillator1.start(this.audioContext.currentTime);
+        oscillator2.start(this.audioContext.currentTime);
+        oscillator1.stop(this.audioContext.currentTime + 0.8);
+        oscillator2.stop(this.audioContext.currentTime + 0.8);
+    }
+
+    playCheer() {
+        this.init();
+        
+        const playClap = () => {
+            const noiseBuffer = this.audioContext.createBuffer(1, this.audioContext.sampleRate * 0.1, this.audioContext.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < noiseBuffer.length; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            
+            const noiseSource = this.audioContext.createBufferSource();
+            noiseSource.buffer = noiseBuffer;
+            
+            const filter = this.audioContext.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 800;
+            filter.Q.value = 0.5;
+            
+            const gainNode = this.audioContext.createGain();
+            gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.1);
+            
+            noiseSource.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(this.audioContext.destination);
+            
+            noiseSource.start();
+        };
+        
+        for (let i = 0; i < 12; i++) {
+            setTimeout(playClap, i * 150);
+        }
+        
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(440, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(554.37, this.audioContext.currentTime + 0.2);
+        oscillator.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.4);
+        oscillator.frequency.setValueAtTime(880, this.audioContext.currentTime + 0.6);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 2);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 2);
+    }
+
+    playCardFlip() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        const filter = this.audioContext.createBiquadFilter();
+        
+        oscillator.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(400, this.audioContext.currentTime + 0.2);
+        
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(2000, this.audioContext.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(500, this.audioContext.currentTime + 0.2);
+        
+        gainNode.gain.setValueAtTime(0.15, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.2);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.2);
+    }
+
+    playPowerUpUnlock() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(440, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(554.37, this.audioContext.currentTime + 0.1);
+        oscillator.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.2);
+        oscillator.frequency.setValueAtTime(880, this.audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.5);
+    }
+
+    playPowerUpUse() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(1200, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(1500, this.audioContext.currentTime + 0.1);
+        oscillator.frequency.setValueAtTime(1800, this.audioContext.currentTime + 0.2);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.3);
+    }
+
+    playButtonClick() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(400, this.audioContext.currentTime + 0.05);
+        
+        gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.05);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.05);
+    }
+
+    playScoreIncrease() {
+        this.init();
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(600, this.audioContext.currentTime);
+        oscillator.frequency.setValueAtTime(700, this.audioContext.currentTime + 0.08);
+        oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime + 0.16);
+        oscillator.frequency.setValueAtTime(900, this.audioContext.currentTime + 0.24);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + 0.3);
+    }
+
+    playRoundComplete() {
+        this.init();
+        
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1244.51];
+        
+        notes.forEach((freq, i) => {
+            const oscillator = this.audioContext.createOscillator();
+            const gainNode = this.audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(this.audioContext.destination);
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(freq, this.audioContext.currentTime + i * 0.15);
+            
+            gainNode.gain.setValueAtTime(0.25, this.audioContext.currentTime + i * 0.15);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + i * 0.15 + 0.3);
+            
+            oscillator.start(this.audioContext.currentTime + i * 0.15);
+            oscillator.stop(this.audioContext.currentTime + i * 0.15 + 0.3);
+        });
+    }
+
+    playGameStart() {
+        this.init();
+        
+        const oscillator1 = this.audioContext.createOscillator();
+        const oscillator2 = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator1.type = 'sine';
+        oscillator2.type = 'sine';
+        
+        oscillator1.frequency.setValueAtTime(440, this.audioContext.currentTime);
+        oscillator1.frequency.setValueAtTime(554.37, this.audioContext.currentTime + 0.15);
+        oscillator1.frequency.setValueAtTime(659.25, this.audioContext.currentTime + 0.3);
+        
+        oscillator2.frequency.setValueAtTime(880, this.audioContext.currentTime);
+        oscillator2.frequency.setValueAtTime(1108.73, this.audioContext.currentTime + 0.15);
+        oscillator2.frequency.setValueAtTime(1318.51, this.audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.5);
+        
+        oscillator1.start(this.audioContext.currentTime);
+        oscillator2.start(this.audioContext.currentTime);
+        oscillator1.stop(this.audioContext.currentTime + 0.5);
+        oscillator2.stop(this.audioContext.currentTime + 0.5);
+    }
+}
+
+const soundManager = new SoundManager();
+
+function trackEvent(eventName, properties = {}) {
+    if (typeof posthog !== 'undefined') {
+        posthog.capture(eventName, properties);
+    }
+}
+
+let redFlashActive = false;
+
+function triggerRedFlash() {
+    if (redFlashActive) return;
+    redFlashActive = true;
+    
+    const gameSection = document.getElementById('game');
+    if (gameSection) {
+        gameSection.classList.add('red-flash');
+    }
+}
+
+function stopRedFlash() {
+    redFlashActive = false;
+    const gameSection = document.getElementById('game');
+    if (gameSection) {
+        gameSection.classList.remove('red-flash');
+    }
+}
+
+const TTS_CONFIG = {
+    elevenlabs: {
+        apiKey: '',
+        voiceId: '21m00Tcm4TlvDq8ikWAM',
+        url: 'https://api.elevenlabs.io/v1/text-to-speech'
+    },
+    openai: {
+        apiKey: '',
+        url: 'https://api.openai.com/v1/audio/speech'
+    },
+    google: {
+        apiKey: '',
+        url: 'https://texttospeech.googleapis.com/v1/text:synthesize'
+    }
+};
+
+async function playQuestionAudio() {
+    const question = document.getElementById('question').textContent;
+    if (!question || question.trim() === '') return;
+    
+    const audioBtn = document.getElementById('audio-btn');
+    audioBtn.classList.add('active');
+    
+    let played = false;
+    
+    if (TTS_CONFIG.elevenlabs.apiKey) {
+        played = await playElevenLabsAudio(question, audioBtn);
+    }
+    
+    if (!played && TTS_CONFIG.openai.apiKey) {
+        played = await playOpenAIAudio(question, audioBtn);
+    }
+    
+    if (!played && TTS_CONFIG.google.apiKey) {
+        played = await playGoogleAudio(question, audioBtn);
+    }
+    
+    if (!played && 'speechSynthesis' in window) {
+        playBrowserAudio(question, audioBtn);
+    } else if (!played) {
+        audioBtn.classList.remove('active');
+    }
+}
+
+async function playElevenLabsAudio(text, audioBtn) {
+    try {
+        const response = await fetch(`${TTS_CONFIG.elevenlabs.url}/${TTS_CONFIG.elevenlabs.voiceId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'xi-api-key': TTS_CONFIG.elevenlabs.apiKey
+            },
+            body: JSON.stringify({
+                text: text,
+                model_id: 'eleven_monolingual_v1',
+                voice_settings: {
+                    stability: 0.5,
+                    similarity_boost: 0.5
+                }
+            })
+        });
+        
+        if (response.ok) {
+            const audioBlob = await response.blob();
+            await playAudioBlob(audioBlob, audioBtn);
+            return true;
+        }
+    } catch (error) {
+        console.error('ElevenLabs TTS error:', error);
+    }
+    return false;
+}
+
+async function playOpenAIAudio(text, audioBtn) {
+    try {
+        const response = await fetch(TTS_CONFIG.openai.url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TTS_CONFIG.openai.apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'tts-1',
+                input: text,
+                voice: 'nova',
+                response_format: 'mp3'
+            })
+        });
+        
+        if (response.ok) {
+            const audioBlob = await response.blob();
+            await playAudioBlob(audioBlob, audioBtn);
+            return true;
+        }
+    } catch (error) {
+        console.error('OpenAI TTS error:', error);
+    }
+    return false;
+}
+
+async function playGoogleAudio(text, audioBtn) {
+    try {
+        const response = await fetch(`${TTS_CONFIG.google.url}?key=${TTS_CONFIG.google.apiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                input: { text: text },
+                voice: {
+                    languageCode: 'en-US',
+                    name: 'en-US-Standard-C',
+                    ssmlGender: 'FEMALE'
+                },
+                audioConfig: {
+                    audioEncoding: 'MP3',
+                    speakingRate: 0.8
+                }
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            const audioBytes = data.audioContent;
+            const audioBlob = base64ToBlob(audioBytes, 'audio/mp3');
+            await playAudioBlob(audioBlob, audioBtn);
+            return true;
+        }
+    } catch (error) {
+        console.error('Google TTS error:', error);
+    }
+    return false;
+}
+
+function playBrowserAudio(text, audioBtn) {
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-GB';
+    utterance.rate = 0.8;
+    utterance.pitch = 0.9;
+    utterance.volume = 1;
+    
+    const voices = window.speechSynthesis.getVoices();
+    
+    const maleUKVoices = [
+        'Google UK English Male', 'Microsoft David - English (United Kingdom)',
+        'Google English (UK, male)', 'Microsoft George - English (United Kingdom)',
+        'Brian', 'Daniel', 'Oliver', 'William', 'James', 'Harry'
+    ];
+    
+    let selectedVoice = voices.find(voice => 
+        maleUKVoices.some(mv => voice.name.toLowerCase().includes(mv.toLowerCase()))
+    );
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.lang.startsWith('en-GB') && voice.gender === 'male'
+        );
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.lang.startsWith('en-GB') && voice.name.toLowerCase().includes('male')
+        );
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.startsWith('en-GB'));
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.lang.startsWith('en') && voice.gender === 'male'
+        );
+    }
+    
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.startsWith('en'));
+    }
+    
+    if (selectedVoice) {
+        utterance.voice = selectedVoice;
+    }
+    
+    utterance.onend = () => {
+        audioBtn.classList.remove('active');
+    };
+    
+    utterance.onerror = () => {
+        audioBtn.classList.remove('active');
+    };
+    
+    window.speechSynthesis.speak(utterance);
+}
+
+async function playAudioBlob(blob, audioBtn) {
+    return new Promise((resolve) => {
+        const audioUrl = URL.createObjectURL(blob);
+        const audio = new Audio(audioUrl);
+        
+        audio.onended = () => {
+            URL.revokeObjectURL(audioUrl);
+            audioBtn.classList.remove('active');
+            resolve();
+        };
+        
+        audio.onerror = () => {
+            URL.revokeObjectURL(audioUrl);
+            audioBtn.classList.remove('active');
+            resolve();
+        };
+        
+        audio.play();
+    });
+}
+
+function base64ToBlob(base64, mimeType) {
+    const byteString = atob(base64);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    
+    for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+    }
+    
+    return new Blob([uint8Array], { type: mimeType });
+}
+
+
+
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    document.querySelector(`[href="#${sectionId}"]`)?.classList.add('active');
+}
+
+function showSubjects() { showSection('subjects'); }
+function goHome() { showSection('home'); }
+
+function showLoading(message = 'Loading...') {
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'loading-overlay';
+    loadingOverlay.innerHTML = `
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>${message}</p>
+        </div>
+    `;
+    document.body.appendChild(loadingOverlay);
+    return loadingOverlay;
+}
+
+function hideLoading(overlay) {
+    if (overlay && overlay.parentNode) {
+        overlay.remove();
+    }
+}
+
+function showErrorMessage(title, message) {
+    const errorOverlay = document.createElement('div');
+    errorOverlay.className = 'error-overlay';
+    errorOverlay.innerHTML = `
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>${title}</h3>
+            <p>${message}</p>
+            <button class="error-close-btn" onclick="this.parentElement.parentElement.remove()">
+                OK
+            </button>
+        </div>
+    `;
+    document.body.appendChild(errorOverlay);
+}
+
+async function selectSubject(subjectId) {
+    const loadingOverlay = showLoading(`Loading ${SUBJECT_NAMES[subjectId]}...`);
+    
+    try {
+        const data = await loadSubjectData(subjectId);
+        if (!data) {
+            hideLoading(loadingOverlay);
+            showErrorMessage(
+                'Flashcards Not Found',
+                `Sorry, we couldn't load the ${SUBJECT_NAMES[subjectId]} flashcards. Please try again later.`
+            );
+            return;
+        }
+        
+        if (data.flashcards.length === 0) {
+            hideLoading(loadingOverlay);
+            showErrorMessage(
+                'No Flashcards Available',
+                `There are no flashcards available for ${SUBJECT_NAMES[subjectId]} yet. Please check back later.`
+            );
+            return;
+        }
+        
+        trackEvent('subject_selected', { subject: subjectId, subject_name: data.name });
+        
+        currentSubject = subjectId;
+        originalFlashcards = [...data.flashcards];
+        currentFlashcards = getRandomFlashcards(originalFlashcards, MAX_QUESTIONS_PER_ROUND);
+        currentIndex = 0;
+        roundPoints = 0;
+        correctCount = 0;
+        wrongCount = 0;
+        consecutiveCorrect = 0;
+        doublePointsActive = false;
+        powerUpsAvailable = false;
+        powerUpDoublePointsUsed = false;
+        powerUpSkipUsed = false;
+        powerUpHintUsed = false;
+        
+        document.getElementById('game-subject').textContent = data.name;
+        document.getElementById('current-question').textContent = '1';
+        document.getElementById('total-questions').textContent = currentFlashcards.length;
+        document.getElementById('round-points').textContent = '0';
+        
+        hideLoading(loadingOverlay);
+        resetTimer();
+        loadFlashcard();
+        showSection('game');
+    } catch (error) {
+        hideLoading(loadingOverlay);
+        showErrorMessage(
+            'Unexpected Error',
+            'Something went wrong while loading the flashcards. Please try again.'
+        );
+        console.error('Error selecting subject:', error);
+    }
+}
+
+function getRandomFlashcards(flashcards, count) {
+    const shuffled = [...flashcards];
+    shuffleArray(shuffled);
+    return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function loadFlashcard() {
+    if (currentIndex >= currentFlashcards.length) {
+        endGame();
+        return;
+    }
+    
+    const flashcardElement = document.getElementById('flashcard');
+    flashcardElement.style.opacity = '1';
+    flashcardElement.style.transform = 'rotateY(0deg)';
+    
+    const flashcard = currentFlashcards[currentIndex];
+    document.getElementById('question').textContent = flashcard.question;
+    document.getElementById('answer').textContent = flashcard.answer;
+    
+    document.getElementById('explanation').textContent = flashcard.explanation ? `💡 ${flashcard.explanation}` : '';
+    document.getElementById('example').textContent = flashcard.example ? `📝 ${flashcard.example}` : '';
+    
+    flashcardElement.classList.remove('flipped');
+    generateOptions(flashcard);
+    resetOptionButtons();
+}
+
+let currentOptions = [];
+
+function generateOptions(currentFlashcard) {
+    const correctAnswer = currentFlashcard.answer;
+    const wrongAnswers = [currentFlashcard.wrong1, currentFlashcard.wrong2, currentFlashcard.wrong3].filter(Boolean);
+    
+    currentOptions = [correctAnswer, ...wrongAnswers];
+    
+    while (currentOptions.length < 4) {
+        const randomSubject = Object.keys(SUBJECT_FILES)[Math.floor(Math.random() * Object.keys(SUBJECT_FILES).length)];
+        if (flashcardData[randomSubject] && flashcardData[randomSubject].flashcards.length > 0) {
+            const randomCard = flashcardData[randomSubject].flashcards[Math.floor(Math.random() * flashcardData[randomSubject].flashcards.length)];
+            if (!currentOptions.includes(randomCard.answer)) {
+                currentOptions.push(randomCard.answer);
+            }
+        }
+    }
+    
+    shuffleArray(currentOptions);
+    
+    for (let i = 0; i < 4; i++) {
+        document.getElementById(`option-text-${i}`).textContent = currentOptions[i];
+    }
+}
+
+function resetOptionButtons() {
+    for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`option-${i}`);
+        btn.classList.remove('correct', 'wrong', 'disabled', 'selected');
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+    }
+}
+
+function resetTimer() {
+    timer = 15;
+    stopRedFlash();
+    
+    document.getElementById('timer').textContent = timer;
+    document.getElementById('timer').classList.remove('timer-warning');
+    
+    const timerBar = document.getElementById('timer-bar');
+    timerBar.style.width = '100%';
+    timerBar.classList.remove('warning');
+    
+    if (timerInterval) clearInterval(timerInterval);
+    
+    timerInterval = setInterval(() => {
+        timer--;
+        document.getElementById('timer').textContent = timer;
+        timerBar.style.width = `${(timer / 15) * 100}%`;
+        
+        if (timer <= 5) {
+            document.getElementById('timer').classList.add('timer-warning');
+            timerBar.classList.add('warning');
+            triggerRedFlash();
+        }
+        
+        if (timer <= 0) handleTimeout();
+    }, 1000);
+}
+
+function flipCard() {
+    document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function apply5050Split() {
+    const currentFlashcard = currentFlashcards[currentIndex];
+    const correctAnswer = currentFlashcard.answer;
+    const wrongOptions = currentOptions.filter(opt => opt !== correctAnswer);
+    const optionsToRemove = [];
+    
+    while (optionsToRemove.length < 2 && wrongOptions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * wrongOptions.length);
+        optionsToRemove.push(wrongOptions.splice(randomIndex, 1)[0]);
+    }
+    
+    document.querySelectorAll('.option-btn').forEach((btn, index) => {
+        if (optionsToRemove.includes(currentOptions[index])) {
+            btn.style.opacity = '0.3';
+            btn.style.pointerEvents = 'none';
+        }
+    });
+}
+
+function selectAnswer(optionIndex) {
+    clearInterval(timerInterval);
+    
+    const selectedAnswer = currentOptions[optionIndex];
+    const currentFlashcard = currentFlashcards[currentIndex];
+    const isCorrect = selectedAnswer === currentFlashcard.answer;
+    
+    document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('disabled'));
+    
+    if (isCorrect) {
+        trackEvent('answer_correct', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
+        soundManager.playCorrect();
+        correctCount++;
+        consecutiveCorrect++;
+        
+        const basePoints = Math.max(10, timer * 2);
+        const multiplier = doublePointsActive ? 2 : 1;
+        roundPoints += basePoints * multiplier;
+        document.getElementById('round-points').textContent = roundPoints;
+        
+        if (currentFlashcards.length === MAX_QUESTIONS_PER_ROUND && consecutiveCorrect >= 3 && !powerUpsAvailable) {
+            powerUpsAvailable = true;
+            showPowerUpNotification();
+            trackEvent('powerups_unlocked', { subject: currentSubject });
+        }
+        
+        if (consecutiveCorrect >= 3) {
+            totalPoints += 100;
+            document.getElementById('total-points').textContent = totalPoints;
+            consecutiveCorrect = 0;
+        }
+        
+        document.getElementById(`option-${optionIndex}`).classList.add('correct');
+        createConfetti();
+        
+        const cardIndex = wrongFlashcards.findIndex(card => card.question === currentFlashcard.question && card.subject === currentSubject);
+        if (cardIndex !== -1) {
+            wrongFlashcards.splice(cardIndex, 1);
+        }
+    } else {
+        trackEvent('answer_incorrect', { subject: currentSubject, question_index: currentIndex, time_remaining: timer });
+        soundManager.playWrong();
+        wrongCount++;
+        consecutiveCorrect = 0;
+        
+        if (!wrongFlashcards.some(fc => fc.question === currentFlashcard.question)) {
+            wrongFlashcards.push({ ...currentFlashcard, subject: currentSubject });
+        }
+        
+        document.getElementById(`option-${optionIndex}`).classList.add('wrong');
+        
+        const correctIndex = currentOptions.indexOf(currentFlashcard.answer);
+        if (correctIndex !== -1) {
+            document.getElementById(`option-${correctIndex}`).classList.add('correct');
+        }
+    }
+    
+    setTimeout(() => {
+        flipCard();
+    }, 200);
+    
+    setTimeout(() => {
+        const flashcard = document.getElementById('flashcard');
+        flashcard.style.opacity = '0';
+        flashcard.style.transform = 'translateY(-20px) rotateY(180deg)';
+    }, 2000);
+    
+    setTimeout(() => nextQuestion(), 3000);
+}
+
+function showPowerUpNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'powerup-notification';
+    notification.innerHTML = `
+        <div class="powerup-content">
+            <span class="powerup-title">🎉 Power-Ups Unlocked!</span>
+            <div class="powerup-buttons">
+                <button class="powerup-btn" id="powerup-double" onclick="usePowerUp('double')" ${powerUpDoublePointsUsed ? 'disabled' : ''}>
+                    <span>⚡</span> Double Points
+                </button>
+                <button class="powerup-btn" id="powerup-skip" onclick="usePowerUp('skip')" ${powerUpSkipUsed ? 'disabled' : ''}>
+                    <span>➡️</span> Skip Question
+                </button>
+                <button class="powerup-btn" id="powerup-hint" onclick="usePowerUp('hint')" ${powerUpHintUsed ? 'disabled' : ''}>
+                    <span>🎯</span> 50/50 Split
+                </button>
+            </div>
+        </div>
+    `;
+    document.getElementById('game').appendChild(notification);
+    
+    setTimeout(() => notification.remove(), 8000);
+}
+
+function usePowerUp(type) {
+    switch(type) {
+        case 'double':
+            if (!powerUpDoublePointsUsed) {
+                powerUpDoublePointsUsed = true;
+                doublePointsActive = true;
+                document.getElementById('powerup-double').disabled = true;
+                trackEvent('powerup_used', { powerup_type: 'double_points', subject: currentSubject });
+                setTimeout(() => doublePointsActive = false, 30000);
+            }
+            break;
+        case 'skip':
+            if (!powerUpSkipUsed) {
+                powerUpSkipUsed = true;
+                document.getElementById('powerup-skip').disabled = true;
+                trackEvent('powerup_used', { powerup_type: 'skip', subject: currentSubject });
+                nextQuestion();
+            }
+            break;
+        case 'hint':
+            if (!powerUpHintUsed) {
+                powerUpHintUsed = true;
+                document.getElementById('powerup-hint').disabled = true;
+                trackEvent('powerup_used', { powerup_type: '5050_split', subject: currentSubject });
+                apply5050Split();
+            }
+            break;
+    }
+    
+    const notification = document.querySelector('.powerup-notification');
+    if (notification) notification.remove();
+}
+
+function handleTimeout() {
+    clearInterval(timerInterval);
+    
+    document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('disabled'));
+    
+    setTimeout(() => {
+        flipCard();
+    }, 200);
+    
+    setTimeout(() => {
+        wrongCount++;
+        consecutiveCorrect = 0;
+        
+        const currentFlashcard = currentFlashcards[currentIndex];
+        if (!wrongFlashcards.some(fc => fc.question === currentFlashcard.question)) {
+            wrongFlashcards.push({ ...currentFlashcard, subject: currentSubject });
+        }
+        
+        const correctIndex = currentOptions.indexOf(currentFlashcard.answer);
+        if (correctIndex !== -1) {
+            document.getElementById(`option-${correctIndex}`).classList.add('correct');
+        }
+        
+        const flashcard = document.getElementById('flashcard');
+        flashcard.style.opacity = '0';
+        flashcard.style.transform = 'translateY(-20px) rotateY(180deg)';
+    }, 2000);
+    
+    setTimeout(() => nextQuestion(), 3000);
+}
+
+function nextQuestion() {
+    currentIndex++;
+    document.getElementById('current-question').textContent = currentIndex + 1;
+    resetTimer();
+    loadFlashcard();
+}
+
+function endGame() {
+    clearInterval(timerInterval);
+    
+    const totalQuestions = correctCount + wrongCount;
+    const accuracy = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+    
+    trackEvent('game_ended', {
+        subject: currentSubject,
+        correct_count: correctCount,
+        wrong_count: wrongCount,
+        accuracy: accuracy,
+        points_earned: roundPoints,
+        is_full_game: currentFlashcards.length === MAX_QUESTIONS_PER_ROUND
+    });
+    
+    if (currentFlashcards.length === MAX_QUESTIONS_PER_ROUND) {
+        soundManager.playCheer();
+        createFireworks();
+    }
+    
+    totalPoints += roundPoints;
+    document.getElementById('total-points').textContent = totalPoints;
+    
+    document.getElementById('correct-count').textContent = correctCount;
+    document.getElementById('wrong-count').textContent = wrongCount;
+    document.getElementById('accuracy').textContent = `${accuracy}%`;
+    document.getElementById('earned-points').textContent = roundPoints;
+    
+    updateLeaderboard(correctCount, wrongCount, accuracy, roundPoints);
+    
+    const redemptionBtn = document.getElementById('redemption-btn');
+    const redemptionInfo = document.getElementById('redemption-info');
+    const subjectWrongCards = wrongFlashcards.filter(card => card.subject === currentSubject);
+    
+    if (subjectWrongCards.length > 0) {
+        redemptionInfo.textContent = `${subjectWrongCards.length} questions need review`;
+        redemptionBtn.style.display = 'inline-block';
+    } else {
+        redemptionInfo.textContent = '';
+        redemptionBtn.style.display = 'none';
+    }
+    
+    saveUserProgress();
+    showSection('results');
+}
+
+function startRedemptionQuiz() {
+    const subjectWrongCards = wrongFlashcards.filter(card => card.subject === currentSubject);
+    if (subjectWrongCards.length === 0) return;
+    
+    currentFlashcards = [...subjectWrongCards];
+    shuffleArray(currentFlashcards);
+    currentIndex = 0;
+    roundPoints = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    consecutiveCorrect = 0;
+    doublePointsActive = false;
+    powerUpsAvailable = false;
+    powerUpDoublePointsUsed = false;
+    powerUpSkipUsed = false;
+    powerUpHintUsed = false;
+    
+    document.getElementById('game-subject').textContent = `Redemption - ${SUBJECT_NAMES[currentSubject] || 'Review'}`;
+    document.getElementById('current-question').textContent = '1';
+    document.getElementById('total-questions').textContent = currentFlashcards.length;
+    document.getElementById('round-points').textContent = '0';
+    
+    resetTimer();
+    loadFlashcard();
+    showSection('game');
+}
+
+function playAgain() { selectSubject(currentSubject); }
+
+let scoreboardRefreshInterval = null;
+
+function startScoreboardRefresh() {
+    if (scoreboardRefreshInterval) clearInterval(scoreboardRefreshInterval);
+    scoreboardRefreshInterval = setInterval(() => {
+        updateLeaderboardDisplay();
+    }, 10000);
+}
+
+function stopScoreboardRefresh() {
+    if (scoreboardRefreshInterval) {
+        clearInterval(scoreboardRefreshInterval);
+        scoreboardRefreshInterval = null;
+    }
+}
+
+function updateLeaderboardDisplay() {
+    const tableBody = document.querySelector('#leaderboard-table tbody');
+    if (!tableBody) return;
+    
+    tableBody.innerHTML = '';
+    
+    leaderboard.forEach((player, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td class="rank">${index + 1}</td>
+            <td class="player-name">${player.name}</td>
+            <td class="player-subject">${player.subject}</td>
+            <td class="player-points">${player.points}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function exportScoresToExcel() {
+    let csv = 'Rank,Name,Subject,Points\n';
+    
+    leaderboard.forEach((player, index) => {
+        csv += `${index + 1},${player.name},${player.subject},${player.points}\n`;
+    });
+    
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `flash-dash-scores-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    trackEvent('scores_exported', { count: leaderboard.length });
+}
+
+const leaderboard = [
+    { name: 'Alex Johnson', points: 2500, subject: 'Mathematics' },
+    { name: 'Sarah Williams', points: 2200, subject: 'Physics' },
+    { name: 'Michael Chen', points: 1900, subject: 'Chemistry' },
+    { name: 'Emma Davis', points: 1750, subject: 'Biology' },
+    { name: 'James Wilson', points: 1600, subject: 'History' },
+    { name: 'Olivia Brown', points: 1450, subject: 'Geography' },
+    { name: 'William Taylor', points: 1300, subject: 'Economics' },
+    { name: 'Sophia Martinez', points: 1150, subject: 'English' },
+    { name: 'David Anderson', points: 1000, subject: 'Mathematics' },
+    { name: 'Isabella Thomas', points: 850, subject: 'Physics' }
+];
+
+function updateLeaderboard(correct, wrong, accuracy, points) {
+    leaderboard.push({ name: currentUser?.name || 'Player', points: points, subject: SUBJECT_NAMES[currentSubject] || 'Unknown' });
+    leaderboard.sort((a, b) => b.points - a.points);
+    if (leaderboard.length > 10) leaderboard.pop();
+}
+
+function saveUserProgress() {
+    const progress = {
+        totalPoints: totalPoints,
+        wrongFlashcards: wrongFlashcards,
+        lastPlayedSubject: currentSubject,
+        lastPlayedDate: new Date().toISOString(),
+        gamesPlayed: getGamesPlayed() + 1,
+        totalCorrect: getTotalCorrect() + correctCount,
+        totalWrong: getTotalWrong() + wrongCount
+    };
+    localStorage.setItem('flashDashProgress', JSON.stringify(progress));
+}
+
+function loadUserProgress() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            
+            if (progress.totalPoints !== undefined) {
+                totalPoints = progress.totalPoints;
+                document.getElementById('total-points').textContent = totalPoints;
+            }
+            
+            if (progress.wrongFlashcards && Array.isArray(progress.wrongFlashcards)) {
+                wrongFlashcards = progress.wrongFlashcards;
+            }
+            
+            if (progress.lastPlayedDate) {
+                const lastPlayed = new Date(progress.lastPlayedDate);
+                const now = new Date();
+                const diffDays = Math.floor((now - lastPlayed) / (1000 * 60 * 60 * 24));
+                
+                if (diffDays > 7) {
+                    clearOldProgress();
+                }
+            }
+        } catch (e) {
+            console.error('Error loading progress:', e);
+        }
+    }
+}
+
+function getGamesPlayed() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            return progress.gamesPlayed || 0;
+        } catch (e) {
+            return 0;
+        }
+    }
+    return 0;
+}
+
+function getTotalCorrect() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            return progress.totalCorrect || 0;
+        } catch (e) {
+            return 0;
+        }
+    }
+    return 0;
+}
+
+function getTotalWrong() {
+    const savedProgress = localStorage.getItem('flashDashProgress');
+    if (savedProgress) {
+        try {
+            const progress = JSON.parse(savedProgress);
+            return progress.totalWrong || 0;
+        } catch (e) {
+            return 0;
+        }
+    }
+    return 0;
+}
+
+function clearOldProgress() {
+    localStorage.removeItem('flashDashProgress');
+    totalPoints = 0;
+    wrongFlashcards = [];
+    document.getElementById('total-points').textContent = '0';
+}
+
+function clearAllProgress() {
+    localStorage.removeItem('flashDashProgress');
+    totalPoints = 0;
+    wrongFlashcards = [];
+    document.getElementById('total-points').textContent = '0';
+}
+
+function renderLeaderboard() {
+    const rowsContainer = document.getElementById('leaderboard-rows');
+    rowsContainer.innerHTML = '';
+    
+    leaderboard.forEach((player, index) => {
+        const row = document.createElement('div');
+        row.className = 'leaderboard-row';
+        row.innerHTML = `
+            <span class="rank">#${index + 1}</span>
+            <span class="player-name">${player.name}</span>
+            <span class="player-points">${player.points}</span>
+            <span class="player-subject">${player.subject}</span>
+        `;
+        rowsContainer.appendChild(row);
+    });
+}
+
+function createConfetti() {
+    const container = document.getElementById('confetti-container');
+    
+    const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#a29bfe', '#fd79a8', '#00b894'];
+    const shapes = ['circle', 'square', 'triangle'];
+    
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
+        
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        if (!confetti.classList.contains('triangle')) {
+            confetti.style.background = color;
+        } else {
+            confetti.style.borderBottomColor = color;
+        }
+        
+        const size = 8 + Math.random() * 12;
+        confetti.style.width = `${size}px`;
+        confetti.style.height = `${size}px`;
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
+        confetti.style.animationDelay = `${Math.random() * 0.3}s`;
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.opacity = 0.8 + Math.random() * 0.2;
+        
+        container.appendChild(confetti);
+    }
+    
+    setTimeout(() => {
+        const remaining = container.querySelectorAll('.confetti');
+        remaining.forEach(c => c.remove());
+    }, 6000);
+}
+
+function createFireworks() {
+    const container = document.getElementById('confetti-container');
+    
+    const fireworksColors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#a29bfe', '#fd79a8'];
+    const explosionCount = 8;
+    
+    for (let e = 0; e < explosionCount; e++) {
+        setTimeout(() => {
+            const centerX = 20 + Math.random() * 60;
+            const centerY = 20 + Math.random() * 40;
+            const particleCount = 30 + Math.floor(Math.random() * 20);
+            const color = fireworksColors[Math.floor(Math.random() * fireworksColors.length)];
+            
+            for (let p = 0; p < particleCount; p++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.background = color;
+                particle.style.left = `${centerX}%`;
+                particle.style.top = `${centerY}%`;
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.borderRadius = '50%';
+                
+                const angle = (Math.PI * 2 * p) / particleCount;
+                const velocity = 3 + Math.random() * 4;
+                const distance = 80 + Math.random() * 120;
+                
+                particle.style.setProperty('--angle', `${angle}rad`);
+                particle.style.setProperty('--velocity', `${velocity}s`);
+                particle.style.setProperty('--distance', `${distance}px`);
+                particle.style.setProperty('--delay', `${Math.random() * 0.1}s`);
+                
+                container.appendChild(particle);
+            }
+            
+            const burst = document.createElement('div');
+            burst.className = 'firework-burst';
+            burst.style.left = `${centerX}%`;
+            burst.style.top = `${centerY}%`;
+            burst.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+            container.appendChild(burst);
+        }, e * 300);
+    }
+    
+    setTimeout(() => {
+        const fireworks = container.querySelectorAll('.firework-particle, .firework-burst');
+        fireworks.forEach(f => f.remove());
+    }, 5000);
+}
+
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingBar = document.getElementById('loading-bar');
+    const loadingText = document.querySelector('.loading-text');
+    
+    const texts = ['Loading knowledge...', 'Preparing questions...', 'Almost ready...', 'Let\'s start!'];
+    let textIndex = 0;
+    
+    const textInterval = setInterval(() => {
+        textIndex = (textIndex + 1) % texts.length;
+        loadingText.textContent = texts[textIndex];
+    }, 1500);
+    
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 100) progress = 100;
+        loadingBar.style.width = `${progress}%`;
+        
+        if (progress >= 100) {
+            clearInterval(progressInterval);
+            clearInterval(textInterval);
+            
+            gsap.to('.loading-content', {
+                opacity: 0,
+                y: -30,
+                duration: 0.8,
+                delay: 1.5
+            });
+            
+            gsap.to(loadingScreen, {
+                opacity: 0,
+                duration: 0.8,
+                delay: 2,
+                onComplete: () => {
+                    loadingScreen.style.display = 'none';
+                    document.getElementById('app').style.opacity = '1';
+                }
+            });
+        }
+    }, 300);
+}
+
+function checkCookieConsent() {
+    const consent = localStorage.getItem('flashDashCookieConsent');
+    if (!consent) {
+        setTimeout(() => {
+            const cookieConsent = document.getElementById('cookie-consent');
+            if (cookieConsent) {
+                cookieConsent.style.display = 'block';
+            }
+        }, 1000);
+    }
+}
+
+function acceptCookies() {
+    localStorage.setItem('flashDashCookieConsent', JSON.stringify({
+        accepted: true,
+        analytics: true,
+        preferences: true,
+        marketing: false,
+        essential: true,
+        timestamp: new Date().toISOString()
+    }));
+    
+    const cookieConsent = document.getElementById('cookie-consent');
+    if (cookieConsent) {
+        cookieConsent.style.opacity = '0';
+        setTimeout(() => {
+            cookieConsent.style.display = 'none';
+            cookieConsent.style.opacity = '1';
+        }, 300);
+    }
+}
+
+function rejectCookies() {
+    localStorage.setItem('flashDashCookieConsent', JSON.stringify({
+        accepted: false,
+        analytics: false,
+        preferences: false,
+        marketing: false,
+        essential: true,
+        timestamp: new Date().toISOString()
+    }));
+    
+    const cookieConsent = document.getElementById('cookie-consent');
+    if (cookieConsent) {
+        cookieConsent.style.opacity = '0';
+        setTimeout(() => {
+            cookieConsent.style.display = 'none';
+            cookieConsent.style.opacity = '1';
+        }, 300);
+    }
+    
+    const cookieModal = document.getElementById('cookie-settings-modal');
+    if (cookieModal) {
+        cookieModal.style.display = 'none';
+    }
+}
+
+function showCookieSettings() {
+    const cookieConsent = document.getElementById('cookie-consent');
+    const cookieModal = document.getElementById('cookie-settings-modal');
+    
+    if (cookieConsent) {
+        cookieConsent.style.display = 'none';
+    }
+    
+    if (cookieModal) {
+        cookieModal.style.display = 'flex';
+    }
+    
+    const consent = localStorage.getItem('flashDashCookieConsent');
+    if (consent) {
+        try {
+            const settings = JSON.parse(consent);
+            const analyticsCookie = document.getElementById('analytics-cookie');
+            const preferencesCookie = document.getElementById('preferences-cookie');
+            const marketingCookie = document.getElementById('marketing-cookie');
+            
+            if (analyticsCookie) analyticsCookie.checked = settings.analytics || false;
+            if (preferencesCookie) preferencesCookie.checked = settings.preferences || false;
+            if (marketingCookie) marketingCookie.checked = settings.marketing || false;
+        } catch (e) {
+            console.error('Error loading cookie settings:', e);
+        }
+    }
+}
+
+function closeCookieSettings() {
+    const cookieModal = document.getElementById('cookie-settings-modal');
+    const cookieConsent = document.getElementById('cookie-consent');
+    
+    if (cookieModal) {
+        cookieModal.style.display = 'none';
+    }
+    
+    const consent = localStorage.getItem('flashDashCookieConsent');
+    if (!consent && cookieConsent) {
+        cookieConsent.style.display = 'block';
+    }
+}
+
+function saveCookieSettings() {
+    const analyticsCookie = document.getElementById('analytics-cookie');
+    const preferencesCookie = document.getElementById('preferences-cookie');
+    const marketingCookie = document.getElementById('marketing-cookie');
+    
+    localStorage.setItem('flashDashCookieConsent', JSON.stringify({
+        accepted: true,
+        analytics: analyticsCookie ? analyticsCookie.checked : false,
+        preferences: preferencesCookie ? preferencesCookie.checked : false,
+        marketing: marketingCookie ? marketingCookie.checked : false,
+        essential: true,
+        timestamp: new Date().toISOString()
+    }));
+    
+    const cookieModal = document.getElementById('cookie-settings-modal');
+    if (cookieModal) {
+        cookieModal.style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initLoadingScreen();
+    loadUserProgress();
+    renderLeaderboard();
+    checkCookieConsent();
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(link.getAttribute('href').substring(1));
+        });
+    });
+    
+    document.querySelectorAll('.level-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+    
+    document.querySelectorAll('.option-btn').forEach((btn, index) => {
+        btn.addEventListener('click', () => selectAnswer(index));
+    });
+    
+    document.getElementById('redemption-btn').addEventListener('click', startRedemptionQuiz);
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key >= '1' && e.key <= '4') {
+            const index = parseInt(e.key) - 1;
+            const btn = document.getElementById(`option-${index}`);
+            if (btn && !btn.classList.contains('disabled')) selectAnswer(index);
+        }
+    });
+    
+    updateSubjectDisplay();
+    showSection('home');
+});

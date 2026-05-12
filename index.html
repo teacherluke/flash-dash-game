@@ -1,1 +1,338 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Flashcard Learning Game - Cambridge & IB</title><link rel=stylesheet href=styles.css><link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js></script><script type=module>import{injectSpeedInsights}from"https://esm.sh/@vercel/speed-insights@2.0.0";injectSpeedInsights()</script></head><body><div id=cookie-consent class=cookie-consent style=display:none><div class=cookie-consent-content><div class=cookie-icon><i class="fas fa-cookie-bite"></i></div><div class=cookie-text><h3>Accept cookies from FlashDash!</h3><p>By clicking "Accept all cookies", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. Please refer to our cookie notice for more information about the way we use cookies.</p></div><div class=cookie-buttons><button class="cookie-btn settings-btn" onclick=showCookieSettings()>Cookies settings</button> <button class="cookie-btn reject-btn" onclick=rejectCookies()>Reject all cookies</button> <button class="cookie-btn accept-btn" onclick=acceptCookies()>Accept all cookies</button></div></div></div><div id=cookie-settings-modal class=cookie-modal style=display:none><div class=cookie-modal-content><div class=cookie-modal-header><h3>Cookie Settings</h3><button class=close-btn onclick=closeCookieSettings()>&times;</button></div><div class=cookie-modal-body><div class=cookie-option><label><input type=checkbox id=analytics-cookie checked> <span>Analytics cookies</span></label><p>Help us understand how visitors interact with our website.</p></div><div class=cookie-option><label><input type=checkbox id=preferences-cookie checked> <span>Preferences cookies</span></label><p>Remember your preferences and settings.</p></div><div class=cookie-option><label><input type=checkbox id=marketing-cookie> <span>Marketing cookies</span></label><p>Track your browsing activity for marketing purposes.</p></div></div><div class=cookie-modal-footer><button class="cookie-btn reject-btn" onclick=rejectCookies()>Reject all</button> <button class="cookie-btn accept-btn" onclick=saveCookieSettings()>Save settings</button></div></div></div><div id=loading-screen class=loading-screen><div class=loading-content><div class=logo-container><i class="fas fa-bolt loading-icon"></i><h1 class=loading-title>FLASH DASH</h1><p class=loading-subtitle>Cambridge & IB Learning Game</p></div><div class=loading-bar-container><div class=loading-bar id=loading-bar></div></div><p class=loading-text>Loading knowledge...</p></div></div><div id=app><header class=header><div class=header-content><div class=logo-text>FLASH DASH</div><nav class=nav-links role=navigation aria-label="Main navigation"><a href=#home class="nav-link active" aria-label="Go to Home page">Home</a> <a href=#subjects class=nav-link aria-label="Go to Subjects page">Subjects</a> <a href=#leaderboard class=nav-link aria-label="Go to Leaderboard page">Leaderboard</a></nav><div class=user-section><div class=points-display><i class="fas fa-trophy"></i> <span id=total-points>0</span></div><div class=user-info id=user-info><span id=user-name>Player</span></div></div></div></header></div><main><section id=home class="section active"><div class=hero><h1>Master Cambridge & IB Topics</h1><p>Interactive flashcard learning with real-time scoring</p><button class=cta-btn onclick=showSubjects() aria-label="Start learning - go to subjects page">Start Learning</button></div><div class=features><div class=feature-card><i class="fas fa-clock"></i><h3>15 Second Timer</h3><p>Answer quickly to earn bonus points</p></div><div class=feature-card><i class="fas fa-star"></i><h3>Score Tracking</h3><p>Track your progress and improve</p></div><div class=feature-card><i class="fas fa-coins"></i><h3>Point Banking</h3><p>Bank points every 3 correct answers</p></div></div></section><section id=subjects class=section><h2>Choose Your Level</h2><div class=level-buttons role=group aria-label="Select level"><button class="level-btn active" id=pre-igcse-btn onclick='setLevel("preigcse")' aria-label="Select Pre-IGCSE level">Pre-IGCSE</button> <button class=level-btn id=igcse-btn onclick='setLevel("igcse")' aria-label="Select IGCSE level">IGCSE</button></div><h3>Choose Your Subject</h3><div class=subject-grid><div class=subject-card data-subject=maths><i class="fas fa-calculator"></i><h3>Mathematics</h3><p>Algebra, Calculus, Statistics</p></div><div class=subject-card data-subject=physics><i class="fas fa-atom"></i><h3>Physics</h3><p>Mechanics, Waves, Electricity</p></div><div class=subject-card data-subject=chemistry><i class="fas fa-flask"></i><h3>Chemistry</h3><p>Atoms, Reactions, Organic</p></div><div class=subject-card data-subject=biology><i class="fas fa-dna"></i><h3>Biology</h3><p>Cells, Genetics, Ecology</p></div><div class=subject-card data-subject=history><i class="fas fa-book-open"></i><h3>History</h3><p>World History, Modern Studies</p></div><div class=subject-card data-subject=geography><i class="fas fa-globe"></i><h3>Geography</h3><p>Physical, Human, Environmental</p></div><div class=subject-card data-subject=economics><i class="fas fa-chart-line"></i><h3>Economics</h3><p>Micro, Macro, International</p></div><div class=subject-card data-subject=english><i class="fas fa-pencil-alt"></i><h3>English</h3><p>Literature, Language, Analysis</p></div><div class=subject-card data-subject=businessstudies><i class="fas fa-briefcase"></i><h3>Business Studies</h3><p>Management, Marketing, Finance</p></div><div class=subject-card data-subject=psychology><i class="fas fa-brain"></i><h3>Psychology</h3><p>Behavior, Cognition, Development</p></div><div class=subject-card data-subject=chinese><i class="fas fa-language"></i><h3>Chinese</h3><p>Language, Literature, Culture</p></div></div></section><section id=game class=section><div class=game-header><div class=game-info><span class=subject-tag id=game-subject></span> <span class=question-count>Question <span id=current-question>1</span> of <span id=total-questions>10</span></span></div><div class=game-stats><div class=stat-item><i class="fas fa-timer"></i> <span id=timer>15</span>s</div><div class=stat-item><i class="fas fa-star"></i> <span id=round-points>0</span></div></div></div><div class=flashcard-container><div class=flashcard id=flashcard><div class=flashcard-front><div class=flashcard-icon><i class="fas fa-question-circle"></i></div><h3 id=question></h3><button class=audio-btn id=audio-btn onclick=playQuestionAudio() aria-label="Play audio pronunciation of the question"><i class="fas fa-volume-up"></i></button></div><div class=flashcard-back><div class=flashcard-icon><i class="fas fa-lightbulb"></i></div><h3 id=answer></h3><p class=explanation id=explanation></p><p class=example id=example></p></div></div></div><div class=options-container role=group aria-label="Answer options"><button class=option-btn id=option-0 aria-label="Select option A"><span class=option-letter>A</span> <span class=option-text id=option-text-0></span></button> <button class=option-btn id=option-1 aria-label="Select option B"><span class=option-letter>B</span> <span class=option-text id=option-text-1></span></button> <button class=option-btn id=option-2 aria-label="Select option C"><span class=option-letter>C</span> <span class=option-text id=option-text-2></span></button> <button class=option-btn id=option-3 aria-label="Select option D"><span class=option-letter>D</span> <span class=option-text id=option-text-3></span></button></div><div class=timer-bar-container><div class=timer-bar id=timer-bar></div></div><div class=confetti-container id=confetti-container></div></section><section id=results class=section><div class=results-container><div class=results-header><h2>Game Over!</h2><div class=results-icon><i class="fas fa-trophy"></i></div></div><div class=results-stats><div class=result-item><span class=result-label>Correct Answers</span> <span class=result-value id=correct-count>0</span></div><div class=result-item><span class=result-label>Wrong Answers</span> <span class=result-value id=wrong-count>0</span></div><div class=result-item><span class=result-label>Accuracy</span> <span class=result-value id=accuracy>0%</span></div><div class=result-item><span class=result-label>Total Points Earned</span> <span class="result-value highlight" id=earned-points>0</span></div></div><div id=redemption-info class=redemption-info></div><div class=results-actions role=group aria-label="Result actions"><button class="action-btn primary" onclick=playAgain() aria-label="Play the same subject again">Play Again</button> <button class="action-btn secondary" onclick=goHome() aria-label="Go back to home page">Back to Home</button> <button class="action-btn redemption" id=redemption-btn style=display:none aria-label="Start redemption quiz for missed questions"><i class="fas fa-redo"></i> Redemption Quiz</button></div></div></section><section id=leaderboard class=section><h2>Leaderboard</h2><div class=leaderboard-container><div class=leaderboard-header><span>Rank</span> <span>Player</span> <span>Points</span> <span>Subject</span></div><div class=leaderboard-rows id=leaderboard-rows></div></div></section></main><footer class=footer><p>ASTAR-STUDENT | Cambridge & IB Learning Game</p></footer><script src=script.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Learning Game - Cambridge & IB</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script type="module">
+        import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@2.0.0';
+        injectSpeedInsights();
+    </script>
+</head>
+<body>
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-consent-content">
+            <div class="cookie-icon">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="cookie-text">
+                <h3>🍪 Cookie Consent</h3>
+                <p>FlashDash uses cookies to enhance your learning experience, track progress, and improve our services. By clicking "Accept all cookies", you consent to the use of cookies as described in our Privacy Policy.</p>
+                <a href="#cookie-policy" class="cookie-policy-link" onclick="showCookieSettings()">Read our Cookie Policy</a>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn settings-btn" onclick="showCookieSettings()">Cookie Settings</button>
+                <button class="cookie-btn reject-btn" onclick="rejectCookies()">Reject All</button>
+                <button class="cookie-btn accept-btn" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookie-settings-modal" class="cookie-modal" style="display: none;">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>🍪 Cookie Settings</h3>
+                <button class="close-btn" onclick="closeCookieSettings()">&times;</button>
+            </div>
+            <div class="cookie-modal-body">
+                <div class="cookie-policy-info">
+                    <h4>Our Cookie Policy</h4>
+                    <p>FlashDash uses the following types of cookies:</p>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="analytics-cookie" checked>
+                        <span>📊 Analytics Cookies</span>
+                    </label>
+                    <p>These cookies help us understand how visitors interact with our website, track usage patterns, and improve our services. They collect anonymous data about how you use the site.</p>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="preferences-cookie" checked>
+                        <span>⚙️ Preferences Cookies</span>
+                    </label>
+                    <p>These cookies remember your preferences and settings, such as your game progress, subject selections, and display preferences for a personalized experience.</p>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="marketing-cookie">
+                        <span>🎯 Marketing Cookies</span>
+                    </label>
+                    <p>These cookies track your browsing activity for marketing purposes, allowing us to show you relevant content and offers. These are optional.</p>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="essential-cookie" checked disabled>
+                        <span>🔒 Essential Cookies</span>
+                    </label>
+                    <p>These cookies are necessary for the website to function properly. They cannot be disabled as they enable core functionality like game mechanics and progress tracking.</p>
+                </div>
+                <div class="cookie-policy-footer">
+                    <p>By using FlashDash, you agree to our <a href="#" style="color: var(--primary-color);">Privacy Policy</a> and <a href="#" style="color: var(--primary-color);">Cookie Policy</a>. Your consent can be changed at any time by revisiting these settings.</p>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button class="cookie-btn reject-btn" onclick="rejectCookies()">Reject All</button>
+                <button class="cookie-btn accept-btn" onclick="saveCookieSettings()">Save & Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-container">
+                <i class="fas fa-bolt loading-icon"></i>
+                <h1 class="loading-title">FLASH DASH</h1>
+                <p class="loading-subtitle">Cambridge & IB Learning Game</p>
+            </div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loading-bar"></div>
+            </div>
+            <p class="loading-text">Loading knowledge...</p>
+        </div>
+    </div>
+    <div id="app">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-text">FLASH DASH</div>
+                <nav class="nav-links" role="navigation" aria-label="Main navigation">
+                    <a href="#home" class="nav-link active" aria-label="Go to Home page">Home</a>
+                    <a href="#subjects" class="nav-link" aria-label="Go to Subjects page">Subjects</a>
+                    <a href="#leaderboard" class="nav-link" aria-label="Go to Leaderboard page">Leaderboard</a>
+                </nav>
+                <div class="user-section">
+                                <div class="points-display">
+                                    <i class="fas fa-trophy"></i>
+                                    <span id="total-points">0</span>
+                                </div>
+                                <div class="user-info" id="user-info">
+                                    <span id="user-name">Player</span>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="home" class="section active">
+                <div class="hero">
+                    <h1>Master Cambridge & IB Topics</h1>
+                    <p>Interactive flashcard learning with real-time scoring</p>
+                    <button class="cta-btn" onclick="showSubjects()" aria-label="Start learning - go to subjects page">Start Learning</button>
+                </div>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>15 Second Timer</h3>
+                        <p>Answer quickly to earn bonus points</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Score Tracking</h3>
+                        <p>Track your progress and improve</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-coins"></i>
+                        <h3>Point Banking</h3>
+                        <p>Bank points every 3 correct answers</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="subjects" class="section">
+                <h2>Choose Your Level</h2>
+                <div class="level-buttons" role="group" aria-label="Select level">
+                    <button class="level-btn active" id="pre-igcse-btn" onclick="setLevel('preigcse')" aria-label="Select Pre-IGCSE level">Pre-IGCSE</button>
+                    <button class="level-btn" id="igcse-btn" onclick="setLevel('igcse')" aria-label="Select IGCSE level">IGCSE</button>
+                </div>
+                <h3>Choose Your Subject</h3>
+                <div class="subject-grid">
+                    <div class="subject-card" data-subject="maths">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Mathematics</h3>
+                        <p>Algebra, Calculus, Statistics</p>
+                    </div>
+                    <div class="subject-card" data-subject="physics">
+                        <i class="fas fa-atom"></i>
+                        <h3>Physics</h3>
+                        <p>Mechanics, Waves, Electricity</p>
+                    </div>
+                    <div class="subject-card" data-subject="chemistry">
+                        <i class="fas fa-flask"></i>
+                        <h3>Chemistry</h3>
+                        <p>Atoms, Reactions, Organic</p>
+                    </div>
+                    <div class="subject-card" data-subject="biology">
+                        <i class="fas fa-dna"></i>
+                        <h3>Biology</h3>
+                        <p>Cells, Genetics, Ecology</p>
+                    </div>
+                    <div class="subject-card" data-subject="history">
+                        <i class="fas fa-book-open"></i>
+                        <h3>History</h3>
+                        <p>World History, Modern Studies</p>
+                    </div>
+                    <div class="subject-card" data-subject="geography">
+                        <i class="fas fa-globe"></i>
+                        <h3>Geography</h3>
+                        <p>Physical, Human, Environmental</p>
+                    </div>
+                    <div class="subject-card" data-subject="economics">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Economics</h3>
+                        <p>Micro, Macro, International</p>
+                    </div>
+                    <div class="subject-card" data-subject="english">
+                        <i class="fas fa-pencil-alt"></i>
+                        <h3>English</h3>
+                        <p>Literature, Language, Analysis</p>
+                    </div>
+                    <div class="subject-card" data-subject="businessstudies">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Business Studies</h3>
+                        <p>Management, Marketing, Finance</p>
+                    </div>
+                    <div class="subject-card" data-subject="psychology">
+                        <i class="fas fa-brain"></i>
+                        <h3>Psychology</h3>
+                        <p>Behavior, Cognition, Development</p>
+                    </div>
+                    <div class="subject-card" data-subject="chinese">
+                        <i class="fas fa-language"></i>
+                        <h3>Chinese</h3>
+                        <p>Language, Literature, Culture</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="game" class="section">
+                <div class="game-header">
+                    <div class="game-info">
+                        <span class="subject-tag" id="game-subject"></span>
+                        <span class="question-count">Question <span id="current-question">1</span> of <span id="total-questions">10</span></span>
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-timer"></i>
+                            <span id="timer">15</span>s
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span id="round-points">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-front">
+                            <div class="flashcard-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3 id="question"></h3>
+                            <button class="audio-btn" id="audio-btn" onclick="playQuestionAudio()" aria-label="Play audio pronunciation of the question">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="flashcard-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 id="answer"></h3>
+                            <p class="explanation" id="explanation"></p>
+                            <p class="example" id="example"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-container" role="group" aria-label="Answer options">
+                    <button class="option-btn" id="option-0" aria-label="Select option A">
+                        <span class="option-letter">A</span>
+                        <span class="option-text" id="option-text-0"></span>
+                    </button>
+                    <button class="option-btn" id="option-1" aria-label="Select option B">
+                        <span class="option-letter">B</span>
+                        <span class="option-text" id="option-text-1"></span>
+                    </button>
+                    <button class="option-btn" id="option-2" aria-label="Select option C">
+                        <span class="option-letter">C</span>
+                        <span class="option-text" id="option-text-2"></span>
+                    </button>
+                    <button class="option-btn" id="option-3" aria-label="Select option D">
+                        <span class="option-letter">D</span>
+                        <span class="option-text" id="option-text-3"></span>
+                    </button>
+                </div>
+
+                <div class="timer-bar-container">
+                    <div class="timer-bar" id="timer-bar"></div>
+                </div>
+
+                <div class="confetti-container" id="confetti-container"></div>
+            </section>
+
+            <section id="results" class="section">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2>Game Over!</h2>
+                        <div class="results-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="results-stats">
+                        <div class="result-item">
+                            <span class="result-label">Correct Answers</span>
+                            <span class="result-value" id="correct-count">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Wrong Answers</span>
+                            <span class="result-value" id="wrong-count">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Accuracy</span>
+                            <span class="result-value" id="accuracy">0%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Total Points Earned</span>
+                            <span class="result-value highlight" id="earned-points">0</span>
+                        </div>
+                    </div>
+                    <div id="redemption-info" class="redemption-info"></div>
+                    <div class="results-actions" role="group" aria-label="Result actions">
+                        <button class="action-btn primary" onclick="playAgain()" aria-label="Play the same subject again">Play Again</button>
+                        <button class="action-btn secondary" onclick="goHome()" aria-label="Go back to home page">Back to Home</button>
+                        <button class="action-btn redemption" id="redemption-btn" style="display: none;" aria-label="Start redemption quiz for missed questions">
+                            <i class="fas fa-redo"></i>
+                            Redemption Quiz
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="leaderboard" class="section">
+                <h2>Leaderboard</h2>
+                <div class="leaderboard-container">
+                    <div class="leaderboard-header">
+                        <span>Rank</span>
+                        <span>Player</span>
+                        <span>Points</span>
+                        <span>Subject</span>
+                    </div>
+                    <div class="leaderboard-rows" id="leaderboard-rows">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>ASTAR-STUDENT | Cambridge & IB Learning Game</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
