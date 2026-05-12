@@ -1602,14 +1602,7 @@ function acceptCookies() {
         timestamp: new Date().toISOString()
     }));
     
-    const cookieConsent = document.getElementById('cookie-consent');
-    if (cookieConsent) {
-        cookieConsent.style.opacity = '0';
-        setTimeout(() => {
-            cookieConsent.style.display = 'none';
-            cookieConsent.style.opacity = '1';
-        }, 300);
-    }
+    hideCookieConsent();
 }
 
 function rejectCookies() {
@@ -1622,18 +1615,24 @@ function rejectCookies() {
         timestamp: new Date().toISOString()
     }));
     
-    const cookieConsent = document.getElementById('cookie-consent');
-    if (cookieConsent) {
-        cookieConsent.style.opacity = '0';
-        setTimeout(() => {
-            cookieConsent.style.display = 'none';
-            cookieConsent.style.opacity = '1';
-        }, 300);
-    }
+    hideCookieConsent();
     
     const cookieModal = document.getElementById('cookie-settings-modal');
     if (cookieModal) {
         cookieModal.style.display = 'none';
+    }
+}
+
+function hideCookieConsent() {
+    const cookieConsent = document.getElementById('cookie-consent');
+    if (cookieConsent) {
+        cookieConsent.style.opacity = '0';
+        cookieConsent.style.transform = 'translateY(100%)';
+        setTimeout(() => {
+            cookieConsent.style.display = 'none';
+            cookieConsent.style.opacity = '1';
+            cookieConsent.style.transform = 'translateY(0)';
+        }, 300);
     }
 }
 

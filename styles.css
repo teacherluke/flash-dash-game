@@ -1359,6 +1359,7 @@ footer a:hover {
     z-index: 99999;
     border-top: 1px solid var(--border-color);
     animation: slideUp 0.5s ease-out;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 @keyframes slideUp {
