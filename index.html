@@ -8,12 +8,96 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+    <!-- Google & Microsoft Login Libraries -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://alcdn.msauth.net/browser/2.0.0/js/msal-browser.min.js"></script>
+
     <script type="module">
         import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@2.0.0';
         injectSpeedInsights();
     </script>
+
+    <style>
+        /* Login Screen Styling */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .login-box {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            background: #fdfdfd;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+        .login-box h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .login-btn {
+            width: 100%;
+,waspadding: 14px;
+            margin: 8px 0;
+            border-radius: 14px;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        .google-btn {
+            background: #F5F0E6;
+            color: #222;
+        }
+        .ms-btn {
+            background: #E9E0D0;
+            color: #222;
+        }
+        .login-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
+
+<!-- Login Screen -->
+<div id="login-screen">
+    <div class="login-box">
+        <i class="fas fa-bolt" style="font-size: 40px; color: #ffcc00; margin-bottom: 14px;"></i>
+        <h1>Welcome to FlashDash</h1>
+        <p>Sign in to save your points and progress</p>
+
+        <button class="login-btn google-btn" id="google-login-btn">
+            <i class="fab fa-google"></i> Continue with Google
+        </button>
+
+        <button class="login-btn ms-btn" id="microsoft-login-btn">
+            <i class="fab fa-microsoft"></i> Continue with Microsoft
+        </button>
+    </div>
+</div>
 
     <div id="cookie-consent" class="cookie-consent" style="display: none;">
         <div class="cookie-consent-content">
@@ -121,38 +205,23 @@
         <main>
             <section id="home" class="section active">
                 <div class="hero">
-                    <div class="hero-content">
-                        <h1 class="hero-title">Master Cambridge & IB Topics</h1>
-                        <p class="hero-subtitle">Interactive flashcard learning with real-time scoring</p>
-                        <button class="cta-btn" onclick="showSubjects()" aria-label="Start learning - go to subjects page">Start Learning</button>
-                    </div>
-                    <div class="hero-decoration">
-                        <div class="floating-icon icon-1"><i class="fas fa-brain"></i></div>
-                        <div class="floating-icon icon-2"><i class="fas fa-book-open"></i></div>
-                        <div class="floating-icon icon-3"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="floating-icon icon-4"><i class="fas fa-award"></i></div>
-                        <div class="floating-icon icon-5"><i class="fas fa-lightbulb"></i></div>
-                    </div>
+                    <h1>Master Cambridge & IB Topics</h1>
+                    <p>Interactive flashcard learning with real-time scoring</p>
+                    <button class="cta-btn" onclick="showSubjects()" aria-label="Start learning - go to subjects page">Start Learning</button>
                 </div>
                 <div class="features">
-                    <div class="feature-card feature-1">
-                        <div class="feature-icon-wrapper">
-                            <i class="fas fa-clock"></i>
-                        </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
                         <h3>15 Second Timer</h3>
                         <p>Answer quickly to earn bonus points</p>
                     </div>
-                    <div class="feature-card feature-2">
-                        <div class="feature-icon-wrapper">
-                            <i class="fas fa-star"></i>
-                        </div>
+                    <div class="feature-card">
+                        <i class="fas fa-star"></i>
                         <h3>Score Tracking</h3>
                         <p>Track your progress and improve</p>
                     </div>
-                    <div class="feature-card feature-3">
-                        <div class="feature-icon-wrapper">
-                            <i class="fas fa-coins"></i>
-                        </div>
+                    <div class="feature-card">
+                        <i class="fas fa-coins"></i>
                         <h3>Point Banking</h3>
                         <p>Bank points every 3 correct answers</p>
                     </div>
