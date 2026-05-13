@@ -284,7 +284,30 @@ body {
     color: var(--text-primary);
 }
 
+.google-signin-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.logout-btn {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid var(--danger-color);
+    color: var(--danger-color);
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+}
 
 .audio-btn {
     position: absolute;

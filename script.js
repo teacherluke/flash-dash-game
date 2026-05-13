@@ -207,9 +207,83 @@ let powerUpsAvailable = false;
 let powerUpDoublePointsUsed = false;
 let powerUpSkipUsed = false;
 let powerUpHintUsed = false;
-let currentUser = { name: 'Player', isLoggedIn: true };
+let currentUser = { name: 'Player', isLoggedIn: false };
+
+const GOOGLE_CLIENT_ID = '57697451938-bl8gsll2hf7qvbphfsdvrm86h5cnbgba.apps.googleusercontent.com';
 
 const MAX_QUESTIONS_PER_ROUND = 20;
+
+function initGoogleSignIn() {
+    if (typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: handleCredentialResponse,
+            auto_select: false,
+            cancel_on_tap_outside: true
+        });
+
+        google.accounts.id.renderButton(
+            document.getElementById('g_id_signin'),
+            {
+                theme: 'outline',
+                size: 'medium',
+                text: 'signin',
+                shape: 'rectangular',
+                width: 180
+            }
+        );
+
+        google.accounts.id.prompt();
+    }
+}
+
+function handleCredentialResponse(response) {
+    if (response.credential) {
+        try {
+            const payload = parseJwt(response.credential);
+            
+            currentUser = {
+                name: payload.name || payload.given_name || 'Player',
+                email: payload.email,
+                picture: payload.picture,
+                isLoggedIn: true,
+                id: payload.sub
+            };
+
+            document.getElementById('user-name').textContent = currentUser.name;
+            document.getElementById('g_id_signin').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'flex';
+
+            loadUserProgress();
+            saveUserProgress();
+
+            trackEvent('user_logged_in', { provider: 'google', user_name: currentUser.name });
+        } catch (error) {
+            console.error('Error parsing Google token:', error);
+        }
+    }
+}
+
+function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+}
+
+function handleLogout() {
+    currentUser = { name: 'Player', isLoggedIn: false };
+    
+    document.getElementById('user-name').textContent = 'Player';
+    document.getElementById('g_id_signin').style.display = 'flex';
+    document.getElementById('logout-btn').style.display = 'none';
+
+    google.accounts.id.disableAutoSelect();
+
+    trackEvent('user_logged_out', { provider: 'google' });
+}
 
 class SoundManager {
     constructor() {
@@ -1664,6 +1738,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loadUserProgress();
     renderLeaderboard();
     checkCookieConsent();
+    
+    setTimeout(() => {
+        initGoogleSignIn();
+    }, 1000);
     
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
