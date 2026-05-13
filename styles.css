@@ -309,6 +309,407 @@ body {
     transform: translateY(-2px);
 }
 
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-pic i {
+    font-size: 1rem;
+    color: white;
+}
+
+/* Profile Modal */
+.profile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    backdrop-filter: blur(5px);
+}
+
+.profile-modal.active {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+.profile-modal-content {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 450px;
+    width: 90%;
+    border: 1px solid var(--border-color);
+    animation: scaleIn 0.2s ease;
+}
+
+.profile-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-modal-header h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.profile-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.profile-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.profile-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.profile-picture-section {
+    text-align: center;
+}
+
+.profile-pic-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border: 3px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.profile-pic-large:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.profile-pic-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-pic-large i {
+    font-size: 3rem;
+    color: white;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.camera-btn, .upload-btn, .remove-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.camera-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.camera-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.upload-btn {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid #3b82f6;
+}
+
+.upload-btn:hover {
+    background: rgba(59, 130, 246, 0.3);
+}
+
+.remove-btn {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+
+.remove-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.profile-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-info-section label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.profile-info-section input {
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.profile-info-section input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.profile-info-section input::placeholder {
+    color: var(--text-secondary);
+}
+
+.profile-modal-footer {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.cancel-btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.save-btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Power-Up Modal */
+.powerup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    backdrop-filter: blur(10px);
+}
+
+.powerup-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.powerup-modal-content {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+    border-radius: 24px;
+    padding: 35px;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid rgba(99, 102, 241, 0.5);
+    animation: powerUpScaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 
+        0 0 60px rgba(99, 102, 241, 0.3),
+        0 0 100px rgba(139, 92, 246, 0.2);
+}
+
+@keyframes powerUpScaleIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.powerup-modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.powerup-modal-header h3 {
+    font-size: 1.8rem;
+    color: #fbbf24;
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.powerup-modal-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.powerup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.powerup-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.powerup-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.powerup-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-8px) scale(1.05);
+    background: rgba(251, 191, 36, 0.1);
+    box-shadow: 0 15px 35px rgba(251, 191, 36, 0.2);
+}
+
+.powerup-item:hover::before {
+    transform: scaleX(1);
+}
+
+.powerup-icon {
+    font-size: 2.5rem;
+    animation: powerUpPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes powerUpPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.powerup-item:hover .powerup-icon {
+    animation: none;
+    transform: scale(1.2);
+}
+
+.powerup-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.powerup-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.4;
+}
+
 .audio-btn {
     position: absolute;
     bottom: 20px;
@@ -1604,80 +2005,175 @@ footer a:hover {
 }
 
 /* Responsive Design */
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header-content {
+        padding: 12px 20px;
+    }
+    
+    .user-section {
+        gap: 15px;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+    }
+    
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .subject-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+    
+    .flashcard {
+        width: min(500px, 85vw);
+        height: min(300px, 40vh);
+    }
+    
+    .options-container {
+        max-width: 600px;
+    }
+    
+    .cookie-consent-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .cookie-buttons {
+        justify-content: center;
+    }
+}
+
+/* Mobile (up to 768px) */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
-        gap: 15px;
-        padding: 15px;
+        gap: 12px;
+        padding: 12px 15px;
     }
     
     .logo-text {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
     }
     
     .nav-link {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        padding: 6px 14px;
+        font-size: 0.85rem;
     }
     
     .user-section {
         flex-direction: column;
         gap: 10px;
         align-items: center;
+        width: 100%;
     }
     
     .points-display {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 8px 12px;
+    }
+    
+    .user-info {
+        font-size: 0.9rem;
+    }
+    
+    .google-signin-container {
+        width: 100%;
+        max-width: 200px;
     }
     
     .hero h1 {
-        font-size: 2rem;
-        padding: 0 20px;
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        padding: 0 15px;
+        line-height: 1.3;
     }
     
     .hero p {
-        padding: 0 20px;
+        padding: 0 15px;
+        font-size: 1rem;
+    }
+    
+    .cta-btn {
+        padding: 14px 32px;
+        font-size: 1rem;
     }
     
     .features {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 20px;
-    }
-    
-    .feature-card {
-        padding: 20px;
-    }
-    
-    .subject-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 15px;
         padding: 0 15px;
     }
     
-    .subject-card {
-        padding: 15px;
+    .feature-card {
+        padding: 18px;
     }
     
-    .subject-card i {
+    .feature-card i {
         font-size: 2.5rem;
     }
     
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+    
+    .subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 12px;
+    }
+    
+    .subject-card {
+        padding: 14px 10px;
+    }
+    
+    .subject-card i {
+        font-size: 2.2rem;
+    }
+    
     .subject-card h3 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+    
+    .subject-card p {
+        font-size: 0.75rem;
+        display: none;
     }
     
     .game-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-        padding: 15px;
+        padding: 12px;
+    }
+    
+    .game-info {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .subject-tag {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+    
+    .question-count {
+        font-size: 0.85rem;
     }
     
     .game-stats {
@@ -1687,33 +2183,252 @@ footer a:hover {
     }
     
     .stat-item {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         gap: 5px;
     }
     
     .flashcard-container {
-        padding: 15px;
+        padding: 12px;
     }
     
     .flashcard {
-        height: min(280px, 40vh);
-        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        height: min(260px, 38vh);
+        padding: 15px;
+        margin: 0 auto;
     }
     
     .flashcard-front h3,
     .flashcard-back h3 {
-        font-size: clamp(1rem, 3.5vw, 1.4rem);
+        font-size: clamp(0.9rem, 4vw, 1.3rem);
+        line-height: 1.4;
+    }
+    
+    .flashcard .explanation,
+    .flashcard .example {
+        padding: 12px;
+        font-size: 0.85rem;
     }
     
     .options-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 12px;
+    }
+    
+    .options {
+        max-width: 100%;
+    }
+    
+    .option-btn {
+        padding: 12px 8px;
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+    
+    .option-letter {
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
+    }
+    
+    .results-container {
+        padding: 15px;
+        margin: 12px;
+    }
+    
+    .results-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .results-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .result-item {
+        padding: 12px;
+    }
+    
+    .result-label {
+        font-size: 0.8rem;
+    }
+    
+    .result-value {
+        font-size: 1.5rem;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .action-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .leaderboard-container {
+        margin: 0 12px;
+        overflow-x: auto;
+    }
+    
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 1fr 2fr 1fr;
+        min-width: 280px;
         gap: 10px;
-        padding: 0 15px;
+        padding: 12px 15px;
+    }
+    
+    .leaderboard-header .player-subject,
+    .leaderboard-row .player-subject {
+        display: none;
+    }
+    
+    .leaderboard-header {
+        font-size: 0.8rem;
+    }
+    
+    .leaderboard-row {
+        font-size: 0.85rem;
+    }
+    
+    .footer p {
+        font-size: 0.75rem;
+        padding: 0 10px;
+        text-align: center;
+    }
+    
+    /* Cookie Consent Mobile */
+    .cookie-consent {
+        padding: 15px;
+    }
+    
+    .cookie-consent-content {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .cookie-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .cookie-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .cookie-text h3 {
+        font-size: 1rem;
+    }
+    
+    .cookie-text p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    .cookie-buttons {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .cookie-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+    
+    .cookie-settings-content {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .cookie-option label {
+        gap: 6px;
+    }
+    
+    .cookie-option span {
+        font-size: 0.9rem;
+    }
+    
+    .cookie-option p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+    .level-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .level-btn {
+        width: 100%;
+        max-width: 180px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .powerup-notification {
+        top: 15%;
+        left: 10px;
+        right: 10px;
+        transform: none;
+    }
+    
+    .powerup-content {
+        padding: 20px;
+    }
+    
+    .powerup-title {
+        font-size: 1.1rem;
+    }
+    
+    .powerup-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .powerup-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .flashcard {
+        height: min(220px, 35vh);
+        padding: 12px;
+    }
+    
+    .flashcard-front h3,
+    .flashcard-back h3 {
+        font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+    }
+    
+    .audio-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        bottom: 12px;
+        right: 12px;
+    }
+    
+    .options-container {
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
     
     .option-btn {
         padding: 12px 10px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
     
     .option-letter {
@@ -1722,123 +2437,92 @@ footer a:hover {
         font-size: 0.75rem;
     }
     
-    .results-container {
-        padding: 20px;
-        margin: 15px;
-    }
-    
-    .results-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .results-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    
-    .result-item {
-        padding: 15px;
-    }
-    
-    .results-actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .action-btn {
-        width: 100%;
-        padding: 12px;
-    }
-    
-    .leaderboard-container {
-        margin: 0 15px;
-        overflow-x: auto;
-    }
-    
-    .leaderboard-header,
-    .leaderboard-row {
-        grid-template-columns: 1fr 2fr 1fr;
-        min-width: 300px;
-    }
-    
-    .leaderboard-header .player-subject,
-    .leaderboard-row .player-subject {
-        display: none;
-    }
-    
-    .footer p {
-        font-size: 0.8rem;
-        padding: 0 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .level-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .level-btn {
-        width: 100%;
-        max-width: 200px;
-        padding: 12px 24px;
-    }
-    
-    .powerup-buttons {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .powerup-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
-    }
-    
-    .flashcard {
-        height: min(250px, 35vh);
-    }
-    
-    .options-container {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-    
-    .option-btn {
-        padding: 14px 12px;
-        flex-direction: row;
-        gap: 10px;
-    }
-    
-    .option-letter {
-        width: 32px;
-        height: 32px;
-        font-size: 0.85rem;
-    }
-    
     .game-header {
-        padding: 10px;
+        padding: 8px;
     }
     
     .subject-tag {
-        font-size: 0.8rem;
-        padding: 4px 10px;
+        font-size: 0.65rem;
+        padding: 4px 8px;
     }
     
     .question-count {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
     
     .timer-warning {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .results-header h2 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     
     .results-icon i {
-        font-size: 3rem;
+        font-size: 2.5rem;
+    }
+    
+    .result-value {
+        font-size: 1.3rem;
+    }
+    
+    .cookie-settings-content {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .cookie-settings-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .profile-modal-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .profile-pic-large {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .profile-actions {
+        flex-direction: column;
+    }
+    
+    .camera-btn, .upload-btn, .remove-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .powerup-modal-content {
+        padding: 25px 20px;
+        margin: 10px;
+    }
+    
+    .powerup-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .powerup-item {
+        padding: 20px;
+    }
+    
+    .powerup-modal-header h3 {
+        font-size: 1.4rem;
+    }
+    
+    .profile-btn {
+        padding: 6px 8px;
+        gap: 8px;
+    }
+    
+    .profile-pic {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .user-name {
+        font-size: 0.85rem;
     }
 }

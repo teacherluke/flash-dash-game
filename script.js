@@ -207,7 +207,9 @@ let powerUpsAvailable = false;
 let powerUpDoublePointsUsed = false;
 let powerUpSkipUsed = false;
 let powerUpHintUsed = false;
-let currentUser = { name: 'Player', isLoggedIn: false };
+let correctAnswersForPowerUp = 0;
+const POWER_UP_THRESHOLD = 5;
+let currentUser = { name: 'Player', isLoggedIn: false, profilePicture: null };
 
 const GOOGLE_CLIENT_ID = '57697451938-bl8gsll2hf7qvbphfsdvrm86h5cnbgba.apps.googleusercontent.com';
 
@@ -1111,15 +1113,16 @@ function selectAnswer(optionIndex) {
         soundManager.playCorrect();
         correctCount++;
         consecutiveCorrect++;
+        correctAnswersForPowerUp++;
         
         const basePoints = Math.max(10, timer * 2);
         const multiplier = doublePointsActive ? 2 : 1;
         roundPoints += basePoints * multiplier;
         document.getElementById('round-points').textContent = roundPoints;
         
-        if (currentFlashcards.length === MAX_QUESTIONS_PER_ROUND && consecutiveCorrect >= 3 && !powerUpsAvailable) {
+        if (correctAnswersForPowerUp >= POWER_UP_THRESHOLD && !powerUpsAvailable) {
             powerUpsAvailable = true;
-            showPowerUpNotification();
+            showPowerUpModal();
             trackEvent('powerups_unlocked', { subject: currentSubject });
         }
         
@@ -1167,61 +1170,183 @@ function selectAnswer(optionIndex) {
     setTimeout(() => nextQuestion(), 3000);
 }
 
-function showPowerUpNotification() {
-    const notification = document.createElement('div');
-    notification.className = 'powerup-notification';
-    notification.innerHTML = `
-        <div class="powerup-content">
-            <span class="powerup-title">🎉 Power-Ups Unlocked!</span>
-            <div class="powerup-buttons">
-                <button class="powerup-btn" id="powerup-double" onclick="usePowerUp('double')" ${powerUpDoublePointsUsed ? 'disabled' : ''}>
-                    <span>⚡</span> Double Points
-                </button>
-                <button class="powerup-btn" id="powerup-skip" onclick="usePowerUp('skip')" ${powerUpSkipUsed ? 'disabled' : ''}>
-                    <span>➡️</span> Skip Question
-                </button>
-                <button class="powerup-btn" id="powerup-hint" onclick="usePowerUp('hint')" ${powerUpHintUsed ? 'disabled' : ''}>
-                    <span>🎯</span> 50/50 Split
-                </button>
-            </div>
-        </div>
-    `;
-    document.getElementById('game').appendChild(notification);
-    
-    setTimeout(() => notification.remove(), 8000);
+function showPowerUpModal() {
+    document.getElementById('powerup-modal').classList.add('active');
+    soundManager.playPowerUpUnlock();
 }
 
-function usePowerUp(type) {
+function hidePowerUpModal() {
+    document.getElementById('powerup-modal').classList.remove('active');
+}
+
+function selectPowerUp(type) {
+    hidePowerUpModal();
+    soundManager.playPowerUpUse();
+    
     switch(type) {
         case 'double':
-            if (!powerUpDoublePointsUsed) {
-                powerUpDoublePointsUsed = true;
-                doublePointsActive = true;
-                document.getElementById('powerup-double').disabled = true;
-                trackEvent('powerup_used', { powerup_type: 'double_points', subject: currentSubject });
-                setTimeout(() => doublePointsActive = false, 30000);
-            }
+            powerUpDoublePointsUsed = true;
+            doublePointsActive = true;
+            trackEvent('powerup_used', { powerup_type: 'double_points', subject: currentSubject });
+            setTimeout(() => doublePointsActive = false, 30000);
             break;
         case 'skip':
-            if (!powerUpSkipUsed) {
-                powerUpSkipUsed = true;
-                document.getElementById('powerup-skip').disabled = true;
-                trackEvent('powerup_used', { powerup_type: 'skip', subject: currentSubject });
-                nextQuestion();
-            }
+            powerUpSkipUsed = true;
+            trackEvent('powerup_used', { powerup_type: 'skip', subject: currentSubject });
+            nextQuestion();
             break;
         case 'hint':
-            if (!powerUpHintUsed) {
-                powerUpHintUsed = true;
-                document.getElementById('powerup-hint').disabled = true;
-                trackEvent('powerup_used', { powerup_type: '5050_split', subject: currentSubject });
-                apply5050Split();
-            }
+            powerUpHintUsed = true;
+            trackEvent('powerup_used', { powerup_type: '5050_split', subject: currentSubject });
+            apply5050Split();
             break;
     }
     
-    const notification = document.querySelector('.powerup-notification');
-    if (notification) notification.remove();
+    powerUpsAvailable = false;
+    correctAnswersForPowerUp = 0;
+}
+
+function openProfileModal() {
+    const savedProfile = localStorage.getItem('flashDashProfile');
+    if (savedProfile) {
+        try {
+            const profile = JSON.parse(savedProfile);
+            document.getElementById('custom-name').value = profile.name || '';
+            if (profile.picture) {
+                document.getElementById('profile-image-large').src = profile.picture;
+                document.getElementById('profile-image-large').style.display = 'block';
+                document.getElementById('profile-icon-large').style.display = 'none';
+                document.getElementById('remove-btn').style.display = 'flex';
+            } else {
+                document.getElementById('profile-image-large').style.display = 'none';
+                document.getElementById('profile-icon-large').style.display = 'block';
+                document.getElementById('remove-btn').style.display = 'none';
+            }
+        } catch (e) {
+            console.error('Error loading profile:', e);
+        }
+    }
+    document.getElementById('profile-modal').classList.add('active');
+}
+
+function closeProfileModal() {
+    document.getElementById('profile-modal').classList.remove('active');
+    stopCamera();
+}
+
+function openCamera() {
+    const video = document.getElementById('camera-video');
+    
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            video.style.display = 'block';
+            
+            setTimeout(() => {
+                const canvas = document.getElementById('camera-canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                
+                const imageDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                document.getElementById('profile-image-large').src = imageDataUrl;
+                document.getElementById('profile-image-large').style.display = 'block';
+                document.getElementById('profile-icon-large').style.display = 'none';
+                document.getElementById('remove-btn').style.display = 'flex';
+                
+                stopCamera();
+            }, 1500);
+        })
+        .catch(err => {
+            console.error('Camera access denied:', err);
+            alert('Camera access is required to take a selfie. Please enable camera permissions.');
+        });
+}
+
+function stopCamera() {
+    const video = document.getElementById('camera-video');
+    if (video.srcObject) {
+        video.srcObject.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+        video.style.display = 'none';
+    }
+}
+
+function uploadImage() {
+    document.getElementById('image-upload').click();
+}
+
+document.getElementById('image-upload').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            document.getElementById('profile-image-large').src = event.target.result;
+            document.getElementById('profile-image-large').style.display = 'block';
+            document.getElementById('profile-icon-large').style.display = 'none';
+            document.getElementById('remove-btn').style.display = 'flex';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+function removeProfilePicture() {
+    document.getElementById('profile-image-large').src = '';
+    document.getElementById('profile-image-large').style.display = 'none';
+    document.getElementById('profile-icon-large').style.display = 'block';
+    document.getElementById('remove-btn').style.display = 'none';
+}
+
+function saveProfile() {
+    const name = document.getElementById('custom-name').value.trim();
+    const picture = document.getElementById('profile-image-large').src;
+    
+    const profile = {
+        name: name || 'Player',
+        picture: picture || null,
+        savedAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem('flashDashProfile', JSON.stringify(profile));
+    
+    currentUser.name = profile.name;
+    currentUser.profilePicture = profile.picture;
+    
+    document.getElementById('user-name').textContent = profile.name;
+    
+    if (profile.picture) {
+        document.getElementById('profile-image').src = profile.picture;
+        document.getElementById('profile-image').style.display = 'block';
+        document.getElementById('profile-icon').style.display = 'none';
+    } else {
+        document.getElementById('profile-image').src = '';
+        document.getElementById('profile-image').style.display = 'none';
+        document.getElementById('profile-icon').style.display = 'block';
+    }
+    
+    closeProfileModal();
+}
+
+function loadProfile() {
+    const savedProfile = localStorage.getItem('flashDashProfile');
+    if (savedProfile) {
+        try {
+            const profile = JSON.parse(savedProfile);
+            currentUser.name = profile.name || 'Player';
+            currentUser.profilePicture = profile.picture;
+            
+            document.getElementById('user-name').textContent = currentUser.name;
+            
+            if (profile.picture) {
+                document.getElementById('profile-image').src = profile.picture;
+                document.getElementById('profile-image').style.display = 'block';
+                document.getElementById('profile-icon').style.display = 'none';
+            }
+        } catch (e) {
+            console.error('Error loading profile:', e);
+        }
+    }
 }
 
 function handleTimeout() {
@@ -1738,6 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadUserProgress();
     renderLeaderboard();
     checkCookieConsent();
+    loadProfile();
     
     setTimeout(() => {
         initGoogleSignIn();

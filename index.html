@@ -90,6 +90,76 @@
         </div>
     </div>
 
+    <div id="profile-modal" class="profile-modal">
+        <div class="profile-modal-content">
+            <div class="profile-modal-header">
+                <h3>Edit Profile</h3>
+                <button class="profile-close-btn" onclick="closeProfileModal()" aria-label="Close profile modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="profile-modal-body">
+                <div class="profile-picture-section">
+                    <div class="profile-pic-large" id="profile-pic-large">
+                        <img id="profile-image-large" src="" alt="Profile" style="display: none;">
+                        <i class="fas fa-user" id="profile-icon-large"></i>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="camera-btn" onclick="openCamera()" aria-label="Take selfie with camera">
+                            <i class="fas fa-camera"></i>
+                            Take Selfie
+                        </button>
+                        <button class="upload-btn" onclick="uploadImage()" aria-label="Upload profile picture">
+                            <i class="fas fa-upload"></i>
+                            Upload Image
+                        </button>
+                        <button class="remove-btn" onclick="removeProfilePicture()" aria-label="Remove profile picture" style="display: none;">
+                            <i class="fas fa-trash"></i>
+                            Remove Picture
+                        </button>
+                    </div>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    <video id="camera-video" autoplay style="display: none;"></video>
+                    <canvas id="camera-canvas" style="display: none;"></canvas>
+                </div>
+                <div class="profile-info-section">
+                    <label for="custom-name">Display Name</label>
+                    <input type="text" id="custom-name" placeholder="Enter your name" maxlength="20">
+                </div>
+            </div>
+            <div class="profile-modal-footer">
+                <button class="cancel-btn" onclick="closeProfileModal()" aria-label="Cancel changes">Cancel</button>
+                <button class="save-btn" onclick="saveProfile()" aria-label="Save profile changes">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="powerup-modal" class="powerup-modal">
+        <div class="powerup-modal-content">
+            <div class="powerup-modal-header">
+                <h3>🎮 Power-Ups Ready!</h3>
+                <p>Select one to use</p>
+            </div>
+            <div class="powerup-grid">
+                <button class="powerup-item" id="powerup-item-double" onclick="selectPowerUp('double')">
+                    <div class="powerup-icon">⚡</div>
+                    <div class="powerup-name">Double Points</div>
+                    <div class="powerup-desc">Earn 2x points for your next answer</div>
+                </button>
+                <button class="powerup-item" id="powerup-item-skip" onclick="selectPowerUp('skip')">
+                    <div class="powerup-icon">➡️</div>
+                    <div class="powerup-name">Skip Question</div>
+                    <div class="powerup-desc">Skip to the next question</div>
+                </button>
+                <button class="powerup-item" id="powerup-item-hint" onclick="selectPowerUp('hint')">
+                    <div class="powerup-icon">🎯</div>
+                    <div class="powerup-name">50/50 Split</div>
+                    <div class="powerup-desc">Remove two wrong answers</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div id="app">
         <header class="header">
             <div class="header-content">
@@ -104,9 +174,13 @@
                                     <i class="fas fa-trophy"></i>
                                     <span id="total-points">0</span>
                                 </div>
-                                <div class="user-info" id="user-info">
+                                <button id="profile-btn" class="profile-btn" onclick="openProfileModal()" aria-label="Open profile settings">
+                                    <div class="profile-pic" id="profile-pic">
+                                        <img id="profile-image" src="" alt="Profile" style="display: none;">
+                                        <i class="fas fa-user" id="profile-icon"></i>
+                                    </div>
                                     <span id="user-name">Player</span>
-                                </div>
+                                </button>
                                 <div id="g_id_signin" class="google-signin-container"></div>
                                 <button id="logout-btn" class="logout-btn" style="display: none;" onclick="handleLogout()" aria-label="Log out">
                                     <i class="fas fa-sign-out-alt"></i>
@@ -249,22 +323,24 @@
                 </div>
 
                 <div class="options-container" role="group" aria-label="Answer options">
-                    <button class="option-btn" id="option-0" aria-label="Select option A">
-                        <span class="option-letter">A</span>
-                        <span class="option-text" id="option-text-0"></span>
-                    </button>
-                    <button class="option-btn" id="option-1" aria-label="Select option B">
-                        <span class="option-letter">B</span>
-                        <span class="option-text" id="option-text-1"></span>
-                    </button>
-                    <button class="option-btn" id="option-2" aria-label="Select option C">
-                        <span class="option-letter">C</span>
-                        <span class="option-text" id="option-text-2"></span>
-                    </button>
-                    <button class="option-btn" id="option-3" aria-label="Select option D">
-                        <span class="option-letter">D</span>
-                        <span class="option-text" id="option-text-3"></span>
-                    </button>
+                    <div class="options">
+                        <button class="option-btn" id="option-0" aria-label="Select option A">
+                            <span class="option-letter">A</span>
+                            <span class="option-text" id="option-text-0"></span>
+                        </button>
+                        <button class="option-btn" id="option-1" aria-label="Select option B">
+                            <span class="option-letter">B</span>
+                            <span class="option-text" id="option-text-1"></span>
+                        </button>
+                        <button class="option-btn" id="option-2" aria-label="Select option C">
+                            <span class="option-letter">C</span>
+                            <span class="option-text" id="option-text-2"></span>
+                        </button>
+                        <button class="option-btn" id="option-3" aria-label="Select option D">
+                            <span class="option-letter">D</span>
+                            <span class="option-text" id="option-text-3"></span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="timer-bar-container">
