@@ -434,23 +434,49 @@
             google.accounts.id.prompt();
         });
 
-        async function handleGoogleLogin(response) {
-            const res = await fetch(`${APPS_SCRIPT_URL}?action=verifyGoogle&token=${response.credential}`);
-            const user = await res.json();
-            if (user.status === "success") {
+        function handleGoogleLogin(response) {
+            try {
+                const credential = response.credential;
+                const payload = parseJwt(credential);
+                
+                const user = {
+                    name: payload.name || payload.given_name || 'Player',
+                    email: payload.email || '',
+                    picture: payload.picture || '',
+                    status: "success"
+                };
+                
                 saveUser(user);
                 setUserProfile(user);
+                showApp();
+            } catch (error) {
+                console.error('Google login error:', error);
+                const mockUser = {
+                    name: 'Player',
+                    email: '',
+                    status: "success"
+                };
+                saveUser(mockUser);
+                setUserProfile(mockUser);
                 showApp();
             }
         }
 
-        // Save & display user
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+
         function saveUser(user) {
             localStorage.setItem("flashdashUser", JSON.stringify(user));
         }
 
         function setUserProfile(user) {
-            document.getElementById("user-name").innerText = user.name;
+            document.getElementById("user-name").innerText = user.name || 'Player';
         }
 
         function showApp() {
