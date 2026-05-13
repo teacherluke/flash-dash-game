@@ -235,7 +235,16 @@ function initGoogleSignIn() {
             }
         );
 
-        google.accounts.id.prompt();
+        google.accounts.id.renderButton(
+            document.getElementById('g_id_signin_login'),
+            {
+                theme: 'outline',
+                size: 'large',
+                text: 'signin_with',
+                shape: 'rectangular',
+                width: '100%'
+            }
+        );
     }
 }
 
@@ -259,11 +268,37 @@ function handleCredentialResponse(response) {
             loadUserProgress();
             saveUserProgress();
 
+            closeLoginModal();
             trackEvent('user_logged_in', { provider: 'google', user_name: currentUser.name });
         } catch (error) {
             console.error('Error parsing Google token:', error);
         }
     }
+}
+
+function closeLoginModal() {
+    const loginModal = document.getElementById('login-modal');
+    if (loginModal) {
+        loginModal.classList.remove('active');
+        document.getElementById('app').style.opacity = '1';
+    }
+}
+
+function loginAsGuest() {
+    currentUser = {
+        name: 'Guest',
+        isLoggedIn: true,
+        id: 'guest_' + Date.now()
+    };
+    
+    document.getElementById('user-name').textContent = 'Guest';
+    document.getElementById('g_id_signin').style.display = 'none';
+    document.getElementById('logout-btn').style.display = 'flex';
+    
+    loadUserProgress();
+    closeLoginModal();
+    
+    trackEvent('user_logged_in', { provider: 'guest', user_name: 'Guest' });
 }
 
 function parseJwt(token) {
@@ -1867,6 +1902,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setTimeout(() => {
         initGoogleSignIn();
+        document.getElementById('app').style.opacity = '0';
     }, 1000);
     
     document.querySelectorAll('.nav-link').forEach(link => {
