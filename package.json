@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 8080",
-    "build": "node build.js",
-    "deploy": "npm run build && vercel --prod"
+    "build": "mkdir -p dist && cp index.html styles.css script.js dist/ && cp flashcards_*.txt dist/",
+    "deploy": "vercel --prod"
   },
   "keywords": [
     "flashcards",
@@ -19,10 +19,5 @@
   "license": "MIT",
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0"
-  },
-  "devDependencies": {
-    "clean-css": "^5.3.3",
-    "html-minifier-terser": "^7.2.0",
-    "terser": "^5.47.1"
   }
 }

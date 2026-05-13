@@ -2,30 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/index.html",
+      "src": "index.html",
       "use": "@vercel/static"
     },
     {
-      "src": "dist/styles.css",
+      "src": "styles.css",
       "use": "@vercel/static"
     },
     {
-      "src": "dist/script.js",
+      "src": "script.js",
       "use": "@vercel/static"
     },
     {
-      "src": "dist/flashcards_*.txt",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "dist/igcse/*.txt",
+      "src": "flashcards_*.txt",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/$1"
+      "dest": "/$1"
     }
   ]
 }

@@ -8,157 +8,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <!-- Google Login Library -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-
     <script type="module">
         import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@2.0.0';
         injectSpeedInsights();
     </script>
-
-    <style>
-        /* Login Screen Styling */
-        #login-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .login-box {
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            background: #fdfdfd;
-            padding: 40px 30px;
-            border-radius: 24px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-        }
-        .login-box h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: #222;
-        }
-        .login-box p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .login-btn {
-            width: 100%;
-,waspadding: 14px;
-            margin: 8px 0;
-            border-radius: 14px;
-            border: none;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: 0.2s;
-        }
-        .google-btn {
-            background: #F5F0E6;
-            color: #222;
-        }
-
-        .login-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-    </style>
 </head>
 <body>
-
-<!-- Login Screen -->
-<div id="login-screen">
-    <div class="login-box">
-        <i class="fas fa-bolt" style="font-size: 40px; color: #ffcc00; margin-bottom: 14px;"></i>
-        <h1>Welcome to FlashDash</h1>
-        <p>Sign in to save your points and progress</p>
-
-        <button class="login-btn google-btn" id="google-login-btn">
-            <i class="fab fa-google"></i> Continue with Google
-        </button>
-    </div>
-</div>
-
-    <div id="cookie-consent" class="cookie-consent" style="display: none;">
-        <div class="cookie-consent-content">
-            <div class="cookie-icon">
-                <i class="fas fa-cookie-bite"></i>
-            </div>
-            <div class="cookie-text">
-                <h3>🍪 Cookie Consent</h3>
-                <p>FlashDash uses cookies to enhance your learning experience, track progress, and improve our services. By clicking "Accept all cookies", you consent to the use of cookies as described in our Privacy Policy.</p>
-                <a href="#cookie-policy" class="cookie-policy-link" onclick="showCookieSettings()">Read our Cookie Policy</a>
-            </div>
-            <div class="cookie-buttons">
-                <button class="cookie-btn settings-btn" onclick="showCookieSettings()">Cookie Settings</button>
-                <button class="cookie-btn reject-btn" onclick="rejectCookies()">Reject All</button>
-                <button class="cookie-btn accept-btn" onclick="acceptCookies()">Accept All</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="cookie-settings-modal" class="cookie-modal" style="display: none;">
-        <div class="cookie-modal-content">
-            <div class="cookie-modal-header">
-                <h3>🍪 Cookie Settings</h3>
-                <button class="close-btn" onclick="closeCookieSettings()">&times;</button>
-            </div>
-            <div class="cookie-modal-body">
-                <div class="cookie-policy-info">
-                    <h4>Our Cookie Policy</h4>
-                    <p>FlashDash uses the following types of cookies:</p>
-                </div>
-                <div class="cookie-option">
-                    <label>
-                        <input type="checkbox" id="analytics-cookie" checked>
-                        <span>📊 Analytics Cookies</span>
-                    </label>
-                    <p>These cookies help us understand how visitors interact with our website, track usage patterns, and improve our services. They collect anonymous data about how you use the site.</p>
-                </div>
-                <div class="cookie-option">
-                    <label>
-                        <input type="checkbox" id="preferences-cookie" checked>
-                        <span>⚙️ Preferences Cookies</span>
-                    </label>
-                    <p>These cookies remember your preferences and settings, such as your game progress, subject selections, and display preferences for a personalized experience.</p>
-                </div>
-                <div class="cookie-option">
-                    <label>
-                        <input type="checkbox" id="marketing-cookie">
-                        <span>🎯 Marketing Cookies</span>
-                    </label>
-                    <p>These cookies track your browsing activity for marketing purposes, allowing us to show you relevant content and offers. These are optional.</p>
-                </div>
-                <div class="cookie-option">
-                    <label>
-                        <input type="checkbox" id="essential-cookie" checked disabled>
-                        <span>🔒 Essential Cookies</span>
-                    </label>
-                    <p>These cookies are necessary for the website to function properly. They cannot be disabled as they enable core functionality like game mechanics and progress tracking.</p>
-                </div>
-                <div class="cookie-policy-footer">
-                    <p>By using FlashDash, you agree to our <a href="#" style="color: var(--primary-color);">Privacy Policy</a> and <a href="#" style="color: var(--primary-color);">Cookie Policy</a>. Your consent can be changed at any time by revisiting these settings.</p>
-                </div>
-            </div>
-            <div class="cookie-modal-footer">
-                <button class="cookie-btn reject-btn" onclick="rejectCookies()">Reject All</button>
-                <button class="cookie-btn accept-btn" onclick="saveCookieSettings()">Save & Close</button>
-            </div>
-        </div>
-    </div>
-
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="logo-container">
@@ -172,7 +27,69 @@
             <p class="loading-text">Loading knowledge...</p>
         </div>
     </div>
-    <div id="app" style="display:none;">
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-consent-content">
+            <div class="cookie-icon">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="cookie-text">
+                <h3>Accept cookies from FlashDash!</h3>
+                <p>By clicking "Accept all cookies", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. Please refer to our cookie notice for more information about the way we use cookies.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-settings" onclick="showCookieSettings()" aria-label="Open cookie settings">
+                    Cookies settings
+                </button>
+                <button class="cookie-btn cookie-reject" onclick="rejectAllCookies()" aria-label="Reject all cookies">
+                    Reject all cookies
+                </button>
+                <button class="cookie-btn cookie-accept" onclick="acceptAllCookies()" aria-label="Accept all cookies">
+                    Accept all cookies
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookie-settings-modal" class="cookie-settings-modal">
+        <div class="cookie-settings-content">
+            <div class="cookie-settings-header">
+                <h3>Cookie Settings</h3>
+                <button class="cookie-close-btn" onclick="closeCookieSettings()" aria-label="Close cookie settings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cookie-settings-body">
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="cookie-essential" checked disabled>
+                        <span>Essential Cookies</span>
+                        <p>Required for basic site functionality</p>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="cookie-analytics">
+                        <span>Analytics Cookies</span>
+                        <p>Help us understand how visitors use our site</p>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="cookie-marketing">
+                        <span>Marketing Cookies</span>
+                        <p>Used to track visitors across websites</p>
+                    </label>
+                </div>
+            </div>
+            <div class="cookie-settings-footer">
+                <button class="cookie-btn cookie-save" onclick="saveCookieSettings()" aria-label="Save cookie preferences">
+                    Save preferences
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app">
         <header class="header">
             <div class="header-content">
                 <div class="logo-text">FLASH DASH</div>
@@ -409,81 +326,6 @@
             <p>ASTAR-STUDENT | Cambridge & IB Learning Game</p>
         </footer>
     </div>
-
-    <script>
-        // Your live Apps Script Web App URL already inserted
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIVYNjSFe7FnJLdfqYeQ1FBJckJKTbn4SE4VXHctroa9_5-BR5GpVAIRTymh18fXt-/exec";
-
-        // Load saved user session on page load
-        window.onload = function() {
-            const savedUser = localStorage.getItem("flashdashUser");
-            if (savedUser) {
-                const user = JSON.parse(savedUser);
-                setUserProfile(user);
-                showApp();
-            }
-        };
-
-        // Google Login
-        google.accounts.id.initialize({
-            client_id: "57697451938-bl8gsll2hf7qvbphfsdvrm86h5cnbgba.apps.googleusercontent.com",
-            callback: handleGoogleLogin
-        });
-
-        document.getElementById("google-login-btn").addEventListener("click", () => {
-            google.accounts.id.prompt();
-        });
-
-        function handleGoogleLogin(response) {
-            try {
-                const credential = response.credential;
-                const payload = parseJwt(credential);
-                
-                const user = {
-                    name: payload.name || payload.given_name || 'Player',
-                    email: payload.email || '',
-                    picture: payload.picture || '',
-                    status: "success"
-                };
-                
-                saveUser(user);
-                setUserProfile(user);
-                showApp();
-            } catch (error) {
-                console.error('Google login error:', error);
-                const mockUser = {
-                    name: 'Player',
-                    email: '',
-                    status: "success"
-                };
-                saveUser(mockUser);
-                setUserProfile(mockUser);
-                showApp();
-            }
-        }
-
-        function parseJwt(token) {
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-            return JSON.parse(jsonPayload);
-        }
-
-        function saveUser(user) {
-            localStorage.setItem("flashdashUser", JSON.stringify(user));
-        }
-
-        function setUserProfile(user) {
-            document.getElementById("user-name").innerText = user.name || 'Player';
-        }
-
-        function showApp() {
-            document.getElementById("login-screen").style.display = "none";
-            document.getElementById("app").style.display = "block";
-        }
-    </script>
 
     <script src="script.js"></script>
 </body>
