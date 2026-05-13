@@ -38,6 +38,7 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    padding-top: 80px;
 }
 
 /* Loading Screen */
@@ -206,12 +207,14 @@ html, body {
 
 /* Header */
 .header {
-    background: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-color);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .header-content {
@@ -1419,6 +1422,28 @@ main {
     margin-top: 15px;
     background: rgba(251, 191, 36, 0.15);
     border-color: rgba(251, 191, 36, 0.3);
+}
+
+.next-question-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.next-question-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
 }
 
 /* Options */

@@ -1197,12 +1197,13 @@ function selectAnswer(optionIndex) {
     }, 200);
     
     setTimeout(() => {
-        const flashcard = document.getElementById('flashcard');
-        flashcard.style.opacity = '0';
-        flashcard.style.transform = 'translateY(-20px) rotateY(180deg)';
-    }, 2000);
-    
-    setTimeout(() => nextQuestion(), 3000);
+        document.getElementById('next-question-btn').style.display = 'flex';
+    }, 500);
+}
+
+function goToNextQuestion() {
+    document.getElementById('next-question-btn').style.display = 'none';
+    nextQuestion();
 }
 
 function showPowerUpModal() {
@@ -1389,30 +1390,26 @@ function handleTimeout() {
     
     document.querySelectorAll('.option-btn').forEach(btn => btn.classList.add('disabled'));
     
+    wrongCount++;
+    consecutiveCorrect = 0;
+    
+    const currentFlashcard = currentFlashcards[currentIndex];
+    if (!wrongFlashcards.some(fc => fc.question === currentFlashcard.question)) {
+        wrongFlashcards.push({ ...currentFlashcard, subject: currentSubject });
+    }
+    
+    const correctIndex = currentOptions.indexOf(currentFlashcard.answer);
+    if (correctIndex !== -1) {
+        document.getElementById(`option-${correctIndex}`).classList.add('correct');
+    }
+    
     setTimeout(() => {
         flipCard();
     }, 200);
     
     setTimeout(() => {
-        wrongCount++;
-        consecutiveCorrect = 0;
-        
-        const currentFlashcard = currentFlashcards[currentIndex];
-        if (!wrongFlashcards.some(fc => fc.question === currentFlashcard.question)) {
-            wrongFlashcards.push({ ...currentFlashcard, subject: currentSubject });
-        }
-        
-        const correctIndex = currentOptions.indexOf(currentFlashcard.answer);
-        if (correctIndex !== -1) {
-            document.getElementById(`option-${correctIndex}`).classList.add('correct');
-        }
-        
-        const flashcard = document.getElementById('flashcard');
-        flashcard.style.opacity = '0';
-        flashcard.style.transform = 'translateY(-20px) rotateY(180deg)';
-    }, 2000);
-    
-    setTimeout(() => nextQuestion(), 3000);
+        document.getElementById('next-question-btn').style.display = 'flex';
+    }, 500);
 }
 
 function nextQuestion() {
