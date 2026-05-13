@@ -1323,7 +1323,7 @@ main {
 .flashcard {
     width: min(550px, 90vw);
     max-width: 100%;
-    height: min(320px, 45vh);
+    height: min(400px, 55vh);
     margin: 0 auto;
     position: relative;
     transform-style: preserve-3d;
