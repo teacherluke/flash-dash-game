@@ -16,6 +16,10 @@
     {
       "src": "flashcards_*.txt",
       "use": "@vercel/static"
+    },
+    {
+      "src": "igcse/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
