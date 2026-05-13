@@ -230,6 +230,15 @@ html, body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logo-text:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
 }
 
 .nav-links {
