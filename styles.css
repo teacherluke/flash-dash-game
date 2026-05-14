@@ -38,7 +38,7 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    padding-top: 80px;
+    padding-top: 60px;
 }
 
 /* Loading Screen */
@@ -220,7 +220,7 @@ html, body {
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px 20px;
+    padding: 8px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
