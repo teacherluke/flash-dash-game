@@ -1028,16 +1028,26 @@ function shuffleArray(array) {
 }
 
 function loadFlashcard() {
+    console.log('loadFlashcard called - currentIndex:', currentIndex, 'currentFlashcards length:', currentFlashcards.length);
+    
     if (currentIndex >= currentFlashcards.length) {
+        console.log('Ending game - currentIndex exceeds flashcards length');
         endGame();
         return;
     }
     
     const flashcardElement = document.getElementById('flashcard');
+    if (!flashcardElement) {
+        console.error('flashcard element not found!');
+        return;
+    }
+    
     flashcardElement.style.opacity = '1';
     flashcardElement.style.transform = 'rotateY(0deg)';
     
     const flashcard = currentFlashcards[currentIndex];
+    console.log('Loading flashcard:', flashcard.question);
+    
     document.getElementById('question').textContent = flashcard.question;
     document.getElementById('answer').textContent = flashcard.answer;
     
@@ -1170,10 +1180,10 @@ function selectAnswer(optionIndex) {
         document.getElementById('round-points').textContent = roundPoints;
         
         if (correctAnswersForPowerUp >= POWER_UP_THRESHOLD && !powerUpsAvailable) {
-            powerUpsAvailable = true;
-            showPowerUpModal();
-            trackEvent('powerups_unlocked', { subject: currentSubject });
-        }
+                powerUpsAvailable = true;
+                showPowerUpModal();
+                trackEvent('powerups_unlocked', { subject: currentSubject });
+            }
         
         if (consecutiveCorrect >= 3) {
             totalPoints += 100;
@@ -1427,7 +1437,9 @@ function handleTimeout() {
 }
 
 function nextQuestion() {
+    console.log('nextQuestion called - currentIndex:', currentIndex, 'currentFlashcards length:', currentFlashcards.length);
     currentIndex++;
+    console.log('nextQuestion - new currentIndex:', currentIndex);
     document.getElementById('current-question').textContent = currentIndex + 1;
     resetTimer();
     loadFlashcard();
