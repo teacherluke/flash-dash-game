@@ -1047,6 +1047,7 @@ function loadFlashcard() {
     flashcardElement.classList.remove('flipped');
     generateOptions(flashcard);
     resetOptionButtons();
+    attachOptionListeners();
 }
 
 let currentOptions = [];
@@ -1077,10 +1078,23 @@ function generateOptions(currentFlashcard) {
 function resetOptionButtons() {
     for (let i = 0; i < 4; i++) {
         const btn = document.getElementById(`option-${i}`);
-        btn.classList.remove('correct', 'wrong', 'disabled', 'selected');
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
+        if (btn) {
+            btn.classList.remove('correct', 'wrong', 'disabled', 'selected');
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+            btn.disabled = false;
+        }
     }
+}
+
+function attachOptionListeners() {
+    document.querySelectorAll('.option-btn').forEach((btn, index) => {
+        btn.onclick = function() {
+            if (!btn.classList.contains('disabled') && !btn.disabled) {
+                selectAnswer(index);
+            }
+        };
+    });
 }
 
 function resetTimer() {
@@ -1417,6 +1431,7 @@ function nextQuestion() {
     document.getElementById('current-question').textContent = currentIndex + 1;
     resetTimer();
     loadFlashcard();
+    stopRedFlash();
 }
 
 function endGame() {

@@ -204,8 +204,8 @@
                                 </button>
                             </div>
                         </div>
-            
-        </header>
+            </div>
+
         <main>
             <section id="home" class="section active">
                 <div class="hero">
@@ -422,6 +422,8 @@
                 </div>
             </section>
         </main>
+        </header>
+
         <footer class="footer">
             <p>ASTAR-STUDENT | Cambridge & IB Learning Game</p>
         </footer>
